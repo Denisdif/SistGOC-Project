@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name') }}</title>
+    <title>SistGOC</title>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
@@ -25,7 +25,7 @@
     @yield('css')
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-red sidebar-mini">
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
@@ -33,7 +33,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>InfyOm</b>
+                <b>SistGOC</b>
             </a>
 
             <!-- Header Navbar -->
@@ -88,14 +88,14 @@
         <!-- Left side column. contains the logo and sidebar -->
         @include('layouts.sidebar')
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="background-image: url('/images/Captura.jpg'); background-size: 100%; background-opacity: 0.5">
             @yield('content')
         </div>
 
-        <!-- Main Footer -->
+        <!-- Main Footer 
         <footer class="main-footer" style="max-height: 100px;text-align: center">
             <strong>Copyright © {{date('Y')}} <a href="#">Company</a>.</strong> All rights reserved.
-        </footer>
+        </footer>-->
 
     </div>
 @else
