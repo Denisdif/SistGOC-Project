@@ -67,8 +67,8 @@ class ambienteDataTable extends DataTable
     {
         return [
             'Nombre_ambiente',
-            'Imagen',
-            'Descripcion'
+            'Descripcion',
+            'Imagen'
         ];
     }
 

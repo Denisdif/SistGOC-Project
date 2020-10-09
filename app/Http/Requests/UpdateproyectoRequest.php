@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\proyecto;
+use App\Models\Proyecto;
 
-class UpdateproyectoRequest extends FormRequest
+class UpdateProyectoRequest extends FormRequest
 {
 
     /**
@@ -25,7 +25,7 @@ class UpdateproyectoRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = proyecto::$rules;
+        $rules = Proyecto::$rules;
         
         return $rules;
     }

@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\proyecto;
+use App\Models\Proyecto;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class proyectoDataTable extends DataTable
+class ProyectoDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -24,10 +24,10 @@ class proyectoDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\proyecto $model
+     * @param \App\Models\Proyecto $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(proyecto $model)
+    public function query(Proyecto $model)
     {
         return $model->newQuery();
     }
@@ -46,7 +46,6 @@ class proyectoDataTable extends DataTable
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
-                'paging' => false,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
                     /*['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -67,9 +66,13 @@ class proyectoDataTable extends DataTable
     {
         return [
             'Nombre_proyecto',
-            'Tipo',
-            'Fecha_inicio',
-            'Fecha_fin',
+            'Tipo_proyecto',
+            'Nro_plantas',
+            /*'Fecha_inicio_Proy',
+            'Fecha_fin_Proy',
+            'Director_id',
+            'Comitente_id',*/
+            'created_at',
             'Descripcion'
         ];
     }

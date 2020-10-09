@@ -19,6 +19,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Save', ['class' => 'btn btn-danger']) !!}
     <a href="{{ route('ambientes.index') }}" class="btn btn-default">Cancel</a>
 </div>

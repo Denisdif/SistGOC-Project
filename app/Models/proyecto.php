@@ -6,17 +6,20 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class proyecto
+ * Class Proyecto
  * @package App\Models
- * @version October 5, 2020, 3:19 pm UTC
+ * @version October 9, 2020, 1:03 am UTC
  *
  * @property string $Nombre_proyecto
- * @property string $Tipo
- * @property string $Fecha_inicio
- * @property string $Fecha_fin
+ * @property string $Tipo_proyecto
+ * @property integer $Nro_plantas
+ * @property string $Fecha_inicio_Proy
+ * @property string $Fecha_fin_Proy
+ * @property integer $Director_id
+ * @property integer $Comitente_id
  * @property string $Descripcion
  */
-class proyecto extends Model
+class Proyecto extends Model
 {
     use SoftDeletes;
 
@@ -29,9 +32,12 @@ class proyecto extends Model
 
     public $fillable = [
         'Nombre_proyecto',
-        'Tipo',
-        'Fecha_inicio',
-        'Fecha_fin',
+        'Tipo_proyecto',
+        'Nro_plantas',
+        'Fecha_inicio_Proy',
+        'Fecha_fin_Proy',
+        'Director_id',
+        'Comitente_id',
         'Descripcion'
     ];
 
@@ -43,9 +49,12 @@ class proyecto extends Model
     protected $casts = [
         'id' => 'integer',
         'Nombre_proyecto' => 'string',
-        'Tipo' => 'string',
-        'Fecha_inicio' => 'date',
-        'Fecha_fin' => 'date',
+        'Tipo_proyecto' => 'string',
+        'Nro_plantas' => 'integer',
+        'Fecha_inicio_Proy' => 'date',
+        'Fecha_fin_Proy' => 'date',
+        'Director_id' => 'integer',
+        'Comitente_id' => 'integer',
         'Descripcion' => 'string'
     ];
 
@@ -56,7 +65,8 @@ class proyecto extends Model
      */
     public static $rules = [
         'Nombre_proyecto' => 'required',
-        'Tipo' => 'required'
+        'Tipo_proyecto' => 'required',
+        'Nro_plantas' => 'required'
     ];
 
     

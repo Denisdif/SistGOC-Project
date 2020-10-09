@@ -2,25 +2,28 @@
 
 namespace App\Repositories;
 
-use App\Models\proyecto;
+use App\Models\Proyecto;
 use App\Repositories\BaseRepository;
 
 /**
- * Class proyectoRepository
+ * Class ProyectoRepository
  * @package App\Repositories
- * @version October 5, 2020, 3:19 pm UTC
+ * @version October 9, 2020, 1:03 am UTC
 */
 
-class proyectoRepository extends BaseRepository
+class ProyectoRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
         'Nombre_proyecto',
-        'Tipo',
-        'Fecha_inicio',
-        'Fecha_fin',
+        'Tipo_proyecto',
+        'Nro_plantas',
+        'Fecha_inicio_Proy',
+        'Fecha_fin_Proy',
+        'Director_id',
+        'Comitente_id',
         'Descripcion'
     ];
 
@@ -39,6 +42,6 @@ class proyectoRepository extends BaseRepository
      **/
     public function model()
     {
-        return proyecto::class;
+        return Proyecto::class;
     }
 }
