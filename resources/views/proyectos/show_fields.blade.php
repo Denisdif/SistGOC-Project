@@ -1,60 +1,61 @@
 <!-- Nombre Proyecto Field -->
-<div class="form-group">
+<div class="col-md-4 mb-3">
     {!! Form::label('Nombre_proyecto', 'Nombre Proyecto:') !!}
     <p>{{ $proyecto->Nombre_proyecto }}</p>
 </div>
 
 <!-- Tipo Proyecto Field -->
-<div class="form-group">
+<div class="col-md-4 mb-3">
     {!! Form::label('Tipo_proyecto', 'Tipo Proyecto:') !!}
     <p>{{ $proyecto->Tipo_proyecto }}</p>
 </div>
 
 <!-- Nro Plantas Field -->
-<div class="form-group">
+<div class="col-md-4 mb-3">
     {!! Form::label('Nro_plantas', 'Nro Plantas:') !!}
     <p>{{ $proyecto->Nro_plantas }}</p>
 </div>
 
-<!-- Fecha Inicio Proy Field -->
-<div class="form-group">
+<!-- Fecha Inicio Proy Field
+<div class="col-md-4 mb-3">
     {!! Form::label('Fecha_inicio_Proy', 'Fecha Inicio Proy:') !!}
     <p>{{ $proyecto->Fecha_inicio_Proy }}</p>
-</div>
+</div> -->
 
-<!-- Fecha Fin Proy Field -->
-<div class="form-group">
+<!-- Fecha Fin Proy Field
+<div class="col-md-4 mb-3">
     {!! Form::label('Fecha_fin_Proy', 'Fecha Fin Proy:') !!}
     <p>{{ $proyecto->Fecha_fin_Proy }}</p>
-</div>
+</div> -->
 
-<!-- Director Id Field -->
-<div class="form-group">
+<!-- Director Id Field
+<div class="col-md-4 mb-3">
     {!! Form::label('Director_id', 'Director Id:') !!}
     <p>{{ $proyecto->Director_id }}</p>
-</div>
+</div> -->
 
-<!-- Comitente Id Field -->
-<div class="form-group">
+<!-- Comitente Id Field
+<div class="col-md-4 mb-3">
     {!! Form::label('Comitente_id', 'Comitente Id:') !!}
     <p>{{ $proyecto->Comitente_id }}</p>
-</div>
+</div> -->
 
 <!-- Descripcion Field -->
-<div class="form-group">
+<div class="col-md-4 mb-3">
     {!! Form::label('Descripcion', 'Descripcion:') !!}
     <p>{{ $proyecto->Descripcion }}</p>
 </div>
 
-<!-- Created At Field -->
-<div class="form-group">
+<!-- Created At Field
+<div class="col-md-4 mb-3">
     {!! Form::label('created_at', 'Created At:') !!}
     <p>{{ $proyecto->created_at }}</p>
-</div>
+</div> -->
 
-<!-- Updated At Field -->
-<div class="form-group">
+<!-- Updated At Field
+<div class="col-md-4 mb-3">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{{ $proyecto->updated_at }}</p>
-</div>
+</div> -->
+
 

@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Proyecto;
+use App\Models\Tarea;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class ProyectoDataTable extends DataTable
+class TareaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,18 +18,18 @@ class ProyectoDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'proyectos.datatables_actions');
+        return $dataTable->addColumn('action', 'tareas.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Proyecto $model
+     * @param \App\Models\Tarea $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Proyecto $model)
+    public function query(Tarea $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['Estado_tarea','Tipo_tarea']);
     }
 
     /**
@@ -48,11 +48,11 @@ class ProyectoDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    /*['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],*/
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    /*['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],*/
+                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
     }
@@ -65,16 +65,16 @@ class ProyectoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'Nombre_proyecto',
-            'Tipo_proyecto',
-            'Nro_plantas',
-            'Fecha_inicio_Proy',
-            'Fecha_fin_Proy',
-            /*'Director_id',
-            'Comitente_id',*/
-            'created_at',
-            /*'Descripcion'*/
-        ];
+            'Nombre_tarea',
+            'Fecha_inicio',
+            'Fecha_fin',
+            'Valor',
+            'Correcciones',
+            'Descripcion_tarea',
+            /*'Proyecto_id',
+            'Tipo_tarea_id'=> new \Yajra\DataTables\Html\Column(['title'=>'Tipo','data'=>'Tipo_tarea.Nombre_tipo_tarea','name'=>'Tipo_tarea.Nombre_tipo_tarea']),
+            'Estado_tarea_id'=> new \Yajra\DataTables\Html\Column(['title'=>'Estado','data'=>'Estado_tarea.Nombre_estado_tarea','name'=>'Estado_tarea.Nombre_estado_tarea'])
+        */];
     }
 
     /**
@@ -84,6 +84,6 @@ class ProyectoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'proyectos_datatable_' . time();
+        return 'tareas_datatable_' . time();
     }
 }

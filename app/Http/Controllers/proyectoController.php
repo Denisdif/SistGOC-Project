@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ProyectoDataTable;
+use App\Models\ambiente;
+use App\Models\Tarea;
 use App\Http\Requests;
 use App\Http\Requests\CreateProyectoRequest;
 use App\Http\Requests\UpdateProyectoRequest;
 use App\Repositories\ProyectoRepository;
+use App\Models\Proyecto_ambiente;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -77,7 +80,12 @@ class ProyectoController extends AppBaseController
             return redirect(route('proyectos.index'));
         }
 
-        return view('proyectos.show')->with('proyecto', $proyecto);
+        $ambientesDelProyecto = Proyecto_ambiente::all()->where('Proyecto_id','=', $id);
+        $Lista_ambientes = ambiente::all();
+
+        $tareasDelProyecto = Tarea::all()->where('Proyecto_id','=', $id);
+
+        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_ambientes'))->with('proyecto', $proyecto);
     }
 
     /**

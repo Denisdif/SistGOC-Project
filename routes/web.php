@@ -24,14 +24,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('update-profile', 'UserController@updateProfile');
 });
 
-
-
-
-
 Route::resource('ambientes', 'ambienteController');
 
-
-
-
-
 Route::resource('proyectos', 'ProyectoController');
+
+Route::resource('proyectos.proyectoAmbientes', 'Proyecto_ambienteController');
+
+Route::resource('proyectoAmbientes', 'Proyecto_ambienteController');
+
+Route::resource('estadoTareas', 'Estado_tareaController');
+
+Route::resource('tipoTareas', 'Tipo_tareaController');
+
+Route::resource('proyectos.tareas', 'TareaController');
+
+Route::resource('tareas', 'TareaController');

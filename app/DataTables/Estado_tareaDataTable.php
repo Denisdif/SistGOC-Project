@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Proyecto;
+use App\Models\Estado_tarea;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class ProyectoDataTable extends DataTable
+class Estado_tareaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class ProyectoDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'proyectos.datatables_actions');
+        return $dataTable->addColumn('action', 'estado_tareas.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Proyecto $model
+     * @param \App\Models\Estado_tarea $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Proyecto $model)
+    public function query(Estado_tarea $model)
     {
         return $model->newQuery();
     }
@@ -48,11 +48,11 @@ class ProyectoDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    /*['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],*/
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    /*['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],*/
+                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
     }
@@ -65,15 +65,8 @@ class ProyectoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'Nombre_proyecto',
-            'Tipo_proyecto',
-            'Nro_plantas',
-            'Fecha_inicio_Proy',
-            'Fecha_fin_Proy',
-            /*'Director_id',
-            'Comitente_id',*/
-            'created_at',
-            /*'Descripcion'*/
+            'Nombre_estado_tarea',
+            'Descripcion'
         ];
     }
 
@@ -84,6 +77,6 @@ class ProyectoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'proyectos_datatable_' . time();
+        return 'estado_tareas_datatable_' . time();
     }
 }

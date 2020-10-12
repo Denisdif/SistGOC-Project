@@ -6,19 +6,18 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class ambiente
+ * Class Tipo_tarea
  * @package App\Models
- * @version October 3, 2020, 6:32 am UTC
+ * @version October 10, 2020, 12:37 pm UTC
  *
- * @property string $Nombre_ambiente
- * @property string $Imagen
+ * @property string $Nombre_tipo_tarea
  * @property string $Descripcion
  */
-class ambiente extends Model
+class Tipo_tarea extends Model
 {
     use SoftDeletes;
 
-    public $table = 'ambientes';
+    public $table = 'tipo_tareas';
 
 
     protected $dates = ['deleted_at'];
@@ -26,8 +25,7 @@ class ambiente extends Model
 
 
     public $fillable = [
-        'Nombre_ambiente',
-        'Imagen',
+        'Nombre_tipo_tarea',
         'Descripcion'
     ];
 
@@ -38,8 +36,7 @@ class ambiente extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'Nombre_ambiente' => 'string',
-        'Imagen' => 'string',
+        'Nombre_tipo_tarea' => 'string',
         'Descripcion' => 'string'
     ];
 
@@ -49,12 +46,12 @@ class ambiente extends Model
      * @var array
      */
     public static $rules = [
-        'Nombre_ambiente' => 'required',
+        'Nombre_tipo_tarea' => 'required',
         'Descripcion' => 'required'
     ];
 
-    public function Proyecto_ambientes()
+    public function Tarea()
     {
-        return $this->hasMany('App\Models\Proyecto_ambientes');
+        return $this->hasMany('App\Models\Tarea');
     }
 }

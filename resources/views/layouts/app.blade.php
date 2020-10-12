@@ -6,6 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
+
+
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
@@ -92,7 +94,7 @@
             @yield('content')
         </div>
 
-        <!-- Main Footer 
+        <!-- Main Footer
         <footer class="main-footer" style="max-height: 100px;text-align: center">
             <strong>Copyright © {{date('Y')}} <a href="#">Company</a>.</strong> All rights reserved.
         </footer>-->
@@ -144,6 +146,28 @@
         </div>
     </div>
     @endif
+
+
+<!-- DataTables Youtube -->
+    <script src=  https://code.jquery.com/jquery-3.5.1.js ></script>
+    <script src=  https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js ></script>
+    <script src= https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js ></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#Nose').DataTable(/*{
+                "serverSide": true,
+                "ajax": "{{ url('api/proyectos/{proyecto}/proyecto_ambientes') }}",
+                "columns": [
+                    {data: 'Ambiente_id'},
+                    {data: 'Cantidad'},
+                    {data: 'Proyecto_id'},
+                ]
+            }*/);
+            $('#AmbientesDelProyecto').DataTable();
+            $('#TareasDelProyecto').DataTable();
+        });
+        </script>
 
     <!-- jQuery 3.1.1 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

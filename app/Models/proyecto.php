@@ -24,7 +24,7 @@ class Proyecto extends Model
     use SoftDeletes;
 
     public $table = 'proyectos';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -69,5 +69,14 @@ class Proyecto extends Model
         'Nro_plantas' => 'required'
     ];
 
-    
+    public function Proyecto_ambientes()
+    {
+        return $this->hasMany('App\Models\Proyecto_ambientes');
+    }
+
+    public function Tareas()
+    {
+        return $this->hasMany('App\Models\Tareas');
+    }
+
 }
