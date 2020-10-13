@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -18,7 +18,7 @@ class RolPersonal extends Model
     use SoftDeletes;
 
     public $table = 'rol_personals';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -50,5 +50,5 @@ class RolPersonal extends Model
         'Descripcion' => 'required'
     ];
 
-    
+
 }

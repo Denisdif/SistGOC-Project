@@ -29,10 +29,12 @@
         <li class="{{ Request::is('tipoTareas*') ? 'active' : '' }}">
             <a href="{{ route('tipoTareas.index') }}"><i class="fa fa-edit"></i><span>Tipo Tareas</span></a>
         </li>
+
+        <li class="{{ Request::is('rolPersonals*') ? 'active' : '' }}">
+            <a href="{{ route('rolPersonals.index') }}"><i class="fa fa-edit"></i><span>Roles del Personal</span></a>
+        </li>
     </ul>
 </li>
 
-<li class="{{ Request::is('rolPersonals*') ? 'active' : '' }}">
-    <a href="{{ route('rolPersonals.index') }}"><i class="fa fa-edit"></i><span>Rol Personals</span></a>
-</li>
+
 

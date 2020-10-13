@@ -1,6 +1,6 @@
 <!-- Nombrerol Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('NombreRol', 'Nombrerol:') !!}
+    {!! Form::label('NombreRol', 'Nombre de rol:') !!}
     {!! Form::text('NombreRol', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -12,6 +12,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Save', ['class' => 'btn btn-danger']) !!}
     <a href="{{ route('rolPersonals.index') }}" class="btn btn-default">Cancel</a>
 </div>
