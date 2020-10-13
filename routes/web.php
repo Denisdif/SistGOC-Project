@@ -44,3 +44,6 @@ Route::resource('proyectos.tareas', 'TareaController');
 Route::resource('tareas', 'TareaController');
 
 Route::resource('rolPersonals', 'RolPersonalController');
+
+
+Route::resource('personals', 'PersonalController');

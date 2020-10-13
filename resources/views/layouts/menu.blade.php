@@ -38,3 +38,7 @@
 
 
 
+<li class="{{ Request::is('personals*') ? 'active' : '' }}">
+    <a href="{{ route('personals.index') }}"><i class="fa fa-edit"></i><span>Personals</span></a>
+</li>
+
