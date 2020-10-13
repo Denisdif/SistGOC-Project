@@ -152,11 +152,9 @@ class Proyecto_ambienteController extends AppBaseController
         $idProyecto = 0;
 
         foreach ($lista as $item) {
-
             if ($item->id == $id){
                 $idProyecto = $item->Proyecto_id;
             }
-
         }
 
         /* FIN obtencion del id del proyecto actual*/

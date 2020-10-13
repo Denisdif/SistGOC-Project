@@ -27,23 +27,41 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('update-profile', 'UserController@updateProfile');
 });
 
+//Rutas ambientes
+
 Route::resource('ambientes', 'ambienteController');
 
-Route::resource('proyectos', 'ProyectoController');
+//Rutas proyectos
 
 Route::resource('proyectos.proyectoAmbientes', 'Proyecto_ambienteController');
 
+Route::resource('proyectos', 'ProyectoController');
+
 Route::resource('proyectoAmbientes', 'Proyecto_ambienteController');
-
-Route::resource('estadoTareas', 'Estado_tareaController');
-
-Route::resource('tipoTareas', 'Tipo_tareaController');
 
 Route::resource('proyectos.tareas', 'TareaController');
 
 Route::resource('tareas', 'TareaController');
 
+Route::resource('tareas.asignacionPersonalTareas', 'AsignacionPersonalTareaController');
+
+Route::resource('asignacionPersonalTareas', 'AsignacionPersonalTareaController');
+
+//Rutas estado de tareas
+
+Route::resource('estadoTareas', 'Estado_tareaController');
+
+//Rutas tipo de tareas
+
+Route::resource('tipoTareas', 'Tipo_tareaController');
+
+//Rutas personal
+
+Route::resource('personals', 'PersonalController');
+
 Route::resource('rolPersonals', 'RolPersonalController');
 
 
-Route::resource('personals', 'PersonalController');
+
+
+

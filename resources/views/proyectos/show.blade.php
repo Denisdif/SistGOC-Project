@@ -119,6 +119,9 @@
                                         'class' => 'btn btn-danger btn-xs',
                                         'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
                                     ]) !!}
+                                    <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
                                 </div>
                                 {!! Form::close() !!}
                             </td>

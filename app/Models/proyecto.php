@@ -69,14 +69,14 @@ class Proyecto extends Model
         'Nro_plantas' => 'required'
     ];
 
-    public function Proyecto_ambientes()
+    public function Proyecto_ambiente()
     {
-        return $this->hasMany('App\Models\Proyecto_ambientes');
+        return $this->hasMany('App\Models\Proyecto_ambiente');
     }
 
-    public function Tareas()
+    public function Tarea()
     {
-        return $this->hasMany('App\Models\Tareas');
+        return $this->hasMany('App\Models\Tarea');
     }
 
 }

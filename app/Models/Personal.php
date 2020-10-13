@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\AsignacionPersonalTarea;
 
 /**
  * Class Personal
@@ -69,5 +70,9 @@ class Personal extends Model
         'Rol_id' => 'required'
     ];
 
+    public function Asignacion()
+    {
+        return $this->hasMany(AsignacionPersonalTarea::class);
+    }
 
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\DataTables\TareaDataTable;
 use App\Models\Proyecto;
+use App\Models\Tarea;
+use App\Models\Personal;
+use App\Models\Proyecto_ambiente;
+use App\Models\AsignacionPersonalTarea;
 use App\Http\Requests;
 use App\Http\Requests\CreateTareaRequest;
 use App\Http\Requests\UpdateTareaRequest;
@@ -82,7 +86,10 @@ class TareaController extends AppBaseController
             return redirect(route('tareas.index'));
         }
 
-        return view('tareas.show')->with('tarea', $tarea);
+        $asignaciones = AsignacionPersonalTarea::all()->where('Tarea_id','=', $id);
+        $listaPersonal = Personal::all();
+
+        return view('tareas.show', compact('asignaciones','listaPersonal'))->with('tarea', $tarea);
     }
 
     /**
@@ -139,18 +146,32 @@ class TareaController extends AppBaseController
      */
     public function destroy($id)
     {
+
+         /* INICIO obtencion del id del proyecto actual*/
+
+         $lista = Tarea::all();
+         $idProyecto = 0;
+         foreach ($lista as $item) {
+             if ($item->id == $id){
+                 $idProyecto = $item->Proyecto_id;
+             }
+         }
+
+         /* FIN obtencion del id del proyecto actual*/
+
         $tarea = $this->tareaRepository->find($id);
 
         if (empty($tarea)) {
+
             Flash::error('Tarea not found');
 
-            return redirect(route('tareas.index'));
+            return redirect(route('proyectos.show', $idProyecto, compact('proyecto')));
         }
 
         $this->tareaRepository->delete($id);
 
         Flash::success('Tarea deleted successfully.');
 
-        return redirect(route('tareas.index'));
+        return redirect(route('proyectos.show', $idProyecto, compact('proyecto')));
     }
 }

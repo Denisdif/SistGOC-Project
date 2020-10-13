@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Providers;
+namespace App\Providers;
+use App\Models\Tarea;
+use App\Models\Personal;
 
 use App\User;
 use App\Models\RolPersonal;
@@ -31,6 +33,14 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['asignacion_personal_tareas.fields'], function ($view) {
+            $tareaItems = Tarea::pluck('Nombre_tarea','id')->toArray();
+            $view->with('tareaItems', $tareaItems);
+        });
+        View::composer(['asignacion_personal_tareas.fields'], function ($view) {
+            $personalItems = Personal::pluck('NombrePersonal','id')->toArray();
+            $view->with('personalItems', $personalItems);
+        });
         View::composer(['personals.fields'], function ($view) {
             $userItems = User::pluck('name','id')->toArray();
             $view->with('userItems', $userItems);

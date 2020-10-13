@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
+use App\Models\AsignacionPersonalTarea;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -86,5 +87,10 @@ class Tarea extends Model
     public function Tipo_tarea()
     {
         return $this->belongsTo( Tipo_tarea::class ,'Tipo_tarea_id');
+    }
+
+    public function Asignacion()
+    {
+        return $this->hasMany(AsignacionPersonalTarea::class);
     }
 }
