@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
 use Illuminate\Database\Eloquent\SoftDeletes;

@@ -31,3 +31,8 @@
         </li>
     </ul>
 </li>
+
+<li class="{{ Request::is('rolPersonals*') ? 'active' : '' }}">
+    <a href="{{ route('rolPersonals.index') }}"><i class="fa fa-edit"></i><span>Rol Personals</span></a>
+</li>
+

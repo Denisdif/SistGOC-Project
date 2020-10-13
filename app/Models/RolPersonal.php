@@ -2,30 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Estado_tarea
+ * Class RolPersonal
  * @package App\Models
- * @version October 10, 2020, 12:35 pm UTC
+ * @version October 13, 2020, 1:13 am UTC
  *
- * @property string $Nombre_estado_tarea
+ * @property string $NombreRol
  * @property string $Descripcion
  */
-class Estado_tarea extends Model
+class RolPersonal extends Model
 {
     use SoftDeletes;
 
-    public $table = 'estado_tareas';
-
+    public $table = 'rol_personals';
+    
 
     protected $dates = ['deleted_at'];
 
 
 
     public $fillable = [
-        'Nombre_estado_tarea',
+        'NombreRol',
         'Descripcion'
     ];
 
@@ -36,7 +36,7 @@ class Estado_tarea extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'Nombre_estado_tarea' => 'string',
+        'NombreRol' => 'string',
         'Descripcion' => 'string'
     ];
 
@@ -46,12 +46,9 @@ class Estado_tarea extends Model
      * @var array
      */
     public static $rules = [
-        'Nombre_estado_tarea' => 'required',
+        'NombreRol' => 'required',
         'Descripcion' => 'required'
     ];
 
-    public function Tarea()
-    {
-        return $this->hasMany('App\Models\Tarea');
-    }
+    
 }
