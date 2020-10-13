@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -23,7 +23,7 @@ class Personal extends Model
     use SoftDeletes;
 
     public $table = 'personals';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -63,11 +63,11 @@ class Personal extends Model
     public static $rules = [
         'NombrePersonal' => 'required',
         'Apellido' => 'required',
-        'Legajo' => 'required|numeric',
+        'Legajo' => 'numeric',
         'FechaNac' => 'required|date',
         'DNI' => 'required|numeric',
         'Rol_id' => 'required'
     ];
 
-    
+
 }

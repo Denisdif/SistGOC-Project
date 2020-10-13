@@ -67,11 +67,11 @@ class PersonalDataTable extends DataTable
         return [
             'NombrePersonal',
             'Apellido',
-            'Legajo',
-            'FechaNac',
+            //'Legajo',
+            //'FechaNac',
             'DNI',
             'Rol_id',
-            'User_id'
+            //'User_id'
         ];
     }
 

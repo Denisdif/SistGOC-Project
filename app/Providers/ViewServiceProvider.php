@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Providers;
-use App\Models\User;
+namespace App\Providers;
+
+use App\User;
 use App\Models\RolPersonal;
-
-
-
-
 use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
 use App\Models\Proyecto;

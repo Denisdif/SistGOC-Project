@@ -1,10 +1,10 @@
 
-<li class="{{ Request::is('users*') ? 'active' : '' }}">
-    <a href="{{ route('users.index') }}"><i class="fa fa-edit"></i><span>Users</span></a>
-</li>
-
 <li class="{{ Request::is('proyectos*') ? 'active' : '' }}">
     <a href="{{ route('proyectos.index') }}"><i class="fa fa-edit"></i><span>Proyectos</span></a>
+</li>
+
+<li class="{{ Request::is('personals*') ? 'active' : '' }}">
+    <a href="{{ route('personals.index') }}"><i class="fa fa-edit"></i><span>Personal</span></a>
 </li>
 
 {{--<li class="{{ Request::is('tareas*') ? 'active' : '' }}">
@@ -18,6 +18,11 @@
 <li id="parametros">
     <a href="#"  ><i class="fa fa-edit"></i><span>Parametros</span></a>
     <ul>
+
+        <li class="{{ Request::is('users*') ? 'active' : '' }}">
+            <a href="{{ route('users.index') }}"><i class="fa fa-edit"></i><span>Users</span></a>
+        </li>
+
         <li class="{{ Request::is('ambientes*') ? 'active' : '' }}">
             <a href="{{ route('ambientes.index') }}"><i class="fa fa-edit"></i><span>Ambientes</span></a>
         </li>
@@ -38,7 +43,5 @@
 
 
 
-<li class="{{ Request::is('personals*') ? 'active' : '' }}">
-    <a href="{{ route('personals.index') }}"><i class="fa fa-edit"></i><span>Personals</span></a>
-</li>
+
 

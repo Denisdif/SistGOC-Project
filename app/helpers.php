@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @return int
