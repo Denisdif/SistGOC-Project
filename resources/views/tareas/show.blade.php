@@ -27,7 +27,7 @@
 
     <section class="content-header">
         <h1 style= "color: aliceblue">
-            Personal responsale
+            Personal responsable
             <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/asignacionPersonalTareas/create">Add New</a>
         </h1>
     </section>

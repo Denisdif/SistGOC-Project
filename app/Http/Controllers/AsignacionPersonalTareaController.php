@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateAsignacionPersonalTareaRequest;
 use App\Repositories\AsignacionPersonalTareaRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\AsignacionPersonalTarea;
 use Response;
 
 class AsignacionPersonalTareaController extends AppBaseController
@@ -62,7 +63,7 @@ class AsignacionPersonalTareaController extends AppBaseController
 
         Flash::success('Asignacion Personal Tarea saved successfully.');
 
-        return redirect(route('asignacionPersonalTareas.index'));
+        return redirect(route('tareas.show',$tarea->id));
     }
 
     /**
@@ -139,18 +140,31 @@ class AsignacionPersonalTareaController extends AppBaseController
      */
     public function destroy($id)
     {
+
+        /* INICIO obtencion del id del proyecto actual*/
+
+        $lista = AsignacionPersonalTarea::all();
+        $idtarea = 0;
+        foreach ($lista as $item) {
+            if ($item->id == $id){
+                $idtarea = $item->Tarea_id;
+            }
+        }
+
+        /* FIN obtencion del id del proyecto actual*/
+
         $asignacionPersonalTarea = $this->asignacionPersonalTareaRepository->find($id);
 
         if (empty($asignacionPersonalTarea)) {
             Flash::error('Asignacion Personal Tarea not found');
 
-            return redirect(route('asignacionPersonalTareas.index'));
+            return redirect(route('tareas.show',$idtarea));
         }
 
         $this->asignacionPersonalTareaRepository->delete($id);
 
         Flash::success('Asignacion Personal Tarea deleted successfully.');
 
-        return redirect(route('asignacionPersonalTareas.index'));
+        return redirect(route('tareas.show',$idtarea));
     }
 }

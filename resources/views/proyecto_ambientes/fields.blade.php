@@ -7,7 +7,7 @@
 <!-- Cantidad Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Cantidad', 'Cantidad:') !!}
-    {!! Form::number('Cantidad', null, ['class' => 'form-control']) !!}
+    {!! Form::number('Cantidad', '1', ['class' => 'form-control']) !!}
 </div>
 
 <!-- Proyecto Id Field

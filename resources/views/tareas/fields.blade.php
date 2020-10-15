@@ -1,14 +1,14 @@
 <!-- Nombre Tarea Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Nombre_tarea', 'Nombre Tarea:') !!}
+    {!! Form::label('Nombre_tarea', 'Nombre de la Tarea:') !!}
     {!! Form::text('Nombre_tarea', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Fecha Inicio Field -->
+<!-- Fecha Inicio Field
 <div class="form-group col-sm-6">
     {!! Form::label('Fecha_inicio', 'Fecha Inicio:') !!}
     {!! Form::date('Fecha_inicio', null, ['class' => 'form-control','id'=>'Fecha_inicio']) !!}
-</div>
+</div>-->
 
 @push('scripts')
     <script type="text/javascript">
@@ -19,9 +19,15 @@
     </script>
 @endpush
 
+<!-- Tipo Tarea Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Tipo_tarea_id', 'Tipo de Tarea:') !!}
+    {!! Form::select('Tipo_tarea_id', $tipo_tareaItems, null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Fecha Fin Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Fecha_fin', 'Fecha Fin:') !!}
+    {!! Form::label('Fecha_fin', 'Fecha límite:') !!}
     {!! Form::date('Fecha_fin', null, ['class' => 'form-control','id'=>'Fecha_fin']) !!}
 </div>
 
@@ -40,11 +46,11 @@
     {!! Form::number('Valor', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Correcciones Field -->
+<!-- Correcciones Field
 <div class="form-group col-sm-6">
     {!! Form::label('Correcciones', 'Correcciones:') !!}
     {!! Form::text('Correcciones', null, ['class' => 'form-control']) !!}
-</div>
+</div> -->
 
 <!-- Descripcion Tarea Field -->
 <div class="form-group col-sm-12 col-lg-12">
@@ -57,12 +63,6 @@
     {!! Form::label('Proyecto_id', 'Proyecto Id:') !!}
     {!! Form::select('Proyecto_id', $proyectoItems, null, ['class' => 'form-control']) !!}
 </div> -->
-
-<!-- Tipo Tarea Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Tipo_tarea_id', 'Tipo Tarea Id:') !!}
-    {!! Form::select('Tipo_tarea_id', $tipo_tareaItems, null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Estado Tarea Id Field -->
 <div class="form-group col-sm-6">
