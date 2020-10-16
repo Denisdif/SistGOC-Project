@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Personal;
 use App\DataTables\PersonalDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreatePersonalRequest;
@@ -57,7 +58,7 @@ class PersonalController extends AppBaseController
 
         Flash::success('Personal saved successfully.');
 
-        return redirect(route('personals.index'));
+        return redirect(route('users.create'));
     }
 
     /**

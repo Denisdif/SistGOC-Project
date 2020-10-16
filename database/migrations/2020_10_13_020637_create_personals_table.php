@@ -21,7 +21,6 @@ class CreatePersonalsTable extends Migration
             $table->integer('Legajo');
             $table->date('FechaNac');
             $table->integer('DNI');
-            $table->integer('Rol_id')->unsigned();
             $table->integer('User_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();

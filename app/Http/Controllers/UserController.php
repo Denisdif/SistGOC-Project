@@ -8,6 +8,9 @@ use App\Http\Requests\UpdateUserProfileRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use App\User;
+use App\Models\Personal;
+use Barryvdh\LaravelIdeHelper\Eloquent;
+use Illuminate\Database\Eloquent\Model;
 use Auth;
 use Exception;
 use Flash;
@@ -46,9 +49,9 @@ class UserController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(Personal $personal)
     {
-        return view('users.create');
+        return view('users.create', compact('personal'));
     }
 
     /**
@@ -67,8 +70,19 @@ class UserController extends AppBaseController
 
             $this->userRepository->store($input);
 
-            Flash::success('User saved successfully.');
+            // inicio asignar usuario a empleado
 
+            $usuario = user::where('name','=',$request->name)->first();
+
+            $personal = Personal::all()->last();
+
+            $personal->User_id = $usuario->id;
+
+            $personal->save();
+
+            // fin asignar usuario a empleado
+
+            Flash::success('User saved successfully.');
             return redirect(route('users.index'));
         } catch (Exception $e) {
             return Redirect::back()->withInput()->withErrors($e->getMessage());
@@ -110,7 +124,7 @@ class UserController extends AppBaseController
         if ($request->ajax()) {
             return $this->sendResponse($user, 'User retrieved successfully.');
         }
-        
+
         if (empty($user)) {
             Flash::error('User not found');
 
