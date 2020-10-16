@@ -22,7 +22,6 @@ class PersonalRepository extends BaseRepository
         'Legajo',
         'FechaNac',
         'DNI',
-        'Rol_id',
         'User_id'
     ];
 

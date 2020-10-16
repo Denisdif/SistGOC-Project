@@ -37,12 +37,6 @@
     </script>
 @endpush
 
-<!-- Rol Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Rol_id', 'Rol:') !!}
-    {!! Form::select('Rol_id', $rol_personalItems, null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- User Id Field
 <div class="form-group col-sm-6">
     {!! Form::label('User_id', 'User Id:') !!}

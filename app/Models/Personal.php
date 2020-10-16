@@ -36,7 +36,6 @@ class Personal extends Model
         'Legajo',
         'FechaNac',
         'DNI',
-        'Rol_id',
         'User_id'
     ];
 
@@ -52,7 +51,6 @@ class Personal extends Model
         'Legajo' => 'integer',
         'FechaNac' => 'date',
         'DNI' => 'integer',
-        'Rol_id' => 'integer',
         'User_id' => 'integer'
     ];
 
@@ -66,8 +64,7 @@ class Personal extends Model
         'Apellido' => 'required',
         'Legajo' => 'numeric',
         'FechaNac' => 'required|date',
-        'DNI' => 'required|numeric',
-        'Rol_id' => 'required'
+        'DNI' => 'required|numeric'
     ];
 
     public function Asignacion()

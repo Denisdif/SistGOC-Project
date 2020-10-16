@@ -30,7 +30,7 @@ class PersonalDataTable extends DataTable
      */
     public function query(Personal $model)
     {
-        return $model->newQuery()->with(['Rol']);
+        return $model->newQuery();
     }
 
     /**
@@ -71,7 +71,6 @@ class PersonalDataTable extends DataTable
             //'Legajo',
             //'FechaNac',
             'DNI',
-            'Rol_id',
             //'User_id'
         ];
     }

@@ -28,12 +28,6 @@
     <p>{{ $personal->DNI }}</p>
 </div>
 
-<!-- Rol Id Field -->
-<div class="form-group">
-    {!! Form::label('Rol_id', 'Rol Id:') !!}
-    <p>{{ $personal->Rol_id }}</p>
-</div>
-
 <!-- User Id Field -->
 <div class="form-group">
     {!! Form::label('User_id', 'User Id:') !!}
