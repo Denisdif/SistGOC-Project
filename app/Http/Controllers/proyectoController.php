@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\DataTables\ProyectoDataTable;
 use App\Models\ambiente;
 use App\Models\Tarea;
+use App\Models\Personal;
+use App\Models\AsignacionPersonalTarea;
 use App\Http\Requests;
 use App\Http\Requests\CreateProyectoRequest;
 use App\Http\Requests\UpdateProyectoRequest;
@@ -81,11 +83,41 @@ class ProyectoController extends AppBaseController
         }
 
         $ambientesDelProyecto = Proyecto_ambiente::all()->where('Proyecto_id','=', $id);
-        $Lista_ambientes = ambiente::all();
 
         $tareasDelProyecto = Tarea::all()->where('Proyecto_id','=', $id);
 
-        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_ambientes'))->with('proyecto', $proyecto);
+        // Inicio de filtro de personal con tareas del proyecto asignadas
+
+        $Lista_asignaciones = AsignacionPersonalTarea::all();
+
+        $indice = 0;
+
+        $Lista_personal = array();
+
+        foreach ($tareasDelProyecto as $tarea) {
+            foreach ($Lista_asignaciones as $asignacion) {
+                if ($tarea->id == $asignacion->Tarea_id) {
+                    $Personal = Personal::all()->where('id','=', $asignacion->Personal_id)->first();
+                    $Igualdad = false;
+                    foreach ($Lista_personal as $Item) {
+                        if ($Item == $Personal) {
+                            $Igualdad = true;
+                        }
+                    }
+                    if ($Igualdad == false) {
+                        $Lista_personal[] = $Personal;
+                        $indice ++;
+                    }
+                }
+            }
+        }
+       /*for ($i=0; $i < $indice; $i++) {
+            echo "{$Lista_Personal[$i]->NombrePersonal} <br>";
+        }*/
+
+        // Fin de filtro de personal con tareas del proyecto asignadas
+
+        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal'))->with('proyecto', $proyecto);
     }
 
     /**

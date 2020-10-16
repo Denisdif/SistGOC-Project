@@ -75,4 +75,13 @@ class Personal extends Model
         return $this->hasMany(AsignacionPersonalTarea::class);
     }
 
+    /*public function Rol()
+    {
+        return $this->belongsTo( RolPersonal::class ,'Rol_id');
+    }*/
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'User_id');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Personal;
+use App\Models\RolPersonal;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -29,7 +30,7 @@ class PersonalDataTable extends DataTable
      */
     public function query(Personal $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['Rol']);
     }
 
     /**

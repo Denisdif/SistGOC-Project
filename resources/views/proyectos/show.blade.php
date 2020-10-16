@@ -57,15 +57,7 @@
                     <tbody>
                         @foreach ($ambientesDelProyecto as $ambiente)
                         <tr>
-                            <td>
-                                @foreach ($Lista_ambientes as $item)
-                                    @php
-                                        if ($item->id == $ambiente->Ambiente_id){
-                                            echo $item->Nombre_ambiente;
-                                        }
-                                    @endphp
-                            @endforeach
-                        </td>
+                            <td>{{ $ambiente->ambiente->Nombre_ambiente }}</td>
                             <td>{{ $ambiente->Cantidad }}</td>
                             <td>{!! Form::open(['route' => ['proyectoAmbientes.destroy', $ambiente->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
@@ -132,10 +124,45 @@
             </div>
         </div>
         </div>
+
+
+
+    {{-- Fin de DataTable de tareas del proyecto --}}
+
+    <section class="content-header">
+        <h1 style= "color: aliceblue">
+            Personal asignado al proyecto
+        </h1>
+    </section>
+
+    {{-- Inicio de DataTable de tareas del proyecto --}}
+
+    <div class="content-header">
+        <div class="box box-danger">
+            <div class="box-body">
+                <table id="PersonalDelProyecto" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nombre Completo</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($Lista_personal as $Personal)
+                        <tr>
+                            <td>{{ $Personal->NombrePersonal }} {{ $Personal->Apellido }}</td>
+                            <td>{{ $Personal->Rol->NombreRol }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
     </div>
 
 
     {{-- Fin de DataTable de tareas del proyecto --}}
 
-
+</div>
 @endsection

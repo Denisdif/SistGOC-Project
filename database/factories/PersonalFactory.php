@@ -15,7 +15,7 @@ $factory->define(Personal::class, function (Faker $faker) {
         'DNI' => $faker->randomDigitNotNull,
         'Rol_id' => $faker->randomDigitNotNull,
         'User_id' => $faker->randomDigitNotNull,
-        'created_at' => $faker->date('Y-m-d H:i:s'),
-        'updated_at' => $faker->date('Y-m-d H:i:s')
+        'created_at' => $faker->date,
+        'updated_at' => $faker->date
     ];
 });

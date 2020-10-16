@@ -50,5 +50,9 @@ class RolPersonal extends Model
         'Descripcion' => 'required'
     ];
 
+    /*public function Personal()
+    {
+        return $this->hasMany(Personal::class);
+    }*/
 
 }

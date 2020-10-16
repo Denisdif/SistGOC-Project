@@ -166,6 +166,7 @@
             }*/);
             $('#AmbientesDelProyecto').DataTable();
             $('#TareasDelProyecto').DataTable();
+            $('#PersonalDelProyecto').DataTable();
         });
         </script>
 

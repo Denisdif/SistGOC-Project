@@ -65,15 +65,15 @@ class ProyectoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'Nombre_proyecto',
-            'Tipo_proyecto',
-            'Nro_plantas',
-            'Fecha_inicio_Proy',
-            'Fecha_fin_Proy',
+            'Nombre_proyecto'=> new \Yajra\DataTables\Html\Column(['title'=>'Nombre de Proyecto','data'=>'Nombre_proyecto','name'=>'Nombre_proyecto']),
+            'Tipo_proyecto'=> new \Yajra\DataTables\Html\Column(['title'=>'Tipo de Proyecto','data'=>'Tipo_proyecto','name'=>'Tipo_proyecto']),
+            //'Nro_plantas',
+            //'Fecha_inicio_Proy',
+            'Fecha_fin_Proy'=> new \Yajra\DataTables\Html\Column(['title'=>'Fecha limite','data'=>'Fecha_fin_Proy','name'=>'Fecha_fin_Proy']),
             /*'Director_id',
-            'Comitente_id',*/
-            'created_at',
-            /*'Descripcion'*/
+            'Comitente_id',
+            'created_at',*/
+            'Descripcion'
         ];
     }
 

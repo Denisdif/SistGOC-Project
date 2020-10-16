@@ -142,4 +142,9 @@ class User extends Authenticatable
 
         return $this->traitDeleteImage(self::IMAGE_PATH.DIRECTORY_SEPARATOR.$image);
     }
+
+    public function Personal()
+    {
+        return $this->hasOne(Personal::class);
+    }
 }

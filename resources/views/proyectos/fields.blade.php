@@ -1,12 +1,12 @@
 <!-- Nombre Proyecto Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Nombre_proyecto', 'Nombre Proyecto:') !!}
+    {!! Form::label('Nombre_proyecto', 'Nombre:') !!}
     {!! Form::text('Nombre_proyecto', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Tipo Proyecto Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Tipo_proyecto', 'Tipo Proyecto:') !!}
+    {!! Form::label('Tipo_proyecto', 'Tipo de Proyecto:') !!}
     <select name="Tipo_proyecto" class = 'form-control'>
         <option value="Construcción">Construcción</option>
         <option value="Remodelación">Remodelación</option>
@@ -15,11 +15,11 @@
     </select>
 </div>
 
-<!-- Fecha Inicio Proy Field -->
+<!-- Fecha Inicio Proy Field
 <div class="form-group col-sm-6">
     {!! Form::label('Fecha_inicio_Proy', 'Fecha Inicio Proy:') !!}
     {!! Form::date('Fecha_inicio_Proy', null, ['class' => 'form-control','id'=>'Fecha_inicio_Proy']) !!}
-</div>
+</div> -->
 
 @push('scripts')
     <script type="text/javascript">
@@ -32,7 +32,7 @@
 
 <!-- Fecha Fin Proy Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Fecha_fin_Proy', 'Fecha Fin Proy:') !!}
+    {!! Form::label('Fecha_fin_Proy', 'Fecha limite:') !!}
     {!! Form::date('Fecha_fin_Proy', null, ['class' => 'form-control','id'=>'Fecha_fin_Proy']) !!}
 </div>
 
@@ -59,8 +59,13 @@
 
 <!-- Nro Plantas Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Nro_plantas', 'Nro Plantas:') !!}
-    {!! Form::number('Nro_plantas', null, ['class' => 'form-control']) !!}
+    {!! Form::label('Nro_plantas', 'Número de plantas del edificio:') !!}
+    <select name="Nro_plantas" class = 'form-control'>
+        <option value=1>Una</option>
+        <option value=2>Dos</option>
+        <option value=3>Tres</option>
+        <option value=4>Cuatro</option>
+    </select>
 </div>
 
 <!-- Descripcion Field -->
