@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\RolPersonal;
 use App\Traits\ImageTrait;
 use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -68,6 +69,7 @@ class User extends Authenticatable
         'phone',
         'email_verified_at',
         'image_path',
+        'Rol_id'
     ];
 
     /**
@@ -89,6 +91,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'set_password'      => 'boolean',
         'image_path'      => 'string',
+        'Rol_id' =>'integer'
     ];
 
     /**
@@ -146,5 +149,10 @@ class User extends Authenticatable
     public function Personal()
     {
         return $this->hasOne(Personal::class);
+    }
+
+    public function RolPersonal()
+    {
+        return $this->belongsTo(RolPersonal::class, 'Rol_id');
     }
 }

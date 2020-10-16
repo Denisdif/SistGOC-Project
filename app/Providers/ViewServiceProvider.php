@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Providers;
+namespace App\Providers;
+
 use App\Models\Tarea;
 use App\Models\Personal;
 
@@ -73,6 +74,11 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['consideracion_ambientes.fields'], function ($view) {
             $ambienteItems = Ambiente::pluck('Nombre_ambiente','id')->toArray();
             $view->with('ambienteItems', $ambienteItems);
+        });
+
+        View::composer(['users.fields'], function ($view) {
+            $RolPersonalItems = RolPersonal::pluck('NombreRol','id')->toArray();
+            $view->with('RolPersonalItems', $RolPersonalItems);
         });
         //
     }

@@ -20,6 +20,14 @@
     <input class="form-control input-group__addon" id="pfNewConfirmPassword" type="password"
            name="password_confirmation" required>
 </div>
+
+
+<div class="form-group col-sm-6">
+    {!! Form::label('Rol_id', 'Rol de usuario:') !!}
+    {!! Form::select('Rol_id', $RolPersonalItems, null, ['class' => 'form-control']) !!}
+</div>
+
+
 <!-- Phone Field -->
 <div class="form-group col-sm-3">
     {!! Form::label('phone', 'Phone:') !!}

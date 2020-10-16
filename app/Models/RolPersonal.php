@@ -50,9 +50,9 @@ class RolPersonal extends Model
         'Descripcion' => 'required'
     ];
 
-    /*public function Personal()
+    public function User()
     {
-        return $this->hasMany(Personal::class);
-    }*/
+        return $this->hasMany(User::class);
+    }
 
 }
