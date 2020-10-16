@@ -3,9 +3,9 @@
     <a href="{{ route('proyectos.index') }}"><i class="fa fa-edit"></i><span>Proyectos</span></a>
 </li>
 
-<li class="{{ Request::is('tareas*') ? 'active' : '' }}">
+{{--<li class="{{ Request::is('tareas*') ? 'active' : '' }}">
     <a href="{{ route('tareas.index') }}"><i class="fa fa-edit"></i><span>Tareas</span></a>
-</li>
+</li>--}}
 
 <li class="{{ Request::is('personals*') ? 'active' : '' }}">
     <a href="{{ route('personals.index') }}"><i class="fa fa-edit"></i><span>Personal</span></a>

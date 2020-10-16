@@ -11,7 +11,7 @@
        <div class="box box-danger">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($estadoTarea, ['route' => ['estadoTareas.update', $estadoTarea->id], 'method' => 'patch']) !!}
+                   {!! Form::model($estadoTarea, ['route' => ['estadoTareas.update', $estadoTarea->id], 'method' => 'put']) !!}
 
                         @include('estado_tareas.fields')
 

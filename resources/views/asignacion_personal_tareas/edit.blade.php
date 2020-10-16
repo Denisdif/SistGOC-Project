@@ -11,7 +11,7 @@
        <div class="box box-danger">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($asignacionPersonalTarea, ['route' => ['asignacionPersonalTareas.update', $asignacionPersonalTarea->id], 'method' => 'patch']) !!}
+                   {!! Form::model($asignacionPersonalTarea, ['route' => ['asignacionPersonalTareas.update', $asignacionPersonalTarea->id], 'method' => 'put']) !!}
 
                         @include('asignacion_personal_tareas.fields')
 

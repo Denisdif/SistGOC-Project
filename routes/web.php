@@ -27,39 +27,117 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('update-profile', 'UserController@updateProfile');
 });
 
-//Rutas ambientes
-
-Route::resource('ambientes', 'ambienteController');
-
 //Rutas proyectos
 
-Route::resource('proyectos.proyectoAmbientes', 'Proyecto_ambienteController');
+//Route::resource('proyectos', 'ProyectoController');
 
-Route::resource('proyectos', 'ProyectoController');
+Route::get('proyectos',                         'ProyectoController@index')          ->name('proyectos.index');
+Route::get('proyectos/create',                  'ProyectoController@create')         ->name('proyectos.create');
+Route::post('proyectos',                        'ProyectoController@store')          ->name('proyectos.store');
+Route::get('proyectos/{proyecto}',              'ProyectoController@show')           ->name('proyectos.show');
+Route::get('proyectos/{proyecto}/edit',         'ProyectoController@edit')           ->name('proyectos.edit');
+Route::put('proyectos/{id}',                    'ProyectoController@update')         ->name('proyectos.update');
+Route::delete('proyectos/{id}',                 'ProyectoController@destroy')        ->name('proyectos.destroy');
 
-Route::resource('proyectoAmbientes', 'Proyecto_ambienteController');
+//Rutas ambientes
 
-Route::resource('proyectos.tareas', 'TareaController');
+//Route::resource('ambientes', 'ambienteController');
 
-Route::resource('tareas', 'TareaController');
+Route::get('ambientes',                         'ambienteController@index')          ->name('ambientes.index');
+Route::get('ambientes/create',                  'ambienteController@create')         ->name('ambientes.create');
+Route::post('ambientes',                        'ambienteController@store')          ->name('ambientes.store');
+Route::get('ambientes/{ambiente}',              'ambienteController@show')           ->name('ambientes.show');
+Route::get('ambientes/{ambiente}/edit',         'ambienteController@edit')           ->name('ambientes.edit');
+Route::put('ambientes/{id}',                    'ambienteController@update')         ->name('ambientes.update');
+Route::delete('ambientes/{id}',                 'ambienteController@destroy')        ->name('ambientes.destroy');
 
-Route::resource('tareas.asignacionPersonalTareas', 'AsignacionPersonalTareaController');
+//Rutas Ambientes de proyecto
 
-Route::resource('asignacionPersonalTareas', 'AsignacionPersonalTareaController');
+//Route::resource('proyectos.proyectoAmbientes', 'Proyecto_ambienteController');
+//Route::resource('proyectoAmbientes', 'Proyecto_ambienteController');
+
+Route::get('proyectos/{proyecto}/proyectoAmbientes',            'Proyecto_ambienteController@index')          ->name('proyectos.proyectoAmbientes.index');
+Route::get('proyectos/{proyecto}/proyectoAmbientes/create',     'Proyecto_ambienteController@create')         ->name('proyectos.proyectoAmbientes.create');
+Route::post('proyectos/{proyecto}/proyectoAmbientes',           'Proyecto_ambienteController@store')          ->name('proyectos.proyectoAmbientes.store');
+Route::get('proyectoAmbientes/{proyectoAmbiente}',              'Proyecto_ambienteController@show')           ->name('proyectoAmbientes.show');
+Route::get('proyectoAmbientes/{proyectoAmbiente}/edit',         'Proyecto_ambienteController@edit')           ->name('proyectoAmbientes.edit');
+Route::put('proyectoAmbientes/{id}',                            'Proyecto_ambienteController@update')         ->name('proyectoAmbientes.update') ;
+Route::delete('proyectoAmbientes/{id}',                         'Proyecto_ambienteController@destroy')        ->name('proyectoAmbientes.destroy');
+
+//Rutas Tareas
+
+//Route::resource('proyectos.tareas', 'TareaController');
+//Route::resource('tareas', 'TareaController');
+
+Route::get('proyectos/{proyecto}/tareas',            'TareaController@index')          ->name('proyectos.tareas.index');
+Route::get('proyectos/{proyecto}/tareas/create',     'TareaController@create')         ->name('proyectos.tareas.create');
+Route::post('proyectos/{proyecto}/tareas',           'TareaController@store')          ->name('proyectos.tareas.store');
+Route::get('tareas/{tarea}',                         'TareaController@show')           ->name('tareas.show');
+Route::get('tareas/{tarea}/edit',                    'TareaController@edit')           ->name('tareas.edit');
+Route::put('tareas/{id}',                            'TareaController@update')         ->name('tareas.update');
+Route::delete('tareas/{id}',                         'TareaController@destroy')        ->name('tareas.destroy');
+
+//Rutas de asignaciones de tareas
+
+//Route::resource('tareas.asignacionPersonalTareas', 'AsignacionPersonalTareaController');
+//Route::resource('asignacionPersonalTareas', 'AsignacionPersonalTareaController');
+
+Route::get('tareas/{tarea}/asignacionPersonalTareas',                   'AsignacionPersonalTareaController@index')          ->name('tareas.asignacionPersonalTareas.index');
+Route::get('tareas/{tarea}/asignacionPersonalTareas/create',            'AsignacionPersonalTareaController@create')         ->name('tareas.asignacionPersonalTareas.create');
+Route::post('tareas/{tarea}/asignacionPersonalTareas',                  'AsignacionPersonalTareaController@store')          ->name('tareas.asignacionPersonalTareas.store');
+Route::get('asignacionPersonalTareas/{asignacionPersonalTarea}',        'AsignacionPersonalTareaController@show')           ->name('asignacionPersonalTareas.show');
+Route::get('asignacionPersonalTareas/{asignacionPersonalTarea}/edit',   'AsignacionPersonalTareaController@edit')           ->name('asignacionPersonalTareas.edit');
+Route::put('asignacionPersonalTareas/{id}',                             'AsignacionPersonalTareaController@update')         ->name('asignacionPersonalTareas.update');
+Route::delete('asignacionPersonalTareas/{id}',                          'AsignacionPersonalTareaController@destroy')        ->name('asignacionPersonalTareas.destroy');
 
 //Rutas estado de tareas
 
-Route::resource('estadoTareas', 'Estado_tareaController');
+//Route::resource('estadoTareas', 'Estado_tareaController');
+
+Route::get('estadoTareas',                         'Estado_tareaController@index')          ->name('estadoTareas.index');
+Route::get('estadoTareas/create',                  'Estado_tareaController@create')         ->name('estadoTareas.create');
+Route::post('estadoTareas',                        'Estado_tareaController@store')          ->name('estadoTareas.store');
+Route::get('estadoTareas/{estadoTarea}',           'Estado_tareaController@show')           ->name('estadoTareas.show');
+Route::get('estadoTareas/{estadoTarea}/edit',      'Estado_tareaController@edit')           ->name('estadoTareas.edit');
+Route::put('estadoTareas/{id}',                    'Estado_tareaController@update')         ->name('estadoTareas.update');
+Route::delete('estadoTareas/{id}',                 'Estado_tareaController@destroy')        ->name('estadoTareas.destroy');
 
 //Rutas tipo de tareas
 
-Route::resource('tipoTareas', 'Tipo_tareaController');
+//Route::resource('tipoTareas', 'Tipo_tareaController');
+
+Route::get('tipoTareas',                         'Tipo_tareaController@index')          ->name('tipoTareas.index');
+Route::get('tipoTareas/create',                  'Tipo_tareaController@create')         ->name('tipoTareas.create');
+Route::post('tipoTareas',                        'Tipo_tareaController@store')          ->name('tipoTareas.store');
+Route::get('tipoTareas/{tipoTarea}',             'Tipo_tareaController@show')           ->name('tipoTareas.show');
+Route::get('tipoTareas/{tipoTarea}/edit',        'Tipo_tareaController@edit')           ->name('tipoTareas.edit');
+Route::put('tipoTareas/{id}',                    'Tipo_tareaController@update')         ->name('tipoTareas.update');
+Route::delete('tipoTareas/{id}',                 'Tipo_tareaController@destroy')        ->name('tipoTareas.destroy');
+
 
 //Rutas personal
 
-Route::resource('personals', 'PersonalController');
+//Route::resource('personals', 'PersonalController');
 
-Route::resource('rolPersonals', 'RolPersonalController');
+Route::get('personals',                         'PersonalController@index')          ->name('personals.index');
+Route::get('personals/create',                  'PersonalController@create')         ->name('personals.create');
+Route::post('personals',                        'PersonalController@store')          ->name('personals.store');
+Route::get('personals/{personal}',              'PersonalController@show')           ->name('personals.show');
+Route::get('personals/{personal}/edit',         'PersonalController@edit')           ->name('personals.edit');
+Route::put('personals/{id}',                    'PersonalController@update')         ->name('personals.update');
+Route::delete('personals/{id}',                 'PersonalController@destroy')        ->name('personals.destroy');
+
+//Rutas personal
+
+//Route::resource('rolPersonals', 'RolPersonalController');
+
+Route::get('rolPersonals',                         'RolPersonalController@index')          ->name('rolPersonals.index');
+Route::get('rolPersonals/create',                  'RolPersonalController@create')         ->name('rolPersonals.create');
+Route::post('rolPersonals',                        'RolPersonalController@store')          ->name('rolPersonals.store');
+Route::get('rolPersonals/{rolPersonal}',           'RolPersonalController@show')           ->name('rolPersonals.show');
+Route::get('rolPersonals/{rolPersonal}/edit',      'RolPersonalController@edit')           ->name('rolPersonals.edit');
+Route::put('rolPersonals/{id}',                    'RolPersonalController@update')         ->name('rolPersonals.update');
+Route::delete('rolPersonals/{id}',                 'RolPersonalController@destroy')        ->name('rolPersonals.destroy');
 
 
 

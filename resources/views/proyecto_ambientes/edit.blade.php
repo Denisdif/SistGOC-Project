@@ -11,7 +11,7 @@
        <div class="box box-danger">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($proyectoAmbiente, ['route' => ['proyectoAmbientes.update', $proyectoAmbiente->id], 'method' => 'patch']) !!}
+                   {!! Form::model($proyectoAmbiente, ['route' => ['proyectoAmbientes.update', $proyectoAmbiente->id], 'method' => 'put']) !!}
 
                         @include('proyecto_ambientes.fields')
 

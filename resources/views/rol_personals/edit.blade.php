@@ -11,7 +11,7 @@
        <div class="box box-danger">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($rolPersonal, ['route' => ['rolPersonals.update', $rolPersonal->id], 'method' => 'patch']) !!}
+                   {!! Form::model($rolPersonal, ['route' => ['rolPersonals.update', $rolPersonal->id], 'method' => 'put']) !!}
 
                         @include('rol_personals.fields')
 

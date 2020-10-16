@@ -64,11 +64,11 @@
     {!! Form::select('Proyecto_id', $proyectoItems, null, ['class' => 'form-control']) !!}
 </div> -->
 
-<!-- Estado Tarea Id Field -->
+<!-- Estado Tarea Id Field
 <div class="form-group col-sm-6">
     {!! Form::label('Estado_tarea_id', 'Estado Tarea Id:') !!}
     {!! Form::select('Estado_tarea_id', $estado_tareaItems, null, ['class' => 'form-control']) !!}
-</div>
+</div> -->
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

@@ -125,8 +125,6 @@
         </div>
         </div>
 
-
-
     {{-- Fin de DataTable de tareas del proyecto --}}
 
     <section class="content-header">
@@ -144,14 +142,12 @@
                     <thead>
                         <tr>
                             <th>Nombre Completo</th>
-                            <th>Rol</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($Lista_personal as $Personal)
                         <tr>
                             <td>{{ $Personal->NombrePersonal }} {{ $Personal->Apellido }}</td>
-                            <td>{{ $Personal->Rol->NombreRol }}</td>
                         </tr>
                         @endforeach
                     </tbody>
