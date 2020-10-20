@@ -7,8 +7,9 @@ use App\Http\Requests;
 use App\Http\Requests\CreateambienteRequest;
 use App\Http\Requests\UpdateambienteRequest;
 use App\Repositories\ambienteRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Storage;
+use Flash;
 use Response;
 
 class ambienteController extends AppBaseController
@@ -54,6 +55,14 @@ class ambienteController extends AppBaseController
         $input = $request->all();
 
         $ambiente = $this->ambienteRepository->create($input);
+
+        if ($request->file('Imagen')) {
+            $file = $request->file('Imagen');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/ImagenesAmbientes/', $name);
+        }
+        $ambiente->Imagen = "/ImagenesAmbientes/".$name;
+        $ambiente->save();
 
         Flash::success('Ambiente saved successfully.');
 
@@ -119,6 +128,14 @@ class ambienteController extends AppBaseController
         }
 
         $ambiente = $this->ambienteRepository->update($request->all(), $id);
+
+        if ($request->file('Imagen')) {
+            $file = $request->file('Imagen');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/ImagenesAmbientes/', $name);
+        }
+        $ambiente->Imagen = "/ImagenesAmbientes/".$name;
+        $ambiente->save();
 
         Flash::success('Ambiente updated successfully.');
 

@@ -51,6 +51,8 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Cantidad</th>
+                            <th>Descripción</th>
+                            <th>Imagen</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
@@ -59,6 +61,8 @@
                         <tr>
                             <td>{{ $ambiente->ambiente->Nombre_ambiente }}</td>
                             <td>{{ $ambiente->Cantidad }}</td>
+                            <td>{{ $ambiente->ambiente->Descripcion }}</td>
+                            <td> <img src="{{ $ambiente->ambiente->Imagen }}" class="card-img" width="100" height="100"> </td>
                             <td>{!! Form::open(['route' => ['proyectoAmbientes.destroy', $ambiente->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
                                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
@@ -95,8 +99,9 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Tipo de tarea</th>
+                            <th>Prioridad</th>
                             <th>Estado</th>
+                            <th>Tipo de tarea</th>
                             <th>Fecha limite</th>
                             <th>Accion</th>
                         </tr>
@@ -105,22 +110,23 @@
                         @foreach ($tareasDelProyecto as $tarea)
                         <tr>
                             <td>{{ $tarea->Nombre_tarea }}</td>
-                            <td>{{ $tarea->tipo_tarea->Nombre_tipo_tarea }}</td>
+                            <td>{{ $tarea->prioridad }}</td>
                             <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
+                            <td>{{ $tarea->tipo_tarea->Nombre_tipo_tarea }}</td>
                             <td>{{ $tarea->Fecha_fin }}</td>
                             <td>{!! Form::open(['route' => ['tareas.destroy', $tarea->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
-                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
-                                        'type' => 'submit',
-                                        'class' => 'btn btn-danger btn-xs',
-                                        'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
-                                    ]) !!}
                                     <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
                                         <i class="glyphicon glyphicon-eye-open"></i>
                                     </a>
                                     <a href="{{ route('tareas.edit', $tarea->id) }}" class='btn btn-default btn-xs'>
                                         <i class="glyphicon glyphicon-edit"></i>
                                     </a>
+                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
+                                        'type' => 'submit',
+                                        'class' => 'btn btn-danger btn-xs',
+                                        'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
+                                    ]) !!}
                                 </div>
                                 {!! Form::close() !!}
                             </td>
@@ -136,11 +142,11 @@
 
     <section class="content-header">
         <h1 style= "color: aliceblue">
-            Personal asignado al proyecto
+            Personal que participa en el proyecto
         </h1>
     </section>
 
-    {{-- Inicio de DataTable de tareas del proyecto --}}
+    {{-- Inicio de DataTable de Personal del proyecto --}}
 
     <div class="content-header">
         <div class="box box-danger">
@@ -165,7 +171,7 @@
     </div>
 
 
-    {{-- Fin de DataTable de tareas del proyecto --}}
+    {{-- Fin de DataTable de Personal del proyecto --}}
 
 </div>
 @endsection

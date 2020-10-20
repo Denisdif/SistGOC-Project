@@ -11,7 +11,7 @@
         <div class="box box-danger">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'ambientes.store', 'files' => true]) !!}
+                    {!! Form::open(['route' => 'ambientes.store', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
 
                         @include('ambientes.fields')
 

@@ -11,7 +11,7 @@
        <div class="box box-danger">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($ambiente, ['route' => ['ambientes.update', $ambiente->id], 'method' => 'put', 'files' => true]) !!}
+                   {!! Form::model($ambiente, ['route' => ['ambientes.update', $ambiente->id],'enctype' => 'multipart/form-data', 'method' => 'put', 'files' => true]) !!}
 
                         @include('ambientes.fields')
 

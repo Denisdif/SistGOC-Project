@@ -35,17 +35,17 @@
                                 <td>{{ $proyecto->Fecha_fin_Proy }}</td>
                                 <td>{!! Form::open(['route' => ['proyectos.destroy', $proyecto->id], 'method' => 'delete']) !!}
                                     <div class='btn-group'>
-                                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
-                                            'type' => 'submit',
-                                            'class' => 'btn btn-danger btn-xs',
-                                            'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
-                                        ]) !!}
                                         <a href="{{ route('proyectos.show', $proyecto->id) }}" class='btn btn-default btn-xs'>
                                             <i class="glyphicon glyphicon-eye-open"></i>
                                         </a>
                                         <a href="{{ route('proyectos.edit', $proyecto->id) }}" class='btn btn-default btn-xs'>
                                             <i class="glyphicon glyphicon-edit"></i>
                                         </a>
+                                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
+                                            'type' => 'submit',
+                                            'class' => 'btn btn-danger btn-xs',
+                                            'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
+                                        ]) !!}
                                     </div>
                                     {!! Form::close() !!}
                                 </td>

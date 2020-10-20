@@ -1,20 +1,44 @@
 <!-- Nombre Proyecto Field -->
+
+
 <div class="col-md-4 mb-3">
+    <h2>Datos del proyecto</h2><br>
     {!! Form::label('Nombre_proyecto', 'Nombre Proyecto:') !!}
-    <p>{{ $proyecto->Nombre_proyecto }}</p>
+    {{ $proyecto->Nombre_proyecto }} <br>
+
+    {!! Form::label('Tipo_proyecto', 'Tipo Proyecto:') !!}
+    {{ $proyecto->Tipo_proyecto->Nombre }} <br>
+
+    {!! Form::label('Fecha_inicio_Proy', 'Fecha de inicio:') !!}
+    {{ $proyecto->Fecha_inicio_Proy }} <br>
+
+    {!! Form::label('Fecha_fin_Proy', 'Fecha de finalización:') !!}
+    {{ $proyecto->Fecha_fin_Proy }} <br>
+
+    {!! Form::label('Director_id', 'Director:') !!}
+    {{ $proyecto->Director_id }} <br>
+
+    {!! Form::label('Comitente_id', 'Comitente:') !!}
+    {{ $proyecto->Comitente_id }} <br>
+
+    {!! Form::label('Descripcion', 'Descripcion:') !!}
+    {{ $proyecto->Descripcion }} <br>
+
+    {!! Form::label('created_at', 'Fecha de creación:') !!}
+    {{ $proyecto->created_at }} <br><br>
 </div>
 
-<!-- Tipo Proyecto Field -->
+<!-- Tipo Proyecto Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Tipo_proyecto', 'Tipo Proyecto:') !!}
     <p>{{ $proyecto->Tipo_proyecto->Nombre }}</p>
-</div>
+</div> -->
 
-<!-- Nro Plantas Field -->
+<!-- Nro Plantas Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Nro_plantas', 'Nro Plantas:') !!}
     <p>{{ $proyecto->Nro_plantas }}</p>
-</div>
+</div> -->
 
 <!-- Fecha Inicio Proy Field
 <div class="col-md-4 mb-3">
@@ -40,11 +64,11 @@
     <p>{{ $proyecto->Comitente_id }}</p>
 </div> -->
 
-<!-- Descripcion Field -->
+<!-- Descripcion Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Descripcion', 'Descripcion:') !!}
     <p>{{ $proyecto->Descripcion }}</p>
-</div>
+</div> -->
 
 <!-- Created At Field
 <div class="col-md-4 mb-3">
