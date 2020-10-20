@@ -95,7 +95,9 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Valor</th>
+                            <th>Tipo de tarea</th>
+                            <th>Estado</th>
+                            <th>Fecha limite</th>
                             <th>Accion</th>
                         </tr>
                     </thead>
@@ -103,7 +105,9 @@
                         @foreach ($tareasDelProyecto as $tarea)
                         <tr>
                             <td>{{ $tarea->Nombre_tarea }}</td>
-                            <td>{{ $tarea->Valor }}</td>
+                            <td>{{ $tarea->tipo_tarea->Nombre_tipo_tarea }}</td>
+                            <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
+                            <td>{{ $tarea->Fecha_fin }}</td>
                             <td>{!! Form::open(['route' => ['tareas.destroy', $tarea->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
                                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
@@ -113,6 +117,9 @@
                                     ]) !!}
                                     <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
                                         <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                    <a href="{{ route('tareas.edit', $tarea->id) }}" class='btn btn-default btn-xs'>
+                                        <i class="glyphicon glyphicon-edit"></i>
                                     </a>
                                 </div>
                                 {!! Form::close() !!}

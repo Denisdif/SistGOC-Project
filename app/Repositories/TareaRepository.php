@@ -25,7 +25,8 @@ class TareaRepository extends BaseRepository
         'Descripcion_tarea',
         'Proyecto_id',
         'Tipo_tarea_id',
-        'Estado_tarea_id'
+        'Estado_tarea_id',
+        'prioridad'
     ];
 
     /**

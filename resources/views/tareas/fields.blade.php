@@ -25,6 +25,16 @@
     {!! Form::select('Tipo_tarea_id', $tipo_tareaItems, null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Prioridad Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Prioridad', 'Prioridad:') !!}
+    <select name="prioridad" class="form-control">
+        <option value="Baja">Baja</option>
+        <option value="Media">Media</option>
+        <option value="Alta">Alta</option>
+      </select>
+</div>
+
 <!-- Fecha Fin Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Fecha_fin', 'Fecha límite:') !!}
@@ -40,11 +50,11 @@
     </script>
 @endpush
 
-<!-- Valor Field -->
+<!-- Valor Field
 <div class="form-group col-sm-6">
     {!! Form::label('Valor', 'Valor:') !!}
     {!! Form::number('Valor', null, ['class' => 'form-control']) !!}
-</div>
+</div> -->
 
 <!-- Correcciones Field
 <div class="form-group col-sm-6">

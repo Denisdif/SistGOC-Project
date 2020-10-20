@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\DataTables\TareaDataTable;
 use App\Models\Proyecto;
 use App\Models\Tarea;
+use App\Models\Estado_tarea;
+use App\Models\Tipo_tarea;
 use App\Models\Personal;
 use App\Models\Proyecto_ambiente;
 use App\Models\AsignacionPersonalTarea;
@@ -62,6 +64,8 @@ class TareaController extends AppBaseController
 
         $tarea->Proyecto_id = $proyecto->id;
 
+        $tarea->Estado_tarea_id = 1;
+
         $tarea->save();
 
         Flash::success('Tarea saved successfully.');
@@ -109,7 +113,9 @@ class TareaController extends AppBaseController
             return redirect(route('tareas.index'));
         }
 
-        return view('tareas.edit')->with('tarea', $tarea);
+        $proyecto = Proyecto::all()->where('id','=', $tarea->Proyecto_id)->first();
+
+        return view('tareas.edit', compact('proyecto'))->with('tarea', $tarea);
     }
 
     /**
@@ -127,14 +133,14 @@ class TareaController extends AppBaseController
         if (empty($tarea)) {
             Flash::error('Tarea not found');
 
-            return redirect(route('tareas.index'));
+            return redirect(route('proyectos.index'));
         }
 
         $tarea = $this->tareaRepository->update($request->all(), $id);
 
         Flash::success('Tarea updated successfully.');
 
-        return redirect(route('tareas.index'));
+        return redirect(route('proyectos.show', $tarea->Proyecto_id));
     }
 
     /**

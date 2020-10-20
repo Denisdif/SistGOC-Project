@@ -21,3 +21,5 @@
     {!! Form::submit('Save', ['class' => 'btn btn-danger']) !!}
     <a href="{{ route('proyectos.show', $proyecto->id) }}" class="btn btn-default">Cancel</a>
 </div>
+
+

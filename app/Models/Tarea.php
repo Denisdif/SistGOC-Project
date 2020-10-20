@@ -43,7 +43,8 @@ class Tarea extends Model
         'Descripcion_tarea',
         'Proyecto_id',
         'Tipo_tarea_id',
-        'Estado_tarea_id'
+        'Estado_tarea_id',
+        'prioridad'
     ];
 
     /**
@@ -61,7 +62,8 @@ class Tarea extends Model
         'Descripcion_tarea' => 'string',
         'Proyecto_id' => 'integer',
         'Tipo_tarea_id' => 'integer',
-        'Estado_tarea_id' => 'integer'
+        'Estado_tarea_id' => 'integer',
+        'prioridad' => 'string'
     ];
 
     /**
@@ -79,14 +81,14 @@ class Tarea extends Model
         return $this->belongsTo( 'App\Models\Proyecto' ,'Proyecto_id');
     }
 
-    public function Estado_tarea()
-    {
-        return $this->belongsTo( Estado_tarea::class ,'Estado_tarea_id');
-    }
-
-    public function Tipo_tarea()
+    public function tipo_tarea()
     {
         return $this->belongsTo( Tipo_tarea::class ,'Tipo_tarea_id');
+    }
+
+    public function estado_tarea()
+    {
+        return $this->belongsTo( Estado_tarea::class ,'Estado_tarea_id');
     }
 
     public function Asignacion()

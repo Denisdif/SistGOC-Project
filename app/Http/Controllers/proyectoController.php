@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\DataTables\ProyectoDataTable;
 use App\Models\ambiente;
 use App\Models\Tarea;
+use App\Models\Estado_tarea;
+use App\Models\Tipo_tarea;
 use App\Models\Proyecto;
 use App\Models\Personal;
 use App\Models\Tipo_proyecto;

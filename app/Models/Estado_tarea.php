@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Tarea;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -52,6 +53,6 @@ class Estado_tarea extends Model
 
     public function Tarea()
     {
-        return $this->hasMany('App\Models\Tarea');
+        return $this->hasMany(Tarea::class);
     }
 }
