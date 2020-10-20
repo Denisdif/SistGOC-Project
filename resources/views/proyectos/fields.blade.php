@@ -1,3 +1,7 @@
+<div class="form-group col-sm-12">
+    <h3><b>Datos del proyecto</b></h3>
+</div>
+
 <!-- Nombre Proyecto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Nombre_proyecto', 'Nombre:') !!}
@@ -69,8 +73,56 @@
     {!! Form::textarea('Descripcion', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-12">
+    <hr>
+    <h3><b>Datos del Comitente</b> <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="#">Buscar comitente</a></h3>
+</div>
+
+<!-- Nombrecomitente Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('NombreComitente', 'Nombres:') !!}
+    {!! Form::text('NombreComitente', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Apellido Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Apellido', 'Apellidos:') !!}
+    {!! Form::text('Apellido', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Dni Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('DNI', 'Dni:') !!}
+    {!! Form::number('DNI', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Email Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Email', 'Email:') !!}
+    {!! Form::text('Email', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Telefono Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Telefono', 'Telefono:') !!}
+    {!! Form::number('Telefono', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Sexo Field
+<div class="form-group col-sm-6">
+    {!! Form::label('Sexo', 'Sexo:') !!}
+    {!! Form::text('Sexo', null, ['class' => 'form-control']) !!}
+</div> -->
+
+<!-- Direccion Id Field
+<div class="form-group col-sm-6">
+    {!! Form::label('Direccion_id', 'Direccion Id:') !!}
+    {!! Form::text('Direccion_id', null, ['class' => 'form-control']) !!}
+</div> -->
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
+    <hr>
     {!! Form::submit('Crear', ['class' => 'btn btn-danger']) !!}
     <a href="{{ route('proyectos.index') }}" class="btn btn-default">Cancel</a>
 </div>

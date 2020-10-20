@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -23,7 +23,7 @@ class Comitente extends Model
     use SoftDeletes;
 
     public $table = 'comitentes';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -67,5 +67,5 @@ class Comitente extends Model
         'DNI' => 'numeric'
     ];
 
-    
+
 }

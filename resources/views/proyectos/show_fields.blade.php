@@ -9,23 +9,21 @@
     {!! Form::label('Tipo_proyecto', 'Tipo Proyecto:') !!}
     {{ $proyecto->Tipo_proyecto->Nombre }} <br>
 
-    {!! Form::label('Fecha_inicio_Proy', 'Fecha de inicio:') !!}
-    {{ $proyecto->Fecha_inicio_Proy }} <br>
+    {!! Form::label('Fecha_inicio_Proy', 'Fecha de creación:') !!}
+    {{ $proyecto->created_at }} <br>
 
     {!! Form::label('Fecha_fin_Proy', 'Fecha de finalización:') !!}
     {{ $proyecto->Fecha_fin_Proy }} <br>
 
     {!! Form::label('Director_id', 'Director:') !!}
-    {{ $proyecto->Director_id }} <br>
+    {{ $proyecto->director->Apellido }} {{ $proyecto->director->NombrePersonal }} <br>
 
     {!! Form::label('Comitente_id', 'Comitente:') !!}
-    {{ $proyecto->Comitente_id }} <br>
+    {{ $proyecto->comitente->Apellido }} {{ $proyecto->comitente->NombreComitente }} <br>
 
     {!! Form::label('Descripcion', 'Descripcion:') !!}
-    {{ $proyecto->Descripcion }} <br>
+    {{ $proyecto->Descripcion }} <br><br>
 
-    {!! Form::label('created_at', 'Fecha de creación:') !!}
-    {{ $proyecto->created_at }} <br><br>
 </div>
 
 <!-- Tipo Proyecto Field

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tipo_proyecto;
+use App\Models\Personal;
+use App\Models\Comitente;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -81,5 +83,14 @@ class Proyecto extends Model
     public function tipo_proyecto()
     {
         return $this->belongsTo( Tipo_proyecto::class ,'Tipo_proyecto_id');
+    }
+    public function director()
+    {
+        return $this->belongsTo( Personal::class ,'Director_id');
+    }
+
+    public function comitente()
+    {
+        return $this->belongsTo( Comitente::class ,'Comitente_id');
     }
 }
