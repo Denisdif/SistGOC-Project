@@ -2,18 +2,22 @@
 
 namespace App\Providers;
 
+
+use Cardumen\ArgentinaProvinciasLocalidades\Models\Localidad;
+use Cardumen\ArgentinaProvinciasLocalidades\Models\Pais;
+use Cardumen\ArgentinaProvinciasLocalidades\Models\Provincia;
 use App\Models\Tarea;
 use App\Models\Personal;
-
 use App\User;
 use App\Models\RolPersonal;
 use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
 use App\Models\Proyecto;
 use App\Models\Ambiente;
-
+use App\Models\Sexo;
+use App\Models\Tipo_proyecto;
 use Illuminate\Support\ServiceProvider;
-use View;
+use Illuminate\Support\Facades\View;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -34,6 +38,18 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['direccions.fields'], function ($view) {
+            $localidadeItems = Localidad::pluck('localidad','id')->toArray();
+            $view->with('localidadeItems', $localidadeItems);
+        });
+        View::composer(['direccions.fields'], function ($view) {
+            $provinciaItems = Provincia::pluck('provincia','id')->toArray();
+            $view->with('provinciaItems', $provinciaItems);
+        });
+        View::composer(['direccions.fields'], function ($view) {
+            $paiseItems = Pais::pluck('pais','id')->toArray();
+            $view->with('paiseItems', $paiseItems);
+        });
         View::composer(['asignacion_personal_tareas.fields'], function ($view) {
             $tareaItems = Tarea::pluck('Nombre_tarea','id')->toArray();
             $view->with('tareaItems', $tareaItems);
@@ -79,6 +95,21 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['users.fields'], function ($view) {
             $RolPersonalItems = RolPersonal::pluck('NombreRol','id')->toArray();
             $view->with('RolPersonalItems', $RolPersonalItems);
+        });
+
+        View::composer(['personals.fields'], function ($view) {
+            $RolPersonalItems = RolPersonal::pluck('NombreRol','id')->toArray();
+            $view->with('RolPersonalItems', $RolPersonalItems);
+        });
+
+        View::composer(['personals.fields'], function ($view) {
+            $sexoItems = Sexo::pluck('Nombre_sexo','id')->toArray();
+            $view->with('sexoItems', $sexoItems);
+        });
+
+        View::composer(['proyectos.fields'], function ($view) {
+            $tipo_proyectoItems = Tipo_proyecto::pluck('Nombre','id')->toArray();
+            $view->with('tipo_proyectoItems', $tipo_proyectoItems);
         });
         //
     }

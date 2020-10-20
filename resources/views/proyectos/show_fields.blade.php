@@ -7,7 +7,7 @@
 <!-- Tipo Proyecto Field -->
 <div class="col-md-4 mb-3">
     {!! Form::label('Tipo_proyecto', 'Tipo Proyecto:') !!}
-    <p>{{ $proyecto->Tipo_proyecto }}</p>
+    <p>{{ $proyecto->Tipo_proyecto->Nombre }}</p>
 </div>
 
 <!-- Nro Plantas Field -->

@@ -29,7 +29,7 @@ class ProyectoDataTable extends DataTable
      */
     public function query(Proyecto $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['Tipo_proyecto']);
     }
 
     /**
@@ -66,7 +66,7 @@ class ProyectoDataTable extends DataTable
     {
         return [
             'Nombre_proyecto'=> new \Yajra\DataTables\Html\Column(['title'=>'Nombre de Proyecto','data'=>'Nombre_proyecto','name'=>'Nombre_proyecto']),
-            'Tipo_proyecto'=> new \Yajra\DataTables\Html\Column(['title'=>'Tipo de Proyecto','data'=>'Tipo_proyecto','name'=>'Tipo_proyecto']),
+            'Tipo_proyecto_id'=> new \Yajra\DataTables\Html\Column(['title'=>'Tipo de Proyecto','data'=>'Tipo_proyecto.Nombre','name'=>'Tipo_proyecto.Nombre']),
             //'Nro_plantas',
             //'Fecha_inicio_Proy',
             'Fecha_fin_Proy'=> new \Yajra\DataTables\Html\Column(['title'=>'Fecha limite','data'=>'Fecha_fin_Proy','name'=>'Fecha_fin_Proy']),

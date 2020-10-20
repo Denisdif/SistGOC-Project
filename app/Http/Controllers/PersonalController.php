@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Personal;
+use App\Models\Direccion;
+use App\User;
+use Cardumen\ArgentinaProvinciasLocalidades\Models\Pais;
 use App\DataTables\PersonalDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreatePersonalRequest;
@@ -40,7 +43,10 @@ class PersonalController extends AppBaseController
      */
     public function create()
     {
-        return view('personals.create');
+        $paises = Pais::all();
+
+        //debemos retornar la vista al formulario de creacion de cliente
+        return view('personals.create', compact('paises'));
     }
 
     /**
@@ -52,13 +58,38 @@ class PersonalController extends AppBaseController
      */
     public function store(CreatePersonalRequest $request)
     {
-        $input = $request->all();
+        //$input = $request->all();
 
-        $personal = $this->personalRepository->create($input);
+        //$personal = $this->personalRepository->create($input);
+
+        $direccion = new Direccion();
+        $direccion->Calle = $request->Calle ;
+        $direccion->Altura = $request->Altura ;
+        $direccion->Codigo_postal = $request->Codigo_postal ;
+        $direccion->Pais_id = $request->pais_id ;
+        $direccion->Provincia_id = $request->provincia_id ;
+        $direccion->Localidad_id = $request->localidad_id ;
+        $direccion->save();
+        $personal = new Personal();
+        $personal->NombrePersonal = $request->NombrePersonal ;
+        $personal->Apellido = $request->Apellido ;
+        $personal->Sexo_id = $request->Sexo_id ;
+        $personal->FechaNac = $request->FechaNac ;
+        $personal->DNI = $request->DNI ;
+        $personal->Telefono = $request->Telefono ;
+        $personal->direccion_id = $direccion->id ;
+        $personal->save();
+        $user = new User;
+        $user->name = $request->Nombre_usuario;
+        $user->email = $request->Email;
+        $user->password = $request->password;
+        $user->Rol_id = $request->Rol_id;
+        $user->Personal_id = $personal->id ;
+        $user->save();
 
         Flash::success('Personal saved successfully.');
 
-        return redirect(route('users.create'));
+        return redirect(route('personals.show', $personal->id));
     }
 
     /**

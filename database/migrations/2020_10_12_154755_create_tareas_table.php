@@ -17,14 +17,14 @@ class CreateTareasTable extends Migration
         Schema::create('tareas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Nombre_tarea');
-            $table->date('Fecha_inicio');
-            $table->date('Fecha_fin');
-            $table->double('Valor');
-            $table->string('Correcciones');
-            $table->text('Descripcion_tarea');
-            $table->integer('Proyecto_id')->unsigned();
-            $table->integer('Tipo_tarea_id')->unsigned();
-            $table->integer('Estado_tarea_id')->unsigned();
+            $table->date('Fecha_inicio')                        ->nullable();
+            $table->date('Fecha_fin')                           ->nullable();
+            $table->double('Valor')                             ->nullable();
+            $table->string('Correcciones')                      ->nullable();
+            $table->text('Descripcion_tarea')                   ->nullable();
+            $table->integer('Proyecto_id')->unsigned()          ->nullable();
+            $table->integer('Tipo_tarea_id')->unsigned()        ->nullable();
+            $table->integer('Estado_tarea_id')->unsigned()      ->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('Proyecto_id')->references('id')->on('proyectos');

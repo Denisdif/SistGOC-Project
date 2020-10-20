@@ -16,9 +16,9 @@ class CreateAsignacionPersonalTareasTable extends Migration
     {
         Schema::create('asignacion_personal_tareas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Responsabilidad');
-            $table->integer('Personal_id')->unsigned();
-            $table->integer('Tarea_id')->unsigned();
+            $table->string('Responsabilidad')                   ->nullable();
+            $table->integer('Personal_id')->unsigned()          ->nullable();
+            $table->integer('Tarea_id')->unsigned()             ->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('Personal_id')->references('id')->on('personals');

@@ -7,12 +7,7 @@
 <!-- Tipo Proyecto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Tipo_proyecto', 'Tipo de Proyecto:') !!}
-    <select name="Tipo_proyecto" class = 'form-control'>
-        <option value="Construcción">Construcción</option>
-        <option value="Remodelación">Remodelación</option>
-        <option value="Relevamiento">Relevamiento</option>
-        <option value="General">General</option>
-    </select>
+    {!! Form::select('Tipo_proyecto_id', $tipo_proyectoItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Fecha Inicio Proy Field
@@ -57,7 +52,7 @@
     {!! Form::number('Comitente_id', null, ['class' => 'form-control']) !!}
 </div> -->
 
-<!-- Nro Plantas Field -->
+<!-- Nro Plantas Field
 <div class="form-group col-sm-6">
     {!! Form::label('Nro_plantas', 'Número de plantas del edificio:') !!}
     <select name="Nro_plantas" class = 'form-control'>
@@ -66,7 +61,7 @@
         <option value=3>Tres</option>
         <option value=4>Cuatro</option>
     </select>
-</div>
+</div> -->
 
 <!-- Descripcion Field -->
 <div class="form-group col-sm-12 col-lg-12">
@@ -76,6 +71,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-danger']) !!}
+    {!! Form::submit('Crear', ['class' => 'btn btn-danger']) !!}
     <a href="{{ route('proyectos.index') }}" class="btn btn-default">Cancel</a>
 </div>

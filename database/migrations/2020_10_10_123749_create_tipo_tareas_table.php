@@ -16,8 +16,8 @@ class CreateTipoTareasTable extends Migration
     {
         Schema::create('tipo_tareas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Nombre_tipo_tarea');
-            $table->text('Descripcion');
+            $table->string('Nombre_tipo_tarea')     ->nullable();
+            $table->text('Descripcion')             ->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

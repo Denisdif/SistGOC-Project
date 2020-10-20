@@ -34,6 +34,18 @@
         <li class="{{ Request::is('rolPersonals*') ? 'active' : '' }}">
             <a href="{{ route('rolPersonals.index') }}"><i class="fa fa-edit"></i><span>Roles del Personal</span></a>
         </li>
+
+        <li class="{{ Request::is('sexos*') ? 'active' : '' }}">
+            <a href="{{ route('sexos.index') }}"><i class="fa fa-edit"></i><span>Sexos</span></a>
+        </li>
+
+        <li class="{{ Request::is('tipoProyectos*') ? 'active' : '' }}">
+            <a href="{{ route('tipoProyectos.index') }}"><i class="fa fa-edit"></i><span>Tipo Proyectos</span></a>
+        </li>
+
+        <li class="{{ Request::is('comitentes*') ? 'active' : '' }}">
+            <a href="{{ route('comitentes.index') }}"><i class="fa fa-edit"></i><span>Comitentes</span></a>
+        </li>
     </ul>
 </li>
 
@@ -43,4 +55,10 @@
 
 {{--  <li class="{{ Request::is('proyectoAmbientes*') ? 'active' : '' }}">
     <a href="{{ route('proyectoAmbientes.index') }}"><i class="fa fa-edit"></i><span>Proyecto Ambientes</span></a>
-</li>  --}}
+</li>
+{{--<li class="{{ Request::is('direccions*') ? 'active' : '' }}">
+    <a href="{{ route('direccions.index') }}"><i class="fa fa-edit"></i><span>Direccions</span></a>
+</li>--}}
+
+
+

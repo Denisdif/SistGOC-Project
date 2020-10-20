@@ -81,4 +81,9 @@ class Personal extends Model
     {
         return $this->belongsTo(User::class, 'User_id');
     }
+
+    public function direccion(){
+
+        return $this->belongsTo(Direccion::class);
+    }
 }

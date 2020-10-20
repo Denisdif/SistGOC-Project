@@ -143,3 +143,26 @@ Route::delete('rolPersonals/{id}',                 'RolPersonalController@destro
 
 
 
+
+
+Route::resource('direccions', 'DireccionController');
+
+Route::resource('sexos', 'SexoController');
+
+Route::resource('tipoProyectos', 'Tipo_proyectoController');
+
+//carga de provincias con ajax
+
+Route::get('paises/{pais}', 'DireccionController@obtenerProvincias')->name('paises.obtenerProvincias');
+
+//carga de localidades con ajax
+Route::get('provincias/{provincia}', 'DireccionController@obtenerLocalidades')->name('provincias.obtenerLocalidades');
+
+//Pais
+Route::get('/paises', 'HomeController@indexPais')->name('paises.index'); //para mostrar todos los paises
+//Provincia
+Route::get('/provincias', 'HomeController@indexProvincia')->name('provincias.index'); //para mostrar todos las provincias
+//Localidad
+Route::get('/localidades', 'HomeController@indexLocalidades')->name('localidades.index'); //para mostrar todos las localidades
+
+Route::resource('comitentes', 'ComitenteController');

@@ -16,8 +16,8 @@ class CreateEstadoTareasTable extends Migration
     {
         Schema::create('estado_tareas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Nombre_estado_tarea');
-            $table->text('Descripcion');
+            $table->string('Nombre_estado_tarea')       ->nullable();
+            $table->text('Descripcion')                 ->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

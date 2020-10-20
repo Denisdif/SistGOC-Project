@@ -17,8 +17,8 @@ class CreateAmbientesTable extends Migration
         Schema::create('ambientes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Nombre_ambiente');
-            $table->string('Imagen');
-            $table->text('Descripcion');
+            $table->string('Imagen')->nullable();
+            $table->text('Descripcion')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

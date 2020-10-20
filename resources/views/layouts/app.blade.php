@@ -155,20 +155,44 @@
 
     <script>
         $(document).ready(function() {
-            $('#Nose').DataTable(/*{
-                "serverSide": true,
-                "ajax": "{{ url('api/proyectos/{proyecto}/proyecto_ambientes') }}",
-                "columns": [
-                    {data: 'Ambiente_id'},
-                    {data: 'Cantidad'},
-                    {data: 'Proyecto_id'},
-                ]
-            }*/);
+            $('#Nose').DataTable();
             $('#AmbientesDelProyecto').DataTable();
             $('#TareasDelProyecto').DataTable();
             $('#PersonalDelProyecto').DataTable();
+            $('#Proyectos').DataTable();
         });
-        </script>
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('#pais_id').change(function(){
+                $('#provincia_id').removeAttr('disabled');
+                var id = $(this).val();
+                var url = "{{ route('paises.obtenerProvincias', ":id") }}" ;
+                url = url.replace(':id' , id) ;
+                $.get(url, function(data){
+                    var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
+                    for(var i = 0 ; i<data.length ; i++){
+                        html_select += '<option value="'+data[i].id+'">'+data[i].provincia+'</option>' ;
+                    }
+                    $('#provincia_id').html(html_select);
+                });
+            });
+            $('#provincia_id').change(function(){
+                $('#localidad_id').removeAttr('disabled');
+                var id = $(this).val();
+                var url = "{{ route('provincias.obtenerLocalidades', ":id") }}" ;
+                url = url.replace(':id' , id) ;
+                $.get(url, function(data){
+                    var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
+                    for(var i = 0 ; i<data.length ; i++){
+                        html_select += '<option value="'+data[i].id+'">'+data[i].localidad+'</option>' ;
+                    }
+                    $('#localidad_id').html(html_select);
+                });
+            });
+        }) ;
+    </script>
 
     <!-- jQuery 3.1.1 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

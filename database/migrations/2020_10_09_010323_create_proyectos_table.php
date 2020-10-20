@@ -17,15 +17,18 @@ class CreateProyectosTable extends Migration
         Schema::create('proyectos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Nombre_proyecto');
-            $table->string('Tipo_proyecto');
-            $table->integer('Nro_plantas');
+            $table->integer('Tipo_proyecto_id')->unsigned() ->nullable();
+            $table->integer('Nro_plantas')                  ->nullable();
             $table->date('Fecha_inicio_Proy');
             $table->date('Fecha_fin_Proy');
-            $table->integer('Director_id');
-            $table->integer('Comitente_id');
-            $table->text('Descripcion');
+            $table->integer('Director_id')->unsigned()      ->nullable();
+            $table->integer('Comitente_id')->unsigned()     ->nullable();
+            $table->text('Descripcion')                     ->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('Director_id')->references('id')->on('personals');
+            $table->foreign('Tipo_proyecto_id')->references('id')->on('tipo_proyectos');
+            $table->foreign('Comitente_id')->references('id')->on('comitentes');
         });
     }
 

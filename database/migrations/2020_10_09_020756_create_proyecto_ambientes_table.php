@@ -16,9 +16,9 @@ class CreateProyectoAmbientesTable extends Migration
     {
         Schema::create('proyecto_ambientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('Cantidad');
-            $table->integer('Ambiente_id')->unsigned();
-            $table->integer('Proyecto_id')->unsigned();
+            $table->integer('Cantidad')                     ->nullable();
+            $table->integer('Ambiente_id')->unsigned()      ->nullable();
+            $table->integer('Proyecto_id')->unsigned()      ->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('Ambiente_id')->references('id')->on('ambientes');

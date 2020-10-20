@@ -70,7 +70,7 @@ class UserController extends AppBaseController
 
             $this->userRepository->store($input);
 
-            // inicio asignar usuario a empleado
+            /* inicio asignar usuario a empleado
 
             $usuario = user::where('name','=',$request->name)->first();
 
@@ -80,7 +80,7 @@ class UserController extends AppBaseController
 
             $personal->save();
 
-            // fin asignar usuario a empleado
+            fin asignar usuario a empleado*/
 
             Flash::success('User saved successfully.');
             return redirect(route('users.index'));

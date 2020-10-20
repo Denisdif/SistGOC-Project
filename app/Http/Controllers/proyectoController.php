@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\DataTables\ProyectoDataTable;
 use App\Models\ambiente;
 use App\Models\Tarea;
+use App\Models\Proyecto;
 use App\Models\Personal;
+use App\Models\Tipo_proyecto;
 use App\Models\AsignacionPersonalTarea;
 use App\Http\Requests;
 use App\Http\Requests\CreateProyectoRequest;
@@ -34,7 +36,8 @@ class ProyectoController extends AppBaseController
      */
     public function index(ProyectoDataTable $proyectoDataTable)
     {
-        return $proyectoDataTable->render('proyectos.index');
+        $proyectos = Proyecto::all();
+        return View('proyectos.index', compact('proyectos'));
     }
 
     /**
@@ -62,7 +65,7 @@ class ProyectoController extends AppBaseController
 
         Flash::success('Proyecto saved successfully.');
 
-        return redirect(route('proyectos.index'));
+        return redirect(route('proyectos.show', $proyecto->id));
     }
 
     /**

@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         \App\Providers\ViewServiceProvider::class,
+        Cardumen\ArgentinaProvinciasLocalidades\ArgentinaProvinciasLocalidades::class,
 
         /*
          * Package Service Providers...

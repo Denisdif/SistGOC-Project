@@ -15,7 +15,47 @@
         <div class="clearfix"></div>
         <div class="box box-danger">
             <div class="box-body">
-                    @include('proyectos.table')
+                @section('css')
+                    @include('layouts.datatables_css')
+                @endsection
+                    <table id="Proyectos" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tipo de proyecto</th>
+                                <th>Fecha limite</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($proyectos as $proyecto)
+                            <tr>
+                                <td>{{ $proyecto->Nombre_proyecto }}</td>
+                                <td>{{ $proyecto->tipo_proyecto->Nombre }}</td>
+                                <td>{{ $proyecto->Fecha_fin_Proy }}</td>
+                                <td>{!! Form::open(['route' => ['proyectos.destroy', $proyecto->id], 'method' => 'delete']) !!}
+                                    <div class='btn-group'>
+                                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
+                                            'type' => 'submit',
+                                            'class' => 'btn btn-danger btn-xs',
+                                            'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
+                                        ]) !!}
+                                        <a href="{{ route('proyectos.show', $proyecto->id) }}" class='btn btn-default btn-xs'>
+                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                        </a>
+                                        <a href="{{ route('proyectos.edit', $proyecto->id) }}" class='btn btn-default btn-xs'>
+                                            <i class="glyphicon glyphicon-edit"></i>
+                                        </a>
+                                    </div>
+                                    {!! Form::close() !!}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    @section('scripts')
+                        @include('layouts.datatables_js')
+                    @endsection
             </div>
         </div>
         <div class="text-center">

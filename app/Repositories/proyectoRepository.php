@@ -18,7 +18,7 @@ class ProyectoRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'Nombre_proyecto',
-        'Tipo_proyecto',
+        'Tipo_proyecto_id',
         'Nro_plantas',
         'Fecha_inicio_Proy',
         'Fecha_fin_Proy',
