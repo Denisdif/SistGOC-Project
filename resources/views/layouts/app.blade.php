@@ -160,6 +160,7 @@
             $('#TareasDelProyecto').DataTable();
             $('#PersonalDelProyecto').DataTable();
             $('#Proyectos').DataTable();
+            $('#Personal').DataTable();
         });
     </script>
 

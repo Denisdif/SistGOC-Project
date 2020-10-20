@@ -1,3 +1,7 @@
+<div class="form-group col-sm-12">
+    <h3>Datos personales</h3>
+</div>
+
 <!-- Nombrepersonal Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('NombrePersonal', 'Nombres:') !!}
@@ -48,6 +52,10 @@
         })
     </script>
 @endpush
+<div class="form-group col-sm-12">
+    <hr>
+    <h3>Dirección</h3>
+</div>
 
 <!-- Pais Field -->
 <div class="form-group col-sm-6">
@@ -115,7 +123,10 @@
     {!! Form::number('Altura', null, ['class' => 'form-control']) !!}
 </div>
 
-
+<div class="form-group col-sm-12">
+    <hr>
+    <h3>Usuario</h3>
+</div>
 
 <!-- Name Field -->
 <div class="form-group col-sm-6">
@@ -147,10 +158,9 @@
 
 
 
-
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
+    <hr>
     {!! Form::submit('Save', ['class' => 'btn btn-danger']) !!}
     <a href="{{ route('personals.index') }}" class="btn btn-default">Cancel</a>
 </div>

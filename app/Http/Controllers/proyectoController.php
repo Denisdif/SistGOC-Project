@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ProyectoDataTable;
+use Illuminate\Support\Facades\Auth;
 use App\Models\ambiente;
 use App\Models\Tarea;
 use App\Models\Estado_tarea;
@@ -64,6 +65,12 @@ class ProyectoController extends AppBaseController
         $input = $request->all();
 
         $proyecto = $this->proyectoRepository->create($input);
+
+        $user = Auth::user();
+
+        $proyecto->Director_id = $user->Personal_id;
+
+        $proyecto->save();
 
         Flash::success('Proyecto saved successfully.');
 

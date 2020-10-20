@@ -33,7 +33,8 @@ class PersonalController extends AppBaseController
      */
     public function index(PersonalDataTable $personalDataTable)
     {
-        return $personalDataTable->render('personals.index');
+        $ListaPersonal = Personal::all();
+        return View('personals.index', compact('ListaPersonal'));
     }
 
     /**
@@ -123,13 +124,15 @@ class PersonalController extends AppBaseController
     {
         $personal = $this->personalRepository->find($id);
 
+        $paises = Pais::all();
+
         if (empty($personal)) {
             Flash::error('Personal not found');
 
             return redirect(route('personals.index'));
         }
 
-        return view('personals.edit')->with('personal', $personal);
+        return view('personals.edit',compact('paises'))->with('personal', $personal);
     }
 
     /**

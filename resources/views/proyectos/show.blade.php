@@ -53,7 +53,7 @@
                             <th>Cantidad</th>
                             <th>Descripción</th>
                             <th>Imagen</th>
-                            <th>Acción</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -103,7 +103,7 @@
                             <th>Estado</th>
                             <th>Tipo de tarea</th>
                             <th>Fecha limite</th>
-                            <th>Accion</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
