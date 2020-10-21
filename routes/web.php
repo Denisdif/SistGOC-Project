@@ -22,10 +22,19 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('users', 'UserController');
     Route::get('profile', 'UserController@editProfile');
     Route::post('update-profile', 'UserController@updateProfile');
 });
+
+//Route::resource('users', 'UserController');
+
+Route::get('personals/{personal}/users',            'UserController@index')          ->name('personals.users.index');
+Route::get('personals/{personal}/users/create',     'UserController@create')         ->name('personals.users.create');
+Route::post('personals/{personal}/users',           'UserController@store')          ->name('personals.users.store');
+Route::get('users/{user}',                          'UserController@show')           ->name('users.show');
+Route::get('users/{user}/edit',                     'UserController@edit')           ->name('users.edit');
+Route::put('users/{id}',                            'UserController@update')         ->name('users.update');
+Route::delete('users/{id}',                         'UserController@destroy')        ->name('users.destroy');
 
 //Rutas proyectos
 

@@ -63,30 +63,18 @@ class UserController extends AppBaseController
      *
      * @return RedirectResponse|Redirector
      */
-    public function store(CreateUserRequest $request)
+    public function store(Personal $personal , CreateUserRequest $request)
     {
-        try {
-            $input = $request->all();
-
-            $this->userRepository->store($input);
-
-            /* inicio asignar usuario a empleado
-
-            $usuario = user::where('name','=',$request->name)->first();
-
-            $personal = Personal::all()->last();
-
-            $personal->User_id = $usuario->id;
-
-            $personal->save();
-
-            fin asignar usuario a empleado*/
+            $user = new User;
+            $user->name = $request->Nombre_usuario;
+            $user->email = $request->Email;
+            $user->password = $request->password;
+            $user->Rol_id = $request->Rol_id;
+            $user->Personal_id = $personal->id ;
+            $user->save();
 
             Flash::success('User saved successfully.');
-            return redirect(route('users.index'));
-        } catch (Exception $e) {
-            return Redirect::back()->withInput()->withErrors($e->getMessage());
-        }
+            return redirect(route('personals.show', $personal->id));
     }
 
     /**
@@ -103,10 +91,10 @@ class UserController extends AppBaseController
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('users.index'));
+            return redirect(route('users.show',$id));
         }
 
-        return view('users.show')->with('user', $user);
+        return view('users.show',$id)->with('user', $user);
     }
 
     /**
@@ -142,16 +130,15 @@ class UserController extends AppBaseController
      */
     public function update(User $user, UpdateUserRequest $request)
     {
-        try {
-            $input = $request->all();
+        $user = new User;
+            $user->name = $request->Nombre_usuario;
+            $user->email = $request->Email;
+            $user->password = $request->password;
+            $user->Rol_id = $request->Rol_id;
+            $user->save();
 
-            $this->userRepository->update($user->id, $input);
-            Flash::success('User updated successfully.');
-
-            return redirect(route('users.index'));
-        } catch (Exception $e) {
-            return Redirect::back()->withInput()->withErrors($e->getMessage());
-        }
+            Flash::success('User saved successfully.');
+            return redirect(route('personals.show', $user->Personal_id));
     }
 
     /**

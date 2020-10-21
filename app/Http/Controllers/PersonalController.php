@@ -80,13 +80,6 @@ class PersonalController extends AppBaseController
         $personal->Telefono = $request->Telefono ;
         $personal->direccion_id = $direccion->id ;
         $personal->save();
-        $user = new User;
-        $user->name = $request->Nombre_usuario;
-        $user->email = $request->Email;
-        $user->password = $request->password;
-        $user->Rol_id = $request->Rol_id;
-        $user->Personal_id = $personal->id ;
-        $user->save();
 
         Flash::success('Personal saved successfully.');
 
@@ -110,7 +103,7 @@ class PersonalController extends AppBaseController
             return redirect(route('personals.index'));
         }
 
-        return view('personals.show')->with('personal', $personal);
+        return view('personals.show', compact('id'))->with('personal', $personal);
     }
 
     /**

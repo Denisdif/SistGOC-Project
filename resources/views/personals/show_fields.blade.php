@@ -46,3 +46,5 @@
     <p>{{ $personal->updated_at }}</p>
 </div>
 
+<a class="btn btn-danger"  href="{{ route('personals.users.create', $personal->id) }}">Crear usuario</a>
+

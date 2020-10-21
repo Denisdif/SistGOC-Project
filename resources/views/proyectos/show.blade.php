@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="form-group col-sm-6">
-                    <a class="btn btn-danger"  href="/proyectos/{{$proyecto->id}}/proyectoAmbientes">Informe Completo</a>
+                    <a class="btn btn-danger"  href="">Informe Completo</a>
                     <a href="{{ route('proyectos.index') }}" class="btn btn-default ">Back</a>
                 </div>
             </div>

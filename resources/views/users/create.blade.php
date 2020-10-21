@@ -13,7 +13,7 @@
         <div class="box box-danger">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'users.store', 'files' => true]) !!}
+                    {!! Form::open(['url' => "personals/$personal->id/users",'files' => true]) !!}
 
                         @include('users.fields')
 
