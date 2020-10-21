@@ -151,7 +151,7 @@ class User extends Authenticatable
         return $this->hasOne(Personal::class);
     }
 
-    public function RolPersonal()
+    public function rol()
     {
         return $this->belongsTo(RolPersonal::class, 'Rol_id');
     }

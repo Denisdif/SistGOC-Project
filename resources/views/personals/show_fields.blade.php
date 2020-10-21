@@ -1,50 +1,72 @@
-<!-- Nombrepersonal Field -->
+
+<div class="form-group">
+
+    {!! Form::label('NombrePersonal', 'Nombre completo:') !!}
+    {{ $personal->Apellido }} {{ $personal->NombrePersonal }} <br>
+
+    {!! Form::label('Legajo', 'Numero de legajo:') !!}
+    {{ $personal->id }} <br>
+
+    {!! Form::label('DNI', 'Dni:') !!}
+    {{ $personal->DNI }} <br>
+
+    {!! Form::label('FechaNac', 'Fecha de Nacimiento:') !!}
+    {{ $personal->FechaNac }} <br>
+
+    {!! Form::label('Telefono', 'Numero de teléfono:') !!}
+    {{ $personal->Telefono }} <br>
+
+    {!! Form::label('Sexo', 'Sexo:') !!}
+    {{ $personal->sexo->Nombre_sexo }} <br>
+
+    {!! Form::label('Domicilio', 'Domicilio:') !!}
+    {{ $personal->direccion->Calle}} {{ $personal->direccion->Altura}}, {{ $personal->direccion->localidad->localidad}}, {{ $personal->direccion->provincia->provincia}}, {{ $personal->direccion->pais->pais}} <br>
+</div>
+
+<!-- Nombrepersonal Field
 <div class="form-group">
     {!! Form::label('NombrePersonal', 'Nombrepersonal:') !!}
     <p>{{ $personal->NombrePersonal }}</p>
-</div>
+</div> -->
 
-<!-- Apellido Field -->
+<!-- Apellido Field
 <div class="form-group">
     {!! Form::label('Apellido', 'Apellido:') !!}
     <p>{{ $personal->Apellido }}</p>
-</div>
+</div> -->
 
-<!-- Legajo Field -->
+<!-- Legajo Field
 <div class="form-group">
     {!! Form::label('Legajo', 'Legajo:') !!}
     <p>{{ $personal->Legajo }}</p>
-</div>
+</div> -->
 
-<!-- Fechanac Field -->
+<!-- Fechanac Field
 <div class="form-group">
     {!! Form::label('FechaNac', 'Fechanac:') !!}
     <p>{{ $personal->FechaNac }}</p>
-</div>
+</div> -->
 
-<!-- Dni Field -->
+<!-- Dni Field
 <div class="form-group">
     {!! Form::label('DNI', 'Dni:') !!}
     <p>{{ $personal->DNI }}</p>
-</div>
+</div> -->
 
-<!-- User Id Field -->
+<!-- User Id Field
 <div class="form-group">
     {!! Form::label('User_id', 'User Id:') !!}
     <p>{{ $personal->User_id }}</p>
-</div>
+</div> -->
 
-<!-- Created At Field -->
+<!-- Created At Field
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
     <p>{{ $personal->created_at }}</p>
-</div>
+</div> -->
 
-<!-- Updated At Field -->
+<!-- Updated At Field
 <div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{{ $personal->updated_at }}</p>
-</div>
-
-<a class="btn btn-danger"  href="{{ route('personals.users.create', $personal->id) }}">Crear usuario</a>
-
+</div> -->

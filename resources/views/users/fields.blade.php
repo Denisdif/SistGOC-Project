@@ -29,5 +29,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-danger']) !!}
-    <a href="{!! route('personals.index') !!}" class="btn btn-default">Cancel</a>
+    <a href="{!! route('personals.show', $personal->id) !!}" class="btn btn-default">Cancelar</a>
 </div>

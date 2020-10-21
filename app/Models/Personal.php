@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\AsignacionPersonalTarea;
+use App\Models\Sexo;
+use App\Models\Direccion;
 
 /**
  * Class Personal
@@ -84,6 +86,11 @@ class Personal extends Model
 
     public function direccion(){
 
-        return $this->belongsTo(Direccion::class);
+        return $this->belongsTo(Direccion::class, 'Direccion_id');
+    }
+
+    public function sexo(){
+
+        return $this->belongsTo(Sexo::class, 'Sexo_id');
     }
 }

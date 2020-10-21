@@ -1,5 +1,5 @@
 <div class="form-group col-sm-12">
-    <h3><b>Datos del proyecto</b></h3>
+    <h3>Datos del proyecto</h3>
 </div>
 
 <!-- Nombre Proyecto Field -->
@@ -75,7 +75,7 @@
 
 <div class="form-group col-sm-12">
     <hr>
-    <h3><b>Datos del Comitente</b> <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="#">Buscar comitente</a></h3>
+    <h3>Datos del Comitente <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="#">Buscar comitente</a></h3>
 </div>
 
 <!-- Nombrecomitente Field -->

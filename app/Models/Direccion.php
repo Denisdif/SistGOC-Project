@@ -61,19 +61,15 @@ class Direccion extends Model
         'Altura' => 'numeric'
     ];
 
-    public function cliente(){
-        return $this->hasOne(Personal::class);
-    }
-
     public function pais(){
-        return $this->belongsTo(Pais::class);
+        return $this->belongsTo(Pais::class, 'Pais_id');
     }
 
     public function provincia(){
-        return $this->belongsTo(Provincia::class);
+        return $this->belongsTo(Provincia::class, 'Provincia_id');
     }
 
     public function localidad(){
-        return $this->belongsTo(Localidad::class);
+        return $this->belongsTo(Localidad::class, 'Localidad_id');
     }
 }
