@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Personal;
 use App\Models\Tarea;
+use App\Models\Proyecto;
 
 /**
  * Class AsignacionPersonalTarea
@@ -54,7 +55,7 @@ class AsignacionPersonalTarea extends Model
         'Responsabilidad' => 'required'
     ];
 
-    public function Tarea()
+    public function tarea()
     {
         return $this->belongsTo( Tarea::class ,'Tarea_id');
     }

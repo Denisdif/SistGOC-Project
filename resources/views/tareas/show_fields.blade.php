@@ -1,66 +1,89 @@
-<!-- Nombre Tarea Field -->
+<div class="col-md-4 mb-3">
+    <h2>Datos de la tarea</h2><br>
+    {!! Form::label('Nombre_tarea', 'Nombre Tarea:') !!}
+    {{ $tarea->Nombre_tarea }} <br>
+
+    {!! Form::label('Proridad', 'Prioridad:') !!}
+    {{ $tarea->prioridad }} <br>
+
+    {!! Form::label('Fecha_fin', 'Fecha límite de finalización:') !!}
+    {{ $tarea->Fecha_fin }} <br>
+
+    {!! Form::label('Tipo_tarea', 'Tipo de tarea:') !!}
+    {{ $tarea->tipo_tarea->Nombre_tipo_tarea }} <br>
+
+    {!! Form::label('Estado_tarea', 'Estado de tarea:') !!}
+    {{ $tarea->estado_tarea->Nombre_estado_tarea }} <br>
+
+    {!! Form::label('Descripcion', 'Descripcion:') !!}
+    {{ $tarea->Descripcion_tarea }} <br><br>
+
+</div>
+
+
+<!-- Nombre Tarea Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Nombre_tarea', 'Nombre Tarea:') !!}
     <p>{{ $tarea->Nombre_tarea }}</p>
-</div>
+</div> -->
 
-<!-- Fecha Inicio Field -->
+<!-- Fecha Inicio Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Fecha_inicio', 'Fecha Inicio:') !!}
     <p>{{ $tarea->Fecha_inicio }}</p>
-</div>
+</div> -->
 
-<!-- Fecha Fin Field -->
+<!-- Fecha Fin Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Fecha_fin', 'Fecha Fin:') !!}
     <p>{{ $tarea->Fecha_fin }}</p>
-</div>
+</div>  -->
 
-<!-- Valor Field -->
+<!-- Valor Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Valor', 'Valor:') !!}
     <p>{{ $tarea->Valor }}</p>
-</div>
+</div> -->
 
-<!-- Correcciones Field -->
+<!-- Correcciones Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Correcciones', 'Correcciones:') !!}
     <p>{{ $tarea->Correcciones }}</p>
-</div>
+</div> -->
 
-<!-- Descripcion Tarea Field -->
+<!-- Descripcion Tarea Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Descripcion_tarea', 'Descripcion Tarea:') !!}
     <p>{{ $tarea->Descripcion_tarea }}</p>
-</div>
+</div> -->
 
-<!-- Proyecto Id Field -->
+<!-- Proyecto Id Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Proyecto_id', 'Proyecto Id:') !!}
     <p>{{ $tarea->Proyecto_id }}</p>
-</div>
+</div> -->
 
-<!-- Tipo Tarea Id Field -->
+<!-- Tipo Tarea Id Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Tipo_tarea_id', 'Tipo Tarea Id:') !!}
     <p>{{ $tarea->Tipo_tarea_id }}</p>
-</div>
+</div> -->
 
-<!-- Estado Tarea Id Field -->
+<!-- Estado Tarea Id Field
 <div class="col-md-4 mb-3">
     {!! Form::label('Estado_tarea_id', 'Estado Tarea Id:') !!}
     <p>{{ $tarea->Estado_tarea_id }}</p>
-</div>
+</div> -->
 
-<!-- Created At Field -->
+<!-- Created At Field
 <div class="col-md-4 mb-3">
     {!! Form::label('created_at', 'Created At:') !!}
     <p>{{ $tarea->created_at }}</p>
-</div>
+</div> -->
 
-<!-- Updated At Field -->
+<!-- Updated At Field
 <div class="col-md-4 mb-3">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{{ $tarea->updated_at }}</p>
-</div>
+</div> -->
 

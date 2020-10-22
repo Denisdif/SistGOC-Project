@@ -153,48 +153,6 @@
     <script src=  https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js ></script>
     <script src= https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js ></script>
 
-    <script>
-        $(document).ready(function() {
-            $('#Nose').DataTable();
-            $('#AmbientesDelProyecto').DataTable();
-            $('#TareasDelProyecto').DataTable();
-            $('#PersonalDelProyecto').DataTable();
-            $('#Proyectos').DataTable();
-            $('#Personal').DataTable();
-        });
-    </script>
-
-    <script>
-        $(document).ready(function(){
-            $('#pais_id').change(function(){
-                $('#provincia_id').removeAttr('disabled');
-                var id = $(this).val();
-                var url = "{{ route('paises.obtenerProvincias', ":id") }}" ;
-                url = url.replace(':id' , id) ;
-                $.get(url, function(data){
-                    var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
-                    for(var i = 0 ; i<data.length ; i++){
-                        html_select += '<option value="'+data[i].id+'">'+data[i].provincia+'</option>' ;
-                    }
-                    $('#provincia_id').html(html_select);
-                });
-            });
-            $('#provincia_id').change(function(){
-                $('#localidad_id').removeAttr('disabled');
-                var id = $(this).val();
-                var url = "{{ route('provincias.obtenerLocalidades', ":id") }}" ;
-                url = url.replace(':id' , id) ;
-                $.get(url, function(data){
-                    var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
-                    for(var i = 0 ; i<data.length ; i++){
-                        html_select += '<option value="'+data[i].id+'">'+data[i].localidad+'</option>' ;
-                    }
-                    $('#localidad_id').html(html_select);
-                });
-            });
-        }) ;
-    </script>
-
     <!-- jQuery 3.1.1 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
@@ -208,6 +166,51 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#Nose').DataTable();
+        $('#AmbientesDelProyecto').DataTable();
+        $('#TareasDelProyecto').DataTable();
+        $('#PersonalDelProyecto').DataTable();
+        $('#Proyectos').DataTable();
+        $('#Personal').DataTable();
+        $("#btnNuevo").click(function(){
+            $("#PruebaModal").modal("show");
+    });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#pais_id').change(function(){
+            $('#provincia_id').removeAttr('disabled');
+            var id = $(this).val();
+            var url = "{{ route('paises.obtenerProvincias', ":id") }}" ;
+            url = url.replace(':id' , id) ;
+            $.get(url, function(data){
+                var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
+                for(var i = 0 ; i<data.length ; i++){
+                    html_select += '<option value="'+data[i].id+'">'+data[i].provincia+'</option>' ;
+                }
+                $('#provincia_id').html(html_select);
+            });
+        });
+        $('#provincia_id').change(function(){
+            $('#localidad_id').removeAttr('disabled');
+            var id = $(this).val();
+            var url = "{{ route('provincias.obtenerLocalidades', ":id") }}" ;
+            url = url.replace(':id' , id) ;
+            $.get(url, function(data){
+                var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
+                for(var i = 0 ; i<data.length ; i++){
+                    html_select += '<option value="'+data[i].id+'">'+data[i].localidad+'</option>' ;
+                }
+                $('#localidad_id').html(html_select);
+            });
+        });
+    }) ;
+</script>
 
 @yield('datatable_js')
 @yield('page_js')

@@ -26,7 +26,6 @@
 
                 <div class="form-group col-sm-6">
                     <a class="btn btn-danger"  href="">Informe Completo</a>
-                    <a href="{{ route('proyectos.index') }}" class="btn btn-default ">Back</a>
                 </div>
             </div>
         </div>
@@ -35,7 +34,7 @@
     <section class="content-header">
         <h1 style= "color: aliceblue">
             Ambientes del proyecto
-            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Add New</a>
+            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Agregar ambientes</a>
         </h1>
     </section>
 
@@ -86,7 +85,7 @@
     <section class="content-header">
         <h1 style= "color: aliceblue">
             Tareas del proyecto
-            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/proyectos/{{$proyecto->id}}/tareas/create">Add New</a>
+            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/proyectos/{{$proyecto->id}}/tareas/create">Agregar tareas</a>
         </h1>
     </section>
 
@@ -154,19 +153,22 @@
                 <table id="PersonalDelProyecto" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Nombre Completo</th>
+                            <th>Nombre completo</th>
+                            <th>Cantidad de tareas</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($Lista_personal as $Personal)
                         <tr>
                             <td>{{ $Personal->NombrePersonal }} {{ $Personal->Apellido }}</td>
+                            <td>{{ $Personal->cantTareas() }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+        <a href="{{ route('proyectos.index') }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px ">Volver</a>
         </div>
     </div>
 

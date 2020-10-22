@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\RolPersonal;
+use App\Models\Personal;
 use App\Traits\ImageTrait;
 use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -146,9 +147,9 @@ class User extends Authenticatable
         return $this->traitDeleteImage(self::IMAGE_PATH.DIRECTORY_SEPARATOR.$image);
     }
 
-    public function Personal()
+    public function personal()
     {
-        return $this->hasOne(Personal::class);
+        return $this->belongsTo(Personal::class, 'Personal_id');
     }
 
     public function rol()

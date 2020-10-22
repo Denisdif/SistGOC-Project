@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ProyectoDataTable;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Tarea;
 use App\Models\Proyecto;
 use App\Models\Personal;
@@ -13,9 +12,10 @@ use App\Http\Requests\CreateProyectoRequest;
 use App\Http\Requests\UpdateProyectoRequest;
 use App\Repositories\ProyectoRepository;
 use App\Models\Proyecto_ambiente;
-use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Auth;
 use Response;
+use Flash;
 use App\Models\ambiente;
 use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;

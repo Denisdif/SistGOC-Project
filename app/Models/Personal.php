@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Sexo;
+use App\User;
 use App\Models\Direccion;
 
 /**
@@ -69,7 +70,7 @@ class Personal extends Model
         'DNI' => 'required|numeric'
     ];
 
-    public function Asignacion()
+    public function asignacion()
     {
         return $this->hasMany(AsignacionPersonalTarea::class);
     }
@@ -81,7 +82,7 @@ class Personal extends Model
 
     public function User()
     {
-        return $this->belongsTo(User::class, 'User_id');
+        return $this->hasOne(User::class);
     }
 
     public function direccion(){
@@ -92,5 +93,17 @@ class Personal extends Model
     public function sexo(){
 
         return $this->belongsTo(Sexo::class, 'Sexo_id');
+    }
+
+    public function cantTareas(){
+
+        $listaAsignaciones = $this->asignacion;
+        $cantTareas = 0;
+        foreach ($listaAsignaciones as $asignacion) {
+            if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('Asignada') or strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('En desarrollo')) {
+                $cantTareas++;
+            }
+        }
+        return $cantTareas;
     }
 }

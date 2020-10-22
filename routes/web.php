@@ -99,6 +99,8 @@ Route::get('asignacionPersonalTareas/{asignacionPersonalTarea}/edit',   'Asignac
 Route::put('asignacionPersonalTareas/{id}',                             'AsignacionPersonalTareaController@update')         ->name('asignacionPersonalTareas.update');
 Route::delete('asignacionPersonalTareas/{id}',                          'AsignacionPersonalTareaController@destroy')        ->name('asignacionPersonalTareas.destroy');
 
+Route::get('asignacionPersonalTareas',             'AsignacionPersonalTareaController@indexPersonal')  ->name('asignacionPersonalTareas.indexPersonal');
+
 //Rutas estado de tareas
 
 //Route::resource('estadoTareas', 'Estado_tareaController');

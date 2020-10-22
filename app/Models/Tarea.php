@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
+use App\Models\Proyecto;
 use App\Models\AsignacionPersonalTarea;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -76,9 +77,9 @@ class Tarea extends Model
         'Valor' => 'numeric'
     ];
 
-    public function Proyectos()
+    public function proyecto()
     {
-        return $this->belongsTo( 'App\Models\Proyecto' ,'Proyecto_id');
+        return $this->belongsTo( Proyecto::class ,'Proyecto_id');
     }
 
     public function tipo_tarea()

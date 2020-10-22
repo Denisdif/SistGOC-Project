@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tipo_proyecto;
 use App\Models\Personal;
+use App\Models\Tarea;
 use App\Models\Comitente;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -75,9 +76,9 @@ class Proyecto extends Model
         return $this->hasMany('App\Models\Proyecto_ambiente');
     }
 
-    public function Tarea()
+    public function tarea()
     {
-        return $this->hasMany('App\Models\Tarea');
+        return $this->hasMany(Tarea::class);
     }
 
     public function tipo_proyecto()

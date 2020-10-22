@@ -107,6 +107,11 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('sexoItems', $sexoItems);
         });
 
+        View::composer(['personals.index'], function ($view) {
+            $sexoItems = Sexo::pluck('Nombre_sexo','id')->toArray();
+            $view->with('sexoItems', $sexoItems);
+        });
+
         View::composer(['proyectos.fields'], function ($view) {
             $tipo_proyectoItems = Tipo_proyecto::pluck('Nombre','id')->toArray();
             $view->with('tipo_proyectoItems', $tipo_proyectoItems);

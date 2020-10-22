@@ -29,6 +29,12 @@
     </script>
 @endpush
 
+<!-- Informe de proyecto -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Informe', 'Informe de entrevistas y relevamiento:') !!}
+    {!! Form::file('Informe') !!}
+</div>
+
 <!-- Fecha Fin Proy Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Fecha_fin_Proy', 'Fecha limite:') !!}
@@ -39,7 +45,7 @@
     <script type="text/javascript">
         $('#Fecha_fin_Proy').datetimepicker({
             format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: false
+            useCurrent: true
         })
     </script>
 @endpush

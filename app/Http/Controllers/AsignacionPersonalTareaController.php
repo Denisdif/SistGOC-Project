@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\AsignacionPersonalTareaDataTable;
-use App\Models\Tarea;
 use App\Http\Requests;
 use App\Http\Requests\CreateAsignacionPersonalTareaRequest;
 use App\Http\Requests\UpdateAsignacionPersonalTareaRequest;
-use App\Repositories\AsignacionPersonalTareaRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Repositories\AsignacionPersonalTareaRepository;
 use App\Models\AsignacionPersonalTarea;
+use App\Models\Tarea;
+use Illuminate\Support\Facades\Auth;
 use Response;
+use Flash;
 
 class AsignacionPersonalTareaController extends AppBaseController
 {
@@ -32,6 +33,13 @@ class AsignacionPersonalTareaController extends AppBaseController
     public function index(AsignacionPersonalTareaDataTable $asignacionPersonalTareaDataTable)
     {
         return $asignacionPersonalTareaDataTable->render('asignacion_personal_tareas.index');
+    }
+
+    public function indexPersonal(AsignacionPersonalTareaDataTable $asignacionPersonalTareaDataTable)
+    {
+        $user = Auth::user();
+        $tareas = AsignacionPersonalTarea::all()->where('Personal_id','=', $user->personal->id);
+        return View('asignacion_personal_tareas.index', compact('tareas'));
     }
 
     /**

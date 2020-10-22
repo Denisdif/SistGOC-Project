@@ -19,7 +19,6 @@
                     @section('scripts')
                         @include('layouts.datatables_js')
                     @endsection
-                    <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-default">Back</a>
                 </div>
             </div>
         </div>
@@ -28,7 +27,7 @@
     <section class="content-header">
         <h1 style= "color: aliceblue">
             Personal responsable
-            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/asignacionPersonalTareas/create">Add New</a>
+            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/asignacionPersonalTareas/create">Nueva asignación</a>
         </h1>
     </section>
 
@@ -72,5 +71,6 @@
                 </table>
             </div>
         </div>
+        <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px">Volver</a>
     </div>
 @endsection
