@@ -62,3 +62,12 @@
 
 
 
+
+<li class="{{ Request::is('entregas*') ? 'active' : '' }}">
+    <a href="{{ route('entregas.index') }}"><i class="fa fa-edit"></i><span>Entregas</span></a>
+</li>
+
+<li class="{{ Request::is('comentarios*') ? 'active' : '' }}">
+    <a href="{{ route('comentarios.index') }}"><i class="fa fa-edit"></i><span>Comentarios</span></a>
+</li>
+

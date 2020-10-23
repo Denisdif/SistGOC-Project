@@ -177,3 +177,26 @@ Route::get('/provincias', 'HomeController@indexProvincia')->name('provincias.ind
 Route::get('/localidades', 'HomeController@indexLocalidades')->name('localidades.index'); //para mostrar todos las localidades
 
 Route::resource('comitentes', 'ComitenteController');
+
+
+
+
+Route::resource('entregas', 'EntregaController');
+
+Route::get('tareas/{tarea}/entregas',                   'EntregaController@index')          ->name('tareas.entregas.index');
+Route::get('tareas/{tarea}/entregas/create',            'EntregaController@create')         ->name('tareas.entregas.create');
+Route::post('tareas/{tarea}/entregas',                  'EntregaController@store')          ->name('tareas.entregas.store');
+Route::get('entregas/{entrega}',                        'EntregaController@show')           ->name('entregas.show');
+Route::get('entregas/{entrega}/edit',                   'EntregaController@edit')           ->name('entregas.edit');
+Route::put('entregas/{id}',                             'EntregaController@update')         ->name('entregas.update');
+Route::delete('entregas/{id}',                          'EntregaController@destroy')        ->name('entregas.destroy');
+
+Route::resource('comentarios', 'ComentarioController');
+
+Route::get('tareas/{tarea}/comentarios',                'ComentarioController@index')       ->name('tareas.comentarios.index');
+Route::get('tareas/{tarea}/comentarios/create',         'ComentarioController@create')      ->name('tareas.comentarios.create');
+Route::post('tareas/{tarea}/comentarios',               'ComentarioController@store')       ->name('tareas.comentarios.store');
+Route::get('comentarios/{comentario}',                  'ComentarioController@show')        ->name('comentarios.show');
+Route::get('comentarios/{comentario}/edit',             'ComentarioController@edit')        ->name('comentarios.edit');
+Route::put('comentarios/{id}',                          'ComentarioController@update')      ->name('comentarios.update');
+Route::delete('comentarios/{id}',                       'ComentarioController@destroy')     ->name('comentarios.destroy');

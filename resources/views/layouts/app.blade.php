@@ -174,6 +174,8 @@
         $('#TareasDelProyecto').DataTable();
         $('#PersonalDelProyecto').DataTable();
         $('#Proyectos').DataTable();
+        $('#Comentarios').DataTable();
+        $('#Entregas').DataTable();
         $('#Personal').DataTable();
         $("#btnNuevo").click(function(){
             $("#PruebaModal").modal("show");

@@ -31,6 +31,7 @@
         </h1>
     </section>
 
+    {{-- Inicio DataTable Personal Responsable --}}
     <div class="content-header">
         <div class="box box-danger">
             <div class="box-body">
@@ -71,6 +72,70 @@
                 </table>
             </div>
         </div>
-        <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px">Volver</a>
     </div>
+    {{-- Fin DataTable Personal Responsable --}}
+
+    <section class="content-header">
+        <h1 style= "color: aliceblue">
+            Entregas
+            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/entregas/create">Add New</a>
+        </h1>
+    </section>
+
+    {{-- Inicio DataTable Entregas --}}
+    <div class="content-header">
+        <div class="box box-danger">
+            <div class="box-body">
+                <table id="Entregas" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Archivo</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($entregas as $entrega)
+                        <tr>
+                            <td>{{ $entrega->Archivo }}</td>
+                            <td>{{ $entrega->Descripcion_entrega }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {{-- Fin DataTable Entregas --}}
+
+    <section class="content-header">
+        <h1 style= "color: aliceblue">
+            Comentarios
+            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/comentarios/create">Add New</a>
+        </h1>
+    </section>
+
+    {{-- Inicio DataTable Comentarios --}}
+    <div class="content-header">
+        <div class="box box-danger">
+            <div class="box-body">
+                <table id="Comentarios" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Comentario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($comentarios as $comentario)
+                        <tr>
+                            <td>{{ $comentario->Contenido }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {{-- Fin DataTable Comentarios --}}
+    <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px">Volver</a>
+
 @endsection

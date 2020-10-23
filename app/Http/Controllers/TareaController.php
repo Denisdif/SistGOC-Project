@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\DataTables\TareaDataTable;
 use App\Models\Proyecto;
 use App\Models\Tarea;
+use App\Models\Personal;
+use App\Models\AsignacionPersonalTarea;
+use App\Models\Entrega;
+use App\Models\Comentario;
 use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
-use App\Models\Personal;
 use App\Models\Proyecto_ambiente;
-use App\Models\AsignacionPersonalTarea;
 use App\Http\Requests;
 use App\Http\Requests\CreateTareaRequest;
 use App\Http\Requests\UpdateTareaRequest;
@@ -91,9 +93,12 @@ class TareaController extends AppBaseController
         }
 
         $asignaciones = AsignacionPersonalTarea::all()->where('Tarea_id','=', $id);
+        $comentarios = Comentario::all()->where('Tarea_id','=', $id);
+        $entregas = Entrega::all()->where('Tarea_id','=', $id);
         $listaPersonal = Personal::all();
 
-        return view('tareas.show', compact('asignaciones','listaPersonal'))->with('tarea', $tarea);
+
+        return view('tareas.show', compact('asignaciones','listaPersonal','entregas', 'comentarios'))->with('tarea', $tarea);
     }
 
     /**

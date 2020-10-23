@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
+use App\Models\Comentario;
+use App\Models\Entrega;
 use App\Models\Proyecto;
 use App\Models\AsignacionPersonalTarea;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -95,5 +97,15 @@ class Tarea extends Model
     public function Asignacion()
     {
         return $this->hasMany(AsignacionPersonalTarea::class);
+    }
+
+    public function entregas()
+    {
+        return $this->hasMany(Entrega::class);
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
     }
 }
