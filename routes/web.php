@@ -200,3 +200,14 @@ Route::get('comentarios/{comentario}',                  'ComentarioController@sh
 Route::get('comentarios/{comentario}/edit',             'ComentarioController@edit')        ->name('comentarios.edit');
 Route::put('comentarios/{id}',                          'ComentarioController@update')      ->name('comentarios.update');
 Route::delete('comentarios/{id}',                       'ComentarioController@destroy')     ->name('comentarios.destroy');
+
+
+Route::resource('evaluacions', 'EvaluacionController');
+
+Route::get('personals/{personal}/evaluacions',          'EvaluacionController@index')       ->name('personals.evaluacions.index');
+Route::get('personals/{personal}/evaluacions/create',   'EvaluacionController@create')      ->name('personals.evaluacions.create');
+Route::post('personals/{personal}/evaluacions',         'EvaluacionController@store')       ->name('personals.evaluacions.store');
+Route::get('evaluacions/{evaluacion}',                  'EvaluacionController@show')        ->name('evaluacions.show');
+Route::get('evaluacions/{evaluacion}/edit',             'EvaluacionController@edit')        ->name('evaluacions.edit');
+Route::put('evaluacions/{id}',                          'EvaluacionController@update')      ->name('evaluacions.update');
+Route::delete('evaluacions/{id}',                       'EvaluacionController@destroy')     ->name('evaluacions.destroy');

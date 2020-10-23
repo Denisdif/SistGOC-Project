@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Personal;
 use App\Models\Direccion;
+use App\Models\Evaluacion;
 use App\User;
 use Cardumen\ArgentinaProvinciasLocalidades\Models\Pais;
 use App\DataTables\PersonalDataTable;
@@ -103,8 +104,9 @@ class PersonalController extends AppBaseController
             return redirect(route('personals.index'));
         }
         $usuarios = User::all()->where('Personal_id','=', $id);
+        $evaluaciones = Evaluacion::all()->where('Personal_id','=', $id);
 
-        return view('personals.show', compact('id', 'usuarios'))->with('personal', $personal);
+        return view('personals.show', compact('id', 'usuarios', 'evaluaciones'))->with('personal', $personal);
     }
 
     /**

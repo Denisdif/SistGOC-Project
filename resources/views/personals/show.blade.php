@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @section('css')
+        @include('layouts.datatables_css')
+    @endsection
     <section class="content-header">
         <h1 style="color: aliceblue">
             Personal
@@ -32,4 +36,46 @@
             </div>
         </div>
     </div>
+
+    <section class="content-header">
+        <h1 style= "color: aliceblue">
+            Evaluaciones
+            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/personals/{{$personal->id}}/evaluacions/create">Nueva Evaluación</a>
+        </h1>
+    </section>
+
+    {{-- Inicio de DataTable de ambientes del proyecto --}}
+
+
+    <div class="content-header">
+        <div class="box box-danger">
+            <div class="box-body">
+                <table id="Evaluaciones" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Desde</th>
+                            <th>Hasta</th>
+                            <th>Evaluador</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($evaluaciones as $evaluacion)
+                        <tr>
+                            <td>{{ $evaluacion->Fecha_inicio }}</td>
+                            <td>{{ $evaluacion->Fecha_fin }}</td>
+                            <td>{{ $evaluacion->evaluador->NombrePersonal }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {{-- Fin de DataTable de ambientes del proyecto --}}
+
+
+    @section('scripts')
+        @include('layouts.datatables_js')
+    @endsection
 @endsection

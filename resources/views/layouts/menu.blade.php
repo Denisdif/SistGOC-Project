@@ -71,3 +71,7 @@
     <a href="{{ route('comentarios.index') }}"><i class="fa fa-edit"></i><span>Comentarios</span></a>
 </li>
 
+<li class="{{ Request::is('evaluacions*') ? 'active' : '' }}">
+    <a href="{{ route('evaluacions.index') }}"><i class="fa fa-edit"></i><span>Evaluacions</span></a>
+</li>
+

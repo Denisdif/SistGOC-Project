@@ -38,6 +38,10 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['evaluacions.fields'], function ($view) {
+            $personalItems = Personal::pluck('NombrePersonal','id')->toArray();
+            $view->with('personalItems', $personalItems);
+        });
         View::composer(['direccions.fields'], function ($view) {
             $localidadeItems = Localidad::pluck('localidad','id')->toArray();
             $view->with('localidadeItems', $localidadeItems);

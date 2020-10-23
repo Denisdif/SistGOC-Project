@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Sexo;
+use App\Models\Evaluacion;
 use App\User;
 use App\Models\Direccion;
 
@@ -83,6 +84,11 @@ class Personal extends Model
     public function User()
     {
         return $this->hasOne(User::class);
+    }
+
+    public function evaluaciones()
+    {
+        return $this->hasMany(Evaluacion::class);
     }
 
     public function direccion(){
