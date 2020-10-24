@@ -19,6 +19,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 use Redirect;
 use Response;
 
@@ -68,7 +69,7 @@ class UserController extends AppBaseController
             $user = new User;
             $user->name = $request->Nombre_usuario;
             $user->email = $request->Email;
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
             $user->Rol_id = $request->Rol_id;
             $user->Personal_id = $personal->id ;
             $user->save();

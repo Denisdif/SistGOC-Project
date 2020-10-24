@@ -16,11 +16,10 @@
                 <div class="row" style="padding-left: 30px">
                     <h2>Datos personales</h2><br>
                     @include('personals.show_fields')
-                    <a class="btn btn-danger"  href="{{ route('personals.users.create', $personal->id) }}">Crear usuario</a>
                     @foreach ($usuarios as $item)
                                 <h2>Datos de usuario</h2><br>
                                 <!-- Name Field -->
-                                    {!! Form::label('name', 'Name:') !!}
+                                    {!! Form::label('name', 'Nombre:') !!}
                                     {{ $item->name }} <br>
 
                                 <!-- Email Field -->

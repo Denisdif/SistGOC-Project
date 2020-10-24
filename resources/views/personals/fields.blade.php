@@ -26,18 +26,6 @@
     {!! Form::number('DNI', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Sexo Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Sexo', 'Sexo:') !!}
-    {!! Form::select('Sexo_id', $sexoItems, null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Phone Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Telefono', 'Numero de Telefono:') !!}
-    {!! Form::number('Telefono', null, ['id'=>'Telefono', 'class' => 'form-control']) !!}
-</div>
-
 <!-- Fechanac Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('FechaNac', 'Fecha de nacimiento:') !!}
@@ -52,6 +40,31 @@
         })
     </script>
 @endpush
+
+<!-- Sexo Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Sexo', 'Sexo:') !!}
+    {!! Form::select('Sexo_id', $sexoItems, null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Phone Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Telefono', 'Numero de Telefono:') !!}
+    {!! Form::number('Telefono', null, ['id'=>'Telefono', 'class' => 'form-control']) !!}
+</div>
+
+<!-- Email Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('email', 'Email:') !!}<span class="required">*</span>
+    {!! Form::email('Email', null, ['id'=>'email', 'class' => 'form-control', 'required']) !!}
+</div>
+
+<!-- Rol Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Rol_id', 'Rol de usuario:') !!}
+    {!! Form::select('Rol_id', $RolPersonalItems, null, ['class' => 'form-control']) !!}
+</div>
+
 <div class="form-group col-sm-12">
     <hr>
     <h3>Dirección</h3>

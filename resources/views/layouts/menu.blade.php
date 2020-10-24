@@ -60,9 +60,7 @@
     <a href="{{ route('direccions.index') }}"><i class="fa fa-edit"></i><span>Direccions</span></a>
 </li>--}}
 
-
-
-
+{{--
 <li class="{{ Request::is('entregas*') ? 'active' : '' }}">
     <a href="{{ route('entregas.index') }}"><i class="fa fa-edit"></i><span>Entregas</span></a>
 </li>
@@ -73,5 +71,5 @@
 
 <li class="{{ Request::is('evaluacions*') ? 'active' : '' }}">
     <a href="{{ route('evaluacions.index') }}"><i class="fa fa-edit"></i><span>Evaluacions</span></a>
-</li>
+</li>--}}
 

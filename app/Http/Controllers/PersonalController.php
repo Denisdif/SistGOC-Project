@@ -14,6 +14,7 @@ use App\Http\Requests\UpdatePersonalRequest;
 use App\Repositories\PersonalRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Hash;
 use Response;
 
 class PersonalController extends AppBaseController
@@ -81,6 +82,13 @@ class PersonalController extends AppBaseController
         $personal->Telefono = $request->Telefono ;
         $personal->direccion_id = $direccion->id ;
         $personal->save();
+        $user = new User;
+        $user->name = ("NataliaNatalia".$personal->id);
+        $user->email = $request->Email;
+        $user->password = Hash::make($request->DNI);
+        $user->Rol_id = $request->Rol_id;
+        $user->Personal_id = $personal->id ;
+        $user->save();
 
         Flash::success('Personal saved successfully.');
 
