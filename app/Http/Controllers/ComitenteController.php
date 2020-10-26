@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ComitenteDataTable;
+use App\Models\Proyecto;
 use App\Http\Requests;
 use App\Http\Requests\CreateComitenteRequest;
 use App\Http\Requests\UpdateComitenteRequest;
@@ -37,9 +38,9 @@ class ComitenteController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(Proyecto $proyecto)
     {
-        return view('comitentes.create');
+        return view('comitentes.create', compact('proyecto'));
     }
 
     /**
@@ -49,15 +50,19 @@ class ComitenteController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateComitenteRequest $request)
+    public function store(Proyecto $proyecto, CreateComitenteRequest $request)
     {
         $input = $request->all();
 
         $comitente = $this->comitenteRepository->create($input);
 
+        $proyecto->Comitente_id = $comitente->id;
+
+        $proyecto->save();
+
         Flash::success('Comitente saved successfully.');
 
-        return redirect(route('comitentes.index'));
+        return redirect(route('proyectos.show', $proyecto->id));
     }
 
     /**

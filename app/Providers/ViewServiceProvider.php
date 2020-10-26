@@ -14,6 +14,7 @@ use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
 use App\Models\Proyecto;
 use App\Models\Ambiente;
+use App\Models\Comitente;
 use App\Models\Sexo;
 use App\Models\Tipo_proyecto;
 use Illuminate\Support\ServiceProvider;
@@ -119,6 +120,11 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['proyectos.fields'], function ($view) {
             $tipo_proyectoItems = Tipo_proyecto::pluck('Nombre','id')->toArray();
             $view->with('tipo_proyectoItems', $tipo_proyectoItems);
+        });
+
+        View::composer(['proyectos.fields'], function ($view) {
+            $comitentes = Comitente::all();
+            $view->with('comitentes', $comitentes);
         });
         //
     }

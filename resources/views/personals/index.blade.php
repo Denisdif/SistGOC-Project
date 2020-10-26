@@ -18,6 +18,7 @@
                 @section('css')
                 @include('layouts.datatables_css')
             @endsection
+
                 <table id="Personal" class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -26,7 +27,7 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="Var1">
                         @foreach ($ListaPersonal as $personal)
                         <tr>
                             <td>{{ $personal->NombrePersonal }} {{ $personal->Apellido }}</td>
@@ -55,8 +56,7 @@
                     @include('layouts.datatables_js')
                 @endsection
 
-                <button id="btnNuevo" type="button">Modal</button>
-                <a href="{{ route('asignacionPersonalTareas.indexPersonal') }}">Pulse aqui para ver sus tareas</a>
+                {{-- <button id="btnNuevo" type="button">Modal</button>  --}}
             </div>
         </div>
         <div class="text-center">

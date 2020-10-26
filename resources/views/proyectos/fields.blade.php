@@ -75,44 +75,54 @@
 
 <!-- Descripcion Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('Descripcion', 'Descripcion:') !!}
+    {!! Form::label('Descripcion', 'Descripción:') !!}
     {!! Form::textarea('Descripcion', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group col-sm-12">
     <hr>
-    <h3>Datos del Comitente <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="#">Buscar comitente</a></h3>
+    <h3>Comitente</h3>
 </div>
 
-<!-- Nombrecomitente Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('IdComitente', 'Buscar comitente:') !!} <br>
+    <select name="Comitente_id" class="js-example-basic-single form-group col-sm-12">
+        <option value=""></option>
+        @foreach ($comitentes as $comitente)
+            <option value={{ $comitente->id }}>{{ $comitente->NombreComitente }} {{ $comitente->Apellido }}, {{ $comitente->DNI }}</option>
+        @endforeach
+    </select>
+</div>
+
+<!-- Nombrecomitente Field
 <div class="form-group col-sm-6">
     {!! Form::label('NombreComitente', 'Nombres:') !!}
     {!! Form::text('NombreComitente', null, ['class' => 'form-control']) !!}
-</div>
+</div> -->
 
-<!-- Apellido Field -->
+<!-- Apellido Field
 <div class="form-group col-sm-6">
     {!! Form::label('Apellido', 'Apellidos:') !!}
     {!! Form::text('Apellido', null, ['class' => 'form-control']) !!}
-</div>
+</div>  -->
 
-<!-- Dni Field -->
+<!-- Dni Field
 <div class="form-group col-sm-6">
     {!! Form::label('DNI', 'Dni:') !!}
     {!! Form::number('DNI', null, ['class' => 'form-control']) !!}
-</div>
+</div>  -->
 
-<!-- Email Field -->
+<!-- Email Field
 <div class="form-group col-sm-6">
     {!! Form::label('Email', 'Email:') !!}
     {!! Form::text('Email', null, ['class' => 'form-control']) !!}
-</div>
+</div>  -->
 
-<!-- Telefono Field -->
+<!-- Telefono Field
 <div class="form-group col-sm-6">
     {!! Form::label('Telefono', 'Telefono:') !!}
     {!! Form::number('Telefono', null, ['class' => 'form-control']) !!}
-</div>
+</div>  -->
 
 <!-- Sexo Field
 <div class="form-group col-sm-6">

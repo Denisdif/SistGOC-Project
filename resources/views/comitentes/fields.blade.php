@@ -1,12 +1,12 @@
 <!-- Nombrecomitente Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('NombreComitente', 'Nombrecomitente:') !!}
+    {!! Form::label('NombreComitente', 'Nombres:') !!}
     {!! Form::text('NombreComitente', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Apellido Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Apellido', 'Apellido:') !!}
+    {!! Form::label('Apellido', 'Apellidos:') !!}
     {!! Form::text('Apellido', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -24,7 +24,7 @@
 
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('DNI', 'Dni:') !!}
+    {!! Form::label('DNI', 'DNI:') !!}
     {!! Form::number('DNI', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -34,14 +34,14 @@
     {!! Form::text('Sexo', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Direccion Id Field -->
+<!-- Direccion Id Field
 <div class="form-group col-sm-6">
     {!! Form::label('Direccion_id', 'Direccion Id:') !!}
     {!! Form::text('Direccion_id', null, ['class' => 'form-control']) !!}
-</div>
+</div> -->
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('comitentes.index') }}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
+    <a href="{{ route('proyectos.index') }}" class="btn btn-default">Cancelar</a>
 </div>

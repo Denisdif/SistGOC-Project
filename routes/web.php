@@ -176,10 +176,10 @@ Route::get('/provincias', 'HomeController@indexProvincia')->name('provincias.ind
 //Localidad
 Route::get('/localidades', 'HomeController@indexLocalidades')->name('localidades.index'); //para mostrar todos las localidades
 
+Route::get('proyectos/{proyecto}/comitentes/create',           'ComitenteController@create')         ->name('proyectos.comitentes.create');
+Route::post('proyectos/{proyecto}/comitentes',                 'ComitenteController@store')          ->name('proyectos.comitentes.store');
+
 Route::resource('comitentes', 'ComitenteController');
-
-
-
 
 Route::resource('entregas', 'EntregaController');
 

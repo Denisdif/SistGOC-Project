@@ -24,6 +24,9 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     @yield('css')
 </head>
 
@@ -147,7 +150,7 @@
     </div>
     @endif
 
-
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <!-- DataTables Youtube -->
     <script src=  https://code.jquery.com/jquery-3.5.1.js ></script>
     <script src=  https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js ></script>
@@ -213,6 +216,12 @@
             });
         });
     }) ;
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
 </script>
 
 @yield('datatable_js')

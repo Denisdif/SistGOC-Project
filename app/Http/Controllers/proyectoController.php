@@ -6,8 +6,12 @@ use App\DataTables\ProyectoDataTable;
 use App\Models\Tarea;
 use App\Models\Proyecto;
 use App\Models\Personal;
-use App\Models\Comitente;
 use App\Models\AsignacionPersonalTarea;
+use App\Models\Comitente;
+use App\Models\ambiente;
+use App\Models\Estado_tarea;
+use App\Models\Tipo_tarea;
+use App\Models\Tipo_proyecto;
 use App\Http\Requests\CreateProyectoRequest;
 use App\Http\Requests\UpdateProyectoRequest;
 use App\Repositories\ProyectoRepository;
@@ -16,10 +20,6 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Support\Facades\Auth;
 use Response;
 use Flash;
-use App\Models\ambiente;
-use App\Models\Estado_tarea;
-use App\Models\Tipo_tarea;
-use App\Models\Tipo_proyecto;
 use App\Http\Requests;
 
 class ProyectoController extends AppBaseController
@@ -67,20 +67,16 @@ class ProyectoController extends AppBaseController
 
         $proyecto = $this->proyectoRepository->create($input);
 
-        $comitente = new Comitente;
-        $comitente->NombreComitente = $request->NombreComitente;
-        $comitente->Apellido = $request->Apellido;
-        $comitente->DNI = $request->DNI;
-        $comitente->Email = $request->Email;
-        $comitente->Telefono = $request->Telefono;
-        $comitente->save();
-
         $user = Auth::user();
 
-        $proyecto->Comitente_id = $comitente->id;
         $proyecto->Director_id = $user->Personal_id;
 
         $proyecto->save();
+
+        if ($proyecto->Comitente_id == "") {
+
+            return redirect(route('proyectos.comitentes.create', $proyecto));
+        }
 
         Flash::success('Proyecto saved successfully.');
 
