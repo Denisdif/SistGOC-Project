@@ -38,9 +38,9 @@ class ComitenteController extends AppBaseController
      *
      * @return Response
      */
-    public function create(Proyecto $proyecto)
+    public function create()
     {
-        return view('comitentes.create', compact('proyecto'));
+        return view('comitentes.create');
     }
 
     /**
@@ -50,19 +50,15 @@ class ComitenteController extends AppBaseController
      *
      * @return Response
      */
-    public function store(Proyecto $proyecto, CreateComitenteRequest $request)
+    public function store(CreateComitenteRequest $request)
     {
         $input = $request->all();
 
         $comitente = $this->comitenteRepository->create($input);
 
-        $proyecto->Comitente_id = $comitente->id;
-
-        $proyecto->save();
-
         Flash::success('Comitente saved successfully.');
 
-        return redirect(route('proyectos.show', $proyecto->id));
+        return redirect(route('comitentes.index'));
     }
 
     /**

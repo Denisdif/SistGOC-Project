@@ -63,20 +63,35 @@ class ProyectoController extends AppBaseController
      */
     public function store(CreateProyectoRequest $request)
     {
-        $input = $request->all();
+        $proyecto = new Proyecto;
+        $proyecto->Nombre_proyecto = $request->Nombre_proyecto;
+        $proyecto->Tipo_proyecto_id = $request->Tipo_proyecto_id;
+        $proyecto->Fecha_fin_Proy = $request->Fecha_fin_Proy;
+        $proyecto->Descripcion = $request->Descripcion;
 
-        $proyecto = $this->proyectoRepository->create($input);
+        if ($request->Comitente_id == "") {
+
+            $comitente = new Comitente;
+            $comitente->NombreComitente = $request->NombreComitente;
+            $comitente->Apellido = $request->Apellido;
+            $comitente->Email = $request->Email;
+            $comitente->Telefono = $request->Telefono;
+            $comitente->DNI = $request->DNI;
+            $comitente->Sexo = $request->Sexo;
+            $comitente->save();
+
+            $proyecto->Comitente_id = $comitente->id;
+
+        }else{
+
+            $proyecto->Comitente_id = $request->Comitente_id;
+        }
 
         $user = Auth::user();
 
         $proyecto->Director_id = $user->Personal_id;
 
         $proyecto->save();
-
-        if ($proyecto->Comitente_id == "") {
-
-            return redirect(route('proyectos.comitentes.create', $proyecto));
-        }
 
         Flash::success('Proyecto saved successfully.');
 

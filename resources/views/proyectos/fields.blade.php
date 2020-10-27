@@ -84,7 +84,7 @@
     <h3>Comitente</h3>
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('IdComitente', 'Buscar comitente:') !!} <br>
     <select id="SelectComitente" name="Comitente_id" class="js-example-basic-single form-group col-sm-12">
         <option value=""></option>
@@ -94,41 +94,41 @@
     </select>
 </div>
 
-<!-- Nombrecomitente Field
+<!-- Nombrecomitente Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('NombreComitente', 'Nombres:') !!}
     {!! Form::text('NombreComitente', null, ['class' => 'form-control']) !!}
-</div> -->
+</div>
 
-<!-- Apellido Field
+<!-- Apellido Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Apellido', 'Apellidos:') !!}
     {!! Form::text('Apellido', null, ['class' => 'form-control']) !!}
-</div>  -->
+</div>
 
-<!-- Dni Field
-<div class="form-group col-sm-6">
-    {!! Form::label('DNI', 'Dni:') !!}
-    {!! Form::number('DNI', null, ['class' => 'form-control']) !!}
-</div>  -->
-
-<!-- Email Field
+<!-- Email Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Email', 'Email:') !!}
     {!! Form::text('Email', null, ['class' => 'form-control']) !!}
-</div>  -->
+</div>
 
-<!-- Telefono Field
+<!-- Telefono Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Telefono', 'Telefono:') !!}
     {!! Form::number('Telefono', null, ['class' => 'form-control']) !!}
-</div>  -->
+</div>
 
-<!-- Sexo Field
+<!-- Dni Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('DNI', 'DNI:') !!}
+    {!! Form::number('DNI', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Sexo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Sexo', 'Sexo:') !!}
     {!! Form::text('Sexo', null, ['class' => 'form-control']) !!}
-</div> -->
+</div>
 
 <!-- Direccion Id Field
 <div class="form-group col-sm-6">
