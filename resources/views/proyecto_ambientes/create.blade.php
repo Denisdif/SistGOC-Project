@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1 style="color: aliceblue">
-            Proyecto Ambiente
+            Agregar ambientes
         </h1>
     </section>
     <div class="content">
@@ -20,4 +20,5 @@
             </div>
         </div>
     </div>
+
 @endsection

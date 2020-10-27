@@ -86,7 +86,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('IdComitente', 'Buscar comitente:') !!} <br>
-    <select name="Comitente_id" class="js-example-basic-single form-group col-sm-12">
+    <select id="SelectComitente" name="Comitente_id" class="js-example-basic-single form-group col-sm-12">
         <option value=""></option>
         @foreach ($comitentes as $comitente)
             <option value={{ $comitente->id }}>{{ $comitente->NombreComitente }} {{ $comitente->Apellido }}, {{ $comitente->DNI }}</option>
@@ -140,5 +140,5 @@
 <div class="form-group col-sm-12">
     <hr>
     {!! Form::submit('Crear', ['class' => 'btn btn-danger']) !!}
-    <a href="{{ route('proyectos.index') }}" class="btn btn-default">Cancel</a>
+    <a href="javascript:history.back()" class="btn btn-default">Cancel</a>
 </div>

@@ -1,6 +1,6 @@
 <!-- Ambiente Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Ambiente_id', 'Ambiente Id:') !!}
+    {!! Form::label('Ambiente_id', 'Ambiente:') !!}
     {!! Form::select('Ambiente_id', $ambienteItems, null, ['class' => 'form-control']) !!}
 </div>
 
@@ -10,16 +10,35 @@
     {!! Form::number('Cantidad', '1', ['class' => 'form-control']) !!}
 </div>
 
-<!-- Proyecto Id Field
+
 <div class="form-group col-sm-6">
-    {!! Form::label('Proyecto_id', 'Proyecto Id:') !!}
-    {!! Form::select('Proyecto_id', $proyectoItems, null, ['class' => 'form-control']) !!}
-</div> -->
+    <a href="#" class="addRow btn btn-danger ">Agregar a lista</a>
+</div>
+
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <th>Ambiente</th>
+                <th>Cantidad</th>
+                <th width="125px">Accion</th>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-danger']) !!}
-    <a href="{{ route('proyectos.show', $proyecto->id) }}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
+    <a href="{{ route('proyectos.show', $proyecto->id) }}" class="btn btn-default">Cancelar</a>
 </div>
 
 
+
+{{--  <div class="text-right">
+    <a href="javascript:history.back()" class="btn btn-primary btn-sm">Volver</a>
+    <input type="reset" value="Limpiar" class="btn btn-secondary btn-sm">
+    <button type="submit" class="btn btn-success btn-sm">Generar</button>
+</div> --}}

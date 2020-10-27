@@ -220,7 +220,64 @@
 
 <script>
     $(document).ready(function() {
-        $('.js-example-basic-single').select2();
+        $('#SelectComitente').select2();
+    });
+</script>
+
+<script>
+    $('.addRow').on('click',function(){
+        addRow();
+    });
+    function addRow(){
+        //Obtener los valores de los inputs
+        Ambiente_id = $('#Ambiente_id').val() ;
+        Ambiente = $("#Ambiente_id option:selected").text();
+        Cantidad = $("#Cantidad").val();
+            if(Ambiente_id != null ){
+                if(Cantidad > 0){
+                // if(precio > 0){
+                    var fila = '<tr> <td><input type="hidden" name="Ambiente_id[]" value="'+Ambiente_id+'">'+Ambiente+'</td>'+
+                                '<td style="text-align:right;"><input type="hidden" name="Cantidad[]" value="'+Cantidad+'">'+Cantidad+' </td>'+
+                                '<td style="text-align:center;"><a href="#" class="btn btn-danger btn-xs remove"><i class="fas fa-minus"></i></a></td>' +
+                                '</tr>' ;
+                    $('tbody').append(fila) ;
+                    limpiar();
+                // }else{
+                //     swal({
+                //         title: "Error",
+                //         text: "Ingrese un precio valido y mayor a 0",
+                //         icon: "error",
+                //     });
+                // }
+                }else{
+                    swal({
+                        title: "Error",
+                        text: "Ingrese una cantidad valida y mayor a 0",
+                        icon: "error",
+                    });
+                }
+            }else{
+                swal({
+                    title: "Error",
+                    text: "Seleccione un ambiente",
+                    icon: "error",
+                });
+        }
+    }
+
+
+    function limpiar(){
+		$("#Ambiente_id").val("");
+		$("#Cantidad").val("1");
+	}
+    $('body').on('click', '.remove',function(){
+        // var last=$('tbody tr').length;
+        // if(last==1){
+        //     alert("No es posible eliminar la ultima fila");
+        // }
+        // else{
+            $(this).parent().parent().remove();
+        //}
     });
 </script>
 

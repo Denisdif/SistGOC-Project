@@ -56,13 +56,20 @@ class Proyecto_ambienteController extends AppBaseController
      */
     public function store(Proyecto $proyecto, CreateProyecto_ambienteRequest $request)
     {
-        $input = $request->all();
+        //return $request;
 
+        for ($i=0; $i < sizeof($request->Cantidad); $i++) {
+            $proyectoAmbiente = new Proyecto_ambiente();
+            $proyectoAmbiente->Ambiente_id = $request->Ambiente_id[$i];
+            $proyectoAmbiente->Cantidad = $request->Cantidad[$i];
+            $proyectoAmbiente->Proyecto_id = $proyecto->id;
+            $proyectoAmbiente->save();
+        }
+
+        /*$input = $request->all();
         $proyectoAmbiente = $this->proyectoAmbienteRepository->create($input);
-
         $proyectoAmbiente->Proyecto_id = $proyecto->id;
-
-        $proyectoAmbiente->save();
+        $proyectoAmbiente->save();*/
 
         Flash::success('Proyecto Ambiente saved successfully.');
 
