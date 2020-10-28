@@ -17,7 +17,7 @@ class RolPersonal extends Model
 {
     use SoftDeletes;
 
-    public $table = 'rol_personals';
+    public $table = 'roles_usuario';
 
 
     protected $dates = ['deleted_at'];

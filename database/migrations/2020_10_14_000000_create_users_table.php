@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('image_path')->nullable();
             $table->timestamps();
             $table->integer('Rol_id')->unsigned()->nullable();
-            $table->foreign('Rol_id')->references('id')->on('rol_personals');
+            $table->foreign('Rol_id')->references('id')->on('roles_usuario');
             $table->integer('Personal_id')->unsigned()->nullable();
             $table->foreign('Personal_id')->references('id')->on('personals');
         });

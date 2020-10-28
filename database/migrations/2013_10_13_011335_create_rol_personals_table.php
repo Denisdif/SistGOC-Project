@@ -14,10 +14,10 @@ class CreateRolPersonalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rol_personals', function (Blueprint $table) {
+        Schema::create('roles_usuario', function (Blueprint $table) {
             $table->increments('id');
             $table->string('NombreRol');
-            $table->text('Descripcion');
+            $table->text('Descripcion')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +30,6 @@ class CreateRolPersonalsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('rol_personals');
+        Schema::drop('roles_usuario');
     }
 }
