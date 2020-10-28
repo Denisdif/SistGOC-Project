@@ -64,7 +64,7 @@ class ProyectoController extends AppBaseController
     public function store(CreateProyectoRequest $request)
     {
         $proyecto = new Proyecto;
-        $proyecto->Nombre_proyecto = $request->Nombre_proyecto;
+        $proyecto->Nombre_proyecto = "Nuevo Proyecto";
         $proyecto->Tipo_proyecto_id = $request->Tipo_proyecto_id;
         $proyecto->Fecha_fin_Proy = $request->Fecha_fin_Proy;
         $proyecto->Descripcion = $request->Descripcion;
@@ -73,11 +73,11 @@ class ProyectoController extends AppBaseController
 
             $comitente = new Comitente;
             $comitente->NombreComitente = $request->NombreComitente;
-            $comitente->Apellido = $request->Apellido;
+            $comitente->ApellidoComitente = $request->Apellido;
             $comitente->Email = $request->Email;
             $comitente->Telefono = $request->Telefono;
-            $comitente->DNI = $request->DNI;
-            $comitente->Sexo = $request->Sexo;
+            $comitente->Cuit = $request->Cuit;
+            $comitente->Sexo_id = $request->Sexo_id;
             $comitente->save();
 
             $proyecto->Comitente_id = $comitente->id;

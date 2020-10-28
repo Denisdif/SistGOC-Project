@@ -107,7 +107,12 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('RolPersonalItems', $RolPersonalItems);
         });
 
-        View::composer(['personals.fields'], function ($view) {
+        View::composer(['proyectos.fields'], function ($view) {
+            $sexoItems = Sexo::pluck('Nombre_sexo','id')->toArray();
+            $view->with('sexoItems', $sexoItems);
+        });
+
+        View::composer(['comitentes.fields'], function ($view) {
             $sexoItems = Sexo::pluck('Nombre_sexo','id')->toArray();
             $view->with('sexoItems', $sexoItems);
         });

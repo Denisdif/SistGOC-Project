@@ -75,7 +75,7 @@ class PersonalController extends AppBaseController
         $direccion->save();
         $personal = new Personal();
         $personal->NombrePersonal = $request->NombrePersonal ;
-        $personal->Apellido = $request->Apellido ;
+        $personal->ApellidoPersonal = $request->Apellido ;
         $personal->Sexo_id = $request->Sexo_id ;
         $personal->FechaNac = $request->FechaNac ;
         $personal->DNI = $request->DNI ;

@@ -66,12 +66,12 @@ class ComitenteDataTable extends DataTable
     {
         return [
             'NombreComitente',
-            'Apellido',
+            'ApellidoComitente',
             'Email',
             'Telefono',
-            'DNI',
-            'Sexo',
-            'Direccion_id'
+            'Cuit',
+            //'Sexo_id',
+            //'Direccion_id'
         ];
     }
 

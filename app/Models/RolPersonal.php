@@ -47,7 +47,6 @@ class RolPersonal extends Model
      */
     public static $rules = [
         'NombreRol' => 'required',
-        'Descripcion' => 'required'
     ];
 
     public function User()

@@ -68,7 +68,6 @@ class Proyecto extends Model
      * @var array
      */
     public static $rules = [
-        'Nombre_proyecto' => 'required'
     ];
 
     public function Proyecto_ambiente()

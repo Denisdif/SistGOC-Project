@@ -17,14 +17,15 @@ class CreateComitentesTable extends Migration
         Schema::create('comitentes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('NombreComitente');
-            $table->string('Apellido')                          ->nullable();
+            $table->string('ApellidoComitente')                 ->nullable();
             $table->string('Email')                             ->nullable();
             $table->integer('Telefono')                         ->nullable();
-            $table->integer('DNI')                              ->nullable();
-            $table->string('Sexo')                              ->nullable();
+            $table->integer('Cuit')                             ->nullable();
+            $table->bigInteger('Sexo_id')->unsigned()           ->nullable();
             $table->integer('Direccion_id')->unsigned()         ->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('Sexo_id')->references('id')->on('sexos');
             $table->foreign('Direccion_id')->references('id')->on('direccions');
         });
     }

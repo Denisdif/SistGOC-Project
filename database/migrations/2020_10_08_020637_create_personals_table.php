@@ -17,11 +17,11 @@ class CreatePersonalsTable extends Migration
         Schema::create('personals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('NombrePersonal');
-            $table->string('Apellido');
+            $table->string('ApellidoPersonal');
             $table->integer('Legajo')                       ->nullable();
             $table->date('FechaNac')                        ->nullable();
             $table->integer('DNI');
-            $table->integer('Telefono')                     ->nullable();
+            $table->bigInteger('Telefono')                  ->nullable();
             $table->integer('Direccion_id')->unsigned()     ->nullable();
             $table->integer('Sexo_id')->unsigned()          ->nullable();
             $table->timestamps();

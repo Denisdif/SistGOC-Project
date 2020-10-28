@@ -50,7 +50,7 @@
                                 @foreach ($listaPersonal as $item)
                                     @php
                                         if ($item->id == $asignacion->Personal_id){
-                                            echo $item->NombrePersonal;
+                                            echo $item->NombrePersonal." ".$item->ApellidoPersonal;
                                         }
                                     @endphp
                             @endforeach

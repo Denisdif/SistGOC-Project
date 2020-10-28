@@ -18,7 +18,7 @@ class CreateProyectosTable extends Migration
             $table->increments('id');
             $table->string('Nombre_proyecto');
             $table->integer('Tipo_proyecto_id')->unsigned() ->nullable();
-            $table->integer('Nro_plantas')                  ->nullable();
+            $table->bigInteger('Codigo_catastral')             ->nullable();
             $table->date('Fecha_inicio_Proy');
             $table->date('Fecha_fin_Proy');
             $table->integer('Director_id')->unsigned()      ->nullable();

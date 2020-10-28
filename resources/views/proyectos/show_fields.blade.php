@@ -16,10 +16,10 @@
     {{ $proyecto->Fecha_fin_Proy }} <br>
 
     {!! Form::label('Director_id', 'Director:') !!}
-    {{ $proyecto->director->Apellido }} {{ $proyecto->director->NombrePersonal }} <br>
+    {{ $proyecto->director->ApellidoPersonal }} {{ $proyecto->director->NombrePersonal }} <br>
 
     {!! Form::label('Comitente_id', 'Comitente:') !!}
-    {{ $proyecto->comitente->Apellido }} {{ $proyecto->comitente->NombreComitente }} <br>
+    {{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }} <br>
 
     {!! Form::label('Descripcion', 'Descripcion:') !!}
     {{ $proyecto->Descripcion }} <br><br>

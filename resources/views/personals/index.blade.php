@@ -30,7 +30,7 @@
                     <tbody id="Var1">
                         @foreach ($ListaPersonal as $personal)
                         <tr>
-                            <td>{{ $personal->NombrePersonal }} {{ $personal->Apellido }}</td>
+                            <td>{{ $personal->NombrePersonal }} {{ $personal->ApellidoPersonal }}</td>
                             <td>{{ $personal->DNI }}</td>
                             <td>{!! Form::open(['route' => ['personals.destroy', $personal->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>

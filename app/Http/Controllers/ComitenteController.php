@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\ComitenteDataTable;
 use App\Models\Proyecto;
+use App\Models\Comitente;
 use App\Http\Requests;
 use App\Http\Requests\CreateComitenteRequest;
 use App\Http\Requests\UpdateComitenteRequest;
@@ -52,9 +53,14 @@ class ComitenteController extends AppBaseController
      */
     public function store(CreateComitenteRequest $request)
     {
-        $input = $request->all();
-
-        $comitente = $this->comitenteRepository->create($input);
+        $comitente = new Comitente;
+            $comitente->NombreComitente = $request->NombreComitente;
+            $comitente->ApellidoComitente = $request->Apellido;
+            $comitente->Email = $request->Email;
+            $comitente->Telefono = $request->Telefono;
+            $comitente->Cuit = $request->Cuit;
+            $comitente->Sexo_id = $request->Sexo_id;
+            $comitente->save();
 
         Flash::success('Comitente saved successfully.');
 

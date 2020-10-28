@@ -2,10 +2,16 @@
     <h3>Datos del proyecto</h3>
 </div>
 
-<!-- Nombre Proyecto Field -->
+<!-- Nombre Proyecto Field
 <div class="form-group col-sm-6">
     {!! Form::label('Nombre_proyecto', 'Nombre:') !!}
     {!! Form::text('Nombre_proyecto', null, ['class' => 'form-control']) !!}
+</div> -->
+
+<!-- Codigo catastral Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Codigo_catastral', 'Código catastral:') !!}
+    {!! Form::number('Codigo_catastral', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Tipo Proyecto Field -->
@@ -62,17 +68,6 @@
     {!! Form::number('Comitente_id', null, ['class' => 'form-control']) !!}
 </div> -->
 
-<!-- Nro Plantas Field
-<div class="form-group col-sm-6">
-    {!! Form::label('Nro_plantas', 'Número de plantas del edificio:') !!}
-    <select name="Nro_plantas" class = 'form-control'>
-        <option value=1>Una</option>
-        <option value=2>Dos</option>
-        <option value=3>Tres</option>
-        <option value=4>Cuatro</option>
-    </select>
-</div> -->
-
 <!-- Descripcion Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('Descripcion', 'Descripción:') !!}
@@ -86,10 +81,10 @@
 
 <div class="form-group col-sm-12">
     {!! Form::label('IdComitente', 'Buscar comitente:') !!} <br>
-    <select id="SelectComitente" name="Comitente_id" class="js-example-basic-single form-group col-sm-12">
+    <select id="SelectComitente" name="Comitente_id" class="form-group col-sm-6">
         <option value=""></option>
         @foreach ($comitentes as $comitente)
-            <option value={{ $comitente->id }}>{{ $comitente->NombreComitente }} {{ $comitente->Apellido }}, {{ $comitente->DNI }}</option>
+            <option value={{ $comitente->id }}>{{ $comitente->NombreComitente }} {{ $comitente->ApellidoComitente }}, {{ $comitente->Cuit }}</option>
         @endforeach
     </select>
 </div>
@@ -118,16 +113,15 @@
     {!! Form::number('Telefono', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Dni Field -->
+<!-- Cuit Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('DNI', 'DNI:') !!}
-    {!! Form::number('DNI', null, ['class' => 'form-control']) !!}
+    {!! Form::label('Cuit', 'Cuit:') !!}
+    {!! Form::number('Cuit', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Sexo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Sexo', 'Sexo:') !!}
-    {!! Form::text('Sexo', null, ['class' => 'form-control']) !!}
+    {!! Form::select('Sexo_id', $sexoItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Direccion Id Field

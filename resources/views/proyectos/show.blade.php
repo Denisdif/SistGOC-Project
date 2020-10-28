@@ -160,7 +160,7 @@
                     <tbody>
                         @foreach ($Lista_personal as $Personal)
                         <tr>
-                            <td>{{ $Personal->NombrePersonal }} {{ $Personal->Apellido }}</td>
+                            <td>{{ $Personal->NombrePersonal }} {{ $Personal->ApellidoPersonal }}</td>
                             <td>{{ $Personal->cantTareas() }}</td>
                         </tr>
                         @endforeach

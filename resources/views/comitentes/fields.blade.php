@@ -22,16 +22,16 @@
     {!! Form::number('Telefono', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Dni Field -->
+<!-- Cuit Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('DNI', 'DNI:') !!}
-    {!! Form::number('DNI', null, ['class' => 'form-control']) !!}
+    {!! Form::label('Cuit', 'Cuit:') !!}
+    {!! Form::number('Cuit', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Sexo Field -->
+<!-- Sexo_id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Sexo', 'Sexo:') !!}
-    {!! Form::text('Sexo', null, ['class' => 'form-control']) !!}
+    {!! Form::select('Sexo_id', $sexoItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Direccion Id Field
