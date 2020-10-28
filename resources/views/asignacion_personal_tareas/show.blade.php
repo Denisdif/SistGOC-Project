@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('asignacion_personal_tareas.show_fields')
-                    <a href="{{ route('asignacionPersonalTareas.index') }}" class="btn btn-default">Back</a>
+                    <a href="javascript:history.back()" class="btn btn-default">Atrás</a>
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@
                                     {!! Form::label('rol', 'Rol:') !!}
                                     {{ $item->rol->NombreRol }} <br><br>
                     @endforeach
-                    <a href="{{ route('personals.index') }}" class="btn btn-default">Volver</a>
+                    <a href="javascript:history.back()" class="btn btn-default">Atrás</a>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('ambientes.show_fields')
-                    <a href="{{ route('ambientes.index') }}" class="btn btn-default">Back</a>
+                    <a href="javascript:history.back()" class="btn btn-default">Atrás</a>
                 </div>
             </div>
         </div>

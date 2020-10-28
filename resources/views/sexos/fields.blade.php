@@ -6,6 +6,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('sexos.index') }}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
+    <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
 </div>

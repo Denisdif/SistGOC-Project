@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('sexos.show_fields')
-                    <a href="{{ route('sexos.index') }}" class="btn btn-default">Back</a>
+                    <a href="javascript:history.back()" class="btn btn-default">Atrás</a>
                 </div>
             </div>
         </div>

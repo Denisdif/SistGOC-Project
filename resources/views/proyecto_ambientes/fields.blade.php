@@ -32,7 +32,7 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
-    <a href="{{ route('proyectos.show', $proyecto->id) }}" class="btn btn-default">Cancelar</a>
+    <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
 </div>
 
 

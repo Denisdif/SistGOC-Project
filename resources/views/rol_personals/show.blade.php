@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('rol_personals.show_fields')
-                    <a href="{{ route('rolPersonals.index') }}" class="btn btn-default">Back</a>
+                    <a href="javascript:history.back()" class="btn btn-default">Atrás</a>
                 </div>
             </div>
         </div>
