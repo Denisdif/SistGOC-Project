@@ -53,17 +53,19 @@ class EntregaController extends AppBaseController
      */
     public function store(Tarea $tarea, CreateEntregaRequest $request)
     {
-        $entrega = new Entrega;
-        $entrega->Archivo = $request->Archivo;
-        $entrega->Descripcion_entrega = $request->Descripcion_entrega;
-        $entrega->Tarea_id = $tarea->id;
-        $entrega->save();
+        $items = $request->file('archivos');
+
+        foreach ($items as $item) {
+            $entrega = new Entrega;
+            $name = time().$item->getClientOriginalName();
+            $item->move(public_path().'/EntregaArchivos/', $name);
+            $entrega->Archivo = "/EntregaArchivos/".$item;
+            $entrega->Tarea_id = $tarea->id;
+            $entrega->save();
+        }
 
         $tarea->Estado_tarea_id = 4; //Id "4" de estado tarea = Esperando revision
         $tarea->save();
-
-
-
 
         Flash::success('Entrega saved successfully.');
 

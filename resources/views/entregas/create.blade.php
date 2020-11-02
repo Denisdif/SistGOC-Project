@@ -11,7 +11,7 @@
         <div class="box box-danger">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['url' => "tareas/$tarea->id/entregas", 'files' => true]) !!}
+                    {!! Form::open(['url' => "tareas/$tarea->id/entregas", 'files' => true, 'enctype' => "multipart/form-data"]) !!}
 
                         @include('entregas.fields')
 

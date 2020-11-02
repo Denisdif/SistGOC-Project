@@ -1,7 +1,7 @@
 <!-- Archivo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Archivo', 'Archivo:') !!}
-    {!! Form::file('Archivo') !!}
+    <input class="form-control" type="file" name="archivos[]" multiple>
 </div>
 <div class="clearfix"></div>
 
