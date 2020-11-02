@@ -1,7 +1,7 @@
 <!-- Nombre Ambiente Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Nombre_ambiente', 'Nombre Ambiente:') !!}
-    {!! Form::text('Nombre_ambiente', null, ['class' => 'form-control']) !!}
+    {!! Form::text('Nombre_ambiente', old('Nombre_ambiente'), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Imagen Field -->

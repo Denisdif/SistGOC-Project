@@ -6,7 +6,9 @@
             Asignacion Personal Tarea
         </h1>
     </section>
+
     <div class="content">
+        @include('flash::message')
         @include('adminlte-templates::common.errors')
         <div class="box box-danger">
             <div class="box-body">

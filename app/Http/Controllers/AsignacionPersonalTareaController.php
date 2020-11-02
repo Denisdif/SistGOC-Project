@@ -11,6 +11,9 @@ use App\Repositories\AsignacionPersonalTareaRepository;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Tarea;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Redirector;
+use Exception;
+use Redirect;
 use Response;
 use Flash;
 
@@ -61,21 +64,27 @@ class AsignacionPersonalTareaController extends AppBaseController
      */
     public function store(Tarea $tarea, CreateAsignacionPersonalTareaRequest $request)
     {
-        $input = $request->all();
+        try {
+            $asignacionPersonalTarea = new AsignacionPersonalTarea;
+            $asignacionPersonalTarea->Personal_id = $request->Personal_id;
+            $asignacionPersonalTarea->Responsabilidad = $request->Responsabilidad;
+            $asignacionPersonalTarea->Tarea_id = $tarea->id;
+            $asignacionPersonalTarea->save();
+            $tarea->Estado_tarea_id = 2; //Id "2" de estado tarea = Asignada
+            $tarea->save();
 
-        $asignacionPersonalTarea = $this->asignacionPersonalTareaRepository->create($input);
+            Flash::success('Asignacion Personal Tarea saved successfully.');
 
-        $asignacionPersonalTarea->Tarea_id = $tarea->id;
+            return redirect(route('tareas.show',$tarea->id));
 
-        $tarea->Estado_tarea_id = 2; //Id "2" de estado tarea = Asignada
+        } catch (Exception $e) {
 
-        $tarea->save();
+            Flash::error('El usuario seleccionado ya fue asignado a esta tarea');
 
-        $asignacionPersonalTarea->save();
+            return Redirect::back();
+        }
 
-        Flash::success('Asignacion Personal Tarea saved successfully.');
 
-        return redirect(route('tareas.show',$tarea->id));
     }
 
     /**
@@ -153,30 +162,18 @@ class AsignacionPersonalTareaController extends AppBaseController
     public function destroy($id)
     {
 
-        /* INICIO obtencion del id del proyecto actual*/
-
-        $lista = AsignacionPersonalTarea::all();
-        $idtarea = 0;
-        foreach ($lista as $item) {
-            if ($item->id == $id){
-                $idtarea = $item->Tarea_id;
-            }
-        }
-
-        /* FIN obtencion del id del proyecto actual*/
-
         $asignacionPersonalTarea = $this->asignacionPersonalTareaRepository->find($id);
 
         if (empty($asignacionPersonalTarea)) {
             Flash::error('Asignacion Personal Tarea not found');
 
-            return redirect(route('tareas.show',$idtarea));
+            return redirect()->back();
         }
 
         $this->asignacionPersonalTareaRepository->delete($id);
 
         Flash::success('Asignacion Personal Tarea deleted successfully.');
 
-        return redirect(route('tareas.show',$idtarea));
+        return redirect()->back();
     }
 }

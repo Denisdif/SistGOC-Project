@@ -86,6 +86,9 @@ Route::get('tareas/{tarea}/edit',                    'TareaController@edit')    
 Route::put('tareas/{id}',                            'TareaController@update')         ->name('tareas.update');
 Route::delete('tareas/{id}',                         'TareaController@destroy')        ->name('tareas.destroy');
 
+Route::get('tareas/{tarea}/aprobar',                 'TareaController@aprobar')        ->name('tareas.aprobar');
+Route::get('tareas/{tarea}/desaprobar',              'TareaController@desaprobar')     ->name('tareas.desaprobar');
+
 //Rutas de asignaciones de tareas
 
 //Route::resource('tareas.asignacionPersonalTareas', 'AsignacionPersonalTareaController');

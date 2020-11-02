@@ -4,11 +4,17 @@
     {!! Form::text('Nombre_tarea', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Fecha Inicio Field
+<!-- Tipo Tarea Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Fecha_inicio', 'Fecha Inicio:') !!}
+    {!! Form::label('Tipo_tarea_id', 'Tipo de Tarea:') !!}
+    {!! Form::select('Tipo_tarea_id', $tipo_tareaItems, null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Fecha Inicio Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Fecha_inicio', 'Fecha límite de inicio:') !!}
     {!! Form::date('Fecha_inicio', null, ['class' => 'form-control','id'=>'Fecha_inicio']) !!}
-</div>-->
+</div>
 
 @push('scripts')
     <script type="text/javascript">
@@ -19,25 +25,9 @@
     </script>
 @endpush
 
-<!-- Tipo Tarea Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Tipo_tarea_id', 'Tipo de Tarea:') !!}
-    {!! Form::select('Tipo_tarea_id', $tipo_tareaItems, null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Prioridad Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Prioridad', 'Prioridad:') !!}
-    <select name="prioridad" class="form-control">
-        <option value="Baja">Baja</option>
-        <option value="Media">Media</option>
-        <option value="Alta">Alta</option>
-      </select>
-</div>
-
 <!-- Fecha Fin Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Fecha_fin', 'Fecha límite:') !!}
+    {!! Form::label('Fecha_fin', 'Fecha límite de finalización:') !!}
     {!! Form::date('Fecha_fin', null, ['class' => 'form-control','id'=>'Fecha_fin']) !!}
 </div>
 
@@ -49,6 +39,16 @@
         })
     </script>
 @endpush
+
+<!-- Prioridad Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Prioridad', 'Prioridad:') !!}
+    <select name="prioridad" class="form-control">
+        <option value="Baja">Baja</option>
+        <option value="Media">Media</option>
+        <option value="Alta">Alta</option>
+      </select>
+</div>
 
 <!-- Valor Field
 <div class="form-group col-sm-6">
@@ -64,7 +64,7 @@
 
 <!-- Descripcion Tarea Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('Descripcion_tarea', 'Descripcion Tarea:') !!}
+    {!! Form::label('Descripcion_tarea', 'Descripción de la tarea:') !!}
     {!! Form::textarea('Descripcion_tarea', null, ['class' => 'form-control']) !!}
 </div>
 

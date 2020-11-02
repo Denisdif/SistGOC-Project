@@ -16,6 +16,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateTareaRequest;
 use App\Http\Requests\UpdateTareaRequest;
 use App\Repositories\TareaRepository;
+use Illuminate\Support\Facades\Auth;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -92,7 +93,26 @@ class TareaController extends AppBaseController
             return redirect(route('tareas.index'));
         }
 
+        $user = Auth::user();
+
         $asignaciones = AsignacionPersonalTarea::all()->where('Tarea_id','=', $id);
+
+        //Se cambia el estado de la tarea y la fecha de inicio cuando el desarrollador visualiza los datos
+
+        if ($tarea->Estado_tarea_id < 3) {
+            foreach ($asignaciones as $asignacion) {
+                if ((($asignacion->Responsabilidad == "Desarrollador")) and (($asignacion->Personal_id) == ($user->Personal_id))){
+                    $tarea->Estado_tarea_id = 3;
+                    getdate($fechaActual = time());
+                    $tarea->Fecha_inicio = $fechaActual;
+                    $tarea->save();
+                }
+            }
+        }
+
+
+        //-----------------------------------------------------------------------------
+
         $comentarios = Comentario::all()->where('Tarea_id','=', $id);
         $entregas = Entrega::all()->where('Tarea_id','=', $id);
         $listaPersonal = Personal::all();
@@ -158,7 +178,7 @@ class TareaController extends AppBaseController
     public function destroy($id)
     {
 
-         /* INICIO obtencion del id del proyecto actual*/
+         /* INICIO obtencion del id del proyecto actual
 
          $lista = Tarea::all();
          $idProyecto = 0;
@@ -168,7 +188,7 @@ class TareaController extends AppBaseController
              }
          }
 
-         /* FIN obtencion del id del proyecto actual*/
+         FIN obtencion del id del proyecto actual*/
 
         $tarea = $this->tareaRepository->find($id);
 
@@ -176,13 +196,39 @@ class TareaController extends AppBaseController
 
             Flash::error('Tarea not found');
 
-            return redirect(route('proyectos.show', $idProyecto, compact('proyecto')));
+            return redirect()->back();
+
+            //return redirect(route('proyectos.show', $idProyecto, compact('proyecto')));
         }
 
         $this->tareaRepository->delete($id);
 
+        $asignaciones = AsignacionPersonalTarea::all()->where('Tarea_id','=', $id);
+
+        foreach ($asignaciones as $asignacion) {
+            $asignacion->delete($asignacion->Tarea_id);
+        }
+
         Flash::success('Tarea deleted successfully.');
 
-        return redirect(route('proyectos.show', $idProyecto, compact('proyecto')));
+        return redirect()->back();
+
+        //return redirect(route('proyectos.show', $idProyecto, compact('proyecto')));
+    }
+
+    public function aprobar($id)
+    {
+        $tarea = $this->tareaRepository->find($id);
+        $tarea->Estado_tarea_id = 6;
+        $tarea->save();
+        return redirect()->back();
+    }
+
+    public function desaprobar($id)
+    {
+        $tarea = $this->tareaRepository->find($id);
+        $tarea->Estado_tarea_id = 5;
+        $tarea->save();
+        return redirect()->back();
     }
 }

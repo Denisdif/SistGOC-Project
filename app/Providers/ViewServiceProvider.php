@@ -14,6 +14,7 @@ use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
 use App\Models\Proyecto;
 use App\Models\Ambiente;
+use App\Models\AsignacionPersonalTarea;
 use App\Models\Comitente;
 use App\Models\Sexo;
 use App\Models\Tipo_proyecto;
@@ -92,9 +93,9 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('ambienteItems', $ambienteItems);
         });
 
-        View::composer(['consideracion_ambientes.fields'], function ($view) {
-            $ambienteItems = Ambiente::pluck('Nombre_ambiente','id')->toArray();
-            $view->with('ambienteItems', $ambienteItems);
+        View::composer(['asignacion_personal_tareas.fields'], function ($view) {
+            $asignacionItems = AsignacionPersonalTarea::all();
+            $view->with('asignacionItems', $asignacionItems);
         });
 
         View::composer(['users.fields'], function ($view) {
@@ -113,6 +114,11 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         View::composer(['comitentes.fields'], function ($view) {
+            $sexoItems = Sexo::pluck('Nombre_sexo','id')->toArray();
+            $view->with('sexoItems', $sexoItems);
+        });
+
+        View::composer(['personals.fields'], function ($view) {
             $sexoItems = Sexo::pluck('Nombre_sexo','id')->toArray();
             $view->with('sexoItems', $sexoItems);
         });

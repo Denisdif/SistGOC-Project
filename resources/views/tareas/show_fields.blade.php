@@ -1,13 +1,10 @@
 <div class="col-md-4 mb-3">
     <h2>Datos de la tarea</h2><br>
-    {!! Form::label('Nombre_tarea', 'Nombre Tarea:') !!}
+    {!! Form::label('Nombre_tarea', 'Nombre de la Tarea:') !!}
     {{ $tarea->Nombre_tarea }} <br>
 
     {!! Form::label('Proridad', 'Prioridad:') !!}
     {{ $tarea->prioridad }} <br>
-
-    {!! Form::label('Fecha_fin', 'Fecha límite de finalización:') !!}
-    {{ $tarea->Fecha_fin }} <br>
 
     {!! Form::label('Tipo_tarea', 'Tipo de tarea:') !!}
     {{ $tarea->tipo_tarea->Nombre_tipo_tarea }} <br>
@@ -15,7 +12,16 @@
     {!! Form::label('Estado_tarea', 'Estado de tarea:') !!}
     {{ $tarea->estado_tarea->Nombre_estado_tarea }} <br>
 
-    {!! Form::label('Descripcion', 'Descripcion:') !!}
+    {!! Form::label('Fecha_inicio', 'Fecha límite de inicio:') !!}
+    {{ $tarea->Fecha_inicio }} <br>
+
+    {!! Form::label('Fecha_fin', 'Fecha límite de finalización:') !!}
+    {{ $tarea->Fecha_fin }} <br>
+
+    {!! Form::label('Estimacion', 'Cantidad de horas de desarrollo estimadas:') !!}
+    {{ $tarea->Valor}} <br>
+
+    {!! Form::label('Descripcion', 'Descripción:') !!}
     {{ $tarea->Descripcion_tarea }} <br><br>
 
 </div>

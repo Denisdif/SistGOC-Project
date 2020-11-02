@@ -78,7 +78,7 @@
     <section class="content-header">
         <h1 style= "color: aliceblue">
             Entregas
-            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/entregas/create">Add New</a>
+            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/entregas/create">Añadir entrega</a>
         </h1>
     </section>
 
@@ -110,7 +110,7 @@
     <section class="content-header">
         <h1 style= "color: aliceblue">
             Comentarios
-            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/comentarios/create">Add New</a>
+            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/comentarios/create">Añadir comentario</a>
         </h1>
     </section>
 
@@ -136,6 +136,8 @@
         </div>
     </div>
     {{-- Fin DataTable Comentarios --}}
+    <a href="/tareas/{{$tarea->id}}/aprobar" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px">Aprobar</a>
+    <a href="/tareas/{{$tarea->id}}/desaprobar" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px">Desaprobar</a>
     <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px">Volver</a>
 
 @endsection

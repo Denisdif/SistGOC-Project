@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\EntregaDataTable;
 use App\Models\Tarea;
+use App\Models\Entrega;
 use App\Http\Requests;
 use App\Http\Requests\CreateEntregaRequest;
 use App\Http\Requests\UpdateEntregaRequest;
@@ -52,13 +53,17 @@ class EntregaController extends AppBaseController
      */
     public function store(Tarea $tarea, CreateEntregaRequest $request)
     {
-        $input = $request->all();
-
-        $entrega = $this->entregaRepository->create($input);
-
+        $entrega = new Entrega;
+        $entrega->Archivo = $request->Archivo;
+        $entrega->Descripcion_entrega = $request->Descripcion_entrega;
         $entrega->Tarea_id = $tarea->id;
-
         $entrega->save();
+
+        $tarea->Estado_tarea_id = 4; //Id "4" de estado tarea = Esperando revision
+        $tarea->save();
+
+
+
 
         Flash::success('Entrega saved successfully.');
 
