@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Carbon\Carbon;
 
 class TareaController extends AppBaseController
 {
@@ -29,6 +30,7 @@ class TareaController extends AppBaseController
     public function __construct(TareaRepository $tareaRepo)
     {
         $this->tareaRepository = $tareaRepo;
+        Carbon::setLocale('es');
     }
 
     /**
@@ -61,13 +63,15 @@ class TareaController extends AppBaseController
      */
     public function store(Proyecto $proyecto, CreateTareaRequest $request)
     {
-        $input = $request->all();
 
-        $tarea = $this->tareaRepository->create($input);
-
+        $tarea = new Tarea;
+        $tarea->Nombre_tarea = $request->Nombre_tarea;
+        $tarea->Tipo_tarea_id = $request->Tipo_tarea_id;
+        $tarea->Fecha_limite = $request->Fecha_limite;
+        $tarea->Prioridad = $request->prioridad;
+        $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = $proyecto->id;
-
-        $tarea->Estado_tarea_id = 1;
+        $tarea->Estado_tarea_id = 1; // 1 id estado tarea = creada
 
         $tarea->save();
 

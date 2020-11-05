@@ -31,56 +31,7 @@
         </div>
     </div>
 
-    <section class="content-header">
-        <h1 style= "color: aliceblue">
-            Ambientes del proyecto
-            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Agregar ambientes</a>
-        </h1>
-    </section>
 
-
-    {{-- Inicio de DataTable de ambientes del proyecto --}}
-
-
-    <div class="content-header">
-        <div class="box box-danger">
-            <div class="box-body">
-                <table id="Nose" class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Cantidad</th>
-                            <th>Descripción</th>
-                            <th>Imagen</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($ambientesDelProyecto as $ambiente)
-                        <tr>
-                            <td>{{ $ambiente->ambiente->Nombre_ambiente }}</td>
-                            <td>{{ $ambiente->Cantidad }}</td>
-                            <td>{{ $ambiente->ambiente->Descripcion }}</td>
-                            <td> <img src="{{ $ambiente->ambiente->Imagen }}" class="card-img" width="100" height="100"> </td>
-                            <td>{!! Form::open(['route' => ['proyectoAmbientes.destroy', $ambiente->id], 'method' => 'delete']) !!}
-                                <div class='btn-group'>
-                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
-                                        'type' => 'submit',
-                                        'class' => 'btn btn-danger btn-xs',
-                                        'onclick' => "return confirm('Esta seguro que desea eliminar este ambiente?')"
-                                    ]) !!}
-                                </div>
-                                {!! Form::close() !!}
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    {{-- Fin de DataTable de ambientes del proyecto --}}
 
     <section class="content-header">
         <h1 style= "color: aliceblue">
@@ -102,6 +53,7 @@
                             <th>Estado</th>
                             <th>Tipo de tarea</th>
                             <th>Fecha limite</th>
+                            <th>Duración</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -112,7 +64,8 @@
                             <td>{{ $tarea->prioridad }}</td>
                             <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
                             <td>{{ $tarea->tipo_tarea->Nombre_tipo_tarea }}</td>
-                            <td>{{ $tarea->Fecha_fin }}</td>
+                            <td>{{ $tarea->Fecha_limite->diffForHumans() }}</td>
+                            <td>Cantidad de horas</td>
                             <td>{!! Form::open(['route' => ['tareas.destroy', $tarea->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
                                     <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
@@ -168,12 +121,66 @@
                 </table>
             </div>
         </div>
-        <a href="{{ route('proyectos.index') }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px ">Volver</a>
+
+        </div>
+
+        {{-- Fin de DataTable de Personal del proyecto --}}
+
+    <section class="content-header">
+        <h1 style= "color: aliceblue">
+            Ambientes del proyecto
+            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Agregar ambientes</a>
+        </h1>
+    </section>
+
+
+    {{-- Inicio de DataTable de ambientes del proyecto --}}
+
+
+    <div class="content-header">
+        <div class="box box-danger">
+            <div class="box-body">
+                <table id="Nose" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>Descripción</th>
+                            <th>Imagen</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($ambientesDelProyecto as $ambiente)
+                        <tr>
+                            <td>{{ $ambiente->ambiente->Nombre_ambiente }}</td>
+                            <td>{{ $ambiente->Cantidad }}</td>
+                            <td>{{ $ambiente->ambiente->Descripcion }}</td>
+                            <td> <img src="{{ $ambiente->ambiente->Imagen }}" class="card-img" width="100" height="100"> </td>
+                            <td>{!! Form::open(['route' => ['proyectoAmbientes.destroy', $ambiente->id], 'method' => 'delete']) !!}
+                                <div class='btn-group'>
+                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
+                                        'type' => 'submit',
+                                        'class' => 'btn btn-danger btn-xs',
+                                        'onclick' => "return confirm('Esta seguro que desea eliminar este ambiente?')"
+                                    ]) !!}
+                                </div>
+                                {!! Form::close() !!}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
+    {{-- Fin de DataTable de ambientes del proyecto --}}
+    <a href="{{ route('proyectos.index') }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px ">Volver</a>
+    </div>
 
-    {{-- Fin de DataTable de Personal del proyecto --}}
+
+
 
 </div>
 @endsection

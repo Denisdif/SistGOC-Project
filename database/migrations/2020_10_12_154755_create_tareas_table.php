@@ -19,6 +19,7 @@ class CreateTareasTable extends Migration
             $table->string('Nombre_tarea');
             $table->date('Fecha_inicio')                        ->nullable();
             $table->date('Fecha_fin')                           ->nullable();
+            $table->date('Fecha_limite')                        ->nullable();
             $table->double('Valor')                             ->nullable();
             $table->string('Correcciones')                      ->nullable();
             $table->text('Descripcion_tarea')                   ->nullable();

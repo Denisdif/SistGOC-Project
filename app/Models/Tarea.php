@@ -10,6 +10,8 @@ use App\Models\Entrega;
 use App\Models\Proyecto;
 use App\Models\AsignacionPersonalTarea;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
+Carbon::setLocale('es');
 
 /**
  * Class Tarea
@@ -26,6 +28,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $Tipo_tarea_id
  * @property integer $Estado_tarea_id
  */
+
+
 class Tarea extends Model
 {
     use SoftDeletes;
@@ -41,6 +45,7 @@ class Tarea extends Model
         'Nombre_tarea',
         'Fecha_inicio',
         'Fecha_fin',
+        'Fecha_limite',
         'Valor',
         'Correcciones',
         'Descripcion_tarea',
@@ -60,6 +65,7 @@ class Tarea extends Model
         'Nombre_tarea' => 'string',
         'Fecha_inicio' => 'date',
         'Fecha_fin' => 'date',
+        'Fecha_limite' => 'date',
         'Valor' => 'double',
         'Correcciones' => 'string',
         'Descripcion_tarea' => 'string',

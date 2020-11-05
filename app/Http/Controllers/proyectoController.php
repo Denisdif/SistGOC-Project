@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 use Response;
 use Flash;
 use App\Http\Requests;
+use Carbon\Carbon;
 
 class ProyectoController extends AppBaseController
 {
@@ -66,6 +67,7 @@ class ProyectoController extends AppBaseController
         $proyecto = new Proyecto;
         $proyecto->Nombre_proyecto = "Nuevo Proyecto";
         $proyecto->Tipo_proyecto_id = $request->Tipo_proyecto_id;
+        $proyecto->Fecha_inicio_Proy = Carbon::now();
         $proyecto->Fecha_fin_Proy = $request->Fecha_fin_Proy;
         $proyecto->Descripcion = $request->Descripcion;
 

@@ -10,7 +10,7 @@
     {!! Form::select('Tipo_tarea_id', $tipo_tareaItems, null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Fecha Inicio Field -->
+<!-- Fecha Inicio Field
 <div class="form-group col-sm-6">
     {!! Form::label('Fecha_inicio', 'Fecha límite de inicio:') !!}
     {!! Form::date('Fecha_inicio', null, ['class' => 'form-control','id'=>'Fecha_inicio']) !!}
@@ -23,17 +23,17 @@
             useCurrent: false
         })
     </script>
-@endpush
+@endpush -->
 
 <!-- Fecha Fin Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Fecha_fin', 'Fecha límite de finalización:') !!}
-    {!! Form::date('Fecha_fin', null, ['class' => 'form-control','id'=>'Fecha_fin']) !!}
+    {!! Form::date('Fecha_limite', null, ['class' => 'form-control','id'=>'Fecha_limite']) !!}
 </div>
 
 @push('scripts')
     <script type="text/javascript">
-        $('#Fecha_fin').datetimepicker({
+        $('#Fecha_limite').datetimepicker({
             format: 'YYYY-MM-DD HH:mm:ss',
             useCurrent: false
         })
