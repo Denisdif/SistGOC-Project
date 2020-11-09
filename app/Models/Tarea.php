@@ -10,7 +10,7 @@ use App\Models\Entrega;
 use App\Models\Proyecto;
 use App\Models\AsignacionPersonalTarea;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 Carbon::setLocale('es');
 
 /**
@@ -113,5 +113,30 @@ class Tarea extends Model
     public function comentarios()
     {
         return $this->hasMany(Comentario::class);
+    }
+
+    public function duracionEstimadaReal()
+    {
+        $tareas = Tarea::all();
+        $suma = 0;
+        $div = 0;
+        foreach ($tareas as $tarea) {
+            if ($tarea->Tipo_tarea_id==$this->Tipo_tarea_id) {
+                if ($tarea->Fecha_fin != null) {
+                    $inicio = new Carbon($tarea->Fecha_inicio);
+                    $fin = new Carbon($tarea->Fecha_fin);
+                    $suma += ($inicio->diffInMinutes($fin));
+
+                    $div += 1;
+                  }
+            }
+        }
+        if ($div != 0) {
+            $resul = $suma / $div;
+            $resul = $resul / 60;
+            return $resul;
+        } else {
+            return 5;
+        }
     }
 }

@@ -114,7 +114,7 @@
                         @foreach ($Lista_personal as $Personal)
                         <tr>
                             <td>{{ $Personal->NombrePersonal }} {{ $Personal->ApellidoPersonal }}</td>
-                            <td>{{ $Personal->cantTareas() }}</td>
+                            <td>{{ $Personal->cantTareas2() }}</td>
                         </tr>
                         @endforeach
                     </tbody>

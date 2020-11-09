@@ -8,6 +8,7 @@ use App\Models\Personal;
 use App\Models\Tarea;
 use App\Models\Comitente;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 /**
  * Class Proyecto
@@ -92,5 +93,13 @@ class Proyecto extends Model
     public function comitente()
     {
         return $this->belongsTo( Comitente::class ,'Comitente_id');
+    }
+
+    public function duracionEstimadaReal()
+    {
+        $inicio = new Carbon($this->Fecha_inicio_Proy);
+        $fin = ($this->Fecha_fin_Proy);
+        $suma = ($inicio->diffInMinutes($fin));
+        return $suma;
     }
 }

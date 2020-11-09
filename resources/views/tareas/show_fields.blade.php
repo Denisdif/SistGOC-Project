@@ -19,7 +19,7 @@
     {{ $tarea->Fecha_fin }} <br>
 
     {!! Form::label('Estimacion', 'Cantidad de horas de desarrollo estimadas:') !!}
-    {{ $tarea->Valor}} <br>
+    {{ $tarea->duracionEstimadaReal($tarea->Tipo_tarea_id)}} <br>
 
     {!! Form::label('Descripcion', 'Descripción:') !!}
     {{ $tarea->Descripcion_tarea }} <br><br>

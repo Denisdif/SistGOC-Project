@@ -112,4 +112,16 @@ class Personal extends Model
         }
         return $cantTareas;
     }
+
+    public function cantTareas2(){
+
+        $listaAsignaciones = $this->asignacion;
+        $cantTareas = 0;
+        foreach ($listaAsignaciones as $asignacion) {
+
+                $cantTareas++;
+
+        }
+        return $cantTareas;
+    }
 }
