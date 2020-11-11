@@ -19,15 +19,17 @@ class CreateProyectosTable extends Migration
             $table->string('Nombre_proyecto');
             $table->integer('Tipo_proyecto_id')->unsigned() ->nullable();
             $table->string('Codigo_catastral')              ->nullable();
-            $table->dateTime('Fecha_inicio_Proy');
-            $table->dateTime('Fecha_fin_Proy');
+            $table->dateTime('Fecha_inicio_Proy')           ->nullable();
+            $table->dateTime('Fecha_fin_Proy')              ->nullable();
             $table->integer('Director_id')->unsigned()      ->nullable();
             $table->integer('Comitente_id')->unsigned()     ->nullable();
+            $table->integer('Direccion_id')->unsigned()     ->nullable();
             $table->text('Descripcion')                     ->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('Director_id')->references('id')->on('personals');
             $table->foreign('Tipo_proyecto_id')->references('id')->on('tipo_proyectos');
+            $table->foreign('Direccion_id')->references('id')->on('direccions');
             $table->foreign('Comitente_id')->references('id')->on('comitentes');
         });
     }

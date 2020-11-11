@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\ProyectoDataTable;
 use App\Models\Tarea;
 use App\Models\Proyecto;
+use App\Models\Direccion;
 use App\Models\Personal;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Comitente;
@@ -17,6 +18,7 @@ use App\Http\Requests\UpdateProyectoRequest;
 use App\Repositories\ProyectoRepository;
 use App\Models\Proyecto_ambiente;
 use App\Http\Controllers\AppBaseController;
+use Cardumen\ArgentinaProvinciasLocalidades\Models\Pais;
 use Illuminate\Support\Facades\Auth;
 use Response;
 use Flash;
@@ -52,7 +54,8 @@ class ProyectoController extends AppBaseController
      */
     public function create()
     {
-        return view('proyectos.create');
+        $paises = Pais::all();
+        return view('proyectos.create', compact('paises'));
     }
 
     /**
@@ -64,12 +67,22 @@ class ProyectoController extends AppBaseController
      */
     public function store(CreateProyectoRequest $request)
     {
+        $direccion = new Direccion();
+        $direccion->Calle = $request->Calle ;
+        $direccion->Altura = $request->Altura ;
+        $direccion->Codigo_postal = $request->Codigo_postal ;
+        $direccion->Pais_id = $request->pais_id ;
+        $direccion->Provincia_id = $request->provincia_id ;
+        $direccion->Localidad_id = $request->localidad_id ;
+        $direccion->save();
         $proyecto = new Proyecto;
-        $proyecto->Nombre_proyecto = "Nuevo Proyecto";
+        $proyecto->Nombre_proyecto = "Nuevo Proyecto".$proyecto->id;
+        $proyecto->Codigo_catastral = $request->Codigo_de_proyecto;
         $proyecto->Tipo_proyecto_id = $request->Tipo_proyecto_id;
         $proyecto->Fecha_inicio_Proy = Carbon::now();
         $proyecto->Fecha_fin_Proy = $request->Fecha_fin_Proy;
         $proyecto->Descripcion = $request->Descripcion;
+        $proyecto->direccion_id = $direccion->id ;
 
         if ($request->Comitente_id == "") {
 

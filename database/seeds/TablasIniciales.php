@@ -9,6 +9,7 @@ use App\Models\Personal;
 use App\Models\Proyecto;
 use App\Models\ambiente;
 use App\Models\Comitente;
+use App\Models\Direccion;
 use App\Models\Tarea;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Sexo;
@@ -56,6 +57,15 @@ class TablasIniciales extends Seeder
         $sexo->Nombre_sexo = "Indefinido";
         $sexo->save();
 
+        $direccion = new Direccion();
+        $direccion->Calle = "M.M.Guemes" ;
+        $direccion->Altura = 125 ;
+        $direccion->Codigo_postal = 3357 ;
+        $direccion->Pais_id = 1 ;
+        $direccion->Provincia_id = 15 ;
+        $direccion->Localidad_id = 814 ;
+        $direccion->save();
+
 
 
         $personal = new Personal;
@@ -65,6 +75,7 @@ class TablasIniciales extends Seeder
         $personal->DNI = 41303635;
         $personal->Telefono = "3754524949";
         $personal->Sexo_id = 1;
+        $personal->direccion_id = 1;
         $personal->save();
 
         $personal = new Personal;
@@ -74,6 +85,7 @@ class TablasIniciales extends Seeder
         $personal->DNI = 35303635;
         $personal->Telefono = "3755858588";
         $personal->Sexo_id = 1;
+        $personal->direccion_id = 1;
         $personal->save();
 
         $personal = new Personal;
@@ -83,6 +95,7 @@ class TablasIniciales extends Seeder
         $personal->DNI = 33303635;
         $personal->Telefono = "1758524949";
         $personal->Sexo_id = 1;
+        $personal->direccion_id = 1;
         $personal->save();
 
         $personal = new Personal;
@@ -92,6 +105,7 @@ class TablasIniciales extends Seeder
         $personal->DNI = 40315635;
         $personal->Telefono = "1737524949";
         $personal->Sexo_id = 2;
+        $personal->direccion_id = 1;
         $personal->save();
 
         $personal = new Personal;
@@ -101,6 +115,7 @@ class TablasIniciales extends Seeder
         $personal->DNI = 40303635;
         $personal->Telefono = "3754528049";
         $personal->Sexo_id = 2;
+        $personal->direccion_id = 1;
         $personal->save();
 
         $personal = new Personal;
@@ -110,6 +125,7 @@ class TablasIniciales extends Seeder
         $personal->DNI = 34303635;
         $personal->Telefono = "2758524949";
         $personal->Sexo_id = 2;
+        $personal->direccion_id = 1;
         $personal->save();
 
 
@@ -334,6 +350,7 @@ class TablasIniciales extends Seeder
         $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
         $proyecto->Comitente_id = 1;
         $proyecto->Director_id = 1;
+        $proyecto->direccion_id = 1;
         $proyecto->save();
 
         $proyecto = new Proyecto;
@@ -345,6 +362,7 @@ class TablasIniciales extends Seeder
         $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
         $proyecto->Comitente_id = 2;
         $proyecto->Director_id = 1;
+        $proyecto->direccion_id = 1;
         $proyecto->save();
 
         $proyecto = new Proyecto;
@@ -356,6 +374,7 @@ class TablasIniciales extends Seeder
         $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
         $proyecto->Comitente_id = 3;
         $proyecto->Director_id = 1;
+        $proyecto->direccion_id = 1;
         $proyecto->save();
 
         $proyecto = new Proyecto;
@@ -367,6 +386,7 @@ class TablasIniciales extends Seeder
         $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
         $proyecto->Comitente_id = 4;
         $proyecto->Director_id = 1;
+        $proyecto->direccion_id = 1;
         $proyecto->save();
 
         $proyecto = new Proyecto;
@@ -378,6 +398,7 @@ class TablasIniciales extends Seeder
         $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
         $proyecto->Comitente_id = 1;
         $proyecto->Director_id = 1;
+        $proyecto->direccion_id = 1;
         $proyecto->save();
 
 

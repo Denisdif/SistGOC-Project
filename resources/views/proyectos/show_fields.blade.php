@@ -18,8 +18,14 @@
     {!! Form::label('Director_id', 'Director:') !!}
     {{ $proyecto->director->ApellidoPersonal }} {{ $proyecto->director->NombrePersonal }} <br>
 
+    {!! Form::label('Comitente_id', 'Comitente:') !!}
+    {{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }} <br>
+
     {!! Form::label('Estimacion', 'Cantidad de horas de desarrollo estimadas:') !!}
     {{ $proyecto->duracionEstimadaReal()}} <br>
+
+    {!! Form::label('Domicilio', 'Domicilio:') !!}
+    {{ $proyecto->direccion->Calle}} {{ $proyecto->direccion->Altura}}, {{ $proyecto->direccion->localidad->localidad}}, {{ $proyecto->direccion->provincia->provincia}}, {{ $proyecto->direccion->pais->pais}} <br>
 
     {!! Form::label('Descripcion', 'Descripcion:') !!}
     {{ $proyecto->Descripcion }} <br><br>

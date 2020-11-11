@@ -7,6 +7,7 @@ use App\Models\Tipo_proyecto;
 use App\Models\Personal;
 use App\Models\Tarea;
 use App\Models\Comitente;
+use App\Models\Direccion;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
@@ -95,10 +96,15 @@ class Proyecto extends Model
         return $this->belongsTo( Comitente::class ,'Comitente_id');
     }
 
+    public function direccion(){
+
+        return $this->belongsTo(Direccion::class, 'Direccion_id');
+    }
+
     public function duracionEstimadaReal()
     {
         $inicio = new Carbon($this->Fecha_inicio_Proy);
-        $fin = ($this->Fecha_fin_Proy);
+        $fin = new Carbon($this->Fecha_fin_Proy);
         $suma = ($inicio->diffInMinutes($fin));
         return $suma;
     }

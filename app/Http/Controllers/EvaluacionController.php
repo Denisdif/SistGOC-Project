@@ -8,10 +8,12 @@ use App\Http\Requests;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateEvaluacionRequest;
 use App\Http\Requests\UpdateEvaluacionRequest;
+use App\Models\Evaluacion;
 use App\Repositories\EvaluacionRepository;
 use Flash;
 use Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class EvaluacionController extends AppBaseController
 {
@@ -53,16 +55,12 @@ class EvaluacionController extends AppBaseController
      */
     public function store(Personal $personal, CreateEvaluacionRequest $request)
     {
-        $input = $request->all();
-
-        $evaluacion = $this->evaluacionRepository->create($input);
-
-        $evaluacion->Personal_id = $personal->id;
-
         $user = Auth::user();
-
+        $evaluacion = new Evaluacion;
+        $evaluacion->Fecha_fin = new Carbon($request->Fecha_fin);
+        $evaluacion->Fecha_inicio = new Carbon($request->Fecha_inicio);
+        $evaluacion->Personal_id = $personal->id;
         $evaluacion->Evaluador_id = $user->Personal_id;
-
         $evaluacion->save();
 
         Flash::success('Evaluacion saved successfully.');

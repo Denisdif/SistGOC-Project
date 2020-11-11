@@ -432,6 +432,54 @@
 
 <script>
     $(document).ready(function(){
+        $('#TipoComitente').change(function(){
+            Tipo = $('#TipoComitente').val();
+            if (Tipo==1) {
+                $('#EtiquetaOcultaSexo').removeAttr('style','display: none');
+                $("#CampoOcultoSexo").val("");
+                $('#CampoOcultoSexo').removeAttr('style','display: none');
+                $('#EtiquetaOcultaApellido').removeAttr('style','display: none');
+                $("#CampoOcultoApellido").val("");
+                $('#CampoOcultoApellido').removeAttr('style','display: none');
+
+            }else{
+                $('#EtiquetaOcultaSexo').attr('style','display: none');
+                $("#CampoOcultoSexo").val("");
+                $('#CampoOcultoSexo').attr('style','display: none');
+                $('#EtiquetaOcultaApellido').attr('style','display: none');
+                $("#CampoOcultoApellido").val("");
+                $('#CampoOcultoApellido').attr('style','display: none');
+
+            };
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#CargarComitente').on('click',function(){
+            $('#esconder').removeAttr('style','display: none');
+            $('#divComitente2').removeAttr('style','display: none');
+            $('#divComitente1').attr('style','display: none');
+            $('#SelectComitente').val("");
+            $('#SelectComitente').attr('disabled',true);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#SeleccionarComitente').on('click',function(){
+            $('#esconder').attr('style','display: none');
+            $('#divComitente2').attr('style','display: none');
+            $('#divComitente1').removeAttr('style','display: none');
+            $('#SelectComitente').removeAttr('disabled');
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
         $('#pais_id').change(function(){
             $('#provincia_id').removeAttr('disabled');
             var id = $(this).val();
