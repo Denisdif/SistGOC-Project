@@ -92,7 +92,6 @@ class ViewServiceProvider extends ServiceProvider
             $ambienteItems = Ambiente::pluck('Nombre_ambiente','id')->toArray();
             $view->with('ambienteItems', $ambienteItems);
         });
-
         View::composer(['asignacion_personal_tareas.fields'], function ($view) {
             $asignacionItems = AsignacionPersonalTarea::all();
             $view->with('asignacionItems', $asignacionItems);

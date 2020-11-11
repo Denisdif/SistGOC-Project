@@ -146,7 +146,7 @@
                             <th>Nombre</th>
                             <th>Cantidad</th>
                             <th>Descripción</th>
-                            <th>Imagen</th>
+                            {{--<th>Imagen</th>--}}
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -156,7 +156,7 @@
                             <td>{{ $ambiente->ambiente->Nombre_ambiente }}</td>
                             <td>{{ $ambiente->Cantidad }}</td>
                             <td>{{ $ambiente->ambiente->Descripcion }}</td>
-                            <td> <img src="{{ $ambiente->ambiente->Imagen }}" class="card-img" width="100" height="100"> </td>
+                            {{-- <td> <img src="{{ $ambiente->ambiente->Imagen }}" class="card-img" width="100" height="100"> </td> --}}
                             <td>{!! Form::open(['route' => ['proyectoAmbientes.destroy', $ambiente->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
                                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [

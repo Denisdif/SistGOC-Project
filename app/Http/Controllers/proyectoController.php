@@ -83,6 +83,12 @@ class ProyectoController extends AppBaseController
         $proyecto->Fecha_fin_Proy = $request->Fecha_fin_Proy;
         $proyecto->Descripcion = $request->Descripcion;
         $proyecto->direccion_id = $direccion->id ;
+        if ($request->file('Informe')) {
+            $file = $request->file('Informe');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/InformesProyectos/', $name);
+        }
+        $proyecto->Informe = "/InformesProyectos/".$name;
 
         if ($request->Comitente_id == "") {
 
@@ -110,7 +116,7 @@ class ProyectoController extends AppBaseController
 
         Flash::success('Proyecto saved successfully.');
 
-        return redirect(route('proyectos.show', $proyecto->id));
+        return redirect("/proyectos/$proyecto->id/proyectoAmbientes/create");
     }
 
     /**

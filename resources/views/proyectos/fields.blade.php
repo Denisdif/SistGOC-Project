@@ -151,13 +151,9 @@
 </div>
 
 
-
-
-
-
 <div class="form-group col-sm-6" id="esconder2">
     {!! Form::label('IdComitente', 'Buscar comitente:') !!} <br>
-    <select id="SelectComitente" name="Comitente_id" class="form-control " >
+    <select id="SelectComitente" name="Comitente_id" class="form-control">
         <option value=""></option>
         @foreach ($comitentes as $comitente)
             <option value={{ $comitente->id }}>{{ $comitente->NombreComitente }} {{ $comitente->ApellidoComitente }}, {{ $comitente->Cuit }}</option>
@@ -227,6 +223,7 @@
 </div> -->
 
 </div>
+
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
