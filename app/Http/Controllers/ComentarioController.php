@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateComentarioRequest;
 use App\Repositories\ComentarioRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Comentario;
 use Response;
 
 class ComentarioController extends AppBaseController
@@ -52,10 +53,9 @@ class ComentarioController extends AppBaseController
      */
     public function store(Tarea $tarea, CreateComentarioRequest $request)
     {
-        $input = $request->all();
+        $comentario = new Comentario;
 
-        $comentario = $this->comentarioRepository->create($input);
-
+        $comentario->Contenido = $request->Contenido;
         $comentario->Tarea_id = $tarea->id;
 
         $comentario->save();

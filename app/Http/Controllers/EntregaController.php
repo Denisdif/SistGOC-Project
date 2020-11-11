@@ -12,6 +12,7 @@ use App\Repositories\EntregaRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Carbon\Carbon;
 
 class EntregaController extends AppBaseController
 {
@@ -61,10 +62,13 @@ class EntregaController extends AppBaseController
             $item->move(public_path().'/EntregaArchivos/', $name);
             $entrega->Archivo = "/EntregaArchivos/".$item;
             $entrega->Tarea_id = $tarea->id;
+            $entrega->Descripcion_entrega = "Soy un archivo";
             $entrega->save();
         }
 
         $tarea->Estado_tarea_id = 4; //Id "4" de estado tarea = Esperando revision
+        getdate($fechaActual = time());
+        $tarea->Fecha_fin = $fechaActual;
         $tarea->save();
 
         Flash::success('Entrega saved successfully.');

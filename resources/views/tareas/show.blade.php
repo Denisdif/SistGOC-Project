@@ -16,6 +16,16 @@
 
                     @include('tareas.show_fields')
 
+                    <div class="col-md-6 mb-6">
+                        <h2>Responsables</h2><br>
+                        @foreach ($asignaciones as $asignacion)
+                        <b>{{$asignacion->Personal->NombrePersonal." ".$asignacion->Personal->ApellidoPersonal}}:</b> {{ $asignacion->Responsabilidad }} <br>
+                        @endforeach
+                        <br>
+                        <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/asignacionPersonalTareas/create">Editar</a>
+                    </div>
+
+
                     @section('scripts')
                         @include('layouts.datatables_js')
                     @endsection
@@ -24,14 +34,14 @@
         </div>
     </div>
 
-    <section class="content-header">
+    {{--<section class="content-header">
         <h1 style= "color: aliceblue">
             Personal responsable
             <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/asignacionPersonalTareas/create">Nueva asignación</a>
         </h1>
     </section>
 
-    {{-- Inicio DataTable Personal Responsable --}}
+     Inicio DataTable Personal Responsable
     <div class="content-header">
         <div class="box box-danger">
             <div class="box-body">
@@ -47,13 +57,7 @@
                         @foreach ($asignaciones as $asignacion)
                         <tr>
                             <td>
-                                @foreach ($listaPersonal as $item)
-                                    @php
-                                        if ($item->id == $asignacion->Personal_id){
-                                            echo $item->NombrePersonal." ".$item->ApellidoPersonal;
-                                        }
-                                    @endphp
-                            @endforeach
+                                $asignacion->Personal->NombrePersonal." ".$asignacion->Personal->ApellidoPersonal;
                         </td>
                             <td>{{ $asignacion->Responsabilidad }}</td>
                             <td>{!! Form::open(['route' => ['asignacionPersonalTareas.destroy', $asignacion->id], 'method' => 'delete']) !!}
@@ -73,48 +77,75 @@
             </div>
         </div>
     </div>
-    {{-- Fin DataTable Personal Responsable --}}
-
-    <section class="content-header">
-        <h1 style= "color: aliceblue">
-            Entregas
-            <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/entregas/create">Añadir entrega</a>
-        </h1>
-    </section>
+     Fin DataTable Personal Responsable --}}
 
     {{-- Inicio DataTable Entregas --}}
     <div class="content-header">
         <div class="box box-danger">
+            <section class="content-header">
+                <br><h1>
+                    Datos de entrega
+                </h1><br>
+            </section>
             <div class="box-body">
-                <table id="Entregas" class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Archivo</th>
-                            <th>Descripcion</th>
-                        </tr>
-                    </thead>
+                <table class="table table-striped table-bordered">
                     <tbody>
-                        @foreach ($entregas as $entrega)
                         <tr>
-                            <td>{{ $entrega->Archivo }}</td>
-                            <td>{{ $entrega->Descripcion_entrega }}</td>
+                            <td>Fecha limite de entrega</td>
+                            <td>{{ $tarea->Fecha_limite }}</td>
                         </tr>
-                        @endforeach
+                        <tr>
+                            <td>Fecha de entrega</td>
+                            <td>{{ $tarea->Fecha_fin }}</td>
+                        </tr>
+                        <tr>
+                            <td>Archivos</td>
+                            <td>
+                            @foreach ($entregas as $entrega)
+                            {{ $entrega->Archivo }} <br>
+                            @endforeach
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Comentarios</td>
+                            <td>
+                                @foreach ($comentarios as $comentario)
+                                {{ $comentario->Contenido }}<br>
+                                @endforeach
+                                <a href="/tareas/{{$tarea->id}}/comentarios/create">Comentar</a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
+
+                <div class="text-center">
+                    <br>
+                    @if ($tarea->Estado_tarea_id < 4)
+
+                        <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/entregas/create">Añadir entrega</a>
+                    @else
+                        <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/entregas/create">Editar entrega</a>
+                    @endif
+                    @if ($tarea->Estado_tarea_id == 4)
+                        <a href="/tareas/{{$tarea->id}}/aprobar" class="btn btn-danger">Aprobar</a>
+                        <a href="/tareas/{{$tarea->id}}/desaprobar" class="btn btn-danger ">Desaprobar</a>
+                    @endif
+
+                </div>
             </div>
         </div>
+        <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger " >Volver</a>
     </div>
     {{-- Fin DataTable Entregas --}}
 
-    <section class="content-header">
+    {{-- <section class="content-header">
         <h1 style= "color: aliceblue">
             Comentarios
             <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/tareas/{{$tarea->id}}/comentarios/create">Añadir comentario</a>
         </h1>
     </section>
 
-    {{-- Inicio DataTable Comentarios --}}
+    Inicio DataTable Comentarios
     <div class="content-header">
         <div class="box box-danger">
             <div class="box-body">
@@ -135,9 +166,6 @@
             </div>
         </div>
     </div>
-    {{-- Fin DataTable Comentarios --}}
-    <a href="/tareas/{{$tarea->id}}/aprobar" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px">Aprobar</a>
-    <a href="/tareas/{{$tarea->id}}/desaprobar" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px">Desaprobar</a>
-    <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px">Volver</a>
+     Fin DataTable Comentarios --}}
 
 @endsection
