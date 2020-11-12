@@ -13,6 +13,8 @@ use App\Repositories\Proyecto_ambienteRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Exception;
+use Redirect;
 
 class Proyecto_ambienteController extends AppBaseController
 {
@@ -44,7 +46,8 @@ class Proyecto_ambienteController extends AppBaseController
      */
     public function create(Proyecto $proyecto)
     {
-        return view('proyecto_ambientes.create',compact('proyecto'));
+        $ambientesDelProyecto = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
+        return view('proyecto_ambientes.create',compact('proyecto','ambientesDelProyecto'));
     }
 
     /**
@@ -57,13 +60,22 @@ class Proyecto_ambienteController extends AppBaseController
     public function store(Proyecto $proyecto, CreateProyecto_ambienteRequest $request)
     {
         //return $request;
+        try {
+            for ($i=0; $i < sizeof($request->Cantidad); $i++) {
+                $proyectoAmbiente = new Proyecto_ambiente();
+                $proyectoAmbiente->Ambiente_id = $request->Ambiente_id[$i];
+                $proyectoAmbiente->Cantidad = $request->Cantidad[$i];
+                $proyectoAmbiente->Proyecto_id = $proyecto->id;
+                $proyectoAmbiente->save();
+            }
 
-        for ($i=0; $i < sizeof($request->Cantidad); $i++) {
-            $proyectoAmbiente = new Proyecto_ambiente();
-            $proyectoAmbiente->Ambiente_id = $request->Ambiente_id[$i];
-            $proyectoAmbiente->Cantidad = $request->Cantidad[$i];
-            $proyectoAmbiente->Proyecto_id = $proyecto->id;
-            $proyectoAmbiente->save();
+            Flash::success('Se cargaron los ambientes correctamente');
+
+            return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
+
+        } catch (Exception $e) {
+            return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
+
         }
 
         /*$input = $request->all();
@@ -74,8 +86,6 @@ class Proyecto_ambienteController extends AppBaseController
         Flash::success('Proyecto Ambiente saved successfully.');
 
         //return ($proyecto);
-
-        return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
     }
 
     /**

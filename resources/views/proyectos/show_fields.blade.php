@@ -1,7 +1,7 @@
 <!-- Nombre Proyecto Field -->
 
 
-<div class="col-md-4 mb-3">
+<div class="col-md-6 mb-6">
     <h2>Datos del proyecto</h2><br>
     {!! Form::label('Nombre_proyecto', 'Nombre Proyecto:') !!}
     {{ $proyecto->Nombre_proyecto }} <br>
@@ -28,8 +28,16 @@
     {{ $proyecto->direccion->Calle}} {{ $proyecto->direccion->Altura}}, {{ $proyecto->direccion->localidad->localidad}}, {{ $proyecto->direccion->provincia->provincia}}, {{ $proyecto->direccion->pais->pais}} <br>
 
     {!! Form::label('Descripcion', 'Descripcion:') !!}
-    {{ $proyecto->Descripcion }} <br><br>
+    {{ $proyecto->Descripcion }} <br> <br>
 
+    {{-- {!! Form::label('Ambientes', 'Ambientes:') !!}
+        @foreach ($ambientesDelProyecto as $ambiente)
+                {{ $ambiente->ambiente->Nombre_ambiente }}
+                @if ($ambiente->Cantidad>1)
+                    x{{ $ambiente->Cantidad }}
+                @endif,
+        @endforeach
+    <br> --}}
 </div>
 
 <!-- Tipo Proyecto Field

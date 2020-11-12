@@ -523,7 +523,7 @@
         //Obtener los valores de los inputs
         Ambiente_id = $('#Ambiente_id').val() ;
         Ambiente = $("#Ambiente_id option:selected").text();
-        Cantidad = $("#Cantidad").val();
+        Cantidad = $("#Cantidades").val();
             if(Ambiente_id != null ){
                 if(Cantidad > 0){
                 // if(precio > 0){

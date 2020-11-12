@@ -1,3 +1,7 @@
+<div class="form-group col-sm-12">
+    <h2>Carga</h2>
+</div>
+
 <!-- Ambiente Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Ambiente_id', 'Ambiente:') !!}
@@ -7,13 +11,19 @@
 <!-- Cantidad Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Cantidad', 'Cantidad:') !!}
-    {!! Form::number('Cantidad', '1', ['class' => 'form-control']) !!}
+    {!! Form::number('Cantidad', '1', ['class' => 'form-control','id' => 'Cantidades']) !!}
 </div>
 
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     <a href="#" class="addRow btn btn-danger ">Agregar a lista</a>
 </div>
+
+<div class="form-group col-sm-12">
+    <h2>Cola de carga</h2>
+</div>
+
+
 
     <div class="col-md-12">
         <table class="table table-striped table-bordered">
@@ -34,6 +44,8 @@
     {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
     <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
 </div>
+
+
 
 
 

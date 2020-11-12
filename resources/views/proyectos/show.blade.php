@@ -23,9 +23,9 @@
                     @endsection
 
                 </div>
-
-                <div class="form-group col-sm-6">
+                <div class="col-md-6 mb-6">
                     <a class="btn btn-danger"  href="">Informe Completo</a>
+                    <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Editar lista de ambientes</a>
                 </div>
             </div>
         </div>
@@ -126,18 +126,18 @@
 
         {{-- Fin de DataTable de Personal del proyecto --}}
 
-    <section class="content-header">
+    {{--<section class="content-header">
         <h1 style= "color: aliceblue">
             Ambientes del proyecto
             <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Agregar ambientes</a>
         </h1>
-    </section>
+    </section>--}}
 
 
     {{-- Inicio de DataTable de ambientes del proyecto --}}
 
 
-    <div class="content-header">
+    {{--<div class="content-header">
         <div class="box box-danger">
             <div class="box-body">
                 <table id="Nose" class="table table-striped table-bordered">
@@ -146,7 +146,7 @@
                             <th>Nombre</th>
                             <th>Cantidad</th>
                             <th>Descripción</th>
-                            {{--<th>Imagen</th>--}}
+                            <th>Imagen</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -156,7 +156,7 @@
                             <td>{{ $ambiente->ambiente->Nombre_ambiente }}</td>
                             <td>{{ $ambiente->Cantidad }}</td>
                             <td>{{ $ambiente->ambiente->Descripcion }}</td>
-                            {{-- <td> <img src="{{ $ambiente->ambiente->Imagen }}" class="card-img" width="100" height="100"> </td> --}}
+                             <td> <img src="{{ $ambiente->ambiente->Imagen }}" class="card-img" width="100" height="100"> </td>
                             <td>{!! Form::open(['route' => ['proyectoAmbientes.destroy', $ambiente->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
                                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
@@ -173,9 +173,9 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    {{-- Fin de DataTable de ambientes del proyecto --}}
+    {{--Fin de DataTable de ambientes del proyecto --}}
     <a href="{{ route('proyectos.index') }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px ">Volver</a>
     </div>
 
