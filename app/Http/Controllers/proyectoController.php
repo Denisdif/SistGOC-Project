@@ -167,13 +167,15 @@ class ProyectoController extends AppBaseController
                 }
             }
         }
+
+        $idPersonal = 0; //Para identificar la fila para mostrar el Modal
        /*for ($i=0; $i < $indice; $i++) {
             echo "{$Lista_Personal[$i]->NombrePersonal} <br>";
         }*/
 
         // Fin de filtro de personal con tareas del proyecto asignadas
 
-        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal'))->with('proyecto', $proyecto);
+        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal','idPersonal'))->with('proyecto', $proyecto);
     }
 
     /**

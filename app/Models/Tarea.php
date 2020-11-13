@@ -139,4 +139,10 @@ class Tarea extends Model
             return 5;
         }
     }
+
+    public function getFechaIngreso(){
+        $date = new Carbon($this->Fecha_inicio);
+        $date = $date->format('d-m-Y');
+        return $date;
+    }
 }

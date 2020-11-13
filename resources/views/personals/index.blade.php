@@ -56,7 +56,7 @@
                     @include('layouts.datatables_js')
                 @endsection
 
-                {{-- <button id="btnNuevo" type="button">Modal</button>  --}}
+                 <button id="btnNuevo" type="button">Modal</button>
             </div>
         </div>
         <div class="text-center">

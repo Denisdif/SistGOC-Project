@@ -396,7 +396,7 @@
                     }
                 },
           });
-        $('#Personal').DataTable({
+        $('.datatables').DataTable({
             "paging": true,
             "lengthChange": true,
             "searching": true,
@@ -424,8 +424,65 @@
                     }
                 },
           });
-        $("#btnNuevo").click(function(){
-            $("#PruebaModal").modal("show");
+          $('#Personal2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": false,
+            language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+          });
+          $('#Personal3').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": false,
+            language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+          });
+        $('.Modal_1').click(function(){
+            $('#resultado').val($(this).attr('id'));
+            $('.modal').modal("show");
     });
     });
 </script>
@@ -570,10 +627,12 @@
     });
 </script>
 
+
 @yield('datatable_js')
 @yield('page_js')
 @yield('page_scripts')
 <script src="{{ asset('assets/users/user.js') }}"></script>
+<script src="{{asset('assets/admin-lte/plugins/moment/moment-with-locales.min.js')}}"></script>
 <script>
   let loggedInUserId = "{{ getLoggedInUserId() }}";
   let baseUrl = "{{url('/')}}/";

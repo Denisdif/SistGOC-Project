@@ -10,6 +10,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\AsignacionPersonalTareaRepository;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Tarea;
+use App\Models\Personal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Redirector;
 use Exception;
@@ -41,8 +42,9 @@ class AsignacionPersonalTareaController extends AppBaseController
     public function indexPersonal(AsignacionPersonalTareaDataTable $asignacionPersonalTareaDataTable)
     {
         $user = Auth::user();
-        $tareas = AsignacionPersonalTarea::all()->where('Personal_id','=', $user->personal->id);
-        return View('asignacion_personal_tareas.index', compact('tareas'));
+        $personal = Personal::all()->where('id','=', $user->personal->id)->first();
+
+        return View('asignacion_personal_tareas.index', compact('tareas','personal'));
     }
 
     /**

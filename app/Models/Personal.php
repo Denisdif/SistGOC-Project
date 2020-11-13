@@ -101,16 +101,16 @@ class Personal extends Model
         return $this->belongsTo(Sexo::class, 'Sexo_id');
     }
 
-    public function cantTareas(){
+    public function tareasAsignadas(){
 
         $listaAsignaciones = $this->asignacion;
-        $cantTareas = 0;
+        $Tareas = [];
         foreach ($listaAsignaciones as $asignacion) {
             if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('Asignada') or strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('En desarrollo')) {
-                $cantTareas++;
+                $Tareas[] = $asignacion;
             }
         }
-        return $cantTareas;
+        return $Tareas;
     }
 
     public function cantTareas2(){
