@@ -21,6 +21,7 @@ use App\Http\Controllers\AppBaseController;
 use Cardumen\ArgentinaProvinciasLocalidades\Models\Pais;
 use Illuminate\Support\Facades\Auth;
 use Response;
+use Exception;
 use Flash;
 use App\Http\Requests;
 use Carbon\Carbon;
@@ -245,5 +246,24 @@ class ProyectoController extends AppBaseController
         Flash::success('Proyecto deleted successfully.');
 
         return redirect(route('proyectos.index'));
+    }
+
+    public function descargarInforme($id)
+    {
+        $proyecto = Proyecto::all()->find($id);
+
+        if (empty($proyecto)) {
+            Flash::error('Proyecto not found');
+
+            return redirect(route('proyectos.index'));
+        }
+
+        try {
+            return response()->download(public_path($proyecto->Informe));
+        } catch (Exception $e) {
+            return "No hay archivo";
+        }
+
+
     }
 }

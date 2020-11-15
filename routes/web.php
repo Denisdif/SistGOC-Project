@@ -40,13 +40,14 @@ Route::delete('users/{id}',                         'UserController@destroy')   
 
 //Route::resource('proyectos', 'ProyectoController');
 
-Route::get('proyectos',                         'ProyectoController@index')          ->name('proyectos.index');
-Route::get('proyectos/create',                  'ProyectoController@create')         ->name('proyectos.create');
-Route::post('proyectos',                        'ProyectoController@store')          ->name('proyectos.store');
-Route::get('proyectos/{proyecto}',              'ProyectoController@show')           ->name('proyectos.show');
-Route::get('proyectos/{proyecto}/edit',         'ProyectoController@edit')           ->name('proyectos.edit');
-Route::put('proyectos/{id}',                    'ProyectoController@update')         ->name('proyectos.update');
-Route::delete('proyectos/{id}',                 'ProyectoController@destroy')        ->name('proyectos.destroy');
+Route::get('proyectos',                         'ProyectoController@index')             ->name('proyectos.index');
+Route::get('proyectos/create',                  'ProyectoController@create')            ->name('proyectos.create');
+Route::post('proyectos',                        'ProyectoController@store')             ->name('proyectos.store');
+Route::get('proyectos/{proyecto}',              'ProyectoController@show')              ->name('proyectos.show');
+Route::get('proyectos/{proyecto}/edit',         'ProyectoController@edit')              ->name('proyectos.edit');
+Route::put('proyectos/{id}',                    'ProyectoController@update')            ->name('proyectos.update');
+Route::delete('proyectos/{id}',                 'ProyectoController@destroy')           ->name('proyectos.destroy');
+Route::get('proyectos/{proyecto}/informe',      'ProyectoController@descargarInforme')  ->name('proyectos.descargarInforme');
 
 //Rutas ambientes
 
@@ -181,7 +182,7 @@ Route::get('/localidades', 'HomeController@indexLocalidades')->name('localidades
 
 Route::resource('comitentes', 'ComitenteController');
 
-Route::resource('entregas', 'EntregaController');
+//Route::resource('entregas', 'EntregaController');
 
 Route::get('tareas/{tarea}/entregas',                   'EntregaController@index')          ->name('tareas.entregas.index');
 Route::get('tareas/{tarea}/entregas/create',            'EntregaController@create')         ->name('tareas.entregas.create');

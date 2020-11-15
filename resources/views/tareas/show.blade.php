@@ -102,7 +102,7 @@
                             <td>Archivos</td>
                             <td>
                             @foreach ($entregas as $entrega)
-                            {{ $entrega->Archivo }} <br>
+                            <a href="{{ route('entregas.show', $entrega->id) }}">{{ $entrega->Archivo }}</a> <br>
                             @endforeach
                             </td>
                         </tr>

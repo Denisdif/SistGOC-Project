@@ -24,7 +24,7 @@
 
                 </div>
                 <div class="col-md-6 mb-6">
-                    <a class="btn btn-danger"  href="">Informe Completo</a>
+                    <a class="btn btn-danger"  href="/proyectos/{{$proyecto->id}}/informe">Informe Completo</a>
                     <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Editar lista de ambientes</a>
                 </div>
             </div>
@@ -51,9 +51,7 @@
                             <th>Nombre</th>
                             <th>Prioridad</th>
                             <th>Estado</th>
-                            <th>Tipo de tarea</th>
-                            <th>Fecha inicio</th>
-                            <th>Fecha fin</th>
+                            <th>Fecha límite de finalización</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -63,9 +61,7 @@
                             <td>{{ $tarea->Nombre_tarea }}</td>
                             <td>{{ $tarea->prioridad }}</td>
                             <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
-                            <td>{{ $tarea->tipo_tarea->Nombre_tipo_tarea }}</td>
-                            <td>{{ $tarea->Fecha_inicio }}</td>
-                            <td>{{ $tarea->Fecha_fin }}</td>
+                            <td>{{ $tarea->Fecha_limite }}</td>
                             <td>{!! Form::open(['route' => ['tareas.destroy', $tarea->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
                                     <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
@@ -214,19 +210,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                        @foreach (($Personal->tareasAsignadas()) as $asignacion)
-                                                <tr>
-                                                <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
-                                                <td>{{ $asignacion->Responsabilidad }}</td>
-                                                <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
-                                                <td>
-                                                    <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
-                                                        <i class="glyphicon glyphicon-eye-open"></i>
-                                                    </a>
-                                                </td>
-                                                </tr>
-                                        @endforeach
-
+                                @foreach (($Personal->tareasAsignadas()) as $asignacion)
+                                        <tr>
+                                        <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
+                                        <td>{{ $asignacion->Responsabilidad }}</td>
+                                        <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                        <td>
+                                            <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
+                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                            </a>
+                                        </td>
+                                        </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         @section('scripts')

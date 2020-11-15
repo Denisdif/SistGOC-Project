@@ -60,7 +60,7 @@ class EntregaController extends AppBaseController
             $entrega = new Entrega;
             $name = time().$item->getClientOriginalName();
             $item->move(public_path().'/EntregaArchivos/', $name);
-            $entrega->Archivo = "/EntregaArchivos/".$item;
+            $entrega->Archivo = "/EntregaArchivos/".$name;
             $entrega->Tarea_id = $tarea->id;
             $entrega->Descripcion_entrega = "Soy un archivo";
             $entrega->save();
@@ -85,7 +85,7 @@ class EntregaController extends AppBaseController
      */
     public function show($id)
     {
-        $entrega = $this->entregaRepository->find($id);
+        $entrega = Entrega::all()->find($id);
 
         if (empty($entrega)) {
             Flash::error('Entrega not found');
@@ -93,7 +93,8 @@ class EntregaController extends AppBaseController
             return redirect(route('entregas.index'));
         }
 
-        return view('entregas.show')->with('entrega', $entrega);
+        return response()->download(public_path($entrega->Archivo));
+        //return view('entregas.show')->with('entrega', $entrega);
     }
 
     /**
