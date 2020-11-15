@@ -19,7 +19,7 @@
                 @include('layouts.datatables_css')
             @endsection
 
-                <table id="Personal" class="table table-striped table-bordered">
+                <table class="table datatables table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Nombre completo</th>
@@ -56,36 +56,11 @@
                     @include('layouts.datatables_js')
                 @endsection
 
-                 <button id="btnNuevo" type="button">Modal</button>
             </div>
         </div>
         <div class="text-center">
         </div>
     </div>
-
-
-
-
-    <div id="PruebaModal" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(255, 55, 55)">
-              {{--  <h5 class="modal-title">Modal title</h5>  --}}
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Hola Exe soy un modal</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
-    </div>
-
-
 @endsection
 
 

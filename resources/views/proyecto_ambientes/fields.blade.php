@@ -23,26 +23,22 @@
     <h2>Cola de carga</h2>
 </div>
 
+<div class="col-md-12">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <th>Ambiente</th>
+            <th>Cantidad</th>
+            <th width="125px">Accion</th>
+        </thead>
 
+        <tbody class="ColaCarga">
 
-    <div class="col-md-12">
-        <table class="table table-striped table-bordered">
-            <thead>
-                <th>Ambiente</th>
-                <th>Cantidad</th>
-                <th width="125px">Accion</th>
-            </thead>
-
-            <tbody>
-
-            </tbody>
-        </table>
-    </div>
+        </tbody>
+    </table>
+</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
-    <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
 </div>
 
 

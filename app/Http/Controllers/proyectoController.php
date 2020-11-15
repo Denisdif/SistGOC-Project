@@ -114,11 +114,11 @@ class ProyectoController extends AppBaseController
 
         $proyecto->save();
 
-        $ambientesDelProyecto = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
+        $ambientesDelProyecto = null;
 
         Flash::success('Proyecto saved successfully.');
 
-        return redirect("/proyectos/$proyecto->id/proyectoAmbientes/create", compact('ambientesDelProyecto'));
+        return redirect("/proyectos/$proyecto->id/proyectoAmbientes/create");
     }
 
     /**

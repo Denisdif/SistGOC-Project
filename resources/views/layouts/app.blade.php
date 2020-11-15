@@ -588,7 +588,7 @@
                                 '<td style="text-align:right;"><input type="hidden" name="Cantidad[]" value="'+Cantidad+'">'+Cantidad+' </td>'+
                                 '<td style="text-align:center;"><a href="#" class="btn btn-danger btn-xs remove"><i class="fas fa-minus"></i></a></td>' +
                                 '</tr>' ;
-                    $('tbody').append(fila) ;
+                    $('.ColaCarga').append(fila) ;
                     limpiar();
                 // }else{
                 //     swal({
