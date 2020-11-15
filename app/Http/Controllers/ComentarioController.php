@@ -11,6 +11,7 @@ use App\Repositories\ComentarioRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Comentario;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class ComentarioController extends AppBaseController
@@ -55,6 +56,9 @@ class ComentarioController extends AppBaseController
     {
         $comentario = new Comentario;
 
+        $user = Auth::user();
+
+        $comentario->Personal_id = $user->id;
         $comentario->Contenido = $request->Contenido;
         $comentario->Tarea_id = $tarea->id;
 

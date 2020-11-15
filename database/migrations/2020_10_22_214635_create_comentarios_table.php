@@ -18,9 +18,11 @@ class CreateComentariosTable extends Migration
             $table->increments('id');
             $table->text('Contenido');
             $table->integer('Tarea_id')->unsigned();
+            $table->integer('Personal_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('Tarea_id')->references('id')->on('tareas');
+            $table->foreign('Personal_id')->references('id')->on('personals');
         });
     }
 

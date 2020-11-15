@@ -15,7 +15,7 @@
                 @section('css')
                 @include('layouts.datatables_css')
             @endsection
-                <table id="Personal" class="table table-striped table-bordered">
+                <table class="datatables table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -62,7 +62,7 @@
         <div class="clearfix"></div>
         <div class="box box-danger">
             <div class="box-body">
-                <table id="Personal2" class="table table-striped table-bordered">
+                <table class="datatables table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -107,7 +107,7 @@
 
         <div class="box box-danger">
             <div class="box-body">
-                <table id="Personal3" class="table table-striped table-bordered">
+                <table class="datatables table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Nombre</th>

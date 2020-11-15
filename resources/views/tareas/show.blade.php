@@ -110,9 +110,11 @@
                             <td>Comentarios</td>
                             <td>
                                 @foreach ($comentarios as $comentario)
+                                <b>{{ $comentario->personal->NombrePersonal }} {{ $comentario->personal->ApellidoPersonal }}</b><br>
                                 {{ $comentario->Contenido }}<br>
+                                <p style="color: rgb(185, 185, 185)">at {{ $comentario->created_at }}</p>
                                 @endforeach
-                                <a href="/tareas/{{$tarea->id}}/comentarios/create">Comentar</a>
+                                <a href="" class="" data-toggle="modal" data-target="#CrearComentario" type="button">Comentar</a>
                             </td>
                         </tr>
                     </tbody>
@@ -168,4 +170,33 @@
     </div>
      Fin DataTable Comentarios --}}
 
+
+
+
+    <div id="CrearComentario" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button></h5>
+            </div>
+            <div class="modal-body">
+                {!! Form::open(['url' => "tareas/$tarea->id/comentarios"]) !!}
+
+                    <!-- Contenido Field -->
+                        {!! Form::label('Contenido', 'Comentario:') !!}
+                        {!! Form::textarea('Contenido', null, ['class' => 'form-control']) !!} <br>
+
+                    <!-- Submit Field -->
+                        {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
+                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                    {!! Form::close() !!}
+                </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection

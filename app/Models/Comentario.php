@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Tarea;
+use App\Models\Personal;
 
 /**
  * Class Comentario
@@ -53,5 +54,10 @@ class Comentario extends Model
     public function tarea()
     {
         return $this->belongsTo( Tarea::class ,'Tarea_id');
+    }
+
+    public function personal(){
+
+        return $this->belongsTo(Personal::class, 'Personal_id');
     }
 }
