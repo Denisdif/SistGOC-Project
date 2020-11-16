@@ -72,7 +72,7 @@ class TablasIniciales extends Seeder
         $direccion->Codigo_postal = 3370 ;
         $direccion->Pais_id = 1 ;
         $direccion->Provincia_id = 15 ;
-        $direccion->Localidad_id = 820 ;
+        $direccion->Localidad_id = 1530 ;
         $direccion->save();
 
 

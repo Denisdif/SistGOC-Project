@@ -17,7 +17,7 @@
 <!-- Tipo Proyecto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Tipo_proyecto', 'Tipo de Proyecto:') !!}
-    {!! Form::select('Tipo_proyecto_id', $tipo_proyectoItems, null, ['class' => 'form-control']) !!}
+    {!! Form::select('Tipo_proyecto_id', $tipo_proyectoItems, null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Fecha Inicio Proy Field
@@ -39,7 +39,9 @@
 <!-- Fecha Fin Proy Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Fecha_fin_Proy', 'Fecha limite:') !!}
-    {!! Form::date('Fecha_fin_Proy', null, ['class' => 'form-control','id'=>'Fecha_fin_Proy']) !!}
+    <input class="form-control" type="date" name="Fecha_fin_Proy" id="Fecha_fin_Proy" required
+    value="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
+    min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
 </div>
 
 @push('scripts')
@@ -55,7 +57,7 @@
 <!-- Informe de proyecto -->
 <div class="form-group col-sm-6">
     {!! Form::label('Informe', 'Informe de entrevistas y relevamiento:') !!}
-    {!! Form::file('Informe', ['class' => 'form-control']) !!}
+    {!! Form::file('Informe', ['class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Director Id Field
@@ -103,7 +105,7 @@
 <div class="form-group col-sm-6">
     <div>
         <label for="provincia_id" class="">Provincia</label>
-        <select name="provincia_id" id="provincia_id" class=" form-control" disabled>
+        <select name="provincia_id" id="provincia_id" class=" form-control" disabled required>
             <option value="" selected disabled>--Seleccione--</option>
         </select>
         @error('provincia_id')
@@ -118,7 +120,7 @@
 <div class="form-group col-sm-6">
     <div>
         <label for="localidad_id" class="">Localidad</label>
-        <select name="localidad_id" id="localidad_id" class="form-control" disabled>
+        <select name="localidad_id" id="localidad_id" class="form-control" disabled required>
             <option value="" selected disabled>--Seleccione--</option>
         </select>
         @error('localidad_id')
@@ -132,19 +134,19 @@
 <!-- Codigo postal Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Codigo postal', 'Codigo postal:') !!}
-    {!! Form::number('Codigo_postal', null, ['class' => 'form-control']) !!}
+    <input class="form-control" type="number" name="Codigo_postal" min="1000" max="9407" required>
 </div>
 
 <!-- Calle Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Calle', 'Calle:') !!}
-    {!! Form::text('Calle', null, ['class' => 'form-control']) !!}
+    {!! Form::text('Calle', null, ['class' => 'form-control','required']) !!}
 </div>
 
 <!-- Altura Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Altura', 'Altura:') !!}
-    {!! Form::number('Altura', null, ['class' => 'form-control']) !!}
+    {!! Form::number('Altura', null, ['class' => 'form-control','required']) !!}
 </div>
 
 <div class="form-group col-sm-12">
