@@ -77,8 +77,7 @@ class ProyectoController extends AppBaseController
         $direccion->Localidad_id = $request->localidad_id ;
         $direccion->save();
         $proyecto = new Proyecto;
-        $proyecto->Nombre_proyecto = "Nuevo Proyecto".$proyecto->id;
-        $proyecto->Codigo_catastral = $request->Codigo_de_proyecto;
+        $proyecto->Nombre_proyecto = "Proy".$proyecto->id;
         $proyecto->Tipo_proyecto_id = $request->Tipo_proyecto_id;
         $proyecto->Fecha_inicio_Proy = Carbon::now();
         $proyecto->Fecha_fin_Proy = $request->Fecha_fin_Proy;
@@ -95,13 +94,14 @@ class ProyectoController extends AppBaseController
 
             $comitente = new Comitente;
             $comitente->NombreComitente = $request->NombreComitente;
-            $comitente->ApellidoComitente = $request->Apellido;
             $comitente->Email = $request->Email;
             $comitente->Telefono = $request->Telefono;
             $comitente->Cuit = $request->Cuit;
-            $comitente->Sexo_id = $request->Sexo_id;
             $comitente->save();
-
+            if ($request->TipoPersona == 1) {
+                $comitente->ApellidoComitente = $request->Apellido;
+                $comitente->Sexo_id = $request->Sexo_id;
+            }
             $proyecto->Comitente_id = $comitente->id;
 
         }else{

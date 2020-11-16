@@ -66,6 +66,15 @@ class TablasIniciales extends Seeder
         $direccion->Localidad_id = 814 ;
         $direccion->save();
 
+        $direccion = new Direccion();
+        $direccion->Calle = "Los Álamos" ;
+        $direccion->Altura = 540 ;
+        $direccion->Codigo_postal = 3370 ;
+        $direccion->Pais_id = 1 ;
+        $direccion->Provincia_id = 15 ;
+        $direccion->Localidad_id = 820 ;
+        $direccion->save();
+
 
 
         $personal = new Personal;
@@ -362,7 +371,7 @@ class TablasIniciales extends Seeder
         $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
         $proyecto->Comitente_id = 2;
         $proyecto->Director_id = 1;
-        $proyecto->direccion_id = 1;
+        $proyecto->direccion_id = 2;
         $proyecto->save();
 
         $proyecto = new Proyecto;
@@ -386,7 +395,7 @@ class TablasIniciales extends Seeder
         $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
         $proyecto->Comitente_id = 4;
         $proyecto->Director_id = 1;
-        $proyecto->direccion_id = 1;
+        $proyecto->direccion_id = 2;
         $proyecto->save();
 
         $proyecto = new Proyecto;

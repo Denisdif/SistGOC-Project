@@ -8,11 +8,11 @@
     {!! Form::text('Nombre_proyecto', null, ['class' => 'form-control']) !!}
 </div> -->
 
-<!-- Codigo catastral Field -->
+<!-- Codigo de proyecto Field
 <div class="form-group col-sm-6">
     {!! Form::label('Codigo_catastral', 'Código de proyecto:') !!}
-    {!! Form::number('Codigo_de_proyecto', null, ['class' => 'form-control']) !!}
-</div>
+    {!! Form::text('Codigo_de_proyecto', null, ['class' => 'form-control']) !!}
+</div> -->
 
 <!-- Tipo Proyecto Field -->
 <div class="form-group col-sm-6">
@@ -35,11 +35,6 @@
     </script>
 @endpush
 
-<!-- Informe de proyecto -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Informe', 'Informe de entrevistas y relevamiento:') !!}
-    {!! Form::file('Informe') !!}
-</div>
 
 <!-- Fecha Fin Proy Field -->
 <div class="form-group col-sm-6">
@@ -55,6 +50,13 @@
         })
     </script>
 @endpush
+
+
+<!-- Informe de proyecto -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Informe', 'Informe de entrevistas y relevamiento:') !!}
+    {!! Form::file('Informe', ['class' => 'form-control']) !!}
+</div>
 
 <!-- Director Id Field
 <div class="form-group col-sm-6">
