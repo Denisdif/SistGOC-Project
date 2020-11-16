@@ -103,7 +103,7 @@ class TareaController extends AppBaseController
 
         //Se cambia el estado de la tarea y la fecha de inicio cuando el desarrollador visualiza los datos
 
-        if ($tarea->Estado_tarea_id < 3) {
+        if ($tarea->Estado_tarea_id == 2) {
             foreach ($asignaciones as $asignacion) {
                 if ((($asignacion->Responsabilidad == "Desarrollador")) and (($asignacion->Personal_id) == ($user->Personal_id))){
                     $tarea->Estado_tarea_id = 3;
@@ -223,16 +223,22 @@ class TareaController extends AppBaseController
     public function aprobar($id)
     {
         $tarea = $this->tareaRepository->find($id);
-        $tarea->Estado_tarea_id = 6;
-        $tarea->save();
-        return redirect()->back();
+        if ($tarea->Estado_tarea_id == 4) {
+            $tarea->Estado_tarea_id = 6;
+            $tarea->save();
+            return redirect()->back();
+        }
+        return "Sacá ese botón capo";
     }
 
     public function desaprobar($id)
     {
         $tarea = $this->tareaRepository->find($id);
-        $tarea->Estado_tarea_id = 5;
-        $tarea->save();
-        return redirect()->back();
+        if ($tarea->Estado_tarea_id == 4) {
+            $tarea->Estado_tarea_id = 5;
+            $tarea->save();
+            return redirect()->back();
+        }
+        return "Sacá ese botón capo";
     }
 }

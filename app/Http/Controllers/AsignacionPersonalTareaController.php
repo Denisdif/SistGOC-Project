@@ -74,10 +74,11 @@ class AsignacionPersonalTareaController extends AppBaseController
             $asignacionPersonalTarea->Responsabilidad = $request->Responsabilidad;
             $asignacionPersonalTarea->Tarea_id = $tarea->id;
             $asignacionPersonalTarea->save();
-            $tarea->Estado_tarea_id = 2; //Id "2" de estado tarea = Asignada
-            $tarea->save();
 
-            Flash::success('Asignacion Personal Tarea saved successfully.');
+            if ($tarea->Estado_tarea_id == 1) { //Cambia el estado de la tarea de creada a asignada
+                $tarea->Estado_tarea_id = 2; //Id "2" de estado tarea = Asignada
+                $tarea->save();
+            }
 
             return Redirect::back();
 

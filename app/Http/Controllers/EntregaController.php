@@ -66,10 +66,12 @@ class EntregaController extends AppBaseController
             $entrega->save();
         }
 
-        $tarea->Estado_tarea_id = 4; //Id "4" de estado tarea = Esperando revision
-        getdate($fechaActual = time());
-        $tarea->Fecha_fin = $fechaActual;
-        $tarea->save();
+        if (($tarea->Estado_tarea_id == 3) or ($tarea->Estado_tarea_id == 5)) {
+            $tarea->Estado_tarea_id = 4; //Id "4" de estado tarea = Esperando revision
+            getdate($fechaActual = time());
+            $tarea->Fecha_fin = $fechaActual;
+            $tarea->save();
+        }
 
         Flash::success('Entrega saved successfully.');
 
