@@ -1,4 +1,4 @@
-<div class="col-md-6 mb-6">
+<div class="col-md-12 mb-12">
     <h2>Datos de la tarea</h2><br>
     {!! Form::label('Nombre_tarea', 'Nombre de la Tarea:') !!}
     {{ $tarea->Nombre_tarea }} <br>

@@ -16,7 +16,7 @@
 
                     @include('tareas.show_fields')
 
-                    <div class="col-md-6 mb-6">
+                    <div class="col-md-12 mb-12">
                         <h2>Responsables</h2><br>
                         @foreach ($asignaciones as $asignacion)
                         <b>{{$asignacion->Personal->NombrePersonal." ".$asignacion->Personal->ApellidoPersonal}}:</b> {{ $asignacion->Responsabilidad }} <br>
@@ -135,8 +135,10 @@
 
                 </div>
             </div>
+            <div>
+                <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger pull-right" >Volver</a>
+            </div>
         </div>
-        <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger " >Volver</a>
     </div>
     {{-- Fin DataTable Entregas --}}
 

@@ -19,9 +19,9 @@ class CreatePersonalsTable extends Migration
             $table->string('NombrePersonal');
             $table->string('ApellidoPersonal');
             //$table->integer('Legajo')                       ->nullable();
-            $table->date('FechaNac')                        ->nullable();
+            $table->date('FechaNac');
             $table->integer('DNI');
-            $table->bigInteger('Telefono')                  ->nullable();
+            $table->bigInteger('Telefono');
             $table->integer('Direccion_id')->unsigned()     ->nullable();
             $table->integer('Sexo_id')->unsigned()          ->nullable();
             $table->timestamps();

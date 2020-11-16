@@ -103,7 +103,8 @@
                     <thead>
                         <tr>
                             <th>Nombre completo</th>
-                            <th>Cantidad de tareas</th>
+                            <th>Tareas asignadas</th>
+                            <th>Carga de trabajo (hs)</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -111,7 +112,8 @@
                         @foreach ($Lista_personal as $Personal)
                         <tr>
                             <td>{{ $Personal->NombrePersonal }} {{ $Personal->ApellidoPersonal }}</td>
-                            <td>{{ $Personal->cantTareas2() }}</td>
+                            <td>{{ sizeof($Personal->tareasDesarrolladasProyecto($proyecto->id)) }}</td>
+                            <td>8 horas</td>
                             <td><button class="btn" data-toggle="modal" data-target="#PruebaModal{{$Personal->id}}" type="button">Modal</button></td>
                         </tr>
                         @endforeach
@@ -210,7 +212,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (($Personal->tareasAsignadas()) as $asignacion)
+                                @foreach (($Personal->tareasDesarrolladasProyecto($proyecto->id)) as $asignacion)
                                         <tr>
                                         <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
                                         <td>{{ $asignacion->Responsabilidad }}</td>

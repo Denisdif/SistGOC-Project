@@ -1,11 +1,11 @@
 <!-- Personal Id Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('Personal_id', 'Empleado:') !!}
     {!! Form::select('Personal_id', $personalItems, old('Personal_id'), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Responsabilidad Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('Responsabilidad', 'Responsabilidad:') !!}
     <select name="Responsabilidad" class = 'form-control' value="{{ old('Responsabilidad') }}">
         <option value="Desarrollador">Desarrollador</option>
@@ -21,7 +21,4 @@
 </div> -->
 
 <!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Asignar', ['class' => 'btn btn-danger']) !!}
-    <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
-</div>
+

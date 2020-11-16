@@ -18,13 +18,13 @@ class CreateProyectosTable extends Migration
             $table->increments('id');
             $table->string('Nombre_proyecto');
             $table->string('Informe')                       ->nullable();
-            $table->integer('Tipo_proyecto_id')->unsigned() ->nullable();
+            $table->integer('Tipo_proyecto_id')->unsigned();
             $table->string('Codigo_catastral')              ->nullable();
             $table->dateTime('Fecha_inicio_Proy')           ->nullable();
             $table->dateTime('Fecha_fin_Proy')              ->nullable();
-            $table->integer('Director_id')->unsigned()      ->nullable();
-            $table->integer('Comitente_id')->unsigned()     ->nullable();
-            $table->integer('Direccion_id')->unsigned()     ->nullable();
+            $table->integer('Director_id')->unsigned();
+            $table->integer('Comitente_id')->unsigned();
+            $table->integer('Direccion_id')->unsigned();
             $table->text('Descripcion')                     ->nullable();
             $table->timestamps();
             $table->softDeletes();

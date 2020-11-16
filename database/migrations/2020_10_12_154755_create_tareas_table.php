@@ -23,9 +23,9 @@ class CreateTareasTable extends Migration
             $table->double('Valor')                             ->nullable();
             $table->string('Correcciones')                      ->nullable();
             $table->text('Descripcion_tarea')                   ->nullable();
-            $table->integer('Proyecto_id')->unsigned()          ->nullable();
-            $table->integer('Tipo_tarea_id')->unsigned()        ->nullable();
-            $table->integer('Estado_tarea_id')->unsigned()      ->nullable();
+            $table->integer('Proyecto_id')->unsigned();
+            $table->integer('Tipo_tarea_id')->unsigned();
+            $table->integer('Estado_tarea_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('Proyecto_id')->references('id')->on('proyectos');

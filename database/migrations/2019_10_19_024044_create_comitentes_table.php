@@ -19,8 +19,8 @@ class CreateComitentesTable extends Migration
             $table->string('NombreComitente');
             $table->string('ApellidoComitente')                 ->nullable();
             $table->string('Email')                             ->nullable();
-            $table->bigInteger('Telefono')                      ->nullable();
-            $table->bigInteger('Cuit')                          ->nullable();
+            $table->bigInteger('Telefono');
+            $table->bigInteger('Cuit');
             $table->integer('Sexo_id')->unsigned()              ->nullable();
             $table->integer('Direccion_id')->unsigned()         ->nullable();
             $table->timestamps();

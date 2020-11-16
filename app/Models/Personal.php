@@ -107,27 +107,41 @@ class Personal extends Model
         return $this->belongsTo(Sexo::class, 'Sexo_id');
     }
 
-    public function tareasAsignadas(){
+    public function tareasEnDesarrollo(){
 
         $listaAsignaciones = $this->asignacion;
         $Tareas = [];
         foreach ($listaAsignaciones as $asignacion) {
             if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('Asignada') or strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('En desarrollo')) {
+                if (strtolower($asignacion->Responsabilidad) == strtolower('Desarrollador')) {
+                    $Tareas[] = $asignacion;
+                }
+            }
+        }
+        return $Tareas; //Todas las tareas que estan en estado asignada o en desarrollo que fueron asignadas a este personal
+    }
+
+    public function tareasDesarrolladasProyecto($idProyecto){
+
+        $listaAsignaciones = $this->asignacion;
+        $Tareas = [];
+        foreach ($listaAsignaciones as $asignacion) {
+            if ( (($asignacion->tarea->Proyecto_id) == ($idProyecto))) {
                 $Tareas[] = $asignacion;
             }
         }
-        return $Tareas;
+        return $Tareas; //Todas las tareas asignadas a este personal en un proyecto
     }
 
-    public function cantTareas2(){
+    public function tareasAsignadas(){
 
         $listaAsignaciones = $this->asignacion;
-        $cantTareas = 0;
+        $Tareas = [];
         foreach ($listaAsignaciones as $asignacion) {
-
-                $cantTareas++;
-
+            if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) != strtolower('Aprobada')) {
+                $Tareas[] = $asignacion;
+            }
         }
-        return $cantTareas;
+        return $Tareas; //Todas las tareas asignadas a este personal en un proyecto
     }
 }

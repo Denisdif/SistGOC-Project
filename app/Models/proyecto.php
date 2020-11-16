@@ -108,4 +108,10 @@ class Proyecto extends Model
         $suma = ($inicio->diffInMinutes($fin));
         return $suma;
     }
+
+    public function get_fecha_limite()
+    {
+        $suma = new Carbon($this->Fecha_fin_Proy);
+        return $suma->format('d/m/Y');
+    }
 }

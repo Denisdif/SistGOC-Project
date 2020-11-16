@@ -54,7 +54,9 @@ class AsignacionPersonalTareaController extends AppBaseController
      */
     public function create(Tarea $tarea)
     {
-        return view('asignacion_personal_tareas.create', compact('tarea'));
+        $personal = Personal::all();
+        $asignaciones = AsignacionPersonalTarea::all()->where('Tarea_id','=', $tarea->id);
+        return view('asignacion_personal_tareas.create', compact('tarea','personal','asignaciones'));
     }
 
     /**
@@ -77,7 +79,7 @@ class AsignacionPersonalTareaController extends AppBaseController
 
             Flash::success('Asignacion Personal Tarea saved successfully.');
 
-            return redirect(route('tareas.show',$tarea->id));
+            return Redirect::back();
 
         } catch (Exception $e) {
 

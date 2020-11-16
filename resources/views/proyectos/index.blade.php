@@ -22,7 +22,8 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Tipo de proyecto</th>
+                                <th>Comitente</th>
+                                <th>Dirección</th>
                                 <th>Fecha limite</th>
                                 <th>Acciones</th>
                             </tr>
@@ -31,8 +32,9 @@
                             @foreach ($proyectos as $proyecto)
                             <tr>
                                 <td>{{ $proyecto->Nombre_proyecto }}</td>
-                                <td>{{ $proyecto->tipo_proyecto->Nombre }}</td>
-                                <td>{{ $proyecto->Fecha_fin_Proy }}</td>
+                                <td>{{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }}</td>
+                                <td>{{ $proyecto->direccion->Calle}} {{ $proyecto->direccion->Altura}}, {{ $proyecto->direccion->localidad->localidad}}, {{ $proyecto->direccion->provincia->provincia}}</td>
+                                <td>{{ $proyecto->get_fecha_limite() }}</td>
                                 <td>{!! Form::open(['route' => ['proyectos.destroy', $proyecto->id], 'method' => 'delete']) !!}
                                     <div class='btn-group'>
                                         <a href="{{ route('proyectos.show', $proyecto->id) }}" class='btn btn-default btn-xs'>
