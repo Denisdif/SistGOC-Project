@@ -14,12 +14,6 @@
     {!! Form::text('Apellido', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Legajo Field
-<div class="form-group col-sm-6">
-    {!! Form::label('Legajo', 'Legajo:') !!}
-    {!! Form::number('Legajo', null, ['class' => 'form-control']) !!}
-</div> -->
-
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('DNI', 'Dni:') !!}
@@ -29,7 +23,9 @@
 <!-- Fechanac Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('FechaNac', 'Fecha de nacimiento:') !!}
-    {!! Form::date('FechaNac', null, ['class' => 'form-control','id'=>'FechaNac']) !!}
+    <input class="form-control" type="date" name="FechaNac" id="FechaNac" required
+    value="{{ Carbon\Carbon::now()->subtract(18, 'Years')->format('Y-m-d') }}"
+    max="{{ Carbon\Carbon::now()->subtract(18, 'Years')->format('Y-m-d') }}">
 </div>
 
 @push('scripts')
@@ -44,13 +40,13 @@
 <!-- Sexo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Sexo', 'Sexo:') !!}
-    {!! Form::select('Sexo_id', $sexoItems, null, ['class' => 'form-control']) !!}
+    {!! Form::select('Sexo_id', $sexoItems, null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Phone Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Telefono', 'Numero de Telefono:') !!}
-    {!! Form::number('Telefono', null, ['id'=>'Telefono', 'class' => 'form-control']) !!}
+    {!! Form::tel('Telefono', null, ['id'=>'Telefono', 'class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Email Field -->
@@ -62,7 +58,7 @@
 <!-- Rol Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Rol_id', 'Rol de usuario:') !!}
-    {!! Form::select('Rol_id', $RolPersonalItems, null, ['class' => 'form-control']) !!}
+    {!! Form::select('Rol_id', $RolPersonalItems, null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <div class="form-group col-sm-12">
@@ -92,7 +88,7 @@
 <div class="form-group col-sm-6">
     <div>
         <label for="provincia_id" class="">Provincia</label>
-        <select name="provincia_id" id="provincia_id" class=" form-control" disabled>
+        <select name="provincia_id" id="provincia_id" class=" form-control" disabled required>
             <option value="" selected disabled>--Seleccione--</option>
         </select>
         @error('provincia_id')
@@ -107,7 +103,7 @@
 <div class="form-group col-sm-6">
     <div>
         <label for="localidad_id" class="">Localidad</label>
-        <select name="localidad_id" id="localidad_id" class="form-control" disabled>
+        <select name="localidad_id" id="localidad_id" class="form-control" disabled required>
             <option value="" selected disabled>--Seleccione--</option>
         </select>
         @error('localidad_id')
@@ -121,22 +117,20 @@
 <!-- Codigo postal Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Codigo postal', 'Codigo postal:') !!}
-    {!! Form::number('Codigo_postal', null, ['class' => 'form-control']) !!}
+    <input class="form-control" type="number" name="Codigo_postal" min="1000" max="9407" required>
 </div>
 
 <!-- Calle Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Calle', 'Calle:') !!}
-    {!! Form::text('Calle', null, ['class' => 'form-control']) !!}
+    {!! Form::text('Calle', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Altura Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Altura', 'Altura:') !!}
-    {!! Form::number('Altura', null, ['class' => 'form-control']) !!}
+    {!! Form::number('Altura', null, ['class' => 'form-control', 'required']) !!}
 </div>
-
-
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
@@ -144,3 +138,16 @@
     {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
     <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
 </div>
+
+
+
+
+
+
+
+
+<!-- Legajo Field
+<div class="form-group col-sm-6">
+    {!! Form::label('Legajo', 'Legajo:') !!}
+    {!! Form::number('Legajo', null, ['class' => 'form-control']) !!}
+</div> -->

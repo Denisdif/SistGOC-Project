@@ -10,6 +10,9 @@ use App\Models\Comitente;
 use App\Models\Direccion;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+Carbon::setUTF8(true);
+setlocale(LC_TIME, 'es_ES');
+Carbon::setLocale('es');
 
 /**
  * Class Proyecto
@@ -106,12 +109,25 @@ class Proyecto extends Model
         $inicio = new Carbon($this->Fecha_inicio_Proy);
         $fin = new Carbon($this->Fecha_fin_Proy);
         $suma = ($inicio->diffInMinutes($fin));
-        return $suma;
+        $suma = $suma/60;
+        return $suma." horas";
     }
 
-    public function get_fecha_limite()
-    {
-        $suma = new Carbon($this->Fecha_fin_Proy);
-        return $suma->format('d/m/Y');
+    public function get_fecha_fin(){
+        $date = new Carbon($this->Fecha_fin_Proy);
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
+    }
+
+    public function get_fecha_inicio(){
+        $date = new Carbon($this->Fecha_inicio_Proy);
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
+    }
+
+    public function getFechaCreacion(){
+        $date = new Carbon($this->created_at);
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
     }
 }

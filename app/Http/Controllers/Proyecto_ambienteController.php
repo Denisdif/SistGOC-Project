@@ -60,9 +60,9 @@ class Proyecto_ambienteController extends AppBaseController
     public function store(Proyecto $proyecto, CreateProyecto_ambienteRequest $request)
     {
         //return $request;
-        $lista_ambientes = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
         try {
             for ($i=0; $i < sizeof($request->Cantidad); $i++) {
+                $lista_ambientes = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
                 $existe = false;
                 foreach ($lista_ambientes as $item) {
                     if (($item->Ambiente_id) == ($request->Ambiente_id[$i])) {

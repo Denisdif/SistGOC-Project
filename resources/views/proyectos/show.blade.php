@@ -61,7 +61,7 @@
                             <td>{{ $tarea->Nombre_tarea }}</td>
                             <td>{{ $tarea->prioridad }}</td>
                             <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
-                            <td>{{ $tarea->Fecha_limite }}</td>
+                            <td>{{ $tarea->getFechaLimite() }}</td>
                             <td>{!! Form::open(['route' => ['tareas.destroy', $tarea->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
                                     <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
@@ -114,7 +114,7 @@
                             <td>{{ $Personal->NombrePersonal }} {{ $Personal->ApellidoPersonal }}</td>
                             <td>{{ sizeof($Personal->tareasDesarrolladasProyecto($proyecto->id)) }}</td>
                             <td>8 horas</td>
-                            <td><button class="btn" data-toggle="modal" data-target="#PruebaModal{{$Personal->id}}" type="button">Modal</button></td>
+                            <td><button class="btn" data-toggle="modal" data-target="#PruebaModal{{$Personal->id}}" type="button">Tareas</button></td>
                         </tr>
                         @endforeach
                     </tbody>

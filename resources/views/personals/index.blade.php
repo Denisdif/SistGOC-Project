@@ -23,15 +23,21 @@
                     <thead>
                         <tr>
                             <th>Nombre completo</th>
+                            <th>Legajo</th>
                             <th>DNI</th>
+                            <th>Edad</th>
+                            <th>Rol</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="Var1">
+                    <tbody>
                         @foreach ($ListaPersonal as $personal)
                         <tr>
                             <td>{{ $personal->NombrePersonal }} {{ $personal->ApellidoPersonal }}</td>
+                            <td>{{ $personal->id }}</td>
                             <td>{{ $personal->DNI }}</td>
+                            <td>{{ $personal->edad() }} años</td>
+                            <td>{{ $personal->User->rol->NombreRol }}</td>
                             <td>{!! Form::open(['route' => ['personals.destroy', $personal->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
                                     <a href="{{ route('personals.show', $personal->id) }}" class='btn btn-default btn-xs'>

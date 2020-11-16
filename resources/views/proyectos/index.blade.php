@@ -34,7 +34,7 @@
                                 <td>{{ $proyecto->id }}</td>
                                 <td>{{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }}</td>
                                 <td>{{ $proyecto->direccion->Calle}} {{ $proyecto->direccion->Altura}}, {{ $proyecto->direccion->localidad->localidad}}, {{ $proyecto->direccion->provincia->provincia}}</td>
-                                <td>{{ $proyecto->get_fecha_limite() }}</td>
+                                <td>{{ $proyecto->get_fecha_fin() }}</td>
                                 <td>{!! Form::open(['route' => ['proyectos.destroy', $proyecto->id], 'method' => 'delete']) !!}
                                     <div class='btn-group'>
                                         <a href="{{ route('proyectos.show', $proyecto->id) }}" class='btn btn-default btn-xs'>

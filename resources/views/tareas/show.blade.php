@@ -122,10 +122,10 @@
 
                 <div class="text-center">
                     <br>
-                    @if ($tarea->Estado_tarea_id < 4)
-
+                    @if ($tarea->Estado_tarea_id == 3)
                         <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/entregas/create">Añadir entrega</a>
-                    @else
+                    @endif
+                    @if ($tarea->Estado_tarea_id == 4)
                         <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/entregas/create">Editar entrega</a>
                     @endif
                     @if ($tarea->Estado_tarea_id == 4)

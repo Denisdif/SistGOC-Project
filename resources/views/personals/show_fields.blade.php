@@ -2,7 +2,7 @@
 <div class="form-group">
 
     {!! Form::label('NombrePersonal', 'Nombre completo:') !!}
-    {{ $personal->Apellido }} {{ $personal->NombrePersonal }} <br>
+    {{ $personal->ApellidoPersonal }} {{ $personal->NombrePersonal }} <br>
 
     {!! Form::label('Legajo', 'Numero de legajo:') !!}
     {{ $personal->id }} <br>
@@ -10,8 +10,11 @@
     {!! Form::label('DNI', 'Dni:') !!}
     {{ $personal->DNI }} <br>
 
+    {!! Form::label('Edad', 'Edad:') !!}
+    {{ $personal->edad() }} años<br>
+
     {!! Form::label('FechaNac', 'Fecha de Nacimiento:') !!}
-    {{ $personal->FechaNac }} <br>
+    {{ $personal->get_fecha_nac() }} <br>
 
     {!! Form::label('Telefono', 'Numero de teléfono:') !!}
     {{ $personal->Telefono }} <br>

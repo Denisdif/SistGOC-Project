@@ -10,6 +10,10 @@ use App\Models\Evaluacion;
 use App\Models\Comentario;
 use App\User;
 use App\Models\Direccion;
+use Illuminate\Support\Carbon;
+Carbon::setUTF8(true);
+setlocale(LC_TIME, 'es_ES');
+Carbon::setLocale('es');
 
 /**
  * Class Personal
@@ -143,5 +147,17 @@ class Personal extends Model
             }
         }
         return $Tareas; //Todas las tareas asignadas a este personal en un proyecto
+    }
+
+    public function edad(){
+        $date = new Carbon($this->FechaNac);
+        $date = $date->diffInYears();
+        return $date;
+    }
+
+    public function get_fecha_nac(){
+        $date = new Carbon($this->FechaNac);
+        $date = $date->formatLocalized(' %d de %B de %Y');
+        return $date;
     }
 }

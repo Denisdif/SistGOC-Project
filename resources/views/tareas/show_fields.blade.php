@@ -12,13 +12,13 @@
     {!! Form::label('Estado_tarea', 'Estado de tarea:') !!}
     {{ $tarea->estado_tarea->Nombre_estado_tarea }} <br>
 
-    {!! Form::label('Fecha_inicio', 'Fecha límite de inicio:') !!}
-    {{ $tarea->Fecha_inicio }} <br>
+    {!! Form::label('Fecha_inicio', 'Fecha de inicio:') !!}
+    {{ $tarea->getFechaInicio() }} <br>
 
-    {!! Form::label('Fecha_fin', 'Fecha límite de finalización:') !!}
-    {{ $tarea->Fecha_fin }} <br>
+    {!! Form::label('Fecha_fin', 'Fecha de finalización:') !!}
+    {{ $tarea->getFechaFin() }} <br>
 
-    {!! Form::label('Estimacion', 'Cantidad de horas de desarrollo estimadas:') !!}
+    {!! Form::label('Estimacion', 'Tiempo de desarrollo estimado:') !!}
     {{ $tarea->duracionEstimadaReal($tarea->Tipo_tarea_id)}} <br>
 
     {!! Form::label('Descripcion', 'Descripción:') !!}

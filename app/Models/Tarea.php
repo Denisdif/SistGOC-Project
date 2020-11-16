@@ -11,6 +11,8 @@ use App\Models\Proyecto;
 use App\Models\AsignacionPersonalTarea;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+Carbon::setUTF8(true);
+setlocale(LC_TIME, 'es_ES');
 Carbon::setLocale('es');
 
 /**
@@ -134,15 +136,28 @@ class Tarea extends Model
         if ($div != 0) {
             $resul = $suma / $div;
             $resul = $resul / 60;
-            return $resul;
+            $resul = round ( $resul, 2 );
+            return $resul." horas";
         } else {
             return 5;
         }
     }
 
-    public function getFechaIngreso(){
+    public function getFechaInicio(){
         $date = new Carbon($this->Fecha_inicio);
-        $date = $date->format('d-m-Y');
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
+    }
+
+    public function getFechaFin(){
+        $date = new Carbon($this->Fecha_inicio);
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
+    }
+
+    public function getFechaLimite(){
+        $date = new Carbon($this->Fecha_limite);
+        $date = $date->formatLocalized('%A %d %B %Y');
         return $date;
     }
 }
