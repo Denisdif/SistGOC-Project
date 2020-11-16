@@ -2,38 +2,11 @@
     <h3>Datos del proyecto</h3>
 </div>
 
-<!-- Nombre Proyecto Field
-<div class="form-group col-sm-6">
-    {!! Form::label('Nombre_proyecto', 'Nombre:') !!}
-    {!! Form::text('Nombre_proyecto', null, ['class' => 'form-control']) !!}
-</div> -->
-
-<!-- Codigo de proyecto Field
-<div class="form-group col-sm-6">
-    {!! Form::label('Codigo_catastral', 'Código de proyecto:') !!}
-    {!! Form::text('Codigo_de_proyecto', null, ['class' => 'form-control']) !!}
-</div> -->
-
 <!-- Tipo Proyecto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Tipo_proyecto', 'Tipo de Proyecto:') !!}
     {!! Form::select('Tipo_proyecto_id', $tipo_proyectoItems, null, ['class' => 'form-control', 'required']) !!}
 </div>
-
-<!-- Fecha Inicio Proy Field
-<div class="form-group col-sm-6">
-    {!! Form::label('Fecha_inicio_Proy', 'Fecha Inicio Proy:') !!}
-    {!! Form::date('Fecha_inicio_Proy', null, ['class' => 'form-control','id'=>'Fecha_inicio_Proy']) !!}
-</div> -->
-
-@push('scripts')
-    <script type="text/javascript">
-        $('#Fecha_inicio_Proy').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: false
-        })
-    </script>
-@endpush
 
 
 <!-- Fecha Fin Proy Field -->
@@ -59,18 +32,6 @@
     {!! Form::label('Informe', 'Informe de entrevistas y relevamiento:') !!}
     {!! Form::file('Informe', ['class' => 'form-control', 'required']) !!}
 </div>
-
-<!-- Director Id Field
-<div class="form-group col-sm-6">
-    {!! Form::label('Director_id', 'Director Id:') !!}
-    {!! Form::number('Director_id', null, ['class' => 'form-control']) !!}
-</div> -->
-
-<!-- Comitente Id Field
-<div class="form-group col-sm-6">
-    {!! Form::label('Comitente_id', 'Comitente Id:') !!}
-    {!! Form::number('Comitente_id', null, ['class' => 'form-control']) !!}
-</div> -->
 
 <!-- Descripcion Field -->
 <div class="form-group col-sm-12 col-lg-12">
@@ -220,11 +181,6 @@
     {!! Form::select('Sexo_id', $sexoItems, null, ['class' => 'form-control', 'id' => 'CampoOcultoSexo']) !!}
 </div>
 
-<!-- Direccion Id Field
-<div class="form-group col-sm-6">
-    {!! Form::label('Direccion_id', 'Direccion Id:') !!}
-    {!! Form::text('Direccion_id', null, ['class' => 'form-control']) !!}
-</div> -->
 
 </div>
 
@@ -236,3 +192,59 @@
     <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Nombre Proyecto Field
+<div class="form-group col-sm-6">
+    {!! Form::label('Nombre_proyecto', 'Nombre:') !!}
+    {!! Form::text('Nombre_proyecto', null, ['class' => 'form-control']) !!}
+</div> -->
+
+<!-- Codigo de proyecto Field
+<div class="form-group col-sm-6">
+    {!! Form::label('Codigo_catastral', 'Código de proyecto:') !!}
+    {!! Form::text('Codigo_de_proyecto', null, ['class' => 'form-control']) !!}
+</div> -->
+
+<!-- Direccion Id Field
+<div class="form-group col-sm-6">
+    {!! Form::label('Direccion_id', 'Direccion Id:') !!}
+    {!! Form::text('Direccion_id', null, ['class' => 'form-control']) !!}
+</div> -->
+
+<!-- Fecha Inicio Proy Field
+<div class="form-group col-sm-6">
+    {!! Form::label('Fecha_inicio_Proy', 'Fecha Inicio Proy:') !!}
+    {!! Form::date('Fecha_inicio_Proy', null, ['class' => 'form-control','id'=>'Fecha_inicio_Proy']) !!}
+</div> -->
+
+@push('scripts')
+    <script type="text/javascript">
+        $('#Fecha_inicio_Proy').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            useCurrent: false
+        })
+    </script>
+@endpush
+
+<!-- Director Id Field
+<div class="form-group col-sm-6">
+    {!! Form::label('Director_id', 'Director Id:') !!}
+    {!! Form::number('Director_id', null, ['class' => 'form-control']) !!}
+</div> -->
+
+<!-- Comitente Id Field
+<div class="form-group col-sm-6">
+    {!! Form::label('Comitente_id', 'Comitente Id:') !!}
+    {!! Form::number('Comitente_id', null, ['class' => 'form-control']) !!}
+</div> -->
