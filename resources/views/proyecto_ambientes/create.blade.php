@@ -18,7 +18,6 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Cantidad</th>
-                            <th>Descripción</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -27,7 +26,6 @@
                         <tr>
                             <td>{{ $ambiente->ambiente->Nombre_ambiente }}</td>
                             <td>{{ $ambiente->Cantidad }}</td>
-                            <td>{{ $ambiente->ambiente->Descripcion }}</td>
                             <td>{!! Form::open(['route' => ['proyectoAmbientes.destroy', $ambiente->id], 'method' => 'delete']) !!}
                                 <div class='btn-group'>
                                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [

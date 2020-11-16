@@ -60,22 +60,31 @@ class Proyecto_ambienteController extends AppBaseController
     public function store(Proyecto $proyecto, CreateProyecto_ambienteRequest $request)
     {
         //return $request;
+        $lista_ambientes = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
         try {
             for ($i=0; $i < sizeof($request->Cantidad); $i++) {
-                $proyectoAmbiente = new Proyecto_ambiente();
-                $proyectoAmbiente->Ambiente_id = $request->Ambiente_id[$i];
-                $proyectoAmbiente->Cantidad = $request->Cantidad[$i];
-                $proyectoAmbiente->Proyecto_id = $proyecto->id;
-                $proyectoAmbiente->save();
+                $existe = false;
+                foreach ($lista_ambientes as $item) {
+                    if (($item->Ambiente_id) == ($request->Ambiente_id[$i])) {
+                        $item->Cantidad += $request->Cantidad[$i];
+                        $item->save();
+                        $existe = true;
+                    }
+                }
+                if ($existe == false) {
+                    $proyectoAmbiente = new Proyecto_ambiente();
+                    $proyectoAmbiente->Ambiente_id = $request->Ambiente_id[$i];
+                    $proyectoAmbiente->Cantidad = $request->Cantidad[$i];
+                    $proyectoAmbiente->Proyecto_id = $proyecto->id;
+                    $proyectoAmbiente->save();
+                }
             }
-
             Flash::success('Se cargaron los ambientes correctamente');
 
-            return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
+            return redirect()->back();
 
         } catch (Exception $e) {
             return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
-
         }
 
         /*$input = $request->all();
