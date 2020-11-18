@@ -115,12 +115,42 @@ class ProyectoController extends AppBaseController
 
         $proyecto->save();
 
-        $ambientesDelProyecto = null;
+        $ambientesDelProyecto = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
+        $tareasDelProyecto = Tarea::all()->where('Proyecto_id','=', $proyecto->id);
+        $Lista_asignaciones = AsignacionPersonalTarea::all();
+
+        try {
+            for ($i=0; $i < sizeof($request->Cantidad); $i++) {
+                $lista_ambientes = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
+                $existe = false;
+                foreach ($lista_ambientes as $item) {
+                    if (($item->Ambiente_id) == ($request->Ambiente_id[$i])) {
+                        $item->Cantidad += $request->Cantidad[$i];
+                        $item->save();
+                        $existe = true;
+                    }
+                }
+                if ($existe == false) {
+                    $proyectoAmbiente = new Proyecto_ambiente();
+                    $proyectoAmbiente->Ambiente_id = $request->Ambiente_id[$i];
+                    $proyectoAmbiente->Cantidad = $request->Cantidad[$i];
+                    $proyectoAmbiente->Proyecto_id = $proyecto->id;
+                    $proyectoAmbiente->save();
+                }
+            }
+            Flash::success('Se cargaron los ambientes correctamente');
+
+            return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
+            //return redirect()->back();
+
+        } catch (Exception $e) {
+            return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
 
         Flash::success('Proyecto saved successfully.');
 
-        return redirect("/proyectos/$proyecto->id/proyectoAmbientes/create");
+        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal','idPersonal'))->with('proyecto', $proyecto);
     }
+}
 
     /**
      * Display the specified Proyecto.
@@ -169,14 +199,13 @@ class ProyectoController extends AppBaseController
             }
         }
 
-        $idPersonal = 0; //Para identificar la fila para mostrar el Modal
        /*for ($i=0; $i < $indice; $i++) {
             echo "{$Lista_Personal[$i]->NombrePersonal} <br>";
         }*/
 
         // Fin de filtro de personal con tareas del proyecto asignadas
 
-        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal','idPersonal'))->with('proyecto', $proyecto);
+        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal'))->with('proyecto', $proyecto);
     }
 
     /**

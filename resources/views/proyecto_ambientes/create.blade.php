@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <a href="{{ route('proyectos.show', $proyecto->id) }}" class="btn btn-default pull-right">Salir</a>
+        <a href="{{ route('proyectos.show', $proyecto->id) }}" class="btn btn-default pull-right">Volver</a>
     </div>
 
     {{--Fin de DataTable de ambientes del proyecto --}}

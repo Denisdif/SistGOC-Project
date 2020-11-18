@@ -81,7 +81,8 @@ class Proyecto_ambienteController extends AppBaseController
             }
             Flash::success('Se cargaron los ambientes correctamente');
 
-            return redirect()->back();
+            return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
+            //return redirect()->back();
 
         } catch (Exception $e) {
             return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));

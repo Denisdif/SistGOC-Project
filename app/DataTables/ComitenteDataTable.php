@@ -66,7 +66,6 @@ class ComitenteDataTable extends DataTable
     {
         return [
             'NombreComitente',
-            'ApellidoComitente',
             'Email',
             'Telefono',
             'Cuit',
