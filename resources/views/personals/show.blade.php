@@ -55,6 +55,7 @@
                             <th>Desde</th>
                             <th>Hasta</th>
                             <th>Evaluador</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,7 +63,22 @@
                         <tr>
                             <td>{{ $evaluacion->Fecha_inicio }}</td>
                             <td>{{ $evaluacion->Fecha_fin }}</td>
-                            <td>{{ $evaluacion->evaluador->NombrePersonal }}</td>
+                            <td>{{ $evaluacion->evaluador->NombrePersonal }} {{ $evaluacion->evaluador->ApellidoPersonal }}</td>
+                            <td>{!! Form::open(['route' => ['evaluacions.destroy', $evaluacion->id], 'method' => 'delete']) !!}
+                                <div class='btn-group'>
+                                    <a href="{{ route('evaluacions.show', $evaluacion->id) }}" class='btn btn-default btn-xs'>
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                    <a href="{{ route('evaluacions.edit', $evaluacion->id) }}" class='btn btn-default btn-xs'>
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                    </a>
+                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
+                                        'type' => 'submit',
+                                        'class' => 'btn btn-danger btn-xs',
+                                        'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
+                                    ]) !!}
+                                </div>
+                                {!! Form::close() !!}</td>
                         </tr>
                         @endforeach
                     </tbody>

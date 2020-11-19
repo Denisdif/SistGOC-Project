@@ -81,11 +81,6 @@ class Personal extends Model
         return $this->hasMany(AsignacionPersonalTarea::class);
     }
 
-    /*public function Rol()
-    {
-        return $this->belongsTo( RolPersonal::class ,'Rol_id');
-    }*/
-
     public function User()
     {
         return $this->hasOne(User::class);
@@ -159,5 +154,96 @@ class Personal extends Model
         $date = new Carbon($this->FechaNac);
         $date = $date->formatLocalized(' %d de %B de %Y');
         return $date;
+    }
+
+    //Obtener lista de todas las tareas desarrolladas
+
+    public function tareas_desarrolladas(){
+        $tareas = $this->asignacion;
+        $tareasFiltradas = [];
+        foreach ($tareas as $item) {
+            if (($item->Responsabilidad == "Desarrollador")) {
+                $tareasFiltradas[] = $item->tarea;
+            }
+        }
+        return $tareasFiltradas;
+    }
+
+    //Obtener lista de tareas desarrolladas filtradas por tipo
+
+    public function get_tareas_desarrolladas($tipoTarea){
+        $tareas = $this->asignacion;
+        $tareasFiltradas = [];
+        foreach ($tareas as $item) {
+            if (($item->tarea->tipo_tarea->Nombre_tipo_tarea == $tipoTarea) and ($item->Responsabilidad == "Desarrollador")) {
+                $tareasFiltradas[] = $item->tarea;
+            }
+        }
+        return $tareasFiltradas;
+    }
+
+    //Obtener lista de tareas desarrolladas filtradas por fechas
+
+    public function tareas_desarrolladas_por_fecha($inicio, $fin){
+        $tareas = $this->asignacion;
+        $tareasFiltradas = [];
+        foreach ($tareas as $item) {
+            if (($item->Responsabilidad == "Desarrollador") and ($item->tarea->Fecha_fin > $inicio) and ($item->tarea->Fecha_fin < $fin)) {
+
+                $tareasFiltradas[] = $item->tarea;
+
+            }
+        }
+        return $tareasFiltradas;
+    }
+
+    //Obtener lista de tareas desarrolladas filtradas por tipo y fechas
+
+    public function get_tareas_desarrolladas_por_fecha($tipoTarea, $inicio, $fin){
+        $tareas = $this->asignacion;
+        $tareasFiltradas = [];
+        foreach ($tareas as $item) {
+            if (($item->tarea->tipo_tarea->Nombre_tipo_tarea == $tipoTarea) and ($item->Responsabilidad == "Desarrollador") and
+                ($item->tarea->Fecha_fin > $inicio) and ($item->tarea->Fecha_fin < $fin)) {
+
+                $tareasFiltradas[] = $item->tarea;
+            }
+        }
+        return $tareasFiltradas;
+    }
+
+
+
+    //Obtener rendimiento del personal en base a una lista de tareas recibida como parametro
+
+    public function get_rendimiento($tareas){
+        $suma = 0;
+        foreach ($tareas as $item) {
+            $suma += $item->calificacion();
+        }
+
+        if (sizeof($tareas) != 0) {
+            $suma = $suma/sizeof($tareas);
+            return $suma;
+        } else {
+            return "No ha realizado tareas de este tipo";
+        }
+    }
+
+    //Obtener rendimiento general del personal
+
+    public function get_rendimiento_general(){
+        $tareas = $this->tareas_desarrolladas();
+        $suma = 0;
+        foreach ($tareas as $item) {
+            $suma += $item->calificacion();
+        }
+
+        if (sizeof($tareas) != 0) {
+            $suma = $suma/sizeof($tareas);
+            return $suma;
+        } else {
+            return "No ha realizado tareas";
+        }
     }
 }

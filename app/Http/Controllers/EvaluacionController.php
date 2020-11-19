@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateEvaluacionRequest;
 use App\Http\Requests\UpdateEvaluacionRequest;
 use App\Models\Evaluacion;
+use App\Models\Tipo_tarea;
 use App\Repositories\EvaluacionRepository;
 use Flash;
 use Response;
@@ -84,8 +85,8 @@ class EvaluacionController extends AppBaseController
 
             return redirect(route('evaluacions.index'));
         }
-
-        return view('evaluacions.show')->with('evaluacion', $evaluacion);
+        $tipos_de_tareas = Tipo_tarea::all();
+        return view('evaluacions.show', compact('tipos_de_tareas'))->with('evaluacion', $evaluacion);
     }
 
     /**

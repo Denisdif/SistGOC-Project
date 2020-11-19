@@ -1,8 +1,9 @@
 <!-- Nombre Proyecto Field -->
 
+<div class="col-md-12 mb-12">
 
-<div class="col-md-6 mb-6">
     <h2>Datos del proyecto</h2><br>
+
     {!! Form::label('Nombre_proyecto', 'Código de proyecto:') !!}
     {{ $proyecto->id }} <br>
 

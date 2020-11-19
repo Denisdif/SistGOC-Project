@@ -143,6 +143,14 @@ class Tarea extends Model
         }
     }
 
+    public function duracionReal()
+    {
+        $inicio = new Carbon($this->Fecha_inicio);
+        $fin = new Carbon($this->Fecha_fin);
+        $resul = ($inicio->diffInMinutes($fin));
+        return $resul;
+    }
+
     public function getFechaInicio(){
         $date = new Carbon($this->Fecha_inicio);
         $date = $date->formatLocalized('%A %d %B %Y');
@@ -159,5 +167,34 @@ class Tarea extends Model
         $date = new Carbon($this->Fecha_limite);
         $date = $date->formatLocalized('%A %d %B %Y');
         return $date;
+    }
+
+    public function calificacion(){
+
+        $puntos = 100000000;
+
+        //if ($this->Estado_tarea_id == 6) {
+
+            if (($this->Correcciones == "true")) {
+                $puntos = 2;
+            }
+
+            if (($this->Correcciones == "false")) {
+                $puntos = 4;
+            }
+
+            if (($this->Correcciones == "true") and ($this->Fecha_fin < $this->Fecha_limite)) {
+                $puntos = 6;
+            }
+
+            if (($this->Correcciones == "false") and ($this->Fecha_fin < $this->Fecha_limite)) {
+                $puntos = 8;
+            }
+
+            if (($this->duracionReal() < $this->duracionEstimadaReal()) and ($this->Correcciones == "false") and ($this->Fecha_fin < $this->Fecha_limite)) {
+                $puntos = 10;
+            }
+        //}
+        return $puntos;
     }
 }
