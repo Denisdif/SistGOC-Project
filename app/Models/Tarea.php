@@ -251,28 +251,32 @@ class Tarea extends Model
     //En caso de que no tenga asignado personal responsable, asigna al personal con menor carga de trabajo
     public function asignacion_inteligente(){
 
-        $personal_exceptuado = $this->idResponsables(); //Obtener al personal ya asignado a esta tarea
+        $responsables = [];
 
         if (sizeof($this->asignacion) == 0) {
 
+            $mejorPersonal = $this->menor_carga_de_trabajo_horas($responsables);
+
             $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $this->menor_carga_de_trabajo_horas($personal_exceptuado);
+            $asignacionPersonalTarea->Personal_id = $mejorPersonal;
             $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
             $asignacionPersonalTarea->Tarea_id = $this->id;
             $asignacionPersonalTarea->save();
 
-            $personal_exceptuado = $this->idResponsables(); //Obtener al personal ya asignado a esta tarea
+            $responsables[] = $mejorPersonal;
+            $mejorPersonal = $this->menor_carga_de_trabajo_horas($responsables);
 
             $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $this->menor_carga_de_trabajo_horas($personal_exceptuado);
+            $asignacionPersonalTarea->Personal_id = $mejorPersonal;
             $asignacionPersonalTarea->Responsabilidad = "Aprobador";
             $asignacionPersonalTarea->Tarea_id = $this->id;
             $asignacionPersonalTarea->save();
 
-            $personal_exceptuado = $this->idResponsables(); //Obtener al personal ya asignado a esta tarea
+            $responsables[] = $mejorPersonal;
+            $mejorPersonal = $this->menor_carga_de_trabajo_horas($responsables);
 
             $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $this->menor_carga_de_trabajo_horas($personal_exceptuado);
+            $asignacionPersonalTarea->Personal_id = $mejorPersonal;
             $asignacionPersonalTarea->Responsabilidad = "Supervisor";
             $asignacionPersonalTarea->Tarea_id = $this->id;
             $asignacionPersonalTarea->save();

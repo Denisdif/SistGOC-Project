@@ -23,6 +23,7 @@
                             {{ $item }}
                         @endforeach
 
+                        {{ $tarea->menor_carga_de_trabajo_horas($tarea->idResponsables()) }}
 
 
                         @foreach ($asignaciones as $asignacion)
