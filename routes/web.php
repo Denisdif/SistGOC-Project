@@ -89,6 +89,7 @@ Route::delete('tareas/{id}',                         'TareaController@destroy') 
 
 Route::get('tareas/{tarea}/aprobar',                 'TareaController@aprobar')        ->name('tareas.aprobar');
 Route::get('tareas/{tarea}/desaprobar',              'TareaController@desaprobar')     ->name('tareas.desaprobar');
+Route::get('tareas/{tarea}/autoAsignar',             'TareaController@autoAsignar')    ->name('tareas.autoAsignar');
 
 //Rutas de asignaciones de tareas
 

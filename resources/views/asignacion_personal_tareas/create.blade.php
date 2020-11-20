@@ -76,7 +76,7 @@
                         <tr>
                             <td>{{ $Personal->NombrePersonal }} {{ $Personal->ApellidoPersonal }}</td>
                             <td>{{ sizeof($Personal->tareasEnDesarrollo()) }}</td>
-                            <td>8 horas</td>
+                            <td>{{ $Personal->carga_de_trabajo_horas() }}</td>
                             <td><button class="btn" data-toggle="modal" data-target="#PruebaModal{{$Personal->id}}" type="button">Modal</button></td>
                         </tr>
                         @endforeach

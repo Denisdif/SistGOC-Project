@@ -106,6 +106,20 @@ class Personal extends Model
         return $this->belongsTo(Sexo::class, 'Sexo_id');
     }
 
+    public function edad(){
+        $date = new Carbon($this->FechaNac);
+        $date = $date->diffInYears();
+        return $date;
+    }
+
+    public function get_fecha_nac(){
+        $date = new Carbon($this->FechaNac);
+        $date = $date->formatLocalized(' %d de %B de %Y');
+        return $date;
+    }
+
+    //Obtener un array con las asignaciones de tareas en estado asignada o desarrollo con responsabilidad de Desarrollador
+
     public function tareasEnDesarrollo(){
 
         $listaAsignaciones = $this->asignacion;
@@ -120,6 +134,8 @@ class Personal extends Model
         return $Tareas; //Todas las tareas que estan en estado asignada o en desarrollo que fueron asignadas a este personal
     }
 
+    //Todas las tareas asignadas a este personal en un proyecto
+
     public function tareasDesarrolladasProyecto($idProyecto){
 
         $listaAsignaciones = $this->asignacion;
@@ -132,6 +148,8 @@ class Personal extends Model
         return $Tareas; //Todas las tareas asignadas a este personal en un proyecto
     }
 
+    //Obtener un array con las asignaciones de tareas que aun no han sido aprobadas
+
     public function tareasAsignadas(){
 
         $listaAsignaciones = $this->asignacion;
@@ -142,18 +160,6 @@ class Personal extends Model
             }
         }
         return $Tareas; //Todas las tareas asignadas a este personal en un proyecto
-    }
-
-    public function edad(){
-        $date = new Carbon($this->FechaNac);
-        $date = $date->diffInYears();
-        return $date;
-    }
-
-    public function get_fecha_nac(){
-        $date = new Carbon($this->FechaNac);
-        $date = $date->formatLocalized(' %d de %B de %Y');
-        return $date;
     }
 
     //Obtener lista de todas las tareas desarrolladas
@@ -212,8 +218,6 @@ class Personal extends Model
         return $tareasFiltradas;
     }
 
-
-
     //Obtener rendimiento del personal en base a una lista de tareas recibida como parametro
 
     public function get_rendimiento($tareas){
@@ -246,4 +250,57 @@ class Personal extends Model
             return "No ha realizado tareas";
         }
     }
+
+    //Obtener cantidad de tareas asignadas que aun no han sido aprobadas
+
+    public function carga_de_trabajo(){
+
+        $listaAsignaciones = $this->asignacion;
+        $Tareas = [];
+        foreach ($listaAsignaciones as $asignacion) {
+            if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) != strtolower('Aprobada')) {
+
+                $Tareas[] = $asignacion;
+
+            }
+        }
+        return $Tareas; //Todas las tareas que estan en estado asignada o en desarrollo que fueron asignadas a este personal
+    }
+
+    //Obtener carga de trabajo del personal en horas
+
+    public function carga_de_trabajo_horas(){
+
+        $listaAsignaciones = $this->asignacion;
+        $tareas = [];
+        $horas = 0;
+        foreach ($listaAsignaciones as $asignacion) {
+            if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) != strtolower('Aprobada')) {
+
+                if ($asignacion->Responsabilidad == "Desarrollador") {
+                    $horas += $asignacion->tarea->duracionEstimadaReal();
+                }else{
+                    $horas += 1;
+                }
+            }
+        }
+        return $horas;
+    }
+
+    //Obtener carga de trabajo del personal en horas
+
+    public function menor_carga_de_trabajo_horas(){
+
+        $empleado = Personal::find(1);
+        $lista_personal = Personal::all();
+        foreach ($lista_personal as $item) {
+            if ($item->carga_de_trabajo_horas()< $empleado->carga_de_trabajo_horas()) {
+                $empleado = $item;
+            }
+        }
+        $empleado = Personal::find($empleado->id);
+        return $empleado;
+    }
+
+
 }

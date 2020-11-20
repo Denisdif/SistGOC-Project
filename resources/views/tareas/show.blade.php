@@ -18,6 +18,13 @@
 
                     <div class="col-md-12 mb-12">
                         <h2>Responsables</h2><br>
+
+                        @foreach ($tarea->idResponsables() as $item)
+                            {{ $item }}
+                        @endforeach
+
+
+
                         @foreach ($asignaciones as $asignacion)
                         <b>{{$asignacion->Personal->NombrePersonal." ".$asignacion->Personal->ApellidoPersonal}}:</b> {{ $asignacion->Responsabilidad }} <br>
                         @endforeach
@@ -122,6 +129,7 @@
 
                 <div class="text-center">
                     <br>
+                    <a href="/tareas/{{$tarea->id}}/autoAsignar" class="btn btn-danger ">Asignar</a>
                     @if ($tarea->Estado_tarea_id == 3)
                         <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/entregas/create">Añadir entrega</a>
                     @endif

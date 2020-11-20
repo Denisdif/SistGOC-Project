@@ -29,6 +29,8 @@
                                 <!-- Rol Field -->
                                     {!! Form::label('rol', 'Rol:') !!}
                                     {{ $item->rol->NombreRol }} <br><br>
+
+                                    {{ $personal->menor_carga_de_trabajo_horas() }}
                     @endforeach
                     <a href="javascript:history.back()" class="btn btn-default">Atrás</a>
                 </div>

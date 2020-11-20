@@ -117,8 +117,9 @@ class Tarea extends Model
         return $this->hasMany(Comentario::class);
     }
 
-    public function duracionEstimadaReal()
-    {
+    //Devuelve la cantidad de horas de desarrollo estimadas, en base al tipo de tarea
+
+    public function duracionEstimadaReal(){
         $tareas = Tarea::all();
         $suma = 0;
         $div = 0;
@@ -136,20 +137,23 @@ class Tarea extends Model
         if ($div != 0) {
             $resul = $suma / $div;
             $resul = $resul / 60;
-            $resul = round ( $resul, 2 );
-            return $resul." horas";
+            $resul = round ( $resul, 0 );
+            return $resul;
         } else {
             return 5;
         }
     }
 
-    public function duracionReal()
-    {
+    //Devuelve la cantidad de horas de desarrollo de una tarea aprobada
+
+    public function duracionReal(){
         $inicio = new Carbon($this->Fecha_inicio);
         $fin = new Carbon($this->Fecha_fin);
         $resul = ($inicio->diffInMinutes($fin));
         return $resul;
     }
+
+    //Formatea fecha inicio
 
     public function getFechaInicio(){
         $date = new Carbon($this->Fecha_inicio);
@@ -157,17 +161,23 @@ class Tarea extends Model
         return $date;
     }
 
+    //Formatea fecha fin
+
     public function getFechaFin(){
         $date = new Carbon($this->Fecha_inicio);
         $date = $date->formatLocalized('%A %d %B %Y');
         return $date;
     }
 
+    //Formatea fecha limite
+
     public function getFechaLimite(){
         $date = new Carbon($this->Fecha_limite);
         $date = $date->formatLocalized('%A %d %B %Y');
         return $date;
     }
+
+    //Califica una tarea aprobada, devuelve un entero entre 0 y 10
 
     public function calificacion(){
 
@@ -196,5 +206,77 @@ class Tarea extends Model
             }
         //}
         return $puntos;
+    }
+
+    //Retorna todos los responsables de la tarea
+
+    public function responsables(){
+
+        $responsables = [];
+        foreach ($this->asignacion as $item) {
+            $responsables[] = $item->Personal;
+        } ;
+
+        return $responsables;
+    }
+
+    //Retorna todos los ids de los responsables de la tarea
+
+    public function idResponsables(){
+
+        $responsables = [];
+        foreach ($this->asignacion as $item) {
+            $responsables[] = $item->Personal_id;
+        } ;
+
+        return $responsables;
+    }
+
+    //Retorna al personal con menor carga de trabajo a ser asignado a esta tarea, tomando como parametro una lista de excepcion
+
+    public function menor_carga_de_trabajo_horas($personal_exceptuado){
+
+        $lista_personal = Personal::all()->except($personal_exceptuado);
+        $empleado = $lista_personal->first();
+        foreach ($lista_personal as $item) {
+            if ($item->carga_de_trabajo_horas()< $empleado->carga_de_trabajo_horas()) {
+                $empleado = $item;
+            }
+        }
+        $empleado = Personal::find($empleado->id);
+        return $empleado->id;
+    }
+
+
+    //En caso de que no tenga asignado personal responsable, asigna al personal con menor carga de trabajo
+    public function asignacion_inteligente(){
+
+        $personal_exceptuado = $this->idResponsables(); //Obtener al personal ya asignado a esta tarea
+
+        if (sizeof($this->asignacion) == 0) {
+
+            $asignacionPersonalTarea = new AsignacionPersonalTarea;
+            $asignacionPersonalTarea->Personal_id = $this->menor_carga_de_trabajo_horas($personal_exceptuado);
+            $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+            $asignacionPersonalTarea->Tarea_id = $this->id;
+            $asignacionPersonalTarea->save();
+
+            $personal_exceptuado = $this->idResponsables(); //Obtener al personal ya asignado a esta tarea
+
+            $asignacionPersonalTarea = new AsignacionPersonalTarea;
+            $asignacionPersonalTarea->Personal_id = $this->menor_carga_de_trabajo_horas($personal_exceptuado);
+            $asignacionPersonalTarea->Responsabilidad = "Aprobador";
+            $asignacionPersonalTarea->Tarea_id = $this->id;
+            $asignacionPersonalTarea->save();
+
+            $personal_exceptuado = $this->idResponsables(); //Obtener al personal ya asignado a esta tarea
+
+            $asignacionPersonalTarea = new AsignacionPersonalTarea;
+            $asignacionPersonalTarea->Personal_id = $this->menor_carga_de_trabajo_horas($personal_exceptuado);
+            $asignacionPersonalTarea->Responsabilidad = "Supervisor";
+            $asignacionPersonalTarea->Tarea_id = $this->id;
+            $asignacionPersonalTarea->save();
+        }
+        return true;
     }
 }
