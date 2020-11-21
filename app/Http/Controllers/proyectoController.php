@@ -295,4 +295,11 @@ class ProyectoController extends AppBaseController
 
 
     }
+
+    public function autoAsignar($id)
+    {
+        $proyecto = Proyecto::all()->find($id);
+        $proyecto->asignacion_inteligente();
+        return "Se asignaron responables";
+    }
 }

@@ -247,34 +247,5 @@ class TareaController extends AppBaseController
         $tarea = Tarea::all()->find($id);
         $tarea->asignacion_inteligente();
         return "Se asignaron responables";
-
-        /*$personal_exceptuado = $tarea->idResponsables(); //Obtener al personal ya asignado a esta tarea
-
-        if (sizeof($tarea->asignacion) == 0) {
-
-            $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $tarea->menor_carga_de_trabajo_horas($personal_exceptuado);
-            $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
-            $asignacionPersonalTarea->Tarea_id = $tarea->id;
-            $asignacionPersonalTarea->save();
-
-            $personal_exceptuado = $tarea->idResponsables(); //Obtener al personal ya asignado a esta tarea
-
-            $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $tarea->menor_carga_de_trabajo_horas($personal_exceptuado);
-            $asignacionPersonalTarea->Responsabilidad = "Aprobador";
-            $asignacionPersonalTarea->Tarea_id = $tarea->id;
-            $asignacionPersonalTarea->save();
-
-            $personal_exceptuado = $tarea->idResponsables(); //Obtener al personal ya asignado a esta tarea
-
-            $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $tarea->menor_carga_de_trabajo_horas($personal_exceptuado);
-            $asignacionPersonalTarea->Responsabilidad = "Supervisor";
-            $asignacionPersonalTarea->Tarea_id = $tarea->id;
-            $asignacionPersonalTarea->save();
-        }*/
-
-        return "Se asignaron responables";
     }
 }

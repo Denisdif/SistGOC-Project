@@ -130,4 +130,14 @@ class Proyecto extends Model
         $date = $date->formatLocalized('%A %d %B %Y');
         return $date;
     }
+
+    public function asignacion_inteligente(){
+
+        $tareas = Tarea::all()->where('Proyecto_id','=', $this->id);
+        foreach ($tareas as $item) {
+            $item->asignacion_inteligente();
+        }
+
+        return "Funciono";
+    }
 }

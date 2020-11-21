@@ -49,6 +49,8 @@ Route::put('proyectos/{id}',                    'ProyectoController@update')    
 Route::delete('proyectos/{id}',                 'ProyectoController@destroy')           ->name('proyectos.destroy');
 Route::get('proyectos/{proyecto}/informe',      'ProyectoController@descargarInforme')  ->name('proyectos.descargarInforme');
 
+Route::get('proyectos/{proyecto}/autoAsignar',  'ProyectoController@autoAsignar')       ->name('proyectos.autoAsignar');
+
 //Rutas ambientes
 
 //Route::resource('ambientes', 'ambienteController');

@@ -26,6 +26,7 @@
                 <div class="col-md-12 mb-12">
                     <a class="btn btn-danger"  href="/proyectos/{{$proyecto->id}}/informe">Informe Completo</a>
                     <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Editar lista de ambientes</a>
+                    <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/autoAsignar">Asignación inteligente</a>
                 </div>
             </div>
         </div>
