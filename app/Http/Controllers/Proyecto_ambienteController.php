@@ -160,7 +160,11 @@ class Proyecto_ambienteController extends AppBaseController
 
         Flash::success('Proyecto Ambiente updated successfully.');
 
-        return redirect(route('proyectoAmbientes.index'));
+        $proyecto = Proyecto::all()->find($proyectoAmbiente->Proyecto_id);
+
+        $ambientesDelProyecto = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
+
+        return redirect(route('proyectos.proyectoAmbientes.create', $proyecto->id, compact('proyecto')));
     }
 
     /**

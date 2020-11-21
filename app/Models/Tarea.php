@@ -280,6 +280,9 @@ class Tarea extends Model
             $asignacionPersonalTarea->Responsabilidad = "Supervisor";
             $asignacionPersonalTarea->Tarea_id = $this->id;
             $asignacionPersonalTarea->save();
+
+            $this->Estado_tarea_id = 2;
+            $this->save();
         }
         return true;
     }

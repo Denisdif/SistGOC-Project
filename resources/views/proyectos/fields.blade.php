@@ -11,7 +11,7 @@
 
 <!-- Fecha Fin Proy Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Fecha_fin_Proy', 'Fecha limite:') !!}
+    {!! Form::label('Fecha_fin_Proy', 'Fecha límite:') !!}
     <input class="form-control" type="date" name="Fecha_fin_Proy" id="Fecha_fin_Proy" required
     value="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
     min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
@@ -47,7 +47,7 @@
 <!-- Pais Field -->
 <div class="form-group col-sm-6">
     <div>
-        <label for="pais_id" class="">Pais</label>
+        <label for="pais_id" class="">País</label>
         <select name="pais_id" id="pais_id" class=" form-control" required>
             <option value="" selected disabled>--Seleccione--</option>
             @foreach ($paises as $pais)
@@ -94,7 +94,7 @@
 
 <!-- Codigo postal Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Codigo postal', 'Codigo postal:') !!}
+    {!! Form::label('Codigo postal', 'Código postal:') !!}
     <input class="form-control" type="number" name="Codigo_postal" min="1000" max="9407" required>
 </div>
 
@@ -141,8 +141,8 @@
 <div class="form-group col-sm-6">
     {!! Form::label('TipoComitente', 'Tipo de Comitente:') !!} <br>
     <select id="TipoComitente" name="TipoPersona" class="form-control">
-        <option value="1">Persona fisica</option>
-        <option value="2">Persona juridia</option>
+        <option value="1">Persona física</option>
+        <option value="2">Persona jurídica</option>
     </select>
 </div>
 
@@ -154,7 +154,8 @@
 
 <!-- Nombrecomitente Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('NombreComitente', 'Nombres:') !!}
+    {!! Form::label('NombreComitente', 'Nombres:', ['class' => 'Nombre2']) !!}
+    <label style="display: none" class="Nombre" for="Name">Razón social:</label>
     {!! Form::text('NombreComitente', null, ['class' => 'form-control']) !!}
 </div>
 

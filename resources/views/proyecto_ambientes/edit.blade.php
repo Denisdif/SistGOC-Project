@@ -15,6 +15,13 @@
 
                         @include('proyecto_ambientes.fields')
 
+                        <!-- Submit Field -->
+                    <div class="form-group col-sm-12">
+                        <br>
+                        {!! Form::submit('Listo', ['class' => 'btn btn-danger']) !!}
+                        <a href="javascript:history.back()" data-dismiss="modal" class="btn btn-default">Cancelar</a>
+                    </div>
+
                    {!! Form::close() !!}
                </div>
            </div>
