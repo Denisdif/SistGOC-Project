@@ -21,6 +21,7 @@ use App\Http\Controllers\AppBaseController;
 use Cardumen\ArgentinaProvinciasLocalidades\Models\Pais;
 use Illuminate\Support\Facades\Auth;
 use Response;
+use Redirect;
 use Exception;
 use Flash;
 use App\Http\Requests;
@@ -68,6 +69,18 @@ class ProyectoController extends AppBaseController
      */
     public function store(CreateProyectoRequest $request)
     {
+
+        try {
+            if (sizeof($request->Cantidad) == 0) {
+                Flash::error('No se cargaron ambientes al proyecto');
+                return Redirect::back()->withInput();
+            }
+        } catch (Exception $e) {
+                Flash::error('No se cargaron ambientes al proyecto');
+                return Redirect::back()->withInput();
+        }
+
+
         $direccion = new Direccion();
         $direccion->Calle = $request->Calle ;
         $direccion->Altura = $request->Altura ;
@@ -75,7 +88,7 @@ class ProyectoController extends AppBaseController
         $direccion->Pais_id = $request->pais_id ;
         $direccion->Provincia_id = $request->provincia_id ;
         $direccion->Localidad_id = $request->localidad_id ;
-        $direccion->save();
+
         $proyecto = new Proyecto;
         $proyecto->Nombre_proyecto = "Proy".$proyecto->id;
         $proyecto->Estado_proyecto = "Creado";
@@ -83,7 +96,8 @@ class ProyectoController extends AppBaseController
         $proyecto->Fecha_inicio_Proy = Carbon::now();
         $proyecto->Fecha_fin_Proy = $request->Fecha_fin_Proy;
         $proyecto->Descripcion = $request->Descripcion;
-        $proyecto->direccion_id = $direccion->id ;
+
+
         if ($request->file('Informe')) {
             $file = $request->file('Informe');
             $name = time().$file->getClientOriginalName();
@@ -92,18 +106,24 @@ class ProyectoController extends AppBaseController
         $proyecto->Informe = "/InformesProyectos/".$name;
 
         if ($request->Comitente_id == "") {
+            try {
+                $comitente = new Comitente;
+                $comitente->NombreComitente = $request->NombreComitente;
+                $comitente->Email = $request->Email;
+                $comitente->Telefono = $request->Telefono;
+                $comitente->Cuit = $request->Cuit;
+                if ($request->TipoPersona == 1) {
+                    $comitente->ApellidoComitente = $request->Apellido;
+                    $comitente->Sexo_id = $request->Sexo_id;
+                }
+                $comitente->save();
+                $proyecto->Comitente_id = $comitente->id;
+            } catch (Exception $e) {
 
-            $comitente = new Comitente;
-            $comitente->NombreComitente = $request->NombreComitente;
-            $comitente->Email = $request->Email;
-            $comitente->Telefono = $request->Telefono;
-            $comitente->Cuit = $request->Cuit;
-            $comitente->save();
-            if ($request->TipoPersona == 1) {
-                $comitente->ApellidoComitente = $request->Apellido;
-                $comitente->Sexo_id = $request->Sexo_id;
-            }
-            $proyecto->Comitente_id = $comitente->id;
+                Flash::error('Los datos del comitente no se cargaron correctamente');
+
+            return Redirect::back()->withInput();
+        }
 
         }else{
 
@@ -111,9 +131,9 @@ class ProyectoController extends AppBaseController
         }
 
         $user = Auth::user();
-
         $proyecto->Director_id = $user->Personal_id;
-
+        $direccion->save();
+        $proyecto->direccion_id = $direccion->id ;
         $proyecto->save();
 
         $ambientesDelProyecto = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
@@ -139,19 +159,15 @@ class ProyectoController extends AppBaseController
                     $proyectoAmbiente->save();
                 }
             }
-            Flash::success('Se cargaron los ambientes correctamente');
-
+            }catch (Exception $e) {
             return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
-            //return redirect()->back();
-
-        } catch (Exception $e) {
-            return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
+            }
 
         Flash::success('Proyecto saved successfully.');
 
-        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal','idPersonal'))->with('proyecto', $proyecto);
+        return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
+
     }
-}
 
     /**
      * Display the specified Proyecto.
@@ -162,7 +178,7 @@ class ProyectoController extends AppBaseController
      */
     public function show($id)
     {
-        $proyecto = $this->proyectoRepository->find($id);
+        $proyecto = Proyecto::all()->find($id);
 
         if (empty($proyecto)) {
             Flash::error('Proyecto not found');

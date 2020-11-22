@@ -36,7 +36,7 @@
 <!-- Descripcion Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('Descripcion', 'Descripción:') !!}
-    {!! Form::textarea('Descripcion', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('Descripcion', old('Descripcion'), ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group col-sm-12">
@@ -95,19 +95,19 @@
 <!-- Codigo postal Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Codigo postal', 'Código postal:') !!}
-    <input class="form-control" type="number" name="Codigo_postal" min="1000" max="9407" required>
+    <input value="{{ old('Codigo_postal') }}" class="form-control" type="number" name="Codigo_postal" min="1000" max="9407" required>
 </div>
 
 <!-- Calle Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Calle', 'Calle:') !!}
-    {!! Form::text('Calle', null, ['class' => 'form-control','required']) !!}
+    {!! Form::text('Calle', old('Calle'), ['class' => 'form-control','required']) !!}
 </div>
 
 <!-- Altura Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Altura', 'Altura:') !!}
-    {!! Form::number('Altura', null, ['class' => 'form-control','required']) !!}
+    {!! Form::number('Altura', old('Altura'), ['class' => 'form-control','required', 'min' => '0']) !!}
 </div>
 
 <div class="form-group col-sm-12">
@@ -156,25 +156,25 @@
 <div class="form-group col-sm-6">
     {!! Form::label('NombreComitente', 'Nombres:', ['class' => 'Nombre2']) !!}
     <label style="display: none" class="Nombre" for="Name">Razón social:</label>
-    {!! Form::text('NombreComitente', null, ['class' => 'form-control']) !!}
+    {!! Form::text('NombreComitente', old('NombreComitente'), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Apellido Field -->
 <div class="form-group col-sm-6" id="EtiquetaOcultaApellido">
     {!! Form::label('Apellido', 'Apellidos:') !!}
-    {!! Form::text('Apellido', null, ['class' => 'form-control', 'id' => 'CampoOcultoApellido']) !!}
+    <input class="form-control" value="{{ old('Apellidooo') }}" type="text" name="Apellidooo" id="CampoOcultoApellido">
 </div>
 
 <!-- Email Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Email', 'Email:') !!}
-    {!! Form::text('Email', null, ['class' => 'form-control']) !!}
+    {!! Form::text('Email', old('Email'), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Telefono Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Telefono', 'Telefono:') !!}
-    {!! Form::number('Telefono', null, ['class' => 'form-control']) !!}
+    {!! Form::number('Telefono', old('Telefono'), ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group col-sm-6" id="EtiquetaOcultaSexo">

@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
     <section class="content-header">
         <h1 style="color: aliceblue">
             Proyecto
@@ -9,6 +11,7 @@
     </section>
 
     <div class="content">
+        @include('flash::message')
         <div class="box box-danger">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">

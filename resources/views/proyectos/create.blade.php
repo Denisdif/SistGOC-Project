@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+
     <section class="content-header">
         <h1 style="color: aliceblue">
             Proyecto
         </h1>
     </section>
     <div class="content">
+        @include('flash::message')
         @include('adminlte-templates::common.errors')
         <div class="box box-danger">
             <div class="box-body">
