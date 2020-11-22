@@ -263,23 +263,25 @@ class Tarea extends Model
             $asignacionPersonalTarea->Tarea_id = $this->id;
             $asignacionPersonalTarea->save();
 
-            $responsables[] = $mejorPersonal;
-            $mejorPersonal = $this->menor_carga_de_trabajo_horas($responsables);
+            /*Codigo para mas responsabilidades {
+                {$responsables[] = $mejorPersonal;
+                $mejorPersonal = $this->menor_carga_de_trabajo_horas($responsables);
 
-            $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $mejorPersonal;
-            $asignacionPersonalTarea->Responsabilidad = "Aprobador";
-            $asignacionPersonalTarea->Tarea_id = $this->id;
-            $asignacionPersonalTarea->save();
+                $asignacionPersonalTarea = new AsignacionPersonalTarea;
+                $asignacionPersonalTarea->Personal_id = $mejorPersonal;
+                $asignacionPersonalTarea->Responsabilidad = "Aprobador";
+                $asignacionPersonalTarea->Tarea_id = $this->id;
+                $asignacionPersonalTarea->save();
 
-            $responsables[] = $mejorPersonal;
-            $mejorPersonal = $this->menor_carga_de_trabajo_horas($responsables);
+                $responsables[] = $mejorPersonal;
+                $mejorPersonal = $this->menor_carga_de_trabajo_horas($responsables);
 
-            $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $mejorPersonal;
-            $asignacionPersonalTarea->Responsabilidad = "Supervisor";
-            $asignacionPersonalTarea->Tarea_id = $this->id;
-            $asignacionPersonalTarea->save();
+                $asignacionPersonalTarea = new AsignacionPersonalTarea;
+                $asignacionPersonalTarea->Personal_id = $mejorPersonal;
+                $asignacionPersonalTarea->Responsabilidad = "Supervisor";
+                $asignacionPersonalTarea->Tarea_id = $this->id;
+                $asignacionPersonalTarea->save();
+            }*/
 
             $this->Estado_tarea_id = 2;
             $this->save();

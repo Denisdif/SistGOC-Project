@@ -4,15 +4,15 @@
     {!! Form::select('Personal_id', $personalItems, old('Personal_id'), ['class' => 'form-control']) !!}
 </div>
 
-<!-- Responsabilidad Field -->
+<!-- Responsabilidad Field
 <div class="form-group col-sm-12">
     {!! Form::label('Responsabilidad', 'Responsabilidad:') !!}
-    <select name="Responsabilidad" class = 'form-control' value="{{ old('Responsabilidad') }}">
-        <option value="Desarrollador">Desarrollador</option>
+    <select disabled name="Responsabilidad" class = 'form-control' value="{{ old('Responsabilidad') }}">
+        <option selected value="Desarrollador">Desarrollador</option>
         <option value="Aprobador">Aprobador</option>
         <option value="Supervisor">Supervisor</option>
     </select>
-</div>
+</div> -->
 
 <!-- Tarea Id Field
 <div class="form-group col-sm-6">

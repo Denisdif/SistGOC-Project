@@ -27,7 +27,11 @@
                     <a class="btn btn-danger"  href="/proyectos/{{$proyecto->id}}/informe">Informe Completo</a>
                     <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Editar lista de ambientes</a>
                     <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/autoAsignar">Asignación inteligente</a>
+                    @if ($proyecto->Estado_proyecto == "En desarrollo")
+                        <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/finalizar">Finalizar proyecto</a>
+                    @endif
                 </div>
+        {{-- Fin de DataTable de Personal del proyecto --}}
             </div>
         </div>
     </div>
@@ -85,7 +89,7 @@
                 </table>
             </div>
         </div>
-        </div>
+    </div>
 
     {{-- Fin de DataTable de tareas del proyecto --}}
 
@@ -122,8 +126,7 @@
                 </table>
             </div>
         </div>
-
-        </div>
+    </div>
 
         {{-- Fin de DataTable de Personal del proyecto --}}
 

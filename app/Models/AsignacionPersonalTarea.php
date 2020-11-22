@@ -52,7 +52,6 @@ class AsignacionPersonalTarea extends Model
      * @var array
      */
     public static $rules = [
-        'Responsabilidad' => 'required'
     ];
 
     public function tarea()

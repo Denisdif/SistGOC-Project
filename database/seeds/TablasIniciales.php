@@ -352,6 +352,7 @@ class TablasIniciales extends Seeder
 
         $proyecto = new Proyecto;
         $proyecto->Nombre_proyecto = "Proyecto 1";
+        $proyecto->Estado_proyecto = "Finalizado";
         $proyecto->Codigo_catastral = "01232102156321032010";
         $proyecto->Tipo_proyecto_id = "1";
         $proyecto->Fecha_inicio_Proy = new Carbon('2020-01-31 15:32:45.654321');
@@ -364,6 +365,7 @@ class TablasIniciales extends Seeder
 
         $proyecto = new Proyecto;
         $proyecto->Nombre_proyecto = "Proyecto 2";
+        $proyecto->Estado_proyecto = "Finalizado";
         $proyecto->Codigo_catastral = "01232102156321032010";
         $proyecto->Tipo_proyecto_id = "1";
         $proyecto->Fecha_inicio_Proy = new Carbon('2020-02-31 15:32:45.654321');
@@ -376,6 +378,7 @@ class TablasIniciales extends Seeder
 
         $proyecto = new Proyecto;
         $proyecto->Nombre_proyecto = "Proyecto 3";
+        $proyecto->Estado_proyecto = "Finalizado";
         $proyecto->Codigo_catastral = "01232102156321032010";
         $proyecto->Tipo_proyecto_id = "1";
         $proyecto->Fecha_inicio_Proy = new Carbon('2020-03-31 15:32:45.654321');
@@ -388,6 +391,7 @@ class TablasIniciales extends Seeder
 
         $proyecto = new Proyecto;
         $proyecto->Nombre_proyecto = "Proyecto 4";
+        $proyecto->Estado_proyecto = "Finalizado";
         $proyecto->Codigo_catastral = "01232102156321032010";
         $proyecto->Tipo_proyecto_id = "1";
         $proyecto->Fecha_inicio_Proy = new Carbon('2020-04-31 15:32:45.654321');
@@ -400,6 +404,7 @@ class TablasIniciales extends Seeder
 
         $proyecto = new Proyecto;
         $proyecto->Nombre_proyecto = "Proyecto 5";
+        $proyecto->Estado_proyecto = "Finalizado";
         $proyecto->Codigo_catastral = "01232102156321032010";
         $proyecto->Tipo_proyecto_id = "1";
         $proyecto->Fecha_inicio_Proy = new Carbon('2020-02-15 15:32:45.654321');

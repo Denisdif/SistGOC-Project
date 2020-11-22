@@ -78,6 +78,7 @@ class ProyectoController extends AppBaseController
         $direccion->save();
         $proyecto = new Proyecto;
         $proyecto->Nombre_proyecto = "Proy".$proyecto->id;
+        $proyecto->Estado_proyecto = "Creado";
         $proyecto->Tipo_proyecto_id = $request->Tipo_proyecto_id;
         $proyecto->Fecha_inicio_Proy = Carbon::now();
         $proyecto->Fecha_fin_Proy = $request->Fecha_fin_Proy;
@@ -301,5 +302,16 @@ class ProyectoController extends AppBaseController
         $proyecto = Proyecto::all()->find($id);
         $proyecto->asignacion_inteligente();
         return "Se asignaron responables";
+    }
+
+    public function finalizar($id)
+    {
+        $proyecto = Proyecto::all()->find($id);
+        if ($proyecto->Estado_proyecto == "En desarrollo") {
+            $proyecto->Estado_proyecto = "Finalizado";
+            $proyecto->save();
+            return redirect()->back();
+        }
+        return "No se pudo finalizar el proyecto";
     }
 }

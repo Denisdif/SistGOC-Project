@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <section class="content-header">
+    {{--  <section class="content-header">
         <h1 style= "color: aliceblue">
             Tareas por aprobar
         </h1>
@@ -135,6 +135,6 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div>--}}
 @endsection
 

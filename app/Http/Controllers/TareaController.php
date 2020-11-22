@@ -90,6 +90,7 @@ class TareaController extends AppBaseController
     public function show($id)
     {
         $tarea = $this->tareaRepository->find($id);
+        $proyecto = Proyecto::all()->find($tarea->Proyecto_id);
 
         if (empty($tarea)) {
             Flash::error('Tarea not found');
@@ -110,6 +111,11 @@ class TareaController extends AppBaseController
                     getdate($fechaActual = time());
                     $tarea->Fecha_inicio = $fechaActual;
                     $tarea->save();
+
+                    if ($proyecto->Estado_proyecto == "Creado") {
+                        $proyecto->Estado_proyecto = "En desarrollo";
+                        $proyecto->save();
+                    }
                 }
             }
         }

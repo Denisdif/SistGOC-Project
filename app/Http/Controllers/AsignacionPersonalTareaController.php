@@ -71,7 +71,7 @@ class AsignacionPersonalTareaController extends AppBaseController
         try {
             $asignacionPersonalTarea = new AsignacionPersonalTarea;
             $asignacionPersonalTarea->Personal_id = $request->Personal_id;
-            $asignacionPersonalTarea->Responsabilidad = $request->Responsabilidad;
+            $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
             $asignacionPersonalTarea->Tarea_id = $tarea->id;
             $asignacionPersonalTarea->save();
 
