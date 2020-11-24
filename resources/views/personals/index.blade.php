@@ -13,6 +13,39 @@
         @include('flash::message')
 
         <div class="clearfix"></div>
+
+        <div>
+            <div class="box box-danger">
+                <div class="box-body">
+                <h1>Filtrar personal</h1>
+                    <br>
+                    {!! Form::open(['route' => 'personals.index', 'method' => 'GET', 'form-inline pull-right']) !!}
+                        <div class="form-group col-md-3">
+                            <input type="text" name="Nombre" class="form-control" placeholder="Nombre">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="text" name="rol" class="form-control" placeholder="rol">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="date" name="desde" class="form-control" placeholder="Desde">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="date" name="hasta" class="form-control" placeholder="Hasta">
+                        </div>
+
+                        <div class="form-group col-md-3 pull-right">
+                            <button type="submit" class="btn btn-danger pull-right">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    {!! Form::close() !!}
+
+            </div>
+        </div>
+
         <div class="box box-danger">
             <div class="box-body">
                 @section('css')

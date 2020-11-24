@@ -8,9 +8,9 @@ use App\Models\Evaluacion;
 use App\User;
 use Cardumen\ArgentinaProvinciasLocalidades\Models\Pais;
 use App\DataTables\PersonalDataTable;
-use App\Http\Requests;
 use App\Http\Requests\CreatePersonalRequest;
 use App\Http\Requests\UpdatePersonalRequest;
+use Illuminate\Http\Request;
 use App\Repositories\PersonalRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -33,9 +33,14 @@ class PersonalController extends AppBaseController
      * @param PersonalDataTable $personalDataTable
      * @return Response
      */
-    public function index(PersonalDataTable $personalDataTable)
+    public function index(Request $request)
     {
-        $ListaPersonal = Personal::all();
+        $ListaPersonal = Personal::orderBy('id', 'DESC')
+                ->Name($request->Nombre)
+                ->FechaNac($request->desde, $request->hasta)
+                ->Rol($request->rol)
+                ->paginate('100');
+
         return View('personals.index', compact('ListaPersonal'));
     }
 

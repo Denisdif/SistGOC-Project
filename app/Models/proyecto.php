@@ -40,6 +40,7 @@ class Proyecto extends Model
 
 
     public $fillable = [
+        'id',
         'Nombre_proyecto',
         'Tipo_proyecto_id',
         'Nro_plantas',
@@ -75,6 +76,8 @@ class Proyecto extends Model
     public static $rules = [
     ];
 
+    //-------------------------- Relaciones --------------------------
+
     public function Proyecto_ambiente()
     {
         return $this->hasMany('App\Models\Proyecto_ambiente');
@@ -103,6 +106,28 @@ class Proyecto extends Model
 
         return $this->belongsTo(Direccion::class, 'Direccion_id');
     }
+
+    //-------------------------- Filtros --------------------------
+
+    public function scopeid($query, $id){
+
+        if($id)
+            return $query->where('id', 'LIKE', "%$id%");
+    }
+
+    public function scopeComitente($query, $comitente){
+
+        if($comitente)
+            return $query->where('id', 'LIKE', "%$comitente%");
+    }
+
+    public function scopeFecha($query, $fecha){
+
+        if($fecha)
+            return $query->where('id', 'LIKE', "%$fecha%");
+    }
+
+    //-------------------------- Métodos --------------------------
 
     public function duracionEstimadaReal()
     {

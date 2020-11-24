@@ -15,6 +15,7 @@ use App\Models\Tipo_tarea;
 use App\Models\Tipo_proyecto;
 use App\Http\Requests\CreateProyectoRequest;
 use App\Http\Requests\UpdateProyectoRequest;
+use Illuminate\Http\Request;
 use App\Repositories\ProyectoRepository;
 use App\Models\Proyecto_ambiente;
 use App\Http\Controllers\AppBaseController;
@@ -43,9 +44,10 @@ class ProyectoController extends AppBaseController
      * @param ProyectoDataTable $proyectoDataTable
      * @return Response
      */
-    public function index(ProyectoDataTable $proyectoDataTable)
+    public function index(Request $request)
     {
         $proyectos = Proyecto::all();
+
         return View('proyectos.index', compact('proyectos'));
     }
 

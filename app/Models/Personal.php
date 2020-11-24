@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Sexo;
 use App\Models\Evaluacion;
@@ -75,6 +76,32 @@ class Personal extends Model
         'FechaNac' => 'required|date',
         'DNI' => 'required|numeric'
     ];
+
+    public function scopeName($query, $name){
+
+        if($name)
+            return $query->where('NombrePersonal', 'LIKE', "%$name%");
+    }
+
+    public function scopeFechaNac($query, $desde, $hasta){
+
+        if($desde and $hasta)
+            return $query->whereBetween('FechaNac', [$desde,$hasta]);
+        if($desde and $hasta == null)
+            return $query->where('FechaNac', '>=' ,$desde);
+        if($desde == null and $hasta)
+            return $query->where('FechaNac', '<=' ,$hasta);
+    }
+
+    public function scopeRol($query, $rol){
+
+        if($rol)
+            return $query   ->join('users','users.Personal_id','=','personals.id')
+                            ->join('roles_usuario','users.Rol_id','=','roles_usuario.id')
+                            ->select('personals.*','roles_usuario.NombreRol')
+                            ->where('roles_usuario.NombreRol', 'LIKE', "%$rol%");
+
+    }
 
     public function asignacion()
     {

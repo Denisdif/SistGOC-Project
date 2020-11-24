@@ -13,6 +13,35 @@
         @include('flash::message')
 
         <div class="clearfix"></div>
+
+        <div>
+            <div class="box box-danger">
+                <div class="box-body">
+                <h1>Filtrar proyectos</h1>
+                    <br>
+                    {!! Form::open(['route' => 'proyectos.index', 'method' => 'GET', 'form-inline pull-right']) !!}
+                        <div class="form-group col-md-4">
+                            <input type="text" name="codigo" class="form-control" placeholder="Nombre">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <input type="text" name="comitente" class="form-control" placeholder="Comitente">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <input type="date" name="fecha" class="form-control" placeholder="Fecha">
+                        </div>
+
+                        <div class="form-group col-md-4 pull-right">
+                            <button type="submit" class="btn btn-danger pull-right">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    {!! Form::close() !!}
+
+            </div>
+        </div>
+
         <div class="box box-danger">
             <div class="box-body">
                 @section('css')

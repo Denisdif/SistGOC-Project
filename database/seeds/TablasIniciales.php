@@ -347,6 +347,88 @@ class TablasIniciales extends Seeder
         $comitente->Sexo_id = "2";
         $comitente->save();
 
+        $comitente = new Comitente;
+        $comitente->NombreComitente = "Laura";
+        $comitente->ApellidoComitente = "Lopez";
+        $comitente->Email = "lau90@gmail.com";
+        $comitente->Telefono = "2255860200";
+        $comitente->Cuit = "13415865201";
+        $comitente->Sexo_id = "2";
+        $comitente->save();
+
+        $comitente = new Comitente;
+        $comitente->NombreComitente = "Laura";
+        $comitente->ApellidoComitente = "Perez";
+        $comitente->Email = "lau91@gmail.com";
+        $comitente->Telefono = "2255860002";
+        $comitente->Cuit = "13415865202";
+        $comitente->Sexo_id = "2";
+        $comitente->save();
+
+        $comitente = new Comitente;
+        $comitente->NombreComitente = "Laura";
+        $comitente->ApellidoComitente = "Villar";
+        $comitente->Email = "lau92@gmail.com";
+        $comitente->Telefono = "2255860003";
+        $comitente->Cuit = "13415865203";
+        $comitente->Sexo_id = "2";
+        $comitente->save();
+
+        $comitente = new Comitente;
+        $comitente->NombreComitente = "Laura";
+        $comitente->ApellidoComitente = "Vallejos";
+        $comitente->Email = "lau93gmail.com";
+        $comitente->Telefono = "2255860004";
+        $comitente->Cuit = "13415865204";
+        $comitente->Sexo_id = "2";
+        $comitente->save();
+
+        $comitente = new Comitente;
+        $comitente->NombreComitente = "Laura";
+        $comitente->ApellidoComitente = "Marquez";
+        $comitente->Email = "lau94@gmail.com";
+        $comitente->Telefono = "2255860005";
+        $comitente->Cuit = "13415865205";
+        $comitente->Sexo_id = "2";
+        $comitente->save();
+
+        $comitente = new Comitente;
+        $comitente->NombreComitente = "Laura";
+        $comitente->ApellidoComitente = "Dutra";
+        $comitente->Email = "lau95@gmail.com";
+        $comitente->Telefono = "2255860006";
+        $comitente->Cuit = "13415865206";
+        $comitente->Sexo_id = "2";
+        $comitente->save();
+
+        $comitente = new Comitente;
+        $comitente->NombreComitente = "Laura";
+        $comitente->ApellidoComitente = "Nuñez";
+        $comitente->Email = "lau96@gmail.com";
+        $comitente->Telefono = "2255860007";
+        $comitente->Cuit = "13415865207";
+        $comitente->Sexo_id = "2";
+        $comitente->save();
+
+        $comitente = new Comitente;
+        $comitente->NombreComitente = "Laura";
+        $comitente->ApellidoComitente = "Fernandez";
+        $comitente->Email = "lau97@gmail.com";
+        $comitente->Telefono = "2255860008";
+        $comitente->Cuit = "13415865208";
+        $comitente->Sexo_id = "2";
+        $comitente->save();
+
+        $comitente = new Comitente;
+        $comitente->NombreComitente = "Laura";
+        $comitente->ApellidoComitente = "Insaurralde";
+        $comitente->Email = "lau98@gmail.com";
+        $comitente->Telefono = "2255860009";
+        $comitente->Cuit = "13415865209";
+        $comitente->Sexo_id = "2";
+        $comitente->save();
+
+
 
 
 

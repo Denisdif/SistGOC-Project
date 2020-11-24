@@ -492,8 +492,6 @@
         $('#TipoComitente').change(function(){
             Tipo = $('#TipoComitente').val();
             if (Tipo==1) {
-
-
                 $('.Nombre2').removeAttr('style','display: none');
                 $('.Nombre').attr('style','display: none');
                 $('#EtiquetaOcultaSexo').removeAttr('style','display: none');
