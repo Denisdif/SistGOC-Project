@@ -224,3 +224,6 @@ Route::put('PDFconfig/update',              'PDFconfigController@update')       
 
 Route::get('/proyectoPDF',                  'PDFcontroller@proyectosPDF')            ->name('PDFconfig.proyectosPDF');
 
+
+
+Route::resource('predecesoras', 'PredecesoraController');

@@ -9,6 +9,7 @@ use App\Models\Personal;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Entrega;
 use App\Models\Comentario;
+use App\Models\Predecesora;
 use App\Models\Estado_tarea;
 use App\Models\Tipo_tarea;
 use App\Models\Proyecto_ambiente;
@@ -51,7 +52,8 @@ class TareaController extends AppBaseController
      */
     public function create(Proyecto $proyecto)
     {
-        return view('tareas.create',compact('proyecto'));
+        $tareas = Tarea::all()->where('Proyecto_id', '=', $proyecto->id);
+        return view('tareas.create',compact('proyecto', 'tareas'));
     }
 
     /**
@@ -72,8 +74,14 @@ class TareaController extends AppBaseController
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = $proyecto->id;
         $tarea->Estado_tarea_id = 1; // 1 id estado tarea = creada
-
         $tarea->save();
+
+        for ($i=0; $i < sizeof($request->Predecesoras); $i++) {
+                $predecesora = new Predecesora();
+                $predecesora->Tarea_id = $tarea->id;
+                $predecesora->Predecesora_id = $request->Predecesoras[$i];
+                $predecesora->save();
+        }
 
         Flash::success('Tarea saved successfully.');
 

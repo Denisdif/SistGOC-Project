@@ -573,6 +573,7 @@
 <script>
     $(document).ready(function() {
         $('#SelectComitente').select2();
+        $('.js-example-basic-multiple').select2();
     });
 </script>
 
