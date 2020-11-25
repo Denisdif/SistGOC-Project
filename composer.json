@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "appointer/swaggervel": "dev-master",
+        "barryvdh/laravel-dompdf": "^0.8.7",
         "cardumen/argentina-provincias-localidades": "1.1",
         "doctrine/dbal": "~2.3",
         "fideloper/proxy": "^4.0",

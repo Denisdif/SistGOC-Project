@@ -216,3 +216,11 @@ Route::get('evaluacions/{evaluacion}',                  'EvaluacionController@sh
 Route::get('evaluacions/{evaluacion}/edit',             'EvaluacionController@edit')        ->name('evaluacions.edit');
 Route::put('evaluacions/{id}',                          'EvaluacionController@update')      ->name('evaluacions.update');
 Route::delete('evaluacions/{id}',                       'EvaluacionController@destroy')     ->name('evaluacions.destroy');
+
+//------------------------------------  PDF  ------------------------------------//
+
+Route::get('PDFconfig',                     'PDFconfigController@index')             ->name('PDFconfig.index');
+Route::put('PDFconfig/update',              'PDFconfigController@update')            ->name('PDFconfig.update');
+
+Route::get('/proyectoPDF',                  'PDFcontroller@proyectosPDF')            ->name('PDFconfig.proyectosPDF');
+
