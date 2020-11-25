@@ -573,7 +573,9 @@
 <script>
     $(document).ready(function() {
         $('#SelectComitente').select2();
-        $('.js-example-basic-multiple').select2();
+        $('#SelectColaboradores').select2();
+        $('#SelectResponsable').select2();
+        $('#SelectPredecesoras').select2();
     });
 </script>
 

@@ -259,7 +259,7 @@ class Tarea extends Model
 
             $asignacionPersonalTarea = new AsignacionPersonalTarea;
             $asignacionPersonalTarea->Personal_id = $mejorPersonal;
-            $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+            $asignacionPersonalTarea->Responsabilidad = "Responsable";
             $asignacionPersonalTarea->Tarea_id = $this->id;
             $asignacionPersonalTarea->save();
 
@@ -287,5 +287,19 @@ class Tarea extends Model
             $this->save();
         }
         return true;
+    }
+
+    //Retorna true si la tarea ya tiene un responsable asignado
+
+    public function has_responsable(){
+
+        $existe = false;
+
+        foreach ($this->Asignacion as $item) {
+            if ($item->Responsabilidad == "Responsable") {
+                $existe = true;
+            }
+        }
+        return $existe;
     }
 }

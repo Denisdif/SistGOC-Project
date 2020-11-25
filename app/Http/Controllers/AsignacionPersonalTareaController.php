@@ -70,10 +70,20 @@ class AsignacionPersonalTareaController extends AppBaseController
     {
         try {
             $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $request->Personal_id;
-            $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+            $asignacionPersonalTarea->Personal_id = $request->Responsable;
+            $asignacionPersonalTarea->Responsabilidad = "Responsable";
             $asignacionPersonalTarea->Tarea_id = $tarea->id;
             $asignacionPersonalTarea->save();
+
+            if (sizeof($request->Colaboradores)>0) {
+                for ($i=0; $i < sizeof($request->Colaboradores); $i++) {
+                    $asignacionPersonalTarea = new AsignacionPersonalTarea;
+                    $asignacionPersonalTarea->Personal_id = $request->Colaboradores[$i];
+                    $asignacionPersonalTarea->Responsabilidad = "Colaborador";
+                    $asignacionPersonalTarea->Tarea_id = $tarea->id;
+                    $asignacionPersonalTarea->save();
+                }
+            }
 
             if ($tarea->Estado_tarea_id == 1) { //Cambia el estado de la tarea de creada a asignada
                 $tarea->Estado_tarea_id = 2; //Id "2" de estado tarea = Asignada
@@ -84,7 +94,7 @@ class AsignacionPersonalTareaController extends AppBaseController
 
         } catch (Exception $e) {
 
-            Flash::error('El usuario seleccionado ya fue asignado a esta tarea');
+            Flash::error('El usuario responsable no puede ser colaborador de la misma tarea');
 
             return Redirect::back();
         }

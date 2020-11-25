@@ -72,6 +72,12 @@ class ViewServiceProvider extends ServiceProvider
             $personalItems = Personal::pluck('NombrePersonal','id')->toArray();
             $view->with('personalItems', $personalItems);
         });
+
+        View::composer(['asignacion_personal_tareas.fields'], function ($view) {
+            $personal = Personal::all();
+            $view->with('personal', $personal);
+        });
+
         View::composer(['personals.fields'], function ($view) {
             $userItems = User::pluck('name','id')->toArray();
             $view->with('userItems', $userItems);

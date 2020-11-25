@@ -39,12 +39,12 @@
 
 <!-- Prioridad Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('Predecesora', 'Predecesoras:') !!} <br>
-    <select class="js-example-basic-multiple form-control" name="Predecesoras[]"  multiple="multiple" required>
+    {!! Form::label('Predecesora', 'Predecesoras:') !!}
+    <select id="SelectPredecesoras" class="form-control" name="Predecesoras[]"  multiple="multiple" required>
         @foreach ($tareas as $item)
             <option value = {{ $item->id }}> {{ $item->Nombre_tarea }} </option>
         @endforeach
-      </select>
+    </select>
 </div>
 
 <!-- Descripcion Tarea Field -->

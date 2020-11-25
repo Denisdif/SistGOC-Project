@@ -100,16 +100,11 @@
               </button></h5>
             </div>
             <div class="modal-body">
-
-                <div class="content">
+                <div class="row">
                     {!! Form::open(['url' => "tareas/$tarea->id/asignacionPersonalTareas"]) !!}
 
                         @include('asignacion_personal_tareas.fields')
 
-                        <div class="form-group col-sm-12">
-                            {!! Form::submit('Asignar', ['class' => 'btn btn-danger']) !!}
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
                     {!! Form::close() !!}
                 </div>
             </div>
