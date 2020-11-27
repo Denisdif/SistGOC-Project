@@ -69,11 +69,14 @@ class AsignacionPersonalTareaController extends AppBaseController
     public function store(Tarea $tarea, CreateAsignacionPersonalTareaRequest $request)
     {
         try {
-            $asignacionPersonalTarea = new AsignacionPersonalTarea;
-            $asignacionPersonalTarea->Personal_id = $request->Responsable;
-            $asignacionPersonalTarea->Responsabilidad = "Responsable";
-            $asignacionPersonalTarea->Tarea_id = $tarea->id;
-            $asignacionPersonalTarea->save();
+
+            if ($request->Responsable) {
+                $asignacionPersonalTarea = new AsignacionPersonalTarea;
+                $asignacionPersonalTarea->Personal_id = $request->Responsable;
+                $asignacionPersonalTarea->Responsabilidad = "Responsable";
+                $asignacionPersonalTarea->Tarea_id = $tarea->id;
+                $asignacionPersonalTarea->save();
+            }
 
             if (sizeof($request->Colaboradores)>0) {
                 for ($i=0; $i < sizeof($request->Colaboradores); $i++) {

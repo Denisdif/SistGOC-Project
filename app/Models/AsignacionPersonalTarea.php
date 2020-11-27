@@ -19,12 +19,9 @@ use App\Models\Proyecto;
  */
 class AsignacionPersonalTarea extends Model
 {
-    use SoftDeletes;
 
     public $table = 'asignacion_personal_tareas';
 
-
-    protected $dates = ['deleted_at'];
 
 
 

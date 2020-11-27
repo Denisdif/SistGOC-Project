@@ -37,7 +37,21 @@
                         <tr>
                             <td>{{$asignacion->Personal->NombrePersonal." ".$asignacion->Personal->ApellidoPersonal}}</td>
                             <td>{{$asignacion->Responsabilidad}}</td>
-                            <td><button class="btn btn-danger btn-xs" type="button"><i class="glyphicon glyphicon-trash"></i></button></td>
+                            <td>{!! Form::open(['route' => ['asignacionPersonalTareas.destroy', $asignacion->id], 'method' => 'delete']) !!}
+                                <div class='btn-group'>
+                                    <a href="{{ route('asignacionPersonalTareas.show', $asignacion->id) }}" class='btn btn-default btn-xs'>
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                    <a href="{{ route('asignacionPersonalTareas.edit', $asignacion->id) }}" class='btn btn-default btn-xs'>
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                    </a>
+                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
+                                        'type' => 'submit',
+                                        'class' => 'btn btn-danger btn-xs',
+                                        'onclick' => "return confirm('Are you sure?')"
+                                    ]) !!}
+                                </div>
+                                {!! Form::close() !!}</td>
                         </tr>
                         @endforeach
                     </tbody>
