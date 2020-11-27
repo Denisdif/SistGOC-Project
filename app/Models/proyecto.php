@@ -165,4 +165,24 @@ class Proyecto extends Model
 
         return "Funciono";
     }
+
+    public function tareas_finalizadas(){
+        $tareas = [];
+        foreach ($this->tarea as $item) {
+            if ($item->Estado_tarea_id == 6) {
+                $tareas[] = $item;
+            }
+        }
+        return $tareas;
+    }
+
+    public function tareas_no_finalizadas(){
+        $tareas = [];
+        foreach ($this->tarea as $item) {
+            if ($item->Estado_tarea_id != 6) {
+                $tareas[] = $item;
+            }
+        }
+        return $tareas;
+    }
 }

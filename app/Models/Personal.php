@@ -145,6 +145,12 @@ class Personal extends Model
         return $date;
     }
 
+    public function get_rol(){
+        $rol = $this->User;
+        $rol = $rol->rol;
+        return $rol;
+    }
+
     //Obtener un array con las asignaciones de tareas en estado asignada o desarrollo con responsabilidad de Desarrollador
 
     public function tareasEnDesarrollo(){
@@ -153,7 +159,7 @@ class Personal extends Model
         $Tareas = [];
         foreach ($listaAsignaciones as $asignacion) {
             if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('Asignada') or strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('En desarrollo')) {
-                if (strtolower($asignacion->Responsabilidad) == strtolower('Desarrollador')) {
+                if (strtolower($asignacion->Responsabilidad) == strtolower('Responsable')) {
                     $Tareas[] = $asignacion;
                 }
             }
@@ -195,7 +201,7 @@ class Personal extends Model
         $tareas = $this->asignacion;
         $tareasFiltradas = [];
         foreach ($tareas as $item) {
-            if (($item->Responsabilidad == "Desarrollador")) {
+            if (($item->Responsabilidad == "Responsable")) {
                 $tareasFiltradas[] = $item->tarea;
             }
         }
@@ -208,7 +214,7 @@ class Personal extends Model
         $tareas = $this->asignacion;
         $tareasFiltradas = [];
         foreach ($tareas as $item) {
-            if (($item->tarea->tipo_tarea->Nombre_tipo_tarea == $tipoTarea) and ($item->Responsabilidad == "Desarrollador")) {
+            if (($item->tarea->tipo_tarea->Nombre_tipo_tarea == $tipoTarea) and ($item->Responsabilidad == "Responsable")) {
                 $tareasFiltradas[] = $item->tarea;
             }
         }
@@ -221,7 +227,7 @@ class Personal extends Model
         $tareas = $this->asignacion;
         $tareasFiltradas = [];
         foreach ($tareas as $item) {
-            if (($item->Responsabilidad == "Desarrollador") and ($item->tarea->Fecha_fin > $inicio) and ($item->tarea->Fecha_fin < $fin)) {
+            if (($item->Responsabilidad == "Responsable") and ($item->tarea->Fecha_fin > $inicio) and ($item->tarea->Fecha_fin < $fin)) {
 
                 $tareasFiltradas[] = $item->tarea;
 
@@ -236,7 +242,7 @@ class Personal extends Model
         $tareas = $this->asignacion;
         $tareasFiltradas = [];
         foreach ($tareas as $item) {
-            if (($item->tarea->tipo_tarea->Nombre_tipo_tarea == $tipoTarea) and ($item->Responsabilidad == "Desarrollador") and
+            if (($item->tarea->tipo_tarea->Nombre_tipo_tarea == $tipoTarea) and ($item->Responsabilidad == "Responsable") and
                 ($item->tarea->Fecha_fin > $inicio) and ($item->tarea->Fecha_fin < $fin)) {
 
                 $tareasFiltradas[] = $item->tarea;
@@ -304,7 +310,7 @@ class Personal extends Model
         foreach ($listaAsignaciones as $asignacion) {
             if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) != strtolower('Aprobada')) {
 
-                if ($asignacion->Responsabilidad == "Desarrollador") {
+                if ($asignacion->Responsabilidad == "Responsable") {
                     $horas += $asignacion->tarea->duracionEstimadaReal();
                 }else{
                     $horas += 1;
@@ -318,7 +324,14 @@ class Personal extends Model
 
     public function menor_carga_de_trabajo_horas(){
 
-        $empleado = Personal::find(1);
+        $desarrolladores = [];
+        $empleado = Personal::all();
+        foreach ($empleado as $item) {
+            if ($item->get_rol()->NombreRol == "Desarrollador") {
+                $desarrolladores[] = $item;
+            }
+        }
+        $empleado = $desarrolladores[0];
         $lista_personal = Personal::all();
         foreach ($lista_personal as $item) {
             if ($item->carga_de_trabajo_horas()< $empleado->carga_de_trabajo_horas()) {

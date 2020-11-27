@@ -22,10 +22,6 @@
                 <a href="{{ route('ambientes.index') }}"><i class="fa fa-edit"></i><span>Ambientes</span></a>
             </li>
 
-            <li class="{{ Request::is('estadoTareas*') ? 'active' : '' }}">
-                <a href="{{ route('estadoTareas.index') }}"><i class="fa fa-edit"></i><span>Estados de Tareas</span></a>
-            </li>
-
             <li class="{{ Request::is('tipoTareas*') ? 'active' : '' }}">
                 <a href="{{ route('tipoTareas.index') }}"><i class="fa fa-edit"></i><span>Tipos de Tareas</span></a>
             </li>
@@ -77,7 +73,12 @@
 {{-- <li class="{{ Request::is('users*') ? 'active' : '' }}">
     <a href="{{ route('users.index') }}"><i class="fa fa-edit"></i><span>Usuarios</span></a>
 </li>  --}}
-<li class="{{ Request::is('predecesoras*') ? 'active' : '' }}">
+
+{{--<li class="{{ Request::is('predecesoras*') ? 'active' : '' }}">
     <a href="{{ route('predecesoras.index') }}"><i class="fa fa-edit"></i><span>Predecesoras</span></a>
 </li>
+
+<li class="{{ Request::is('estadoTareas*') ? 'active' : '' }}">
+    <a href="{{ route('estadoTareas.index') }}"><i class="fa fa-edit"></i><span>Estados de Tareas</span></a>
+</li> --}}
 

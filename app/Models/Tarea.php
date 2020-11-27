@@ -236,9 +236,18 @@ class Tarea extends Model
 
     public function menor_carga_de_trabajo_horas($personal_exceptuado){
 
+        $desarrolladores = [];
         $lista_personal = Personal::all()->except($personal_exceptuado);
-        $empleado = $lista_personal->first();
+
         foreach ($lista_personal as $item) {
+            if ($item->get_rol()->NombreRol == "Desarrollador") {
+                $desarrolladores[] = $item;
+            }
+        }
+
+        $empleado = $desarrolladores[0];
+
+        foreach ( $desarrolladores as $item) {
             if ($item->carga_de_trabajo_horas()< $empleado->carga_de_trabajo_horas()) {
                 $empleado = $item;
             }

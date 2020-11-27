@@ -116,7 +116,7 @@ class PersonalController extends AppBaseController
 
             return redirect(route('personals.index'));
         }
-        $usuarios = User::all()->where('Personal_id','=', $id);
+        $usuarios = User::all()->where('Personal_id','=', $id)->first();
         $evaluaciones = Evaluacion::all()->where('Personal_id','=', $id);
 
         return view('personals.show', compact('id', 'usuarios', 'evaluaciones'))->with('personal', $personal);

@@ -2,7 +2,7 @@
 
 <div class="col-md-12 mb-12">
 
-    <h2>Datos del proyecto</h2><br>
+    <!--<h2>Datos del proyecto</h2><br>-->
 
     {!! Form::label('Nombre_proyecto', 'Código de proyecto:') !!}
     {{ $proyecto->id }} <br>
