@@ -541,6 +541,43 @@
 
 <script>
     $(document).ready(function(){
+        $('#crearTarea').on('click',function(){
+            $('#esconder').removeAttr('style','display: none');
+            $('#mostrar').attr('style','display: none');
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#buscarTarea').on('click',function(){
+            $('#esconder').attr('style','display: none');
+            $('#mostrar').removeAttr('style','display: none');
+            $('#nombre').val('');
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#Tipo_tarea_id').change(function(){
+            $('#Nombre_tarea').removeAttr('disabled');
+            var id = $(this).val();
+            var url = "{{ route('tareas.obtenerTareas', ":id") }}" ;
+            url = url.replace(':id' , id) ;
+            $.get(url, function(data){
+                var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
+                for(var i = 0 ; i<data.length ; i++){
+                    html_select += '<option value="'+data[i].id+'">'+data[i].Nombre_tarea+'</option>' ;
+                }
+                $('#Nombre_tarea').html(html_select);
+            });
+        });
+    }) ;
+</script>
+
+<script>
+    $(document).ready(function(){
         $('#pais_id').change(function(){
             $('#provincia_id').removeAttr('disabled');
             var id = $(this).val();
@@ -576,6 +613,7 @@
         $('#SelectColaboradores').select2();
         $('#SelectResponsable').select2();
         $('#SelectPredecesoras').select2();
+        $('#Nombre_tarea').select2();
     });
 </script>
 

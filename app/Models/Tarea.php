@@ -83,8 +83,7 @@ class Tarea extends Model
      * @var array
      */
     public static $rules = [
-        'Nombre_tarea' => 'required',
-        'Valor' => 'numeric'
+
     ];
 
     public function proyecto()

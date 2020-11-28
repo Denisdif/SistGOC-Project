@@ -91,8 +91,8 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('estado_tareaItems', $estado_tareaItems);
         });
         View::composer(['tareas.fields'], function ($view) {
-            $tipo_tareaItems = Tipo_tarea::pluck('Nombre_tipo_tarea','id')->toArray();
-            $view->with('tipo_tareaItems', $tipo_tareaItems);
+            $tipos_tarea = Tipo_tarea::all();
+            $view->with('tipos_tarea', $tipos_tarea);
         });
         View::composer(['tareas.fields'], function ($view) {
             $proyectoItems = Proyecto::pluck('Nombre_proyecto','id')->toArray();

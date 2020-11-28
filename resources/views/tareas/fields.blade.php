@@ -1,13 +1,35 @@
-<!-- Nombre Tarea Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Nombre_tarea', 'Nombre de la Tarea:') !!}
-    {!! Form::text('Nombre_tarea', null, ['class' => 'form-control', 'required']) !!}
-</div>
-
 <!-- Tipo Tarea Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Tipo_tarea_id', 'Tipo de Tarea:') !!}
-    {!! Form::select('Tipo_tarea_id', $tipo_tareaItems, null, ['class' => 'form-control']) !!}
+        <div>
+            <select name="Tipo_tarea_id" id="Tipo_tarea_id" class=" form-control" required>
+                <option value="" selected disabled>--Seleccione--</option>
+                @foreach ($tipos_tarea as $tipo_tarea)
+                    <option value="{{$tipo_tarea->id}}">{{$tipo_tarea->Nombre_tipo_tarea}}</option>
+                @endforeach
+            </select>
+        </div>
+</div>
+
+<!-- Nombre Tarea Field -->
+<div class="form-group col-sm-6">
+
+    <div id="esconder" style="display: none">
+        {!! Form::label('Nombre_tarea', 'Tarea:') !!}
+        <a id="buscarTarea" class="btn btn-danger btn-xs"> buscar </a>
+        <input class="form-control" type="text" name="nombre" id="nombre" value="">
+    </div>
+
+    <div id="mostrar">
+        {!! Form::label('Nombre_tarea', 'Tarea:') !!}
+        <a id="crearTarea" class="btn btn-danger btn-xs"> + </a>
+        <select name="Nombre_tarea" id="Nombre_tarea" class=" form-control" disabled>
+            <option value="" selected disabled>--Seleccione--</option>
+        </select>
+        <br>
+        <br>
+    </div>
+
 </div>
 
 <!-- Fecha Fin Field -->
@@ -40,7 +62,7 @@
 <!-- Prioridad Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Predecesora', 'Predecesoras:') !!}
-    <select id="SelectPredecesoras" class="form-control" name="Predecesoras[]"  multiple="multiple" required>
+    <select id="SelectPredecesoras" class="form-control" name="Predecesoras[]"  multiple="multiple">
         @foreach ($tareas as $item)
             <option value = {{ $item->id }}> {{ $item->Nombre_tarea }} </option>
         @endforeach

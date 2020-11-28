@@ -52,6 +52,6 @@ class Tipo_tarea extends Model
 
     public function Tarea()
     {
-        return $this->hasMany('App\Models\Tarea');
+        return $this->hasMany(Tarea::class);
     }
 }

@@ -67,7 +67,15 @@ class TareaController extends AppBaseController
     {
 
         $tarea = new Tarea;
-        $tarea->Nombre_tarea = $request->Nombre_tarea;
+        $tarea->Nombre_tarea = $request->nombre;
+
+        if ($request->nombre == '') {
+
+            $tareaSeleccionada = Tarea::all()->find($request->Nombre_tarea);
+            $tarea->Nombre_tarea = $tareaSeleccionada->Nombre_tarea;
+
+        }
+
         $tarea->Tipo_tarea_id = $request->Tipo_tarea_id;
         $tarea->Fecha_limite = $request->Fecha_limite;
         $tarea->Prioridad = $request->prioridad;
@@ -261,5 +269,24 @@ class TareaController extends AppBaseController
         $tarea = Tarea::all()->find($id);
         $tarea->asignacion_inteligente();
         return "Se asignaron responables";
+    }
+
+    public function obtenerTareas( $tipo){
+
+        $tipo = Tipo_tarea::all()->find($tipo );
+
+        $tareasPorTipo = [];
+        foreach ($tipo->Tarea as $item) {
+            $agregar = true;
+            foreach ($tareasPorTipo as $item2) {
+                if ($item2->Nombre_tarea == $item->Nombre_tarea) {
+                    $agregar = false;
+                }
+            }
+            if ($agregar) {
+                $tareasPorTipo[] = $item;
+            }
+        }
+        return $tareasPorTipo;
     }
 }
