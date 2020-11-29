@@ -15,6 +15,7 @@ use App\Repositories\PersonalRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Response;
 
 class PersonalController extends AppBaseController
@@ -40,6 +41,14 @@ class PersonalController extends AppBaseController
                 ->FechaNac($request->desde, $request->hasta)
                 ->Rol($request->rol)
                 ->paginate('100');
+
+        if (Auth::user()->Rol_id == 2) {
+            $ListaPersonal = Personal::orderBy('id', 'DESC')
+                ->Name($request->Nombre)
+                ->FechaNac($request->desde, $request->hasta)
+                ->Rol("Desarrollador")
+                ->paginate('100');
+        }
 
         return View('personals.index', compact('ListaPersonal'));
     }

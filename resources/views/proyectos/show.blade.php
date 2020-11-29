@@ -317,7 +317,7 @@
                                     <th>Nombre</th>
                                     <th>Responsabilidad</th>
                                     <th>Proyecto</th>
-                                    <th>Acciones</th>
+                                    {{--  <th>Acciones</th>  --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -326,11 +326,11 @@
                                         <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
                                         <td>{{ $asignacion->Responsabilidad }}</td>
                                         <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
-                                        <td>
+                                        {{-- <td>
                                             <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
                                                 <i class="glyphicon glyphicon-eye-open"></i>
                                             </a>
-                                        </td>
+                                        </td> --}}
                                         </tr>
                                 @endforeach
                             </tbody>

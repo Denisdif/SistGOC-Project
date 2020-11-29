@@ -30,7 +30,10 @@
                         <b>{{$asignacion->Personal->NombrePersonal." ".$asignacion->Personal->ApellidoPersonal}}:</b> {{ $asignacion->Responsabilidad }} <br>
                         @endforeach
                         <br>
-                        <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/asignacionPersonalTareas/create">Editar</a>
+
+                        @if (Auth::user()->Rol_id < 3)
+                            <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/asignacionPersonalTareas/create">Editar</a>
+                        @endif
                     </div>
 
 
@@ -130,14 +133,14 @@
 
                 <div class="text-center">
                     <br>
-                    <a href="/tareas/{{$tarea->id}}/autoAsignar" class="btn btn-danger ">Asignar</a>
+                    {{--   <a href="/tareas/{{$tarea->id}}/autoAsignar" class="btn btn-danger ">Asignar</a>--}}
                     @if ($tarea->Estado_tarea_id == 3)
                         <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/entregas/create">Añadir entrega</a>
                     @endif
                     @if ($tarea->Estado_tarea_id == 4)
                         <a class="btn btn-danger" href="/tareas/{{$tarea->id}}/entregas/create">Editar entrega</a>
                     @endif
-                    @if ($tarea->Estado_tarea_id == 4)
+                    @if (($tarea->Estado_tarea_id == 4) and (Auth::user()->Rol_id < 3))
                         <a href="/tareas/{{$tarea->id}}/aprobar" class="btn btn-danger">Aprobar</a>
                         <a href="/tareas/{{$tarea->id}}/desaprobar" class="btn btn-danger ">Desaprobar</a>
                     @endif

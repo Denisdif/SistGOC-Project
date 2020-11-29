@@ -48,6 +48,10 @@ class ProyectoController extends AppBaseController
     {
         $proyectos = Proyecto::all();
 
+        if (Auth::user()->Rol_id == 2) {
+            $proyectos = Proyecto::all()->where('Director_id', '=', Auth::user()->Personal_id);
+        }
+
         return View('proyectos.index', compact('proyectos'));
     }
 

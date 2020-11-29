@@ -84,12 +84,16 @@ class TareaController extends AppBaseController
         $tarea->Estado_tarea_id = 1; // 1 id estado tarea = creada
         $tarea->save();
 
-        for ($i=0; $i < sizeof($request->Predecesoras); $i++) {
+        if ($request->Predecesoras) {
+            for ($i=0; $i < sizeof($request->Predecesoras); $i++) {
                 $predecesora = new Predecesora();
                 $predecesora->Tarea_id = $tarea->id;
                 $predecesora->Predecesora_id = $request->Predecesoras[$i];
                 $predecesora->save();
+            }
         }
+
+
 
         Flash::success('Tarea saved successfully.');
 
@@ -122,7 +126,7 @@ class TareaController extends AppBaseController
 
         if ($tarea->Estado_tarea_id == 2) {
             foreach ($asignaciones as $asignacion) {
-                if ((($asignacion->Responsabilidad == "Desarrollador")) and (($asignacion->Personal_id) == ($user->Personal_id))){
+                if ((($asignacion->Personal_id) == ($user->Personal_id))){
                     $tarea->Estado_tarea_id = 3;
                     getdate($fechaActual = time());
                     $tarea->Fecha_inicio = $fechaActual;

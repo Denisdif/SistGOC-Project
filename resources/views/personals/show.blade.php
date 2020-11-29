@@ -24,29 +24,51 @@
                 <div class="box box-danger">
                     <div class="box-body">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item active">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Usuario" role="tab" aria-controls="Usuario" aria-selected="false">Usuario</a>
+                </li>
+
+                @if ($personal->get_rol()->id == 3)
+
                 <li class="nav-item">
-                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Rendimiento</a>
+                  <a class="nav-link " id="home-tab" data-toggle="tab" href="#Rendimiento" role="tab" aria-controls="Rendimiento" aria-selected="true">Rendimiento</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Evaluaciones</a>
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Evaluaciones" role="tab" aria-controls="Evaluaciones" aria-selected="false">Evaluaciones</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Usuario</a>
-                </li>
+
+                @endif
               </ul>
               <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade content" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane active content" id="Usuario" role="tabpanel" aria-labelledby="Usuario-tab">
+                    <h2>Datos de usuario</h2><br>
+                            <!-- Name Field -->
+                                {!! Form::label('name', 'Nombre:') !!}
+                                {{ $usuarios->name }} <br>
+
+                            <!-- Email Field -->
+                                {!! Form::label('email', 'Email:') !!}
+                                {{ $usuarios->email }} <br>
+
+                            <!-- Rol Field -->
+                                {!! Form::label('rol', 'Rol:') !!}
+                                {{ $usuarios->rol->NombreRol }} <br><br>
+                </div>
+
+                @if ($personal->get_rol()->id == 3)
+
+                <div class="tab-pane fade content" id="Rendimiento" role="tabpanel" aria-labelledby="Rendimiento-tab">
                     <div class="content">
                         <h2>Por definir</h2><br>
                     </div>
                 </div>
-                <div class="tab-pane fade content" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade content" id="Evaluaciones" role="tabpanel" aria-labelledby="Evaluaciones-tab">
                     <br>
 
                     {{-- Inicio de DataTable de ambientes del proyecto --}}
 
 
-                                <table id="Evaluaciones" class="table table-striped table-bordered">
+                                <table class="table datatables table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Desde</th>
@@ -81,21 +103,15 @@
                                     </tbody>
                                 </table>
 
-                </div>
-                <div class="tab-pane fade content" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <h2>Datos de usuario</h2><br>
-                            <!-- Name Field -->
-                                {!! Form::label('name', 'Nombre:') !!}
-                                {{ $usuarios->name }} <br>
+                                @if (Auth :: user()->Rol_id == 1)
+                                    <div class="text-center">
+                                        <a class="btn btn-danger" href="/personals/{{$personal->id}}/evaluacions/create">Nueva evaluación</a>
+                                    </div>
+                                @endif
 
-                            <!-- Email Field -->
-                                {!! Form::label('email', 'Email:') !!}
-                                {{ $usuarios->email }} <br>
-
-                            <!-- Rol Field -->
-                                {!! Form::label('rol', 'Rol:') !!}
-                                {{ $usuarios->rol->NombreRol }} <br><br>
                 </div>
+
+                @endif
               </div>
 
             </div>

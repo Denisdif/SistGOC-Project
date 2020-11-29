@@ -28,22 +28,22 @@
                                     <th>Nombre</th>
                                     <th>Responsabilidad</th>
                                     <th>Proyecto</th>
-                                    <th>Acciones</th>
+                                    {{--  <th>Acciones</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($Lista_personal as $Personal )
                                         @foreach (($Personal->tareasAsignadas()) as $asignacion)
-                                            @if ($asignacion->Responsabilidad == "Desarrollador")
+                                            @if ($asignacion->Responsabilidad == "Responsable")
                                                 <tr>
                                                 <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
                                                 <td>{{ $asignacion->Responsabilidad }}</td>
                                                 <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
-                                                <td>
+                                                 {{--<td>
                                                     <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
                                                         <i class="glyphicon glyphicon-eye-open"></i>
                                                     </a>
-                                                </td>
+                                                </td> --}}
                                                 </tr>
                                             @endif
                                         @endforeach

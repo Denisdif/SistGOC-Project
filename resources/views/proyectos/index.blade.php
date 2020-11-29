@@ -18,6 +18,11 @@
             <div class="box box-danger">
                 <div class="box-body">
                 <h1>Filtrar proyectos</h1>
+
+                    @if (Auth :: user()->Rol_id == 1)
+                        soy admin
+                    @endif
+
                     <br>
                     {!! Form::open(['route' => 'proyectos.index', 'method' => 'GET', 'form-inline pull-right']) !!}
                         <div class="form-group col-md-4">

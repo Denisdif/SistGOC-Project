@@ -66,6 +66,11 @@
                     <tbody>
                         @foreach ($ListaPersonal as $personal)
                         <tr>
+
+
+
+
+
                             <td>{{ $personal->NombrePersonal }} {{ $personal->ApellidoPersonal }}</td>
                             <td>{{ $personal->id }}</td>
                             <td>{{ $personal->DNI }}</td>
@@ -76,14 +81,16 @@
                                     <a href="{{ route('personals.show', $personal->id) }}" class='btn btn-default btn-xs'>
                                         <i class="glyphicon glyphicon-eye-open"></i>
                                     </a>
-                                    <a href="{{ route('personals.edit', $personal->id) }}" class='btn btn-default btn-xs'>
-                                        <i class="glyphicon glyphicon-edit"></i>
-                                    </a>
-                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
-                                        'type' => 'submit',
-                                        'class' => 'btn btn-danger btn-xs',
-                                        'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
-                                    ]) !!}
+                                    @if (Auth :: user()->Rol_id == 1)
+                                        <a href="{{ route('personals.edit', $personal->id) }}" class='btn btn-default btn-xs'>
+                                            <i class="glyphicon glyphicon-edit"></i>
+                                        </a>
+                                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
+                                            'type' => 'submit',
+                                            'class' => 'btn btn-danger btn-xs',
+                                            'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
+                                        ]) !!}
+                                    @endif
                                 </div>
                                 {!! Form::close() !!}
                             </td>
