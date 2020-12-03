@@ -29,16 +29,28 @@
                         </div>
 
                         <div class="form-group col-md-3">
-                            <input type="text" name="rol" class="form-control" placeholder="rol">
+                            <input type="text" name="Apellido" class="form-control" placeholder="Apellido">
                         </div>
 
                         <div class="form-group col-md-3">
+                            <input type="text" name="rol" class="form-control" placeholder="Rol">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="number" name="mayorQ" class="form-control" placeholder="Mayor que">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="number" name="menorQ" class="form-control" placeholder="Menor que">
+                        </div>
+
+                        {{-- <div class="form-group col-md-3">
                             <input type="date" name="desde" class="form-control" placeholder="Desde">
                         </div>
 
                         <div class="form-group col-md-3">
                             <input type="date" name="hasta" class="form-control" placeholder="Hasta">
-                        </div>
+                        </div>  --}}
 
                         <div class="form-group col-md-3 pull-right">
                             <button type="submit" class="btn btn-danger pull-right">

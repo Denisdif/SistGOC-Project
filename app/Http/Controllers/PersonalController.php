@@ -15,6 +15,7 @@ use App\Repositories\PersonalRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Tipo_tarea;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Response;
@@ -37,15 +38,34 @@ class PersonalController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $hasta = Carbon::now();
+        $desde = Carbon::now();
+        $desde->subYears(200);
+
+        if ($request->mayorQ) {
+            $hasta = Carbon::now();
+            $mayorQ = $request->mayorQ;
+            $mayorQ += 1;
+            $hasta = $hasta->subYears($mayorQ);
+        }
+
+        if ($request->menorQ) {
+            $desde = Carbon::now();
+            $menorQ = $request->menorQ;
+            $desde = $desde->subYears($menorQ);
+        }
+
         $ListaPersonal = Personal::orderBy('id', 'DESC')
                 ->Name($request->Nombre)
-                ->FechaNac($request->desde, $request->hasta)
+                ->Apellido($request->Apellido)
+                ->FechaNac($desde, $hasta)
                 ->Rol($request->rol)
                 ->paginate('100');
 
         if (Auth::user()->Rol_id == 2) {
             $ListaPersonal = Personal::orderBy('id', 'DESC')
                 ->Name($request->Nombre)
+                ->Apellido($request->Apellido)
                 ->FechaNac($request->desde, $request->hasta)
                 ->Rol("Desarrollador")
                 ->paginate('100');

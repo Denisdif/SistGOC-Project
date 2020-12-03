@@ -46,11 +46,19 @@ class ProyectoController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $proyectos = Proyecto::all();
 
         if (Auth::user()->Rol_id == 2) {
             $proyectos = Proyecto::all()->where('Director_id', '=', Auth::user()->Personal_id);
         }
+
+        $proyectos = Proyecto::orderBy('id', 'DESC')
+                ->Id($request->codigo)
+                ->Comitente($request->comitente)
+                ->Tipo($request->tipo)
+                ->Provincia($request->provincia)
+                ->Localidad($request->localidad)
+                ->Calle($request->calle)
+                ->paginate('100');
 
         return View('proyectos.index', compact('proyectos'));
     }

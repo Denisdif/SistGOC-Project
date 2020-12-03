@@ -109,7 +109,7 @@ class Proyecto extends Model
 
     //-------------------------- Filtros --------------------------
 
-    public function scopeid($query, $id){
+    public function scopeId($query, $id){
 
         if($id)
             return $query->where('id', 'LIKE', "%$id%");
@@ -118,13 +118,49 @@ class Proyecto extends Model
     public function scopeComitente($query, $comitente){
 
         if($comitente)
-            return $query->where('id', 'LIKE', "%$comitente%");
+
+            return $query   ->join('comitentes','proyectos.Comitente_id','=','comitentes.id')
+                            ->select('proyectos.*','comitentes.NombreComitente')
+                            ->where('comitentes.NombreComitente', 'LIKE', "%$comitente%");
     }
 
-    public function scopeFecha($query, $fecha){
+    public function scopeTipo($query, $tipo){
 
-        if($fecha)
-            return $query->where('id', 'LIKE', "%$fecha%");
+        if($tipo)
+
+            return $query   ->join('tipo_proyectos','proyectos.Tipo_Proyecto_id','=','tipo_proyectos.id')
+                            ->select('proyectos.*','tipo_proyectos.Nombre')
+                            ->where('tipo_proyectos.Nombre', 'LIKE', "%$tipo%");
+    }
+
+    public function scopeProvincia($query, $provincia){
+
+        if($provincia)
+
+            return $query   ->join('direccions','proyectos.Direccion_id','=','direccions.id')
+                            ->join('provincias','direccions.Provincia_id','=','provincias.id')
+                            ->select('proyectos.*','provincias.provincia')
+                            ->where('provincias.provincia', 'LIKE', "%$provincia%");
+
+    }
+
+    public function scopeLocalidad($query, $localidad){
+
+        if($localidad)
+
+            return $query   ->join('direccions','proyectos.Direccion_id','=','direccions.id')
+                            ->join('localidades','direccions.Localidad_id','=','localidades.id')
+                            ->select('proyectos.*','localidades.localidad')
+                            ->where('localidades.localidad', 'LIKE', "%$localidad%");
+    }
+
+    public function scopeCalle($query, $calle){
+
+        if($calle)
+
+            return $query   ->join('direccions','proyectos.Direccion_id','=','direccions.id')
+                            ->select('proyectos.*','direccions.calle')
+                            ->where('direccions.calle', 'LIKE', "%$calle%");
     }
 
     //-------------------------- Métodos --------------------------

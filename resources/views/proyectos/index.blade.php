@@ -19,25 +19,33 @@
                 <div class="box-body">
                 <h1 style="font-size: 30px">Filtrar proyectos</h1>
 
-                    @if (Auth :: user()->Rol_id == 1)
-                        soy admin
-                    @endif
-
                     <br>
                     {!! Form::open(['route' => 'proyectos.index', 'method' => 'GET', 'form-inline pull-right']) !!}
-                        <div class="form-group col-md-4">
-                            <input type="text" name="codigo" class="form-control" placeholder="Nombre">
+                        <div class="form-group col-md-3">
+                            <input type="text" name="codigo" class="form-control" placeholder="Código">
                         </div>
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
+                            <input type="text" name="tipo" class="form-control" placeholder="Tipo">
+                        </div>
+
+                        <div class="form-group col-md-3">
                             <input type="text" name="comitente" class="form-control" placeholder="Comitente">
                         </div>
 
-                        <div class="form-group col-md-4">
-                            <input type="date" name="fecha" class="form-control" placeholder="Fecha">
+                        <div class="form-group col-md-3">
+                            <input type="text" name="provincia" class="form-control" placeholder="Provincia">
                         </div>
 
-                        <div class="form-group col-md-4 pull-right">
+                        <div class="form-group col-md-3">
+                            <input type="text" name="localidad" class="form-control" placeholder="Localidad">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="text" name="calle" class="form-control" placeholder="Calle">
+                        </div>
+
+                        <div class="form-group col-md-3 pull-right">
                             <button type="submit" class="btn btn-danger pull-right">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
@@ -55,10 +63,10 @@
                     <table id="Proyectos" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>Nro de proyecto</th>
+                                <th>Codigo</th>
+                                <th>Tipo de proyecto</th>
                                 <th>Comitente</th>
                                 <th>Dirección</th>
-                                <th>Fecha limite</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -66,9 +74,9 @@
                             @foreach ($proyectos as $proyecto)
                             <tr>
                                 <td>{{ $proyecto->id }}</td>
+                                <td>{{ $proyecto->tipo_proyecto->Nombre }}</td>
                                 <td>{{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }}</td>
                                 <td>{{ $proyecto->direccion->Calle}} {{ $proyecto->direccion->Altura}}, {{ $proyecto->direccion->localidad->localidad}}, {{ $proyecto->direccion->provincia->provincia}}</td>
-                                <td>{{ $proyecto->get_fecha_fin() }}</td>
                                 <td>{!! Form::open(['route' => ['proyectos.destroy', $proyecto->id], 'method' => 'delete']) !!}
                                     <div class='btn-group'>
                                         <a href="{{ route('proyectos.show', $proyecto->id) }}" class='btn btn-default btn-xs'>

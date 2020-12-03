@@ -83,6 +83,12 @@ class Personal extends Model
             return $query->where('NombrePersonal', 'LIKE', "%$name%");
     }
 
+    public function scopeApellido($query, $apellido){
+
+        if($apellido)
+            return $query->where('ApellidoPersonal', 'LIKE', "%$apellido%");
+    }
+
     public function scopeFechaNac($query, $desde, $hasta){
 
         if($desde and $hasta)
