@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Repositories\PersonalRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Tipo_tarea;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Response;
@@ -127,8 +128,19 @@ class PersonalController extends AppBaseController
         }
         $usuarios = User::all()->where('Personal_id','=', $id)->first();
         $evaluaciones = Evaluacion::all()->where('Personal_id','=', $id);
+        $tiposTareas = Tipo_tarea::all();
+        $tipos_tareas_graf = [];
+        $calificacion_graf = [];
 
-        return view('personals.show', compact('id', 'usuarios', 'evaluaciones'))->with('personal', $personal);
+        foreach ($tiposTareas as $item) {
+            if (($personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)))>1) {
+                $tipos_tareas_graf[]=$item->Nombre_tipo_tarea;
+                $calificacion_graf[]=$personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea));
+            }
+
+        }
+
+        return view('personals.show', compact('id', 'usuarios', 'evaluaciones','tipos_tareas_graf','calificacion_graf'))->with('personal', $personal);
     }
 
     /**

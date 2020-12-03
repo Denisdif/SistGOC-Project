@@ -3,9 +3,13 @@
 @section('content')
     <section class="content-header">
         <h1 style="color: aliceblue" class="pull-left">Personal</h1>
-        <h1 class="pull-right">
-           <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('personals.create') }}">Add New</a>
-        </h1>
+
+        @if (Auth::user()->Rol_id == 1)
+            <h1 class="pull-right">
+                <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('personals.create') }}">Cargar nuevo</a>
+            </h1>
+        @endif
+
     </section>
     <div class="content">
         <div class="clearfix"></div>

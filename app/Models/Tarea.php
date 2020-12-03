@@ -118,7 +118,34 @@ class Tarea extends Model
 
     //Devuelve la cantidad de horas de desarrollo estimadas, en base al tipo de tarea
 
-    public function duracionEstimadaReal(){
+    public function estimar_con_nombre(){
+        $tareas = Tarea::all();
+        $suma = 0;
+        $div = 0;
+        foreach ($tareas as $tarea) {
+            if ($tarea->Nombre_tarea==$this->Nombre_tarea) {
+                if ($tarea->Fecha_fin != null) {
+                    $inicio = new Carbon($tarea->Fecha_inicio);
+                    $fin = new Carbon($tarea->Fecha_fin);
+                    $suma += ($inicio->diffInMinutes($fin));
+
+                    $div += 1;
+                  }
+            }
+        }
+        if ($div != 0) {
+            $resul = $suma / $div;
+            $resul = $resul / 60;
+            $resul = round ( $resul, 0 );
+            return $resul;
+        } else {
+            return 0;
+        }
+    }
+
+    //Devuelve la cantidad de horas de desarrollo estimadas, en base al tipo de tarea
+
+    public function estimar_con_tipo(){
         $tareas = Tarea::all();
         $suma = 0;
         $div = 0;
@@ -141,6 +168,18 @@ class Tarea extends Model
         } else {
             return 5;
         }
+    }
+
+    //Devuelve la cantidad de horas de desarrollo estimadas, en base al tipo de tarea
+
+    public function duracionEstimadaReal(){
+
+        $result = $this->estimar_con_nombre();
+        if ($result==0) {
+            $result = $this->estimar_con_tipo();
+        }
+
+        return $result;
     }
 
     //Devuelve la cantidad de horas de desarrollo de una tarea aprobada
@@ -185,7 +224,7 @@ class Tarea extends Model
         //if ($this->Estado_tarea_id == 6) {
 
             if (($this->Correcciones == "true")) {
-                $puntos = 2;
+                $puntos = 1;
             }
 
             if (($this->Correcciones == "false")) {
@@ -193,16 +232,16 @@ class Tarea extends Model
             }
 
             if (($this->Correcciones == "true") and ($this->Fecha_fin < $this->Fecha_limite)) {
-                $puntos = 6;
+                $puntos = 7;
             }
 
             if (($this->Correcciones == "false") and ($this->Fecha_fin < $this->Fecha_limite)) {
-                $puntos = 8;
-            }
-
-            if (($this->duracionReal() < $this->duracionEstimadaReal()) and ($this->Correcciones == "false") and ($this->Fecha_fin < $this->Fecha_limite)) {
                 $puntos = 10;
             }
+
+            /*if (($this->duracionReal() < $this->duracionEstimadaReal()) and ($this->Correcciones == "false") and ($this->Fecha_fin < $this->Fecha_limite)) {
+                $puntos = 10;
+            }*/
         //}
         return $puntos;
     }

@@ -170,6 +170,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
+<!-- Graficos -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+
 <script>
     $(document).ready(function() {
         $('#Nose').DataTable({
@@ -644,6 +648,8 @@
         //}
     });
 </script>
+
+
 
 
 @yield('datatable_js')

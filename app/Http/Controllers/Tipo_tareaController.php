@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateTipo_tareaRequest;
 use App\Repositories\Tipo_tareaRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Tipo_tarea;
 use Response;
 
 class Tipo_tareaController extends AppBaseController
@@ -147,5 +148,10 @@ class Tipo_tareaController extends AppBaseController
         Flash::success('Tipo Tarea deleted successfully.');
 
         return redirect(route('tipoTareas.index'));
+    }
+
+    public function obtener_tipos_tareas(){
+            $data = Tipo_tarea::all();
+        return $data;
     }
 }

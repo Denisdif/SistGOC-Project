@@ -263,7 +263,8 @@ class Personal extends Model
             $suma = $suma/sizeof($tareas);
             return $suma;
         } else {
-            return "No ha realizado tareas de este tipo";
+            //return "No ha realizado tareas de este tipo";
+            return 1;
         }
     }
 

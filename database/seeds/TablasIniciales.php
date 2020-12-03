@@ -137,6 +137,36 @@ class TablasIniciales extends Seeder
         $personal->direccion_id = 1;
         $personal->save();
 
+        $personal = new Personal;
+        $personal->NombrePersonal = "Magali";
+        $personal->ApellidoPersonal = "Zubrezki";
+        $personal->FechaNac = "2000-08-01";
+        $personal->DNI = 42303635;
+        $personal->Telefono = "3456524949";
+        $personal->Sexo_id = 2;
+        $personal->direccion_id = 1;
+        $personal->save();
+
+        $personal = new Personal;
+        $personal->NombrePersonal = "Aldana";
+        $personal->ApellidoPersonal = "Ramirez";
+        $personal->FechaNac = "1989-07-01";
+        $personal->DNI = 35302335;
+        $personal->Telefono = "1234524949";
+        $personal->Sexo_id = 2;
+        $personal->direccion_id = 1;
+        $personal->save();
+
+        $personal = new Personal;
+        $personal->NombrePersonal = "Pedro";
+        $personal->ApellidoPersonal = "Pereira";
+        $personal->FechaNac = "1990-11-01";
+        $personal->DNI = 38303789;
+        $personal->Telefono = "3658524949";
+        $personal->Sexo_id = 1;
+        $personal->direccion_id = 1;
+        $personal->save();
+
 
 
         $user = new User;
@@ -185,6 +215,30 @@ class TablasIniciales extends Seeder
         $user->password = Hash::make(12345678);
         $user->Rol_id = 4;
         $user->Personal_id = 6;
+        $user->save();
+
+        $user = new User;
+        $user->name = "Maga";
+        $user->email = "maga@gmail.com";
+        $user->password = Hash::make(12345678);
+        $user->Rol_id = 3;
+        $user->Personal_id = 7;
+        $user->save();
+
+        $user = new User;
+        $user->name = "Aldy";
+        $user->email = "aldi@gmail.com";
+        $user->password = Hash::make(12345678);
+        $user->Rol_id = 3;
+        $user->Personal_id = 8;
+        $user->save();
+
+        $user = new User;
+        $user->name = "Pedro";
+        $user->email = "pedro@gmail.com";
+        $user->password = Hash::make(12345678);
+        $user->Rol_id = 3;
+        $user->Personal_id = 9;
         $user->save();
 
 
@@ -529,8 +583,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Diseñar cortes";
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-16 05:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -542,7 +596,7 @@ class TablasIniciales extends Seeder
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
         $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-16 23:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -553,8 +607,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Realizar memoria descriptiva";
         $tarea->Tipo_tarea_id = 5;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 16:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -566,7 +620,7 @@ class TablasIniciales extends Seeder
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
         $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 16:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -577,8 +631,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Silueta y balance de superficies";
         $tarea->Tipo_tarea_id = 5;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 17:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -589,8 +643,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Realizar planilla de iluminación y ventilación";
         $tarea->Tipo_tarea_id = 5;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 19:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -602,7 +656,7 @@ class TablasIniciales extends Seeder
         $tarea->Tipo_tarea_id = 2;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
         $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 19:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -613,8 +667,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Diseñar planta de estructuras";
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-16 01:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -625,8 +679,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Diseñar instalación eléctrica";
         $tarea->Tipo_tarea_id = 3;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-16 08:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -638,7 +692,7 @@ class TablasIniciales extends Seeder
         $tarea->Tipo_tarea_id = 3;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
         $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 20:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -649,8 +703,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Diseñar instalación sanitaria";
         $tarea->Tipo_tarea_id = 3;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 23:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -662,7 +716,7 @@ class TablasIniciales extends Seeder
         $tarea->Tipo_tarea_id = 4;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
         $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-16 18:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 1;
@@ -673,10 +727,10 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Realizar cómputo y presupuesto";
         $tarea->Tipo_tarea_id = 2;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
         $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
         $tarea->Prioridad = "Media";
-        $tarea->Correcciones = 'false';
+        $tarea->Correcciones = 'true';
         $tarea->Proyecto_id = 1;
         $tarea->Estado_tarea_id = 6;
         $tarea->save();
@@ -738,8 +792,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Realizar memoria descriptiva";
         $tarea->Tipo_tarea_id = 5;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 17:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 2;
@@ -750,8 +804,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Presentación al cliente";
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 16:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 2;
@@ -762,8 +816,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Silueta y balance de superficies";
         $tarea->Tipo_tarea_id = 5;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 19:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 2;
@@ -774,8 +828,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Realizar planilla de iluminación y ventilación";
         $tarea->Tipo_tarea_id = 5;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 17:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 2;
@@ -798,7 +852,7 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Diseñar planta de estructuras";
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
         $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
@@ -887,7 +941,7 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Diseñar vistas";
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
         $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
@@ -911,7 +965,7 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Diseñar planta de techos";
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
         $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
@@ -959,8 +1013,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Realizar planilla de iluminación y ventilación";
         $tarea->Tipo_tarea_id = 5;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 17:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 3;
@@ -1007,7 +1061,7 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Diseñar instalación de agua";
         $tarea->Tipo_tarea_id = 3;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
         $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
@@ -1031,8 +1085,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Realizar detalles";
         $tarea->Tipo_tarea_id = 4;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 16:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 3;
@@ -1108,8 +1162,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Realizar memoria descriptiva";
         $tarea->Tipo_tarea_id = 5;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 16:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 4;
@@ -1120,8 +1174,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Presentación al cliente";
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 16:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 4;
@@ -1132,8 +1186,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Silueta y balance de superficies";
         $tarea->Tipo_tarea_id = 5;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 16:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 4;
@@ -1216,8 +1270,8 @@ class TablasIniciales extends Seeder
         $tarea->Nombre_tarea = "Realizar detalles";
         $tarea->Tipo_tarea_id = 4;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_limite = new Carbon('2020-02-17 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-15 17:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 4;
@@ -1246,7 +1300,7 @@ class TablasIniciales extends Seeder
         $tarea->Tipo_tarea_id = 1;
         $tarea->Fecha_inicio = new Carbon('2020-02-15 15:32:45.654321');
         $tarea->Fecha_limite = new Carbon('2020-02-15 15:32:45.654321');
-        $tarea->Fecha_fin = new Carbon('2020-02-16 15:32:45.654321');
+        $tarea->Fecha_fin = new Carbon('2020-02-16 10:32:45.654321');
         $tarea->Prioridad = "Media";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = 5;
@@ -1427,91 +1481,91 @@ class TablasIniciales extends Seeder
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 1;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 2;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 3;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 4;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 5;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 6;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 7;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 8;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 9;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 10;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 11;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 12;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 13;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 14;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 15;
         $asignacionPersonalTarea->save();
 
@@ -1521,91 +1575,91 @@ class TablasIniciales extends Seeder
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 16;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 17;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 18;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 19;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 20;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 21;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 22;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 23;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 24;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 25;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 26;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 27;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 28;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 29;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 30;
         $asignacionPersonalTarea->save();
 
@@ -1615,91 +1669,91 @@ class TablasIniciales extends Seeder
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 31;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 32;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 33;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 34;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 35;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 36;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 37;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 38;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 39;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 40;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 41;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 42;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 43;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 44;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 45;
         $asignacionPersonalTarea->save();
 
@@ -1709,91 +1763,91 @@ class TablasIniciales extends Seeder
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 46;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 47;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 48;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 49;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 50;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 51;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 52;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 53;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 54;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 55;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 56;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 57;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 58;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 59;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
         $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 60;
         $asignacionPersonalTarea->save();
 
@@ -1802,92 +1856,92 @@ class TablasIniciales extends Seeder
         //Asignaciones de tareas del proyecto 5
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 9;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 61;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 8;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 62;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 7;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 63;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 7;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 64;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 8;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 65;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 9;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 66;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 9;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 67;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 7;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 68;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 8;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 69;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 8;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 70;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 7;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 71;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 9;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 72;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 3;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 8;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 73;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 4;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 7;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 74;
         $asignacionPersonalTarea->save();
 
         $asignacionPersonalTarea = new AsignacionPersonalTarea;
-        $asignacionPersonalTarea->Personal_id = 5;
-        $asignacionPersonalTarea->Responsabilidad = "Desarrollador";
+        $asignacionPersonalTarea->Personal_id = 8;
+        $asignacionPersonalTarea->Responsabilidad = "Responsable";
         $asignacionPersonalTarea->Tarea_id = 75;
         $asignacionPersonalTarea->save();
 

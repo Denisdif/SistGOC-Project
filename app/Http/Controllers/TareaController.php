@@ -93,8 +93,6 @@ class TareaController extends AppBaseController
             }
         }
 
-
-
         Flash::success('Tarea saved successfully.');
 
         return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));

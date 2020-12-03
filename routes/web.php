@@ -134,6 +134,8 @@ Route::get('tipoTareas/{tipoTarea}/edit',        'Tipo_tareaController@edit')   
 Route::put('tipoTareas/{id}',                    'Tipo_tareaController@update')         ->name('tipoTareas.update');
 Route::delete('tipoTareas/{id}',                 'Tipo_tareaController@destroy')        ->name('tipoTareas.destroy');
 
+Route::get('tipoTareas/obtenerTiposTarea',       'Tipo_tareaController@obtener_tipos_tareas')         ->name('tipoTareas.obtener');
+
 
 //Rutas personal
 

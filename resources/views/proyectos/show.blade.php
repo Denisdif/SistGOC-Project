@@ -25,6 +25,13 @@
                         </h1>
                     </section>
 
+                    <br>
+
+                    @include('proyectos.show_fields')
+                    <div class="col-md-12 mb-12">
+                        <a class="btn btn-danger"  href="/proyectos/{{$proyecto->id}}/informe">Informe Completo</a>
+                        <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/autoAsignar">Asignación inteligente</a>
+                    </div>
 
                     @section('scripts')
                         @include('layouts.datatables_js')
@@ -38,10 +45,10 @@
                 <div>
                     <div class="box-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item active">
+                            {{--  <li class="nav-item active">
                                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="true">Datos</a>
-                            </li>
-                            <li class="nav-item">
+                            </li> --}}
+                            <li class="nav-item active">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tareas" role="tab" aria-controls="tareas" aria-selected="false">Tareas</a>
                             </li>
                             <li class="nav-item">
@@ -55,15 +62,14 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane active" id="datos" role="tabpanel" aria-labelledby="datos-tab">
+                            {{--   <div class="tab-pane active" id="datos" role="tabpanel" aria-labelledby="datos-tab">
                                 <br>
                                 @include('proyectos.show_fields')
                                 <div class="col-md-12 mb-12">
                                     <a class="btn btn-danger"  href="/proyectos/{{$proyecto->id}}/informe">Informe Completo</a>
-                                    {{--<a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/proyectoAmbientes/create">Editar lista de ambientes</a>--}}
                                     <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/autoAsignar">Asignación inteligente</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="tab-pane fade" id="personal" role="tabpanel" aria-labelledby="personal-tab">
 
                                 {{-- Fin de DataTable de tareas del proyecto --}}
@@ -91,7 +97,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="tareas" role="tabpanel" aria-labelledby="tareas-tab">
+                            <div class="tab-pane active" id="tareas" role="tabpanel" aria-labelledby="tareas-tab">
                                 {{-- Inicio de DataTable de tareas del proyecto --}}
                                 <br>
 

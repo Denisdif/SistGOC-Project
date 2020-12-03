@@ -17,7 +17,7 @@
         <div>
             <div class="box box-danger">
                 <div class="box-body">
-                <h1>Filtrar proyectos</h1>
+                <h1 style="font-size: 30px">Filtrar proyectos</h1>
 
                     @if (Auth :: user()->Rol_id == 1)
                         soy admin

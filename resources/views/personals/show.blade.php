@@ -52,7 +52,13 @@
 
                             <!-- Rol Field -->
                                 {!! Form::label('rol', 'Rol:') !!}
-                                {{ $usuarios->rol->NombreRol }} <br><br>
+                                {{ $usuarios->rol->NombreRol }} <br> <br>
+
+                                @if ((Auth::user()->Personal_id == $personal->id) or (Auth::user()->Rol_id == 1) )
+                                    <a class="btn btn-danger" href="{{ route('users.edit', $usuarios->id) }}">Editar</a>
+                                @endif
+
+                                <br>
                 </div>
 
                 @if ($personal->get_rol()->id == 3)
@@ -60,6 +66,17 @@
                 <div class="tab-pane fade content" id="Rendimiento" role="tabpanel" aria-labelledby="Rendimiento-tab">
                     <div class="content">
                         <h2>Por definir</h2><br>
+
+                        <div class="row ">
+                            <div class="col-sm-6">
+                                <canvas id="rendimiento" width="400" height="400"></canvas>
+                            </div>
+                        </div>
+                        <form action="POST" action="/tipoTareas/obtenerTiposTarea" id="rendPrueba">
+                            @csrf
+                            <input type="hidden" name="Nombre">
+                            <input type="hidden" name="Valor">
+                        </form>
                     </div>
                 </div>
                 <div class="tab-pane fade content" id="Evaluaciones" role="tabpanel" aria-labelledby="Evaluaciones-tab">
@@ -123,5 +140,59 @@
 
     @section('scripts')
         @include('layouts.datatables_js')
+
+        <script>
+            var tipos_tareas=[];
+            var calificacion=[];
+            $(document).ready(function() {
+
+            var tipos_tareas = <?php echo json_encode($tipos_tareas_graf) ?> ;
+            var calificacion = <?php echo json_encode($calificacion_graf) ?> ;
+
+            generarGrafica();
+            function generarGrafica(){
+                var ctx = document.getElementById('rendimiento').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: tipos_tareas,
+                    datasets: [{
+                        label: 'Tipos de tareas',
+                        data: calificacion,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scale: {
+                        angleLines: {
+                            display: false
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }
+                }
+            });
+            }
+        });
+
+            </script>
     @endsection
 @endsection
