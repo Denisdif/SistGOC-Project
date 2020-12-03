@@ -202,7 +202,7 @@ class Tarea extends Model
     //Formatea fecha fin
 
     public function getFechaFin(){
-        $date = new Carbon($this->Fecha_inicio);
+        $date = new Carbon($this->Fecha_fin);
         $date = $date->formatLocalized('%A %d %B %Y');
         return $date;
     }

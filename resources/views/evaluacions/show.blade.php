@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
+
     <section class="content-header">
         <h1 style="color: aliceblue">
             Evaluación de desempeño
@@ -16,4 +21,12 @@
             </div>
         </div>
     </div>
+
+
+
+@section('scripts')
+    @include('layouts.datatables_js')
 @endsection
+@endsection
+
+

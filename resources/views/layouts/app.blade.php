@@ -30,19 +30,19 @@
     @yield('css')
 </head>
 
-<body class="skin-red sidebar-mini">
+<body  class="skin-red sidebar-mini">
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a style="position: fixed" href="#" class="logo">
                 <b>SistGOC</b>
             </a>
 
             <!-- Header Navbar -->
-            <nav class="navbar navbar-static-top" role="navigation">
+            <nav class="navbar navbar-fixed-top" role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -94,6 +94,8 @@
         @include('layouts.sidebar')
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="background-image: url('/images/Captura.jpg'); background-size: 100%; background-opacity: 0.5">
+            <br>
+            <br>
             @yield('content')
         </div>
 

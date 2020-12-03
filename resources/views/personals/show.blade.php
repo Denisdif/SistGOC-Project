@@ -64,27 +64,29 @@
                 @if ($personal->get_rol()->id == 3)
 
                 <div class="tab-pane fade content" id="Rendimiento" role="tabpanel" aria-labelledby="Rendimiento-tab">
-                    <div class="content">
-                        <h2>Por definir</h2><br>
+                    <div>
+                        <div>
+                            <div class="content col-sm-6">
+                                <h2>Rendimiento general</h2><br>
+                                @foreach ($tipos_tareas as $item)
+                                    <b>{{ $item->Nombre_tipo_tarea }}:</b>
+                                    <div style="padding-left: 2%">
+                                        Cantidad de tareas realizadas: {{ sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
+                                        Calificación general: {{ $personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
+                                    </div>
+                                @endforeach
+                            </div>
 
-                        <div class="row ">
-                            <div class="col-sm-6">
-                                <canvas id="rendimiento" width="400" height="400"></canvas>
+                            <div class="content col-sm-6" style="width: 40%; height: 40%">
+                                <canvas id="rendimiento" width="40" height="40"></canvas>
                             </div>
                         </div>
-                        <form action="POST" action="/tipoTareas/obtenerTiposTarea" id="rendPrueba">
-                            @csrf
-                            <input type="hidden" name="Nombre">
-                            <input type="hidden" name="Valor">
-                        </form>
+
                     </div>
                 </div>
                 <div class="tab-pane fade content" id="Evaluaciones" role="tabpanel" aria-labelledby="Evaluaciones-tab">
                     <br>
-
                     {{-- Inicio de DataTable de ambientes del proyecto --}}
-
-
                                 <table class="table datatables table-striped table-bordered">
                                     <thead>
                                         <tr>
@@ -125,9 +127,7 @@
                                         <a class="btn btn-danger" href="/personals/{{$personal->id}}/evaluacions/create">Nueva evaluación</a>
                                     </div>
                                 @endif
-
                 </div>
-
                 @endif
               </div>
 

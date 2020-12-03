@@ -1,4 +1,4 @@
-<aside class="main-sidebar" id="sidebar-wrapper">
+<aside style="position: fixed" class="main-sidebar" id="sidebar-wrapper">
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <!-- search form (Optional) -->
+        <!-- search form (Optional)
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search..."/>
@@ -29,10 +29,10 @@
             </button>
           </span>
             </div>
-        </form>
+        </form>-->
         <!-- Sidebar Menu -->
 
-        <ul class="sidebar-menu" data-widget="tree">
+        <ul  class="sidebar-menu" data-widget="tree">
             @include('layouts.menu')
         </ul>
         <!-- /.sidebar-menu -->

@@ -148,11 +148,11 @@ class PersonalController extends AppBaseController
         }
         $usuarios = User::all()->where('Personal_id','=', $id)->first();
         $evaluaciones = Evaluacion::all()->where('Personal_id','=', $id);
-        $tiposTareas = Tipo_tarea::all();
+        $tipos_tareas = Tipo_tarea::all();
         $tipos_tareas_graf = [];
         $calificacion_graf = [];
 
-        foreach ($tiposTareas as $item) {
+        foreach ($tipos_tareas as $item) {
             if (($personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)))>1) {
                 $tipos_tareas_graf[]=$item->Nombre_tipo_tarea;
                 $calificacion_graf[]=$personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea));
@@ -160,7 +160,7 @@ class PersonalController extends AppBaseController
 
         }
 
-        return view('personals.show', compact('id', 'usuarios', 'evaluaciones','tipos_tareas_graf','calificacion_graf'))->with('personal', $personal);
+        return view('personals.show', compact('id', 'tipos_tareas', 'usuarios', 'evaluaciones','tipos_tareas_graf','calificacion_graf'))->with('personal', $personal);
     }
 
     /**
