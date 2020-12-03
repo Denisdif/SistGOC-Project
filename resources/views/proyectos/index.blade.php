@@ -20,7 +20,7 @@
                 <h1 style="font-size: 30px">Filtrar proyectos</h1>
 
                     <br>
-                    {!! Form::open(['route' => 'proyectos.index', 'method' => 'GET', 'form-inline pull-right']) !!}
+                    {!! Form::open(['route' => 'PDFconfig.proyectosPDF', 'method' => 'GET', 'form-inline pull-right']) !!}
                         <div class="form-group col-md-3">
                             <input type="text" name="codigo" class="form-control" placeholder="Código">
                         </div>

@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Cooperativa de Agua</title>
+<title>SistGOC</title>
 <style>
     body {
         /*position: relative;*/
@@ -47,12 +47,12 @@
         font-size: 14px;
     }
     #user {
-        /*position: relative;*/
-        float: right;
+        position: relative;
+         /*float: right;
         margin-top: 1%;
         margin-left: 2%;
         margin-right: -19%;
-        font-size: 10px;
+        font-size: 10px;*/
     }
     section {
         clear: left;
@@ -103,6 +103,7 @@
         border-collapse: collapse;
         border-spacing: 0;
         margin-bottom: 15px;
+        border: 1px solid #000000;
     }
     #lista thead {
         padding: 20px;
@@ -148,27 +149,28 @@
 </style>
 
 <body>
-    <header style="position:fixed;">
+    <header>
 
         <div id="logo">
             @yield('logo')
         </div>
-
 
         <div id="datos">
             @yield('datos')
         </div>
 
         <div id="fecha">
-            <p>Fecha: {{ \Carbon\Carbon::now()->format('d/m/Y')}}</p>
+            <br>
+            <br>
+            Fecha: {{ \Carbon\Carbon::now()->format('d/m/Y')}} <br>
         </div>
 
         <div id="user">
-            Generado por: {{ Auth::user()->name . ' ' . Auth::user()->apellido }}
+            Autor: {{ Auth::user()->personal->ApellidoPersonal . ' ' . Auth::user()->personal->NombrePersonal }}<br>
+            <b> Listado de Proyectos </b>
         </div>
 
     </header>
-    <br>
     <section>
         @yield('content')
     </section>
