@@ -227,6 +227,8 @@ Route::put('PDFconfig/update',              'PDFconfigController@update')       
 
 Route::get('/proyectoPDF',                  'PDFcontroller@proyectosPDF')            ->name('PDFconfig.proyectosPDF');
 
-
+Route::get('auditoria',                         'AudthController@index')           ->name('auditoria.index');
+Route::get('auditoria/show/{id}',               'AudthController@show')         ->name('auditoria.show');
+Route::get('auditoria/historial/{id}',          'AudthController@historial')    ->name('auditoria.historial');
 
 Route::resource('predecesoras', 'PredecesoraController');

@@ -10,27 +10,17 @@ use App\Models\Comitente;
 use App\Models\Direccion;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use OwenIt\Auditing\Contracts\Auditable;
 Carbon::setUTF8(true);
 setlocale(LC_TIME, 'es_ES');
 Carbon::setLocale('es');
 
-/**
- * Class Proyecto
- * @package App\Models
- * @version October 9, 2020, 1:03 am UTC
- *
- * @property string $Nombre_proyecto
- * @property integer $Tipo_proyecto_id
- * @property integer $Nro_plantas
- * @property string $Fecha_inicio_Proy
- * @property string $Fecha_fin_Proy
- * @property integer $Director_id
- * @property integer $Comitente_id
- * @property string $Descripcion
- */
-class Proyecto extends Model
+
+class Proyecto extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
 
     public $table = 'proyectos';
 

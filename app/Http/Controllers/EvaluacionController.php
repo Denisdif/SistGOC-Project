@@ -155,6 +155,6 @@ class EvaluacionController extends AppBaseController
 
         Flash::success('Evaluacion deleted successfully.');
 
-        return redirect(route('evaluacions.index'));
+        return redirect()->back();
     }
 }

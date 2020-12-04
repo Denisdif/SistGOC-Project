@@ -149,16 +149,48 @@ class PersonalController extends AppBaseController
         $usuarios = User::all()->where('Personal_id','=', $id)->first();
         $evaluaciones = Evaluacion::all()->where('Personal_id','=', $id);
         $tipos_tareas = Tipo_tarea::all();
-        $tipos_tareas_graf = [];
-        $calificacion_graf = [];
 
-        foreach ($tipos_tareas as $item) {
-            if (($personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)))>1) {
-                $tipos_tareas_graf[]=$item->Nombre_tipo_tarea;
-                $calificacion_graf[]=$personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea));
+        //Datos para grafica
+
+            $tipos_tareas_graf = [];
+            $calificacion_graf = [];
+
+            foreach ($tipos_tareas as $item) {
+                if (($personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)))>1) {
+                    $tipos_tareas_graf[]=$item->Nombre_tipo_tarea;
+                    $calificacion_graf[]=$personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea));
+                }
+
             }
 
-        }
+        //Fin datos para grafica
+
+        //Modulo inteligente de crear evaluaciones cada mes
+
+            $evaluar = true;
+            $ahora = Carbon::now();
+            $ahora = $ahora->subMonth(1);
+            $ahora = $ahora->startOfMonth();
+
+            foreach ($evaluaciones as $item) {
+                $date = new Carbon($item->Fecha_inicio);
+                if ($ahora == $date) {
+                    $evaluar = false;
+                }
+            }
+
+            if ($evaluar) {
+                $evaluacion = new Evaluacion();
+                $evaluacion->Fecha_inicio = $ahora->startOfMonth();
+                $evaluacion->Fecha_fin = $ahora->endOfMonth();
+                $evaluacion->Personal_id = $personal->id;
+                $evaluacion->Evaluador_id = 1;
+                $evaluacion->save();
+            }
+
+            $evaluaciones = Evaluacion::all()->where('Personal_id','=', $id);
+
+        //Fin modulo inteligente de crear evaluaciones cada mes
 
         return view('personals.show', compact('id', 'tipos_tareas', 'usuarios', 'evaluaciones','tipos_tareas_graf','calificacion_graf'))->with('personal', $personal);
     }
@@ -231,6 +263,6 @@ class PersonalController extends AppBaseController
 
         Flash::success('Personal deleted successfully.');
 
-        return redirect(route('personals.index'));
+        return redirect()->back();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class ambiente
@@ -17,7 +18,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ambiente extends Model
 {
     use SoftDeletes;
-
     public $table = 'ambientes';
 
 

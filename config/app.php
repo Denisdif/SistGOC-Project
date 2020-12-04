@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         \App\Providers\ViewServiceProvider::class,
         Cardumen\ArgentinaProvinciasLocalidades\ArgentinaProvinciasLocalidades::class,
+        OwenIt\Auditing\AuditingServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -239,6 +240,7 @@ return [
         'Html'         => Collective\Html\HtmlFacade::class,
         'Flash'        => Laracasts\Flash\Flash::class,
         'DataTables'   => Yajra\DataTables\Facades\DataTables::class,
+
     ],
 
 ];

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Personal;
 use App\Models\Tarea;
 use App\Models\Proyecto;
+use OwenIt\Auditing\Contracts\Auditable;
+
 
 /**
  * Class AsignacionPersonalTarea
@@ -21,7 +23,6 @@ class AsignacionPersonalTarea extends Model
 {
 
     public $table = 'asignacion_personal_tareas';
-
 
 
 

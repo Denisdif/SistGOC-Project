@@ -23,6 +23,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0",
         "nesbot/carbon": "^2.41",
+        "owen-it/laravel-auditing": "^10.0",
         "yajra/laravel-datatables-buttons": "^4.6",
         "yajra/laravel-datatables-html": "^4.4",
         "yajra/laravel-datatables-oracle": "~9.0"
