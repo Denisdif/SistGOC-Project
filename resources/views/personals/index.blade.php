@@ -18,47 +18,21 @@
 
         <div class="clearfix"></div>
 
-        <div>
-            <div class="box box-danger">
-                <div class="box-body">
-                <h1>Filtrar personal</h1>
-                    <br>
-                    {!! Form::open(['route' => 'personals.index', 'method' => 'GET', 'form-inline pull-right']) !!}
+        <div class="box box-danger">
+            <div class="box-body">
+                <td><button class="btn" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button></td>
+                {!! Form::open(['route' => 'PDF.proyectosPDF', 'method' => 'GET', 'form-inline pull-right']) !!}
+
                         <div class="form-group col-md-3">
-                            <input type="text" name="Nombre" class="form-control" placeholder="Nombre">
+                            <input type="hidden" name="personal_filtrado[]" class="form-control" value="$ListaPersonal">
                         </div>
 
                         <div class="form-group col-md-3">
-                            <input type="text" name="Apellido" class="form-control" placeholder="Apellido">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <input type="text" name="rol" class="form-control" placeholder="Rol">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <input type="number" name="mayorQ" class="form-control" placeholder="Mayor que">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <input type="number" name="menorQ" class="form-control" placeholder="Menor que">
-                        </div>
-
-                        {{-- <div class="form-group col-md-3">
-                            <input type="date" name="desde" class="form-control" placeholder="Desde">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <input type="date" name="hasta" class="form-control" placeholder="Hasta">
-                        </div>  --}}
-
-                        <div class="form-group col-md-3 pull-right">
-                            <button type="submit" class="btn btn-danger pull-right">
-                                <span class="glyphicon glyphicon-search"></span>
+                            <button type="submit" class="btn btn-danger">
+                                PDF
                             </button>
                         </div>
                     {!! Form::close() !!}
-
             </div>
         </div>
 
@@ -82,11 +56,6 @@
                     <tbody>
                         @foreach ($ListaPersonal as $personal)
                         <tr>
-
-
-
-
-
                             <td>{{ $personal->NombrePersonal }} {{ $personal->ApellidoPersonal }}</td>
                             <td>{{ $personal->id }}</td>
                             <td>{{ $personal->DNI }}</td>
@@ -123,6 +92,64 @@
         <div class="text-center">
         </div>
     </div>
+
+
+
+    <div id="Filtrar" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Filtrar personal
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button></h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    {!! Form::open(['route' => 'personals.index', 'method' => 'GET', 'form-inline pull-right']) !!}
+                        <div class="form-group col-md-3">
+                            <input type="text" name="Nombre" class="form-control" placeholder="Nombre">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="text" name="Apellido" class="form-control" placeholder="Apellido">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="text" name="rol" class="form-control" placeholder="Rol">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="number" name="mayorQ" class="form-control" placeholder="Mayor que">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="number" name="menorQ" class="form-control" placeholder="Menor que">
+                        </div>
+
+                        {{-- <div class="form-group col-md-3">
+                            <input type="date" name="desde" class="form-control" placeholder="Desde">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <input type="date" name="hasta" class="form-control" placeholder="Hasta">
+                        </div>  --}}
+
+                        <div class="form-group col-md-3 pull-right">
+                            <button type="submit" class="btn btn-danger pull-right">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection
 
 

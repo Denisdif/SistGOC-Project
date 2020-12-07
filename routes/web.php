@@ -225,7 +225,7 @@ Route::delete('evaluacions/{id}',                       'EvaluacionController@de
 Route::get('PDFconfig',                     'PDFconfigController@index')             ->name('PDFconfig.index');
 Route::put('PDFconfig/update',              'PDFconfigController@update')            ->name('PDFconfig.update');
 
-Route::get('/proyectoPDF',                  'PDFcontroller@proyectosPDF')            ->name('PDFconfig.proyectosPDF');
+Route::post('/proyectoPDF',                  'PDFcontroller@proyectosPDF')            ->name('PDF.proyectosPDF');
 
 Route::get('auditoria',                         'AudthController@index')           ->name('auditoria.index');
 Route::get('auditoria/show/{id}',               'AudthController@show')         ->name('auditoria.show');

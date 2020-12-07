@@ -55,12 +55,17 @@ class ProyectoController extends AppBaseController
                 ->Id($request->codigo)
                 ->Comitente($request->comitente)
                 ->Tipo($request->tipo)
-                ->Provincia($request->provincia)
-                ->Localidad($request->localidad)
-                ->Calle($request->calle)
+                ->Provincia($request->provincia, $request->localidad,$request->calle)
                 ->paginate('100');
 
-        return View('proyectos.index', compact('proyectos'));
+        $codigo = $request->codigo;
+        $tipo = $request->tipo;
+        $comitente = $request->comitente;
+        $provincia = $request->provincia;
+        $localidad = $request->localidad;
+        $calle = $request->calle;
+
+        return View('proyectos.index', compact('proyectos','codigo','tipo','comitente','provincia','localidad','calle'));
     }
 
     /**

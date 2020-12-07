@@ -38,22 +38,27 @@ class PersonalController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $hasta = Carbon::now();
-        $desde = Carbon::now();
-        $desde->subYears(200);
 
-        if ($request->mayorQ) {
+        //Variables para filtrar edad
+
             $hasta = Carbon::now();
-            $mayorQ = $request->mayorQ;
-            $mayorQ += 1;
-            $hasta = $hasta->subYears($mayorQ);
-        }
-
-        if ($request->menorQ) {
             $desde = Carbon::now();
-            $menorQ = $request->menorQ;
-            $desde = $desde->subYears($menorQ);
-        }
+            $desde->subYears(200);
+
+            if ($request->mayorQ) {
+                $hasta = Carbon::now();
+                $mayorQ = $request->mayorQ;
+                $mayorQ += 1;
+                $hasta = $hasta->subYears($mayorQ);
+            }
+
+            if ($request->menorQ) {
+                $desde = Carbon::now();
+                $menorQ = $request->menorQ;
+                $desde = $desde->subYears($menorQ);
+            }
+
+        //Fin de variables para filtrar edad
 
         $ListaPersonal = Personal::orderBy('id', 'DESC')
                 ->Name($request->Nombre)
@@ -62,14 +67,18 @@ class PersonalController extends AppBaseController
                 ->Rol($request->rol)
                 ->paginate('100');
 
-        if (Auth::user()->Rol_id == 2) {
-            $ListaPersonal = Personal::orderBy('id', 'DESC')
-                ->Name($request->Nombre)
-                ->Apellido($request->Apellido)
-                ->FechaNac($request->desde, $request->hasta)
-                ->Rol("Desarrollador")
-                ->paginate('100');
-        }
+        //Lista para vista de director de proyectos
+
+            if (Auth::user()->Rol_id == 2) {
+                $ListaPersonal = Personal::orderBy('id', 'DESC')
+                    ->Name($request->Nombre)
+                    ->Apellido($request->Apellido)
+                    ->FechaNac($request->desde, $request->hasta)
+                    ->Rol("Desarrollador")
+                    ->paginate('100');
+            }
+
+        //Fin de lista para vista de director de proyectos
 
         return View('personals.index', compact('ListaPersonal'));
     }

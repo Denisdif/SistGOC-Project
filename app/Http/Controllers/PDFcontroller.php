@@ -20,9 +20,7 @@ class PDFcontroller extends Controller
                 ->Id($request->codigo)
                 ->Comitente($request->comitente)
                 ->Tipo($request->tipo)
-                ->Provincia($request->provincia)
-                ->Localidad($request->localidad)
-                ->Calle($request->calle)
+                ->Provincia($request->provincia, $request->localidad,$request->calle)
                 ->paginate('100');
         $datos = date('d/m/Y');
         $cant = sizeof($proyectos);

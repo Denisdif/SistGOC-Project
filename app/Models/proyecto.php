@@ -123,35 +123,37 @@ class Proyecto extends Model implements Auditable
                             ->where('tipo_proyectos.Nombre', 'LIKE', "%$tipo%");
     }
 
-    public function scopeProvincia($query, $provincia){
+    public function scopeProvincia($query, $provincia, $localidad, $calle){
 
         if($provincia)
 
             return $query   ->join('direccions','proyectos.Direccion_id','=','direccions.id')
                             ->join('provincias','direccions.Provincia_id','=','provincias.id')
-                            ->select('proyectos.*','provincias.provincia')
-                            ->where('provincias.provincia', 'LIKE', "%$provincia%");
-
+                            ->join('localidades','direccions.Localidad_id','=','localidades.id')
+                            ->select('proyectos.*','provincias.provincia','localidades.localidad','direccions.calle')
+                            ->where('provincias.provincia', 'LIKE', "%$provincia%")
+                            ->where('localidades.localidad', 'LIKE', "%$localidad%")
+                            ->where('direccions.calle', 'LIKE', "%$calle%");
     }
 
-    public function scopeLocalidad($query, $localidad){
+    /*public function scopeLocalidad($query){
 
         if($localidad)
 
             return $query   ->join('direccions','proyectos.Direccion_id','=','direccions.id')
-                            ->join('localidades','direccions.Localidad_id','=','localidades.id')
-                            ->select('proyectos.*','localidades.localidad')
-                            ->where('localidades.localidad', 'LIKE', "%$localidad%");
+
+                            ->select('proyectos.*')
+                            ->where();
     }
 
-    public function scopeCalle($query, $calle){
+    public function scopeCalle($query){
 
         if($calle)
 
             return $query   ->join('direccions','proyectos.Direccion_id','=','direccions.id')
-                            ->select('proyectos.*','direccions.calle')
-                            ->where('direccions.calle', 'LIKE', "%$calle%");
-    }
+                            ->select('proyectos.*')
+                            ->where();
+    }*/
 
     //-------------------------- Métodos --------------------------
 
