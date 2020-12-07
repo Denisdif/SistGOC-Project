@@ -5,88 +5,96 @@
     @section('css')
         @include('layouts.datatables_css')
     @endsection
-    <section class="content-header">
-        <h1 style="color: aliceblue">
-            Personal
-        </h1>
-    </section>
+
     <div class="content">
         <div class="box box-danger">
             <div class="box-body">
+
+                <section class="content-header">
+                    <h1>Datos personales</h1>
+                </section>
+                <hr>
                 <div class="row" style="padding-left: 30px">
-                    <h2>Datos personales</h2><br>
                     @include('personals.show_fields')
                 </div>
 
 
             </div>
-            <div>
+            <div class="">
                 <div class="box box-danger">
                     <div class="box-body">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item active">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Usuario" role="tab" aria-controls="Usuario" aria-selected="false">Usuario</a>
-                </li>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item active">
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Usuario" role="tab" aria-controls="Usuario" aria-selected="false">Usuario</a>
+                            </li>
 
-                @if ($personal->get_rol()->id == 3)
+                            @if ($personal->get_rol()->id == 3)
 
-                <li class="nav-item">
-                  <a class="nav-link " id="home-tab" data-toggle="tab" href="#Rendimiento" role="tab" aria-controls="Rendimiento" aria-selected="true">Rendimiento</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Evaluaciones" role="tab" aria-controls="Evaluaciones" aria-selected="false">Evaluaciones</a>
-                </li>
+                            <li class="nav-item">
+                            <a class="nav-link " id="home-tab" data-toggle="tab" href="#Rendimiento" role="tab" aria-controls="Rendimiento" aria-selected="true">Rendimiento</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Evaluaciones" role="tab" aria-controls="Evaluaciones" aria-selected="false">Evaluaciones</a>
+                            </li>
 
-                @endif
-              </ul>
-              <div class="tab-content" id="myTabContent">
-                <div class="tab-pane active content" id="Usuario" role="tabpanel" aria-labelledby="Usuario-tab">
-                    <h2>Datos de usuario</h2><br>
-                            <!-- Name Field -->
-                                {!! Form::label('name', 'Nombre:') !!}
-                                {{ $usuarios->name }} <br>
-
-                            <!-- Email Field -->
-                                {!! Form::label('email', 'Email:') !!}
-                                {{ $usuarios->email }} <br>
-
-                            <!-- Rol Field -->
-                                {!! Form::label('rol', 'Rol:') !!}
-                                {{ $usuarios->rol->NombreRol }} <br> <br>
-
-                                @if ((Auth::user()->Personal_id == $personal->id) or (Auth::user()->Rol_id == 1) )
-                                    <a class="btn btn-danger" href="{{ route('users.edit', $usuarios->id) }}">Editar</a>
-                                @endif
-
+                            @endif
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane active" id="Usuario" role="tabpanel" aria-labelledby="Usuario-tab">
                                 <br>
-                </div>
+                                <section class="content-header">
+                                    <h1>Datos de usuario</h1>
+                                </section>
 
-                @if ($personal->get_rol()->id == 3)
+                                <div class="content">
+                                <!-- Name Field -->
+                                    {!! Form::label('name', 'Nombre:') !!}
+                                    {{ $usuarios->name }} <br>
 
-                <div class="tab-pane fade content" id="Rendimiento" role="tabpanel" aria-labelledby="Rendimiento-tab">
-                    <div>
-                        <div>
-                            <div class="content col-sm-6">
-                                <h2>Rendimiento general</h2><br>
-                                @foreach ($tipos_tareas as $item)
-                                    <b>{{ $item->Nombre_tipo_tarea }}:</b>
-                                    <div style="padding-left: 2%">
-                                        Cantidad de tareas realizadas: {{ sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
-                                        Calificación general: {{ $personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
+                                <!-- Email Field -->
+                                    {!! Form::label('email', 'Email:') !!}
+                                    {{ $usuarios->email }} <br>
+
+                                <!-- Rol Field -->
+                                    {!! Form::label('rol', 'Rol:') !!}
+                                    {{ $usuarios->rol->NombreRol }} <br> <br>
+
+                                    @if ((Auth::user()->Personal_id == $personal->id) or (Auth::user()->Rol_id == 1) )
+                                        <a class="btn btn-danger" href="{{ route('users.edit', $usuarios->id) }}">Editar</a>
+                                    @endif
+                                </div>
+                            </div>
+
+                            @if ($personal->get_rol()->id == 3)
+
+                            <div class="tab-pane fade" id="Rendimiento" role="tabpanel" aria-labelledby="Rendimiento-tab">
+                                <div>
+                                    <div>
+                                        <br>
+                                        <section class="content-header">
+                                            <h1>Rendimiento general</h1>
+                                            <br>
+                                        </section>
+                                        <div class="col-sm-6">
+                                            @foreach ($tipos_tareas as $item)
+                                                <b>{{ $item->Nombre_tipo_tarea }}:</b>
+                                                <div style="padding-left: 2%">
+                                                    Cantidad de tareas realizadas: {{ sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
+                                                    Calificación general: {{ $personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
+                                                </div>
+                                            @endforeach
+                                        </div>
+
+                                        <div class="col-sm-6" style="width: 40%; height: 40%">
+                                            <canvas id="rendimiento" width="40" height="40"></canvas>
+                                        </div>
                                     </div>
-                                @endforeach
-                            </div>
 
-                            <div class="content col-sm-6" style="width: 40%; height: 40%">
-                                <canvas id="rendimiento" width="40" height="40"></canvas>
+                                </div>
                             </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="tab-pane fade content" id="Evaluaciones" role="tabpanel" aria-labelledby="Evaluaciones-tab">
-                    <br>
-                    {{-- Inicio de DataTable de ambientes del proyecto --}}
+                            <div class="tab-pane fade content" id="Evaluaciones" role="tabpanel" aria-labelledby="Evaluaciones-tab">
+                                <br>
+                                {{-- Inicio de DataTable de ambientes del proyecto --}}
                                 <table class="table datatables table-striped table-bordered">
                                     <thead>
                                         <tr>
@@ -127,13 +135,12 @@
                                         <a class="btn btn-danger" href="/personals/{{$personal->id}}/evaluacions/create">Nueva evaluación</a>
                                     </div>
                                 @endif
+                            </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-                @endif
-              </div>
-
             </div>
-        </div>
-    </div>
         </div>
     </div>
 

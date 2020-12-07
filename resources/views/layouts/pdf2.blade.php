@@ -102,6 +102,7 @@
         width: 100%;
         border-collapse: collapse;
         border-spacing: 0;
+        text-align: center;
         margin-bottom: 15px;
         border: 1px solid #000000;
     }

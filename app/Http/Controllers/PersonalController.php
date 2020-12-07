@@ -80,7 +80,17 @@ class PersonalController extends AppBaseController
 
         //Fin de lista para vista de director de proyectos
 
-        return View('personals.index', compact('ListaPersonal'));
+        //Variables para filtros
+
+            $Nombre = $request->Nombre;
+            $Apellido = $request->Apellido;
+            $MayorQ = $request->mayorQ;
+            $MenorQ = $request->menorQ;
+            $Rol = $request->rol;
+
+        //Fin de variables para filtros
+
+        return View('personals.index', compact('ListaPersonal','Nombre','Apellido','MayorQ','MenorQ','Rol'));
     }
 
     /**

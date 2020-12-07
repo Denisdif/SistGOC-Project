@@ -226,6 +226,7 @@ Route::get('PDFconfig',                     'PDFconfigController@index')        
 Route::put('PDFconfig/update',              'PDFconfigController@update')            ->name('PDFconfig.update');
 
 Route::post('/proyectoPDF',                  'PDFcontroller@proyectosPDF')            ->name('PDF.proyectosPDF');
+Route::post('/personalsPDF',                 'PDFcontroller@personalsPDF')            ->name('PDF.personalsPDF');
 
 Route::get('auditoria',                         'AudthController@index')           ->name('auditoria.index');
 Route::get('auditoria/show/{id}',               'AudthController@show')         ->name('auditoria.show');

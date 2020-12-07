@@ -19,13 +19,10 @@
                         @include('layouts.datatables_css')
                     @endsection
 
-                    <section class="header">
-                        <h1>
-                            Proyecto nro {{ $proyecto->id }}: {{ $proyecto->Tipo_proyecto->Nombre }} para {{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }}
-                        </h1>
+                    <section class="content-header">
+                        <h1>Proyecto nro {{ $proyecto->id }}: {{ $proyecto->Tipo_proyecto->Nombre }} para {{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }}</h1>
                     </section>
-
-                    <br>
+                    <hr>
 
                     @include('proyectos.show_fields')
                     <div class="col-md-12 mb-12">
@@ -42,7 +39,7 @@
         {{-- Fin de DataTable de Personal del proyecto --}}
             </div>
             <div>
-                <div>
+                <div class="content">
                     <div class="box-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             {{--  <li class="nav-item active">

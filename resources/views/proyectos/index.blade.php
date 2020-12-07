@@ -1,65 +1,65 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <h1 class="pull-left" style="color: aliceblue">Proyectos</h1>
-        <h1 class="pull-right">
-           <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('proyectos.create') }}">Nuevo</a>
-        </h1>
-    </section>
+
     <div class="content">
         <div class="clearfix"></div>
 
         @include('flash::message')
 
+        @section('css')
+            @include('layouts.datatables_css')
+        @endsection
+
         <div class="clearfix"></div>
-
-        <div>
-            <div class="box box-danger">
-                <div class="box-body">
-                    <td><button class="btn" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button></td>
-                    {!! Form::open(['route' => 'PDF.proyectosPDF', 'form-inline pull-right']) !!}
-
-                        <div style="display: none">
-                            <div class="form-group col-md-3">
-                                <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" placeholder="Código">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" placeholder="Tipo">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" placeholder="Comitente">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" placeholder="Provincia">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" placeholder="Localidad">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
-                            </div>
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <button type="submit" class="btn btn-danger">
-                                PDF
-                            </button>
-                        </div>
-                    {!! Form::close() !!}
-            </div>
-        </div>
 
         <div class="box box-danger">
             <div class="box-body">
-                @section('css')
-                    @include('layouts.datatables_css')
-                @endsection
+
+                <section class="content-header">
+                    <h1 class="pull-left">Proyectos</h1>
+                    <h1 class="pull-right">
+
+                       {!! Form::open(['route' => 'PDF.proyectosPDF', 'form-inline pull-right']) !!}
+
+                       <div style="display: none">
+                           <div class="form-group col-md-3">
+                               <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" placeholder="Código">
+                           </div>
+
+                           <div class="form-group col-md-3">
+                               <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" placeholder="Tipo">
+                           </div>
+
+                           <div class="form-group col-md-3">
+                               <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" placeholder="Comitente">
+                           </div>
+
+                           <div class="form-group col-md-3">
+                               <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" placeholder="Provincia">
+                           </div>
+
+                           <div class="form-group col-md-3">
+                               <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" placeholder="Localidad">
+                           </div>
+
+                           <div class="form-group col-md-3">
+                               <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
+                           </div>
+                       </div>
+
+
+                        <button class="btn btn-danger" href="{{ route('proyectos.create') }}">Nuevo</button>
+                        <button class="btn btn-danger" type="submit" >PDF</button>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
+
+                   {!! Form::close() !!}
+                    </h1>
+                </section>
+
+                <br><hr>
+
+                <div class="content">
                     <table id="Proyectos" class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -97,6 +97,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
                     @section('scripts')
                         @include('layouts.datatables_js')
                     @endsection
