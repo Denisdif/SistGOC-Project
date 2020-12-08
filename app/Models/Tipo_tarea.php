@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class Tipo_tarea
@@ -13,9 +14,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $Nombre_tipo_tarea
  * @property string $Descripcion
  */
-class Tipo_tarea extends Model
+class Tipo_tarea extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
 
     public $table = 'tipo_tareas';
 

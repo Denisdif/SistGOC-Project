@@ -278,6 +278,9 @@ class PersonalController extends AppBaseController
             return redirect(route('personals.index'));
         }
 
+        $user = $personal->User;
+
+        $user->delete();
         $this->personalRepository->delete($id);
 
         Flash::success('Personal deleted successfully.');

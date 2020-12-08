@@ -12,6 +12,14 @@
         <a href="{{ route('personals.index') }}"><i class="icon-group"></i><span> Personal</span></a>
     </li>
 
+    @if ((Auth :: user()->Rol_id == 1))
+
+        <li >
+            <a href="{{ route('auditoria.index') }}"><i class="icon-eye-open"></i><span> Auditoria</span></a>
+        </li>
+
+    @endif
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAuditoria" aria-expanded="true" aria-controls="collapseAuditoria">
             <i class="icon-cogs"></i><span> Parámetros</span>
@@ -41,15 +49,22 @@
                     <li class="{{ Request::is('comitentes*') ? 'active' : '' }}">
                         <a href="{{ route('comitentes.index') }}"><i class="fa fa-edit"></i><span>Comitentes</span></a>
                     </li>
-
+                    
                 @endif
-
             </ul>
           </div>
         </div>
     </li>
 
 @endif
+
+@if ((Auth :: user()->Rol_id == 4))
+
+        <li >
+            <a href="{{ route('auditoria.index') }}"><i class="icon-eye-open"></i><span> Auditoria</span></a>
+        </li>
+
+    @endif
 
 @if (Auth :: user()->Rol_id == 3)
 
@@ -58,6 +73,8 @@
     </li>
 
 @endif
+
+
 
 
 

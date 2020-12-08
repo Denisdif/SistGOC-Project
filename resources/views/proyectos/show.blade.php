@@ -38,8 +38,9 @@
 
         {{-- Fin de DataTable de Personal del proyecto --}}
             </div>
+            <br>
             <div>
-                <div class="content">
+                <div class="content box box-danger">
                     <div class="box-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             {{--  <li class="nav-item active">

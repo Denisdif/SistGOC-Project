@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Cardumen\ArgentinaProvinciasLocalidades\Models\Localidad;
 use Cardumen\ArgentinaProvinciasLocalidades\Models\Pais;
 use Cardumen\ArgentinaProvinciasLocalidades\Models\Provincia;
+use OwenIt\Auditing\Contracts\Auditable;
+
 
 /**
  * Class Direccion
@@ -19,9 +21,11 @@ use Cardumen\ArgentinaProvinciasLocalidades\Models\Provincia;
  * @property integer $Provincia_id
  * @property integer $Localidad_id
  */
-class Direccion extends Model
+class Direccion extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
 
     public $table = 'direccions';
 

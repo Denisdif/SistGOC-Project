@@ -19,8 +19,11 @@ use OwenIt\Auditing\Contracts\Auditable;
  * @property integer $Personal_id
  * @property integer $Tarea_id
  */
-class AsignacionPersonalTarea extends Model
+class AsignacionPersonalTarea extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+    use SoftDeletes;
+    protected $guarded = [];
 
     public $table = 'asignacion_personal_tareas';
 

@@ -15,10 +15,11 @@ use OwenIt\Auditing\Contracts\Auditable;
  * @property string $Imagen
  * @property string $Descripcion
  */
-class ambiente extends Model
+class ambiente extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
-    public $table = 'ambientes';
+    protected $guarded = [];
 
 
     protected $dates = ['deleted_at'];

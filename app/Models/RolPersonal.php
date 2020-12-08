@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class RolPersonal
@@ -13,9 +14,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $NombreRol
  * @property string $Descripcion
  */
-class RolPersonal extends Model
+class RolPersonal extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
 
     public $table = 'roles_usuario';
 

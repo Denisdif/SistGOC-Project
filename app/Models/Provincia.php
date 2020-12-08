@@ -3,11 +3,15 @@
 namespace Cardumen\ArgentinaProvinciasLocalidades\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Provincia extends Model
+class Provincia extends Model implements Auditable
 {
-    protected $table = 'provincias';
+    use \OwenIt\Auditing\Auditable;
     protected $guarded = [];
+
+    protected $table = 'provincias';
+
 
     public function pais(){
     	return $this->belongsTo(Pais::class);

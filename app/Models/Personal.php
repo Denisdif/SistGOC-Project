@@ -12,6 +12,8 @@ use App\Models\Comentario;
 use App\User;
 use App\Models\Direccion;
 use Illuminate\Support\Carbon;
+use OwenIt\Auditing\Contracts\Auditable;
+
 Carbon::setUTF8(true);
 setlocale(LC_TIME, 'es_ES');
 Carbon::setLocale('es');
@@ -29,9 +31,12 @@ Carbon::setLocale('es');
  * @property integer $Rol_id
  * @property integer $User_id
  */
-class Personal extends Model
+class Personal extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
+
 
     public $table = 'personals';
 

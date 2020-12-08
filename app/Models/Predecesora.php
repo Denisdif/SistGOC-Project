@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class Predecesora
@@ -13,9 +14,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $Tarea_id
  * @property integer $Predecesora_id
  */
-class Predecesora extends Model
+class Predecesora extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
 
     public $table = 'predecesoras';
 

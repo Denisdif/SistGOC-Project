@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Tarea;
 use App\Models\Personal;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class Comentario
@@ -15,9 +16,12 @@ use App\Models\Personal;
  * @property string $Contenido
  * @property integer $Tarea_id
  */
-class Comentario extends Model
+class Comentario extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
+
 
     public $table = 'comentarios';
 

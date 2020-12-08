@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Proyecto;
 use App\Models\ambiente;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class Proyecto_ambiente
@@ -16,9 +17,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $Ambiente_id
  * @property integer $Proyecto_id
  */
-class Proyecto_ambiente extends Model
+class Proyecto_ambiente extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
 
     public $table = 'proyecto_ambientes';
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Tarea;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class Entrega
@@ -15,9 +16,11 @@ use App\Models\Tarea;
  * @property string $Descripcion_entrega
  * @property integer $Tarea_id
  */
-class Entrega extends Model
+class Entrega extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
 
     public $table = 'entregas';
 

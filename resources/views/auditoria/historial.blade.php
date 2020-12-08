@@ -1,29 +1,25 @@
 @extends('layouts.app')
 
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
+
 @section('content')
-<div class="content-fluid">
-    <div class="row  justify-content-center">
+<div class="content">
+    <div class="row content box box-danger">
         <div class="col-md-12">
-            <div class="card card-purple card-outline">
+            <div>
                 <div class="card-header">
-                    <h3>Historial Completo de Auditoria </h3>
+                    <h3>Historial completo de Auditoria </h3>
                 </div>
-                <div class="card-body box-profile">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="row">
-                                <label for="">Tabla </label>
-                                <p>{{': '.$tabla}}</p>
-                            </div>
-
-                        </div>
-
-
+                <hr>
+                <div class="">
+                    <div class="form-group">
+                        <label>Tabla: </label>
+                        {{$tabla}}
                     </div>
-
-
                     <br>
-                    <table class="table" id="data-table">
+                    <table class="table table-striped table-bordered" id="data-table">
                         <thead>
                             <tr>
                                 <th>ID Auditoria</th>
@@ -74,16 +70,23 @@
                     </table>
                 </div>
                 <div class="card-footer d-flex justify-content-center">
-                    <a href="javascript:history.back()" class="btn btn-primary btn-sm">Volver</a>
+                    <a href="javascript:history.back()" class="btn btn-default">Volver</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 @endsection
 
-@push('scripts')
+@section('scripts')
+
+@include('layouts.datatables_js')
+
 <script>
+
+
     $(document).ready(function(){
             var table= $('#data-table').DataTable({
                         "language": {
@@ -121,4 +124,4 @@
         });
 
 </script>
-@endpush
+@endsection

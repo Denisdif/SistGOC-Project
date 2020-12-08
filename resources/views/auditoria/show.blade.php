@@ -1,69 +1,34 @@
-@extends('admin_panel.index')
+@extends('layouts.app')
 
 @section('content')
-<div class="content-fluid">
-    <div class="row  justify-content-center">
+<div class="content">
+<div class="content box box-danger">
+    <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card card-purple card-outline">
                 <div class="card-header">
                     <h3>Registro de Auditoria </h3>
                 </div>
+                <hr>
                 <div class="card-body box-profile">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="row">
-                                <label for="">ID de la auditoria </label>
-                                <p>{{': '.$auditoria->id}}</p>
-                            </div>
+                    <div class="form-group" style="padding-left: 1%">
+                        <label for="">ID de la auditoria: </label>
+                        {{$auditoria->id}} <br>
 
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <label for="">Tabla </label>
-                                <p>{{': '.str_replace(['App\\', '$', ' '], '', $auditoria->auditable_type)}}</p>
-                            </div>
+                        <label for="">Tabla: </label>
+                        {{str_replace(['App\\Models\\', '$', ' '], '', $auditoria->auditable_type)}} <br>
 
-                        </div>
-                        <div class="col">
-                            <div align="right">
+                        <label for="">Usuario:</label>
+                        {{$auditoria->user->personal->ApellidoPersonal}} {{$auditoria->user->personal->NombrePersonal}} <br>
 
-                                <form action="{{route('pdf.auditoriaUnObjeto',$auditoria->id)}}" method="GET">
-                                    @csrf
-                                    <button type="submit" class="btn  btn-success  btn-flat btn-sm text-white">Crear
-                                        Reporte Completo</button>
-                                </form>
+                        <label for="">Operacion: </label>
+                        {{strtoupper($auditoria->event) }} <br>
 
-                            </div>
-                        </div>
-
+                        <label for="">Fecha y Hora: </label>
+                        {{$auditoria->created_at->format('d/m/Y - H:i:s')}} <br>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="row">
-
-                                <label for="">Usuario</label>
-                                <p>{{': '}}{{$auditoria->user->apellido ?? 'Sin Apellido'}}
-                                    {{', '}}{{$auditoria->user->name ?? 'Sin Nombre'}}</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-
-                                <label for="">Operacion</label>
-                                <p>{{': '. strtoupper($auditoria->event) }}</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-
-                                <label for="">Fecha y Hora</label>
-                                <p>{{': '.$auditoria->created_at->format('d/m/Y - H:i:s')}}</p>
-                            </div>
-                        </div>
-                    </div>
-
                     <br>
-                    <table class="table">
+                    <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>Campos</th>
@@ -103,14 +68,14 @@
                 <div class="card-footer d-flex justify-content-around">
                     <form action="{{route('auditoria.historial',$auditoria->id)}}" method="GET">
                         @csrf
-                        <button type="submit" class="btn  btn-success  btn-flat btn-sm text-white">Ver
-                            Historial
-                            Completo</button>
+                        <button type="submit" class="btn  btn-danger">Ver Historial Completo</button>
+                        <a href="javascript:history.back()" class="btn btn-default">Volver</a>
                     </form>
-                    <a href="javascript:history.back()" class="btn btn-primary btn-sm">Volver</a>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

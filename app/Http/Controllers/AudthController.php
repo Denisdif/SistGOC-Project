@@ -12,7 +12,10 @@ use OwenIt\Auditing\Models\Audit;
 class AudthController extends Controller
 {
     public $modelosAuditoria = [
-        'proyectos' => 'Proyectos'
+        'proyectos' => 'Proyecto', 'ambientes' => 'Ambiente', 'asignacion_personal_tareas' => 'AsignacionPersonalTarea',
+        'comentarios' => 'Comentario', 'comitentes' => 'Comitente', 'entregas' => 'Entrega', 'estado_tareas' => 'Estado_tarea',
+        'evaluacions' => 'Evaluacion', 'personals' => 'Personal', 'proyecto_ambientes' => 'Proyecto_ambiente', 'tareas' => 'Tarea',
+        'tipo_proyectos' => 'Tipo_proyecto', 'tipo_tareas' => 'Tipo_tarea'
     ];
     /**
      * Display a listing of the resource.
@@ -28,69 +31,19 @@ class AudthController extends Controller
         return view('auditoria.index', compact('auditorias', 'modelosAuditoria', 'usuarios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $auditoria = Audit::find($id);
+
+        return view('auditoria.show', compact('auditoria'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function historial($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $auditoria = Audit::find($id);
+        $tabla = str_replace(['App\\Models\\', '$', ' '], '', $auditoria->auditable_type);
+        $objetoAuditable = $auditoria->auditable_type::withTrashed()->find($auditoria->auditable_id);
+        $auditorias = $objetoAuditable->audits()->latest()->get();
+        return view('auditoria.historial', compact('auditorias', 'tabla'));
     }
 }

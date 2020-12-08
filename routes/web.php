@@ -222,14 +222,21 @@ Route::delete('evaluacions/{id}',                       'EvaluacionController@de
 
 //------------------------------------  PDF  ------------------------------------//
 
-Route::get('PDFconfig',                     'PDFconfigController@index')             ->name('PDFconfig.index');
-Route::put('PDFconfig/update',              'PDFconfigController@update')            ->name('PDFconfig.update');
+    Route::get('PDFconfig',                     'PDFconfigController@index')             ->name('PDFconfig.index');
+    Route::put('PDFconfig/update',              'PDFconfigController@update')            ->name('PDFconfig.update');
 
-Route::post('/proyectoPDF',                  'PDFcontroller@proyectosPDF')            ->name('PDF.proyectosPDF');
-Route::post('/personalsPDF',                 'PDFcontroller@personalsPDF')            ->name('PDF.personalsPDF');
+    Route::post('/proyectoPDF',                  'PDFcontroller@proyectosPDF')            ->name('PDF.proyectosPDF');
+    Route::post('/personalsPDF',                 'PDFcontroller@personalsPDF')            ->name('PDF.personalsPDF');
+    Route::get('auditoriaPDF',                   'PdfController@auditoriaPDF')            ->name('auditoria.pdf');
 
-Route::get('auditoria',                         'AudthController@index')           ->name('auditoria.index');
-Route::get('auditoria/show/{id}',               'AudthController@show')         ->name('auditoria.show');
-Route::get('auditoria/historial/{id}',          'AudthController@historial')    ->name('auditoria.historial');
+//------------------------------------ fin PDF  ------------------------------------//
+
+//------------------------------------  Auditoria  ------------------------------------//
+
+    Route::get('auditoria',                         'AudthController@index')        ->name('auditoria.index');
+    Route::get('auditoria/show/{id}',               'AudthController@show')         ->name('auditoria.show');
+    Route::get('auditoria/historial/{id}',          'AudthController@historial')    ->name('auditoria.historial');
+
+//------------------------------------  Fin Auditoria  ------------------------------------//
 
 Route::resource('predecesoras', 'PredecesoraController');

@@ -24,11 +24,6 @@ class Proyecto extends Model implements Auditable
 
     public $table = 'proyectos';
 
-
-    protected $dates = ['deleted_at'];
-
-
-
     public $fillable = [
         'id',
         'Nombre_proyecto',

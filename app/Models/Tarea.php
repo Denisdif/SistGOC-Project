@@ -11,6 +11,7 @@ use App\Models\Proyecto;
 use App\Models\AsignacionPersonalTarea;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use OwenIt\Auditing\Contracts\Auditable;
 Carbon::setUTF8(true);
 setlocale(LC_TIME, 'es_ES');
 Carbon::setLocale('es');
@@ -32,9 +33,11 @@ Carbon::setLocale('es');
  */
 
 
-class Tarea extends Model
+class Tarea extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use SoftDeletes;
+    protected $guarded = [];
 
     public $table = 'tareas';
 
