@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @if(Auth::user()->id == 3)
+
     <section class="content-header">
         <h1 style="color: aliceblue" class="pull-left">Tareas por desarrollar</h1><br>
     </section>
@@ -84,18 +87,53 @@
                         </table>
                     </div>
                   </div>
-
-                @section('css')
-                @include('layouts.datatables_css')
-            @endsection
-
-                @section('scripts')
-                    @include('layouts.datatables_js')
-                @endsection
             </div>
         </div>
     </div>
 
+    @endif
+
+    @if(Auth::user()->id == 2)
+
+    <div class="content">
+        <div class="box box-danger">
+            <div class="box-body">
+
+            <section class="content-header">
+                <h1 class="pull-left">Tareas por revisar</h1>
+            </section>
+            <br><hr>
+
+            <div class="content">
+            <table class="datatables table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Proyecto</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (($personal->tareas_corregir()) as $tarea)
+                            <tr>
+                            <td>{{ $tarea->Nombre_tarea }}</td>
+                            <td>{{ $tarea->proyecto->Nombre_proyecto }}</td>
+                            <td>
+                                <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                </a>
+                            </td>
+                            </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+    @endif
     {{--  <section class="content-header">
         <h1 style= "color: aliceblue">
             Tareas por aprobar
@@ -184,5 +222,13 @@
             </div>
         </div>
     </div>--}}
+
+    @section('css')
+        @include('layouts.datatables_css')
+    @endsection
+
+    @section('scripts')
+        @include('layouts.datatables_js')
+    @endsection
 @endsection
 

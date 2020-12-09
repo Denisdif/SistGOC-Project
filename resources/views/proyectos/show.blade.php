@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
     {{--  <section class="content-header">
         <h1 style="color: aliceblue">
             Proyecto
@@ -250,7 +247,7 @@
 
                                 <br>
 
-                                {!! Form::label('Cantidad_tareas', 'Cantidad de tareas: ') !!}
+                                {!! Form::label('Cantidad_tareas', 'Cantidad de tareas del proyecto: ') !!}
                                 {{ sizeof($proyecto->tarea) }} <br>
 
                                 {!! Form::label('Cantidad_tareas', 'Cantidad de tareas finalizadas: ') !!}
@@ -265,15 +262,36 @@
 
                                     {!! Form::label('Tareas_por_finalizar', 'Tareas por finalizar: ') !!}
 
-                                    <ul>
-                                        @foreach ($proyecto->tareas_no_finalizadas() as $item)
-                                            <li> {{ $item->Nombre_tarea }} </li>
-                                        @endforeach
-                                    </ul>
-
                                     <br>
-
-                                    <a class="btn btn-danger disabled" href="/proyectos/{{$proyecto->id}}/finalizar">Finalizar proyecto</a>
+                                    <br>
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Prioridad</th>
+                                                <th>Estado</th>
+                                                <th>Fecha límite de finalización</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($proyecto->tareas_no_finalizadas() as $tarea)
+                                            <tr>
+                                                <td>{{ $tarea->Nombre_tarea }}</td>
+                                                <td>{{ $tarea->prioridad }}</td>
+                                                <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
+                                                <td>{{ $tarea->getFechaLimite() }}</td>
+                                                <td>
+                                                    <div class='btn-group'>
+                                                        <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
+                                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
 
                                 @endif
 
@@ -282,6 +300,7 @@
                             </div>
                         </div>
                         <br>
+                        <hr>
                         <a href="{{ route('proyectos.index') }}" class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px ">Volver</a>
                     </div>
                 </div>

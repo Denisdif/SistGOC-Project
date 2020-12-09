@@ -11,6 +11,7 @@ use App\Models\ambiente;
 use App\Models\Comitente;
 use App\Models\Direccion;
 use App\Models\Tarea;
+use App\PDFconfig;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Sexo;
 use App\User;
@@ -1946,6 +1947,18 @@ class TablasIniciales extends Seeder
         $asignacionPersonalTarea->save();
 
         //Fin asignaciones de tareas del proyecto 5
+
+        //Cargar configuraciones
+
+        $Config = new PDFconfig;
+        $Config->logo = "Logo.jpg";
+        $Config->nombre = "Racevi";
+        $Config->direccion = "Avenida 25 de Mayo 125";
+        $Config->telefono = 3754524949;
+        $Config->email = "racevi@gmail.com";
+        $Config->save();
+
+        //Fin de carga de configuraciones
 
     }
 }

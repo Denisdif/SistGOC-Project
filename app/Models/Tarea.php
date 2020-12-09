@@ -8,6 +8,7 @@ use App\Models\Tipo_tarea;
 use App\Models\Comentario;
 use App\Models\Entrega;
 use App\Models\Proyecto;
+use App\Models\Predecesora;
 use App\Models\AsignacionPersonalTarea;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
@@ -94,6 +95,16 @@ class Tarea extends Model implements Auditable
         return $this->belongsTo( Proyecto::class ,'Proyecto_id');
     }
 
+    public function predecesoras()
+    {
+        return $this->hasMany( Predecesora::class ,'Tarea_id');
+    }
+
+    public function predecesora()
+    {
+        return $this->hasOne( Predecesora::class ,'Predecesora_id');
+    }
+
     public function tipo_tarea()
     {
         return $this->belongsTo( Tipo_tarea::class ,'Tipo_tarea_id');
@@ -117,6 +128,19 @@ class Tarea extends Model implements Auditable
     public function comentarios()
     {
         return $this->hasMany(Comentario::class);
+    }
+
+    //Entregas predecesoras
+    public function entregas_predecesoras(){
+        $links = [];
+        $predecesoras = $this->predecesoras;
+        foreach ($predecesoras as $item) {
+            $entregas = $item->predecesora->entregas;
+            foreach ($entregas as $entrega) {
+                $links[] = $entrega;
+            }
+        }
+    return $links;
     }
 
     //Devuelve la cantidad de horas de desarrollo estimadas, en base al tipo de tarea

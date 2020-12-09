@@ -45,7 +45,7 @@
 
 
                          @if (Auth::user()->Rol_id == 1)
-                        <button class="btn btn-danger" href="{{ route('personals.create') }}">Nuevo</button>
+                        <a class="btn btn-danger" href="{{ route('personals.create') }}">Nuevo</a>
                         @endif
                         <button class="btn btn-danger" type="submit" >PDF</button>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>

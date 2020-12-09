@@ -52,5 +52,14 @@ class Predecesora extends Model implements Auditable
 
     ];
 
+    public function tarea()
+    {
+        return $this->belongsTo( Tarea::class ,'Tarea_id');
+    }
+
+    public function predecesora()
+    {
+        return $this->belongsTo( Tarea::class ,'Predecesora_id');
+    }
 
 }

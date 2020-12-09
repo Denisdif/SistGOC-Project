@@ -40,6 +40,10 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['asistencias.fields'], function ($view) {
+            $personalItems = Personal::pluck('NombrePersonal','id')->toArray();
+            $view->with('personalItems', $personalItems);
+        });
         View::composer(['predecesoras.fields'], function ($view) {
             $tareaItems = Tarea::pluck('Nombre_tarea','id')->toArray();
             $view->with('tareaItems', $tareaItems);

@@ -1,5 +1,5 @@
 <div class="col-md-12 mb-12">
-    <h2>Datos de la tarea</h2><br>
+
     {!! Form::label('Nombre_tarea', 'Nombre de la Tarea:') !!}
     {{ $tarea->Nombre_tarea }} <br>
 
@@ -22,7 +22,9 @@
     {{ $tarea->duracionEstimadaReal($tarea->Tipo_tarea_id)}} <br>
 
     {!! Form::label('Descripcion', 'Descripción:') !!}
-    {{ $tarea->Descripcion_tarea }} <br><br>
+    {{ $tarea->Descripcion_tarea }} <br>
+
+    {!! Form::label('Predecesoras', 'Archivos de tareas predecesoras:') !!} <br>
 
 </div>
 

@@ -48,18 +48,19 @@
                            </div>
                        </div>
 
-
-                        <button class="btn btn-danger" href="{{ route('proyectos.create') }}">Nuevo</button>
+                        <a class="btn btn-danger" href="{{ route('proyectos.create') }}">Nuevo</a>
                         <button class="btn btn-danger" type="submit" >PDF</button>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
 
                    {!! Form::close() !!}
+
                     </h1>
                 </section>
 
                 <br><hr>
 
                 <div class="content">
+                    @if ((Auth::user()->Rol_id == 2))
                     <table id="Proyectos" class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -72,6 +73,7 @@
                         </thead>
                         <tbody>
                             @foreach ($proyectos as $proyecto)
+                            @if($proyecto->Director_id == Auth::user()->id )
                             <tr>
                                 <td>{{ $proyecto->id }}</td>
                                 <td>{{ $proyecto->tipo_proyecto->Nombre }}</td>
@@ -94,9 +96,51 @@
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
+                    @else
+                        <table id="Proyectos" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Tipo de proyecto</th>
+                                    <th>Comitente</th>
+                                    <th>Director</th>
+                                    <th>Dirección</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($proyectos as $proyecto)
+                                <tr>
+                                    <td>{{ $proyecto->id }}</td>
+                                    <td>{{ $proyecto->tipo_proyecto->Nombre }}</td>
+                                    <td>{{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }}</td>
+                                    <td>{{ $proyecto->director->ApellidoPersonal }} {{ $proyecto->director->NombrePersonal }}</td>
+                                    <td>{{ $proyecto->direccion->Calle}} {{ $proyecto->direccion->Altura}}, {{ $proyecto->direccion->localidad->localidad}}, {{ $proyecto->direccion->provincia->provincia}}</td>
+                                    <td>{!! Form::open(['route' => ['proyectos.destroy', $proyecto->id], 'method' => 'delete']) !!}
+                                        <div class='btn-group'>
+                                            <a href="{{ route('proyectos.show', $proyecto->id) }}" class='btn btn-default btn-xs'>
+                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                            </a>
+                                            <a href="{{ route('proyectos.edit', $proyecto->id) }}" class='btn btn-default btn-xs'>
+                                                <i class="glyphicon glyphicon-edit"></i>
+                                            </a>
+                                            {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
+                                                'type' => 'submit',
+                                                'class' => 'btn btn-danger btn-xs',
+                                                'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
+                                            ]) !!}
+                                        </div>
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
                     @section('scripts')
                         @include('layouts.datatables_js')

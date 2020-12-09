@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Sexo;
 use App\Models\Evaluacion;
+use App\Models\Proyecto;
 use App\Models\Comentario;
 use App\User;
 use App\Models\Direccion;
@@ -129,6 +130,11 @@ class Personal extends Model implements Auditable
         return $this->hasMany(Evaluacion::class);
     }
 
+    public function proyectos()
+    {
+        return $this->hasMany(Proyecto::class, 'Director_id');
+    }
+
     public function comentarios()
     {
         return $this->hasMany(Comentario::class);
@@ -160,6 +166,20 @@ class Personal extends Model implements Auditable
         $rol = $this->User;
         $rol = $rol->rol;
         return $rol;
+    }
+
+    public function tareas_corregir(){
+        $tareas_por_corregir = [];
+        $proyectos = $this->proyectos;
+        foreach ($proyectos as $proyecto) {
+            $tareas = $proyecto->tarea;
+            foreach ($tareas as $item) {
+                if ($item->Estado_tarea_id == 4) {
+                    $tareas_por_corregir[] = $item;
+                }
+            }
+        }
+        return $tareas_por_corregir;
     }
 
     //Obtener un array con las asignaciones de tareas en estado asignada o desarrollo con responsabilidad de Desarrollador

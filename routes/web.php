@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes(['verify' => true]);
@@ -240,3 +240,5 @@ Route::delete('evaluacions/{id}',                       'EvaluacionController@de
 //------------------------------------  Fin Auditoria  ------------------------------------//
 
 Route::resource('predecesoras', 'PredecesoraController');
+
+
