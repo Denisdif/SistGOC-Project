@@ -24,8 +24,6 @@
     {!! Form::label('Descripcion', 'Descripción:') !!}
     {{ $tarea->Descripcion_tarea }} <br>
 
-    {!! Form::label('Predecesoras', 'Archivos de tareas predecesoras:') !!} <br>
-
 </div>
 
 
