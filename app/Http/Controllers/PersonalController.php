@@ -144,7 +144,7 @@ class PersonalController extends AppBaseController
         $user->Personal_id = $personal->id ;
         $user->save();
 
-        Flash::success('Personal saved successfully.');
+        Flash::success('Se realizó con éxito la carga del nuevo personal');
 
         return redirect(route('personals.show', $personal->id));
     }
@@ -256,7 +256,7 @@ class PersonalController extends AppBaseController
 
         $personal = $this->personalRepository->update($request->all(), $id);
 
-        Flash::success('Personal updated successfully.');
+        Flash::success('Se realizó con éxito la actualización de los datos del personal');
 
         return redirect(route('personals.index'));
     }
@@ -283,7 +283,7 @@ class PersonalController extends AppBaseController
         $user->delete();
         $this->personalRepository->delete($id);
 
-        Flash::success('Personal deleted successfully.');
+        Flash::success('El personal fue eliminado con éxito');
 
         return redirect()->back();
     }

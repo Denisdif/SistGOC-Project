@@ -182,7 +182,7 @@ class ProyectoController extends AppBaseController
             return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
             }
 
-        Flash::success('Proyecto saved successfully.');
+        Flash::success('Se realizó con éxito la carga del proyecto');
 
         return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
 
@@ -284,7 +284,7 @@ class ProyectoController extends AppBaseController
 
         $proyecto = $this->proyectoRepository->update($request->all(), $id);
 
-        Flash::success('Proyecto updated successfully.');
+        Flash::success('Se realizó con éxito la actualización de los datos del proyecto');
 
         return redirect(route('proyectos.index'));
     }
@@ -308,7 +308,7 @@ class ProyectoController extends AppBaseController
 
         $this->proyectoRepository->delete($id);
 
-        Flash::success('Proyecto deleted successfully.');
+        Flash::success('El proyecto fué eliminado con éxito');
 
         return redirect(route('proyectos.index'));
     }
@@ -326,7 +326,8 @@ class ProyectoController extends AppBaseController
         try {
             return response()->download(public_path($proyecto->Informe));
         } catch (Exception $e) {
-            return "No hay archivo";
+            Flash::error('No se ha cargado un informe a este proyecto');
+            return Redirect::back();
         }
 
 
@@ -336,7 +337,8 @@ class ProyectoController extends AppBaseController
     {
         $proyecto = Proyecto::all()->find($id);
         $proyecto->asignacion_inteligente();
-        return "Se asignaron responables";
+        Flash::success('Se asignaron los responsables mejor capacitados a las tareas del proyecto');
+        return Redirect::back();
     }
 
     public function finalizar($id)
@@ -345,6 +347,7 @@ class ProyectoController extends AppBaseController
         if ($proyecto->Estado_proyecto == "En desarrollo") {
             $proyecto->Estado_proyecto = "Finalizado";
             $proyecto->save();
+            Flash::success('Se finalizó con el proyecto');
             return redirect()->back();
         }
         return "No se pudo finalizar el proyecto";

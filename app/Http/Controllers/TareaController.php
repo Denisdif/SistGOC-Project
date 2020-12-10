@@ -93,7 +93,7 @@ class TareaController extends AppBaseController
             }
         }
 
-        Flash::success('Tarea saved successfully.');
+        Flash::success('Se realizó con éxito la carga de la tarea');
 
         return redirect(route('proyectos.show', $proyecto->id, compact('proyecto')));
     }
@@ -128,6 +128,8 @@ class TareaController extends AppBaseController
                     $tarea->Estado_tarea_id = 3;
                     getdate($fechaActual = time());
                     $tarea->Fecha_inicio = $fechaActual;
+                    Flash::success('La tarea pasó a estar en estado de desarrollo');
+
                     $tarea->save();
 
                     if ($proyecto->Estado_proyecto == "Creado") {
@@ -191,7 +193,7 @@ class TareaController extends AppBaseController
 
         $tarea = $this->tareaRepository->update($request->all(), $id);
 
-        Flash::success('Tarea updated successfully.');
+        Flash::success('Se realizó con éxito la actualización de datos de la tarea');
 
         return redirect(route('proyectos.show', $tarea->Proyecto_id));
     }
@@ -237,7 +239,7 @@ class TareaController extends AppBaseController
             $asignacion->delete($asignacion->Tarea_id);
         }
 
-        Flash::success('Tarea deleted successfully.');
+        Flash::success('La tarea se eliminó con éxito');
 
         return redirect()->back();
 
@@ -250,6 +252,7 @@ class TareaController extends AppBaseController
         if ($tarea->Estado_tarea_id == 4) {
             $tarea->Estado_tarea_id = 6;
             $tarea->save();
+            Flash::success('La tarea fue aprobada con éxito');
             return redirect()->back();
         }
         return "Sacar botón";
@@ -261,6 +264,7 @@ class TareaController extends AppBaseController
         if ($tarea->Estado_tarea_id == 4) {
             $tarea->Estado_tarea_id = 5;
             $tarea->save();
+            Flash::success('La tarea fue desaprobada con éxito y espera las respectivas correcciones');
             return redirect()->back();
         }
         return "Sacar botón";

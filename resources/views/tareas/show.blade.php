@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="content">
+        <div class="clearfix"></div>
+
+        @include('flash::message')
         <div class="box box-danger">
             <div class="box-body">
 

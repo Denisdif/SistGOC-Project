@@ -53,9 +53,16 @@
                                             <td>{{ $asignacion->Responsabilidad }}</td>
                                             <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
                                             <td>
-                                                <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-eye-open"></i>
-                                                </a>
+                                                @if ($asignacion->tarea->Estado_tarea_id == 2)
+                                                    <a onclick="return confirm('Iniciar desarrollo de la tarea?')" href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
+                                                        Desarrollar
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
+                                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                                    </a>
+                                                @endif
+
                                             </td>
                                             </tr>
                                         @endif

@@ -90,7 +90,7 @@
                                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
                                             'type' => 'submit',
                                             'class' => 'btn btn-danger btn-xs',
-                                            'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
+                                            'onclick' => "return confirm('Está seguro que desea eliminar este proyecto?')"
                                         ]) !!}
                                     </div>
                                     {!! Form::close() !!}

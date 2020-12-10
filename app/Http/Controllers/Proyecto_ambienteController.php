@@ -93,7 +93,7 @@ class Proyecto_ambienteController extends AppBaseController
         $proyectoAmbiente->Proyecto_id = $proyecto->id;
         $proyectoAmbiente->save();*/
 
-        Flash::success('Proyecto Ambiente saved successfully.');
+        Flash::success('Se realizó con éxito la carga de los ambientes al proyecto');
 
         //return ($proyecto);
     }
@@ -158,7 +158,7 @@ class Proyecto_ambienteController extends AppBaseController
 
         $proyectoAmbiente = $this->proyectoAmbienteRepository->update($request->all(), $id);
 
-        Flash::success('Proyecto Ambiente updated successfully.');
+        Flash::success('Se realizó con éxito la actualización de los datos del ambiente');
 
         $proyecto = Proyecto::all()->find($proyectoAmbiente->Proyecto_id);
 
@@ -200,7 +200,7 @@ class Proyecto_ambienteController extends AppBaseController
 
         $this->proyectoAmbienteRepository->delete($id);
 
-        Flash::success('Proyecto Ambiente deleted successfully.');
+        Flash::success('Se eliminó con éxito el ambiente del proyecto');
 
         return redirect(route('proyectos.show', $idProyecto, compact('proyecto')));
     }

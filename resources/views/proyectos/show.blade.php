@@ -76,7 +76,6 @@
                                         <tr>
                                             <th>Nombre completo</th>
                                             <th>Tareas asignadas</th>
-                                            <th>Carga de trabajo (hs)</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -85,7 +84,6 @@
                                         <tr>
                                             <td>{{ $Personal->NombrePersonal }} {{ $Personal->ApellidoPersonal }}</td>
                                             <td>{{ sizeof($Personal->tareasDesarrolladasProyecto($proyecto->id)) }}</td>
-                                            <td>8 horas</td>
                                             <td><button class="btn" data-toggle="modal" data-target="#PruebaModal{{$Personal->id}}" type="button">Tareas</button></td>
                                         </tr>
                                         @endforeach
@@ -95,9 +93,6 @@
                             <div class="tab-pane active" id="tareas" role="tabpanel" aria-labelledby="tareas-tab">
                                 {{-- Inicio de DataTable de tareas del proyecto --}}
                                 <br>
-
-
-
                                 <table id="TareasDelProyecto" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>

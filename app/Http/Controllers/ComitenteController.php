@@ -62,7 +62,7 @@ class ComitenteController extends AppBaseController
             $comitente->Sexo_id = $request->Sexo_id;
             $comitente->save();
 
-        Flash::success('Comitente saved successfully.');
+        Flash::success('Se realizó con éxito la carga del comitente');
 
         return redirect(route('comitentes.index'));
     }
@@ -127,7 +127,7 @@ class ComitenteController extends AppBaseController
 
         $comitente = $this->comitenteRepository->update($request->all(), $id);
 
-        Flash::success('Comitente updated successfully.');
+        Flash::success('Se realizó con éxito la actualización de datos del comitente');
 
         return redirect(route('comitentes.index'));
     }
@@ -151,7 +151,7 @@ class ComitenteController extends AppBaseController
 
         $this->comitenteRepository->delete($id);
 
-        Flash::success('Comitente deleted successfully.');
+        Flash::success('El comitente se ha eliminado con éxito');
 
         return redirect(route('comitentes.index'));
     }

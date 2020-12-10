@@ -73,7 +73,7 @@ class EntregaController extends AppBaseController
             $tarea->save();
         }
 
-        Flash::success('Entrega saved successfully.');
+        Flash::success('Se realizó con éxito la carga de la entrega');
 
         return redirect(route('tareas.show',$tarea->id));
     }
@@ -139,7 +139,7 @@ class EntregaController extends AppBaseController
 
         $entrega = $this->entregaRepository->update($request->all(), $id);
 
-        Flash::success('Entrega updated successfully.');
+        Flash::success('Se realizó con éxito la actualización de la entrega');
 
         return redirect(route('entregas.index'));
     }
@@ -163,7 +163,7 @@ class EntregaController extends AppBaseController
 
         $this->entregaRepository->delete($id);
 
-        Flash::success('Entrega deleted successfully.');
+        Flash::success('La entrega fue eliminada con éxito');
 
         return redirect(route('entregas.index'));
     }

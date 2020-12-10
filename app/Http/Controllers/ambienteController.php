@@ -64,7 +64,7 @@ class ambienteController extends AppBaseController
         $ambiente->Imagen = "/ImagenesAmbientes/".$name;
         $ambiente->save();
 
-        Flash::success('Ambiente saved successfully.');
+        Flash::success('Se realizó con éxito la carga del ambiente');
 
         return redirect(route('ambientes.index'));
     }
@@ -137,7 +137,7 @@ class ambienteController extends AppBaseController
         $ambiente->Imagen = "/ImagenesAmbientes/".$name;
         $ambiente->save();
 
-        Flash::success('Ambiente updated successfully.');
+        Flash::success('Se realizó con éxito la actualización del ambiente');
 
         return redirect(route('ambientes.index'));
     }
@@ -161,7 +161,7 @@ class ambienteController extends AppBaseController
 
         $this->ambienteRepository->delete($id);
 
-        Flash::success('Ambiente deleted successfully.');
+        Flash::success('Se eliminó con éxito el ambiente');
 
         return redirect(route('ambientes.index'));
     }

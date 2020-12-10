@@ -64,7 +64,7 @@ class EvaluacionController extends AppBaseController
         $evaluacion->Evaluador_id = $user->Personal_id;
         $evaluacion->save();
 
-        Flash::success('Evaluacion saved successfully.');
+        Flash::success('Se realizó con éxito la carga de la evaluación');
 
         return redirect(route('personals.show', $personal->id));
     }
@@ -129,7 +129,7 @@ class EvaluacionController extends AppBaseController
 
         $evaluacion = $this->evaluacionRepository->update($request->all(), $id);
 
-        Flash::success('Evaluacion updated successfully.');
+        Flash::success('Se realizó con éxito la actualización de datos de la evaluación');
 
         return redirect(route('evaluacions.index'));
     }
@@ -153,7 +153,7 @@ class EvaluacionController extends AppBaseController
 
         $this->evaluacionRepository->delete($id);
 
-        Flash::success('Evaluacion deleted successfully.');
+        Flash::success('Se evaluación fue eliminada con éxtio');
 
         return redirect()->back();
     }

@@ -64,7 +64,7 @@ class ComentarioController extends AppBaseController
 
         $comentario->save();
 
-        Flash::success('Comentario saved successfully.');
+        Flash::success('El comentario se realizó con éxito');
 
         return redirect(route('tareas.show',$tarea->id));
     }
@@ -153,7 +153,7 @@ class ComentarioController extends AppBaseController
 
         $this->comentarioRepository->delete($id);
 
-        Flash::success('Comentario deleted successfully.');
+        Flash::success('Se eliminó con éxito el comentario');
 
         return redirect(route('comentarios.index'));
     }
