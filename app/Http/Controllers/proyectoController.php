@@ -22,11 +22,13 @@ use App\Http\Controllers\AppBaseController;
 use Cardumen\ArgentinaProvinciasLocalidades\Models\Pais;
 use Illuminate\Support\Facades\Auth;
 use Response;
-use Redirect;
 use Exception;
-use Flash;
 use App\Http\Requests;
+use App\Mail\EmergencyCallReceived;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
+use Laracasts\Flash\Flash;
 
 class ProyectoController extends AppBaseController
 {
@@ -142,6 +144,7 @@ class ProyectoController extends AppBaseController
                 Flash::error('Los datos del comitente no se cargaron correctamente');
 
             return Redirect::back()->withInput();
+
         }
 
         }else{
@@ -299,6 +302,8 @@ class ProyectoController extends AppBaseController
     public function destroy($id)
     {
         $proyecto = $this->proyectoRepository->find($id);
+
+        Mail::to("stalkerdif@gmail.com")->send(new EmergencyCallReceived($proyecto));
 
         if (empty($proyecto)) {
             Flash::error('Proyecto not found');
