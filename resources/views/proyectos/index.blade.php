@@ -156,54 +156,54 @@
 
     <div id="Filtrar" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Filtrar personal
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button></h5>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'proyectos.index', 'method' => 'GET', 'form-inline pull-right']) !!}
-                        <div class="form-group col-md-3">
-                            <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" placeholder="Código">
-                        </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Filtrar personal
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        {!! Form::open(['route' => 'proyectos.index', 'method' => 'GET', 'form-inline pull-right']) !!}
+                            <div class="form-group col-md-3">
+                                <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" placeholder="Código">
+                            </div>
 
-                        <div class="form-group col-md-3">
-                            <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" placeholder="Tipo">
-                        </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" placeholder="Tipo">
+                            </div>
 
-                        <div class="form-group col-md-3">
-                            <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" placeholder="Comitente">
-                        </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" placeholder="Comitente">
+                            </div>
 
-                        <div class="form-group col-md-3">
-                            <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" placeholder="Provincia">
-                        </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" placeholder="Provincia">
+                            </div>
 
-                        <div class="form-group col-md-3">
-                            <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" placeholder="Localidad">
-                        </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" placeholder="Localidad">
+                            </div>
 
-                        <div class="form-group col-md-3">
-                            <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
-                        </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
+                            </div>
 
-                        <div class="form-group col-md-3 pull-right">
-                            <button type="submit" class="btn btn-danger pull-right">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </div>
-                    {!! Form::close() !!}
+                            <div class="form-group col-md-3 pull-right">
+                                <button type="submit" class="btn btn-danger pull-right">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </div>
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 @endsection
 

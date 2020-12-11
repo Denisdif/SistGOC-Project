@@ -22,13 +22,79 @@ class AudthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $modelosAuditoria = $this->modelosAuditoria;
         $usuarios = User::all();
-        $auditorias = Audit::latest()->get();
 
-        return view('auditoria.index', compact('auditorias', 'modelosAuditoria', 'usuarios'));
+        $user_id = $request->user_id;
+        $tabla = $request->tabla;
+        $desde = $request->desde;
+        $hasta = $request->hasta;
+
+        if ($request->user_id) {
+            if (($request->desde) and ($request->hasta)) {
+                $auditorias = Audit::orderBy('id', 'DESC')
+                ->where('user_id', '=', $request->user_id)
+                ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                ->whereDate('created_at', '>=', $request->desde)
+                ->whereDate('created_at', '<=', $request->hasta)
+                ->paginate('100');
+            }else{
+                if (($request->hasta)and($request->desde == null)) {
+                    $auditorias = Audit::orderBy('id', 'DESC')
+                        ->where('user_id', '=', $request->user_id)
+                        ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                        ->whereDate('created_at', '<=', $request->hasta)
+                        ->paginate('100');
+                }else {
+                    if (($request->desde)and($request->hasta == null)) {
+                        $auditorias = Audit::orderBy('id', 'DESC')
+                            ->where('user_id', '=', $request->user_id)
+                            ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                            ->whereDate('created_at', '>=', $request->desde)
+                            ->paginate('100');
+                    }else{
+                        if (($request->desde == null) and ($request->hasta == null)) {
+                            $auditorias = Audit::orderBy('id', 'DESC')
+                                ->where('user_id', '=', $request->user_id)
+                                ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                                ->paginate('100');
+                        }
+                    }
+                }
+            }
+        }else {
+            if (($request->desde) and ($request->hasta)) {
+                $auditorias = Audit::orderBy('id', 'DESC')
+                ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                ->whereDate('created_at', '>=', $request->desde)
+                ->whereDate('created_at', '<=', $request->hasta)
+                ->paginate('100');
+            }else{
+                if (($request->hasta)and($request->desde == null)) {
+                    $auditorias = Audit::orderBy('id', 'DESC')
+                        ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                        ->whereDate('created_at', '<=', $request->hasta)
+                        ->paginate('100');
+                }else {
+                    if (($request->desde)and($request->hasta == null)) {
+                        $auditorias = Audit::orderBy('id', 'DESC')
+                            ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                            ->whereDate('created_at', '>=', $request->desde)
+                            ->paginate('100');
+                    }else{
+                        if (($request->desde == null) and ($request->hasta == null)) {
+                            $auditorias = Audit::orderBy('id', 'DESC')
+                                ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                                ->paginate('100');
+                        }
+                    }
+                }
+            }
+        }
+
+        return view('auditoria.index', compact('auditorias', 'modelosAuditoria', 'usuarios','desde','hasta','user_id','tabla'));
     }
 
     public function show($id)

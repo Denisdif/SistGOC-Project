@@ -227,7 +227,7 @@ Route::delete('evaluacions/{id}',                       'EvaluacionController@de
 
     Route::post('/proyectoPDF',                  'PDFcontroller@proyectosPDF')            ->name('PDF.proyectosPDF');
     Route::post('/personalsPDF',                 'PDFcontroller@personalsPDF')            ->name('PDF.personalsPDF');
-    Route::get('auditoriaPDF',                   'PdfController@auditoriaPDF')            ->name('auditoria.pdf');
+    Route::post('auditoriaPDF',                   'PdfController@auditoriaPDF')            ->name('auditoria.pdf');
 
 //------------------------------------ fin PDF  ------------------------------------//
 

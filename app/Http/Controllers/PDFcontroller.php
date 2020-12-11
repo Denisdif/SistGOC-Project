@@ -77,165 +77,80 @@ class PDFcontroller extends Controller
     public function auditoriaPDF(Request $request)
     {
 
-        $auditorias = Audit::all();
-        $aux = collect();
-        $filtro = "";
-        if (($request->fecha1 != null && $request->fecha2 != null) && $request->tabla == null && $request->empleado_id == null) {
-            foreach ($auditorias as $a) {
-                $f = ($a->created_at);
-                $f->setTime(0,0,0);
-                $fecha1 = Carbon::create($request->input('fecha1'));
-                $fecha2 = Carbon::create($request->input('fecha2'));
-                if (($f->greaterThanOrEqualTo($fecha1)) && ($f->lessThanOrEqualTo($fecha2))) {
-                    $aux->push($a);
-                }
-            }
-            $filtro = "Filtros: -Fecha: desde:" . $fecha1->format('d/m/Y') . " hasta: " . $fecha2->format('d/m/Y');
-        } elseif (($request->fecha1 != null && $request->fecha2 != null) && $request->tabla != null && $request->empleado_id == null) {
-            if ($request->tabla == 1) {
-                $tabla = 'Movimiento';
-            } elseif ($request->tabla == 2) {
-                $tabla = 'User';
-            } elseif ($request->tabla == 3) {
-                $tabla = 'Producto';
-            } elseif ($request->tabla == 4) {
-                $tabla = 'Reclamo';
-            }
-            foreach ($auditorias as $a) {
-                $f = $a->created_at;
-                $f->setTime(0,0,0);
-                $fecha1 = Carbon::create($request->input('fecha1'));
-                $fecha2 = Carbon::create($request->input('fecha2'));
-                if ((($f->greaterThanOrEqualTo($fecha1)) && ($f->lessThanOrEqualTo($fecha2))) && (strpos($a->auditable_type, $tabla) !== false)) {
-                    $aux->push($a);
-                }
-            }
-            if ($request->tabla == 1) {
-                $tabla2 = 'MOVIMIENTOS';
-            } elseif ($request->tabla == 2) {
-                $tabla2 = 'EMPLEADOS';
-            } elseif ($request->tabla == 3) {
-                $tabla2 = 'PRODUCTOS';
-            } elseif ($request->tabla == 4) {
-                $tabla2 = 'RECLAMOS';
-            }
-            $filtro = "Filtros: -Fecha: desde:" . $fecha1->format('d/m/Y') . " hasta: " . $fecha2->format('d/m/Y') . ' -Tabla ' . $tabla2;
-        } elseif (($request->fecha1 != null && $request->fecha2 != null) && $request->tabla == null && $request->empleado_id != null) {
-            foreach ($auditorias as $a) {
-                $f = ($a->created_at);
-                $f->setTime(0,0,0);
-                $fecha1 = Carbon::create($request->input('fecha1'));
-                $fecha2 = Carbon::create($request->input('fecha2'));
 
-                if ((($f->greaterThanOrEqualTo($fecha1)) && ($f->lessThanOrEqualTo($fecha2))) && ($a->user_id == $request->empleado_id)) {
-                    $aux->push($a);
+        if ($request->user_id) {
+            if (($request->desde) and ($request->hasta)) {
+                $auditorias = Audit::orderBy('id', 'DESC')
+                ->where('user_id', '=', $request->user_id)
+                ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                ->whereDate('created_at', '>=', $request->desde)
+                ->whereDate('created_at', '<=', $request->hasta)
+                ->paginate('100');
+            }else{
+                if (($request->hasta)and($request->desde == null)) {
+                    $auditorias = Audit::orderBy('id', 'DESC')
+                        ->where('user_id', '=', $request->user_id)
+                        ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                        ->whereDate('created_at', '<=', $request->hasta)
+                        ->paginate('100');
+                }else {
+                    if (($request->desde)and($request->hasta == null)) {
+                        $auditorias = Audit::orderBy('id', 'DESC')
+                            ->where('user_id', '=', $request->user_id)
+                            ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                            ->whereDate('created_at', '>=', $request->desde)
+                            ->paginate('100');
+                    }else{
+                        if (($request->desde == null) and ($request->hasta == null)) {
+                            $auditorias = Audit::orderBy('id', 'DESC')
+                                ->where('user_id', '=', $request->user_id)
+                                ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                                ->paginate('100');
+                        }
+                    }
                 }
             }
-            $empleado = User::find($request->empleado_id);
-            $filtro = "Filtros: -Fecha: desde:" . $fecha1->format('d/m/Y') . " hasta: " . $fecha2->format('d/m/Y') . ' -Empleado: ' . $empleado->apellido . " " . $empleado->nombre;
-        } elseif (($request->fecha1 != null && $request->fecha2 != null) && $request->tabla != null && $request->empleado_id != null) {
-            if ($request->tabla == 1) {
-                $tabla = 'Movimiento';
-            } elseif ($request->tabla == 2) {
-                $tabla = 'User';
-            } elseif ($request->tabla == 3) {
-                $tabla = 'Producto';
-            } elseif ($request->tabla == 4) {
-                $tabla = 'Reclamo';
-            }
-            foreach ($auditorias as $a) {
-                $f = $a->created_at;
-                $f->setTime(0,0,0);
-                $fecha1 = Carbon::create($request->input('fecha1'));
-                $fecha2 = Carbon::create($request->input('fecha2'));
-                if ((($f->greaterThanOrEqualTo($fecha1)) && ($f->lessThanOrEqualTo($fecha2))) && (strpos($a->auditable_type, $tabla) !== false) && ($a->user_id == $request->empleado_id)) {
-                    $aux->push($a);
+        }else {
+            if (($request->desde) and ($request->hasta)) {
+                $auditorias = Audit::orderBy('id', 'DESC')
+                ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                ->whereDate('created_at', '>=', $request->desde)
+                ->whereDate('created_at', '<=', $request->hasta)
+                ->paginate('100');
+            }else{
+                if (($request->hasta)and($request->desde == null)) {
+                    $auditorias = Audit::orderBy('id', 'DESC')
+                        ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                        ->whereDate('created_at', '<=', $request->hasta)
+                        ->paginate('100');
+                }else {
+                    if (($request->desde)and($request->hasta == null)) {
+                        $auditorias = Audit::orderBy('id', 'DESC')
+                            ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                            ->whereDate('created_at', '>=', $request->desde)
+                            ->paginate('100');
+                    }else{
+                        if (($request->desde == null) and ($request->hasta == null)) {
+                            $auditorias = Audit::orderBy('id', 'DESC')
+                                ->where('auditable_type', 'LIKE', "%$request->tabla%")
+                                ->paginate('100');
+                        }
+                    }
                 }
             }
-            if ($request->tabla == 1) {
-                $tabla2 = 'MOVIMIENTOS';
-            } elseif ($request->tabla == 2) {
-                $tabla2 = 'EMPLEADOS';
-            } elseif ($request->tabla == 3) {
-                $tabla2 = 'PRODUCTOS';
-            } elseif ($request->tabla == 4) {
-                $tabla2 = 'RECLAMOS';
-            }
-            $empleado = User::find($request->empleado_id);
-            $filtro = "Filtros: -Fecha: desde:" . $fecha1->format('d/m/Y') . " hasta: " . $fecha2->format('d/m/Y') . ' -Tabla ' . $tabla2 . ' -Empleado: ' . $empleado->apellido  . ' ' . $empleado->name;
-        } elseif (($request->fecha1 == null && $request->fecha2 == null) && $request->tabla != null && $request->empleado_id != null) {
-            if ($request->tabla == 1) {
-                $tabla = 'Movimiento';
-            } elseif ($request->tabla == 2) {
-                $tabla = 'User';
-            } elseif ($request->tabla == 3) {
-                $tabla = 'Producto';
-            } elseif ($request->tabla == 4) {
-                $tabla = 'Reclamo';
-            }
-            foreach ($auditorias as $a) {
-                if ((strpos($a->auditable_type, $tabla) !== false) && ($a->user_id == $request->empleado_id)) {
-                    $aux->push($a);
-                }
-            }
-            if ($request->tabla == 1) {
-                $tabla2 = 'MOVIMIENTOS';
-            } elseif ($request->tabla == 2) {
-                $tabla2 = 'EMPLEADOS';
-            } elseif ($request->tabla == 3) {
-                $tabla2 = 'PRODUCTOS';
-            } elseif ($request->tabla == 4) {
-                $tabla2 = 'RECLAMOS';
-            }
-            $empleado = User::find($request->empleado_id);
-            $filtro = "Filtros: -Tabla " . $tabla2 . ' -Empleado: ' . $empleado->apellido  . ' ' . $empleado->name;
-        } elseif (($request->fecha1 == null && $request->fecha2 == null) && $request->tabla == null && $request->empleado_id != null) {
-
-            foreach ($auditorias as $a) {
-                if (($a->user_id == $request->empleado_id)) {
-                    $aux->push($a);
-                }
-            }
-
-            $empleado = User::find($request->empleado_id);
-            $filtro = "Filtros: -Empleado: " . $empleado->apellido  . ' ' . $empleado->name;
-        } elseif (($request->fecha1 == null && $request->fecha2 == null) && $request->tabla != null && $request->empleado_id == null) {
-
-            if ($request->tabla == 1) {
-                $tabla = 'Movimiento';
-            } elseif ($request->tabla == 2) {
-                $tabla = 'User';
-            } elseif ($request->tabla == 3) {
-                $tabla = 'Producto';
-            } elseif ($request->tabla == 4) {
-                $tabla = 'Reclamo';
-            }
-            foreach ($auditorias as $a) {
-                if ((strpos($a->auditable_type, $tabla) !== false)) {
-                    $aux->push($a);
-                }
-            }
-            if ($request->tabla == 1) {
-                $tabla2 = 'MOVIMIENTOS';
-            } elseif ($request->tabla == 2) {
-                $tabla2 = 'EMPLEADOS';
-            } elseif ($request->tabla == 3) {
-                $tabla2 = 'PRODUCTOS';
-            } elseif ($request->tabla == 4) {
-                $tabla2 = 'RECLAMOS';
-            }
-            $filtro = "Filtros: -Tabla " . $tabla2;
-        } else {
-            $aux = $auditorias;
         }
-
+        $filtro = "nada";
         $config = PDFconfig::first();
-        $cant = sizeof($aux);
+        $cant = sizeof($auditorias);
         $datos = date('d/m/Y');
-        $pdf = PDF::loadView('pdf.auditoria', ['auditorias' => $aux, 'datos' => $datos, 'cant' => $cant, 'filtro' => $filtro, 'config' => $config]);
+        $pdf = PDF::loadView('pdf.auditoria', ['auditorias' => $auditorias, 'datos' => $datos, 'cant' => $cant, 'filtro' => $filtro, 'config' => $config]);
         $y = $pdf->getDomPDF()->get_canvas()->get_height() - 35;
         $pdf->getDomPDF()->get_canvas()->page_text(500, $y, "Pagina {PAGE_NUM} de {PAGE_COUNT}", null, 10, array(0, 0, 0));
         return $pdf->stream('auditoria.pdf');
+
+
+
+
     }
 
 }

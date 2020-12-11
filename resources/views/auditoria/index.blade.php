@@ -6,73 +6,52 @@
     @include('layouts.datatables_css')
 @endsection
 <div class="content">
-<div class="card box box-danger ">
-    <br>
+
+<div class="card box box-danger content">
+
     <section class="content-header">
-        <h1 class="pull-left">Filtros</h1>
+        <h1 class="pull-left">Auditoria</h1>
+        <h1 class="pull-right">
+
+           {!! Form::open(['route' => 'auditoria.pdf', 'form-inline pull-right']) !!}
+
+            <div style="display: none">
+                <div class=" col-sm-12">
+                    <label for="">Tabla</label>
+                    <input type="text" name="tabla" value="{{ $tabla }}" class="form-control">
+                </div>
+
+                <div class=" col-sm-12">
+                    <label for="">Usuario</label>
+                    <input type="number" name="user_id" value="{{ $user_id }}" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Desde</label>
+                        <input type="date" id="min" name="desde" value="{{ $desde }}" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Hasta</label>
+                        <input type="date" id="max" name="hasta" value="{{ $hasta }}" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <a class="btn btn-danger" href="{{ route('proyectos.create') }}">Nuevo</a>
+            <button class="btn btn-danger" type="submit" >PDF</button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
+
+       {!! Form::close() !!}
+
+        </h1>
     </section>
 
     <br><hr>
-    <div>
-        <form  class="form-group" method="GET" action="{{route('auditoria.pdf')}}">
-            <div style="padding: 1%" class="row d-flex justify-content-around">
-                <div class=" col-sm-3">
-                    <label for="">Tabla</label>
-                    <select name="tabla" id="tabla" class="form-control" data-placeholder="Seleccione Una Tabla" style="width: 100%;">
-                        <option value="" selected disabled>--Seleccione--</option>
-                        @foreach ($modelosAuditoria as $modela)
-                        <option value="{{$modela}}">{{$modela}}</option>
+    <div class="card-body content">
 
-                        @endforeach
-
-                    </select>
-                </div>
-                <div class=" col-sm-3">
-                    <label for="">Usuario</label>
-                    <select name="empleado_id" id="user" class="form-control">
-                        <option value="" selected disabled>--Seleccione--</option>
-                        @foreach ($usuarios as $user)
-                            <option value="{{$user->id}}">{{$user->personal->ApellidoPersonal}} {{$user->personal->NombrePersonal}}</option>
-                        @endforeach
-
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Desde</label>
-                        <input type="date" id="min" name="fecha1" value="" class="form-control">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Hasta</label>
-                        <input type="date" id="max" name="fecha2" value="" class="form-control">
-                    </div>
-                </div>
-
-
-                {{-- <div class="col-md-1">
-                    <button type="submit" class="btn btn-xs btn-danger ">Generar <i class="fa fa-file-pdf"></i></button>
-                </div> --}}
-            </div>
-            <br>
-            <div class="row" style="padding-left: 2%">
-                <button type="button" class="btn btn-danger" id="filtrar">Filtrar </button>
-                <button type="submit" class="btn btn-danger ">PDF</button>
-                <button type="button" class="btn btn-danger" id="limpiar">Limpiar </button>
-            </div>
-            <br>
-    </div>
-</div>
-
-<div class="card box box-danger content">
-    <div class="card-header">
-        <h3>Auditoria</h3>
-        <hr>
-        @csrf
-        </form>
-    </div>
-    <div class="card-body">
         <div class="table-responsive table-sm">
             <table id="auditorias" class="table table-bordered table-striped table-hover datatable">
                 <thead>
@@ -169,6 +148,71 @@
     </div>
 </div>
 
+
+
+<div id="Filtrar" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Filtrar personal
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button></h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    {!! Form::open(['route' => 'auditoria.index', 'method' => 'GET', 'form-inline pull-right']) !!}
+
+                        <div class=" col-sm-12">
+                            <label for="">Tabla</label>
+                            <select name="tabla" id="tabla" class="form-control" data-placeholder="Seleccione Una Tabla" style="width: 100%;">
+                                <option value="" selected disabled>--Seleccione--</option>
+                                @foreach ($modelosAuditoria as $modela)
+                                    <option value="{{$modela}}">{{$modela}}</option>
+                                @endforeach
+                            </select>
+                            <br>
+                        </div>
+
+                        <div class=" col-sm-12">
+                            <label for="">Usuario</label>
+                            <select name="user_id" id="user" class="form-control">
+                                <option value="" selected disabled>--Seleccione--</option>
+                                @foreach ($usuarios as $user)
+                                    <option value="{{$user->id}}">{{$user->personal->ApellidoPersonal}} {{$user->personal->NombrePersonal}}</option>
+                                @endforeach
+                            </select>
+                            <br>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Desde</label>
+                                <input type="date" id="min" name="desde" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Hasta</label>
+                                <input type="date" id="max" name="hasta" value="" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3 pull-right">
+                            <button type="submit" class="btn btn-danger pull-right">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 @section('scripts')
 
@@ -358,3 +402,61 @@
 @endsection
 @endsection
 
+
+
+{{--
+    <section class="content-header">
+        <h1 class="pull-left">Filtros</h1>
+    </section>
+
+    <br><hr>
+    <div>
+        <form  class="form-group" method="GET" action="{{route('auditoria.pdf')}}">
+            <div style="padding: 1%" class="row d-flex justify-content-around">
+                <div class=" col-sm-3">
+                    <label for="">Tabla</label>
+                    <select name="tabla" id="tabla" class="form-control" data-placeholder="Seleccione Una Tabla" style="width: 100%;">
+                        <option value="" selected disabled>--Seleccione--</option>
+                        @foreach ($modelosAuditoria as $modela)
+                        <option value="{{$modela}}">{{$modela}}</option>
+
+                        @endforeach
+
+                    </select>
+                </div>
+                <div class=" col-sm-3">
+                    <label for="">Usuario</label>
+                    <select name="empleado_id" id="user" class="form-control">
+                        <option value="" selected disabled>--Seleccione--</option>
+                        @foreach ($usuarios as $user)
+                            <option value="{{$user->id}}">{{$user->personal->ApellidoPersonal}} {{$user->personal->NombrePersonal}}</option>
+                        @endforeach
+
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Desde</label>
+                        <input type="date" id="min" name="fecha1" value="" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Hasta</label>
+                        <input type="date" id="max" name="fecha2" value="" class="form-control">
+                    </div>
+                </div>
+
+
+                 <div class="col-md-1">
+                    <button type="submit" class="btn btn-xs btn-danger ">Generar <i class="fa fa-file-pdf"></i></button>
+                </div>
+            </div>
+            <br>
+            <div class="row" style="padding-left: 2%">
+                <button type="button" class="btn btn-danger" id="filtrar">Filtrar </button>
+                <button type="submit" class="btn btn-danger ">PDF</button>
+                <button type="button" class="btn btn-danger" id="limpiar">Limpiar </button>
+            </div>
+            <br>
+    </div> --}}
