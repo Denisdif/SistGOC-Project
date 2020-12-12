@@ -242,3 +242,8 @@ Route::delete('evaluacions/{id}',                       'EvaluacionController@de
 Route::resource('predecesoras', 'PredecesoraController');
 
 
+
+
+
+
+Route::resource('asistencias', 'AsistenciaController');

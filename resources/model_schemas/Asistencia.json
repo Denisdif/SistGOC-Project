@@ -12,9 +12,9 @@
         "inView": false
     },
     {
-        "name": "Personal_id",
-        "dbType": "integer:unsigned:foreign,personals,id",
-        "htmlType": "selectTable:personals:NombrePersonal,id",
+        "name": "User_id",
+        "dbType": "integer:unsigned:foreign,users,id",
+        "htmlType": "number",
         "validations": "",
         "searchable": true,
         "fillable": true,
@@ -24,9 +24,21 @@
         "inView": true
     },
     {
-        "name": "Fecha",
-        "dbType": "date",
-        "htmlType": "date",
+        "name": "Entrada",
+        "dbType": "dateTime",
+        "htmlType": "text",
+        "validations": "",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "Salida",
+        "dbType": "dateTime",
+        "htmlType": "text",
         "validations": "",
         "searchable": true,
         "fillable": true,
