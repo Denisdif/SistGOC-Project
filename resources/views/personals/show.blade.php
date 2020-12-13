@@ -34,10 +34,13 @@
                             @if ($personal->get_rol()->id == 3)
 
                             <li class="nav-item">
-                            <a class="nav-link " id="home-tab" data-toggle="tab" href="#Rendimiento" role="tab" aria-controls="Rendimiento" aria-selected="true">Rendimiento</a>
+                                <a class="nav-link " id="home-tab" data-toggle="tab" href="#Rendimiento" role="tab" aria-controls="Rendimiento" aria-selected="true">Rendimiento</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Evaluaciones" role="tab" aria-controls="Evaluaciones" aria-selected="false">Evaluaciones</a>
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Evaluaciones" role="tab" aria-controls="Evaluaciones" aria-selected="false">Evaluaciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Asistencias" role="tab" aria-controls="Asistencias" aria-selected="false">Asistencias</a>
                             </li>
 
                             @endif
@@ -128,6 +131,32 @@
                                                     ]) !!}
                                                 </div>
                                                 {!! Form::close() !!}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
+                                @if (Auth :: user()->Rol_id == 1)
+                                    <div class="text-center">
+                                        <a class="btn btn-danger" href="/personals/{{$personal->id}}/evaluacions/create">Nueva evaluación</a>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="tab-pane fade content" id="Asistencias" role="tabpanel" aria-labelledby="Asistencias-tab">
+                                <br>
+                                {{-- Inicio de DataTable de ambientes del proyecto --}}
+                                <table class="table datatables table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Entrada</th>
+                                            <th>Salida</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($personal->User->asistencia as $item)
+                                        <tr>
+                                            <td>{{ $item->Entrada }}</td>
+                                            <td>{{ $item->Salida }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

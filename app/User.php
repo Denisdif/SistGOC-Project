@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Asistencia;
 use App\Models\RolPersonal;
 use App\Models\Personal;
 use App\Traits\ImageTrait;
@@ -155,5 +156,10 @@ class User extends Authenticatable
     public function rol()
     {
         return $this->belongsTo(RolPersonal::class, 'Rol_id');
+    }
+
+    public function asistencia()
+    {
+        return $this->hasMany(Asistencia::class);
     }
 }

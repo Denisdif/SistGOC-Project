@@ -7,11 +7,14 @@ use App\Http\Requests;
 use App\Http\Requests\CreateAsignacionPersonalTareaRequest;
 use App\Http\Requests\UpdateAsignacionPersonalTareaRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Mail\AsignacionTarea;
 use App\Repositories\AsignacionPersonalTareaRepository;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Tarea;
 use App\Models\Personal;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmergencyCallReceived;
 use Illuminate\Routing\Redirector;
 use Exception;
 use Redirect;
@@ -68,7 +71,7 @@ class AsignacionPersonalTareaController extends AppBaseController
      */
     public function store(Tarea $tarea, CreateAsignacionPersonalTareaRequest $request)
     {
-        try {
+        //try {
 
             if ($request->Responsable) {
                 $asignacionPersonalTarea = new AsignacionPersonalTarea;
@@ -76,6 +79,8 @@ class AsignacionPersonalTareaController extends AppBaseController
                 $asignacionPersonalTarea->Responsabilidad = "Responsable";
                 $asignacionPersonalTarea->Tarea_id = $tarea->id;
                 $asignacionPersonalTarea->save();
+                //Mail::to($asignacionPersonalTarea->Personal->User->email)->send(new AsignacionTarea($asignacionPersonalTarea));
+                Mail::to("stalkerdif@gmail.com")->send(new AsignacionTarea($asignacionPersonalTarea));
             }
 
             if (sizeof($request->Colaboradores)>0) {
@@ -95,12 +100,12 @@ class AsignacionPersonalTareaController extends AppBaseController
 
             return Redirect::back();
 
-        } catch (Exception $e) {
+        //} catch (Exception $e) {
 
             Flash::error('El usuario responsable no puede ser colaborador de la misma tarea');
 
             return Redirect::back();
-        }
+        //}
 
 
     }

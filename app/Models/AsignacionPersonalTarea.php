@@ -22,7 +22,6 @@ use OwenIt\Auditing\Contracts\Auditable;
 class AsignacionPersonalTarea extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
-    use SoftDeletes;
     protected $guarded = [];
 
     public $table = 'asignacion_personal_tareas';

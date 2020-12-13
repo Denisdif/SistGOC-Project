@@ -87,12 +87,14 @@
                     </thead>
                     <tbody>
                         @foreach ($personal as $Personal)
+                        @if ($Personal->get_rol()->id == 3)
                         <tr>
                             <td>{{ $Personal->NombrePersonal }} {{ $Personal->ApellidoPersonal }}</td>
                             <td>{{ sizeof($Personal->tareasEnDesarrollo()) }}</td>
                             <td>{{ $Personal->carga_de_trabajo_horas() }}</td>
-                            <td><button class="btn" data-toggle="modal" data-target="#PruebaModal{{$Personal->id}}" type="button">Modal</button></td>
+                            <td><button class="btn" data-toggle="modal" data-target="#PruebaModal{{$Personal->id}}" type="button">Tareas</button></td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>
@@ -153,7 +155,6 @@
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Responsabilidad</th>
-                                            <th>Proyecto</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -162,7 +163,6 @@
                                                 <tr>
                                                 <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
                                                 <td>{{ $asignacion->Responsabilidad }}</td>
-                                                <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
                                                 <td>
                                                     <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
                                                         <i class="glyphicon glyphicon-eye-open"></i>

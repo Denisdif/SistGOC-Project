@@ -28,7 +28,7 @@ class SuccessfulLogout
      */
     public function handle(Logout $event)
     {
-        $asistencia = Asistencia::find($event->user->id);
+        $asistencia = Asistencia::all()->where("User_id","=",$event->user->id)->last();
         $asistencia->Salida = Carbon::now();
         $asistencia->save();
     }
