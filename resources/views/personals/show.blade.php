@@ -118,8 +118,8 @@
                                     <tbody>
                                         @foreach ($evaluaciones as $evaluacion)
                                         <tr>
-                                            <td>{{ $evaluacion->Fecha_inicio }}</td>
-                                            <td>{{ $evaluacion->Fecha_fin }}</td>
+                                            <td>{{ $evaluacion->Fecha_inicio->formatLocalized(' %d de %B de %Y') }}</td>
+                                            <td>{{ $evaluacion->Fecha_fin->formatLocalized(' %d de %B de %Y') }}</td>
                                             <td>{{ $evaluacion->evaluador->NombrePersonal }} {{ $evaluacion->evaluador->ApellidoPersonal }}</td>
                                             <td>{!! Form::open(['route' => ['evaluacions.destroy', $evaluacion->id], 'method' => 'delete']) !!}
                                                 <div class='btn-group'>

@@ -1,7 +1,7 @@
 @extends('layouts.pdf2')
 
 @section('logo')
-<a><img id="imagen" class="float-left rounded " src="{{public_path('img/').$config->logo}}"> </a>
+<a><img id="imagen" class="float-left rounded " src="logo.jpg"> </a>
 @endsection
 
 @section('datos')
@@ -14,40 +14,15 @@
 @endsection
 
 @section('content')
-
-<div>
-    <table id="titulo">
-        <thead>
-            <tr>
-                <th id="fac">Listado de Reclamos</th>
-            </tr>
-            <tr>
-                <th id="filtros">
-                    {{$filtro}}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            {{--
-            <tr>
-                <th><p id="cliente"> Desde: <br>
-                Hasta: </p></th>
-            </tr> --}}
-
-        </tbody>
-    </table>
-</div>
-</section>
 <br>
 <section>
+    @section('css')
+        @include('layouts.datatables_css')
+    @endsection
+
     <div>
-
-
-
+        <b> Filtros: </b> {{ $filtro }} <br><br>
     </div>
-</section>
-<br>
-<section>
     <div>
         <table id="lista">
             <thead>
@@ -64,12 +39,12 @@
             <tbody>
                 @foreach($auditorias as $auditoria)
                 <tr>
-                    <td>{{$auditoria->auditable_id}}</td>
-                    <td>{{strtoupper(str_replace("App\\", "" ,$auditoria->auditable_type))}}</td>
-                    <td style="text-transform:uppercase">{{$auditoria->event}}</td>
-                    <td>{{$auditoria->created_at->format('d/m/Y')}}</td>
-                    <td>{{$auditoria->created_at->format('H:i:s')}}</td>
-                    <td>{{$auditoria->user->apellido}} {{$auditoria->user->name}}</td>
+                    <td style="text-align: center; width: 40%" id="lista">{{$auditoria->auditable_id}}</td>
+                    <td style="text-align: center;" id="lista">{{(str_replace("App\\Models\\", "" ,$auditoria->auditable_type))}}</td>
+                    <td style="text-align: center;" id="lista">{{$auditoria->event}}</td>
+                    <td style="text-align: center;" id="lista">{{$auditoria->created_at->format('d/m/Y')}}</td>
+                    <td style="text-align: center;" id="lista">{{$auditoria->created_at->format('H:i:s')}}</td>
+                    <td style="text-align: center;" id="lista">{{$auditoria->user->apellido}} {{$auditoria->user->name}}</td>
                 </tr>
 
                 @endforeach

@@ -27,10 +27,19 @@ class PDFcontroller extends Controller
                 ->Tipo($request->tipo)
                 ->Provincia($request->provincia, $request->localidad,$request->calle)
                 ->paginate('100');
+
+        $codigo = $request->codigo;
+        $tipo = $request->tipo;
+        $comitente = $request->comitente;
+        $provincia = $request->provincia;
+        $localidad = $request->localidad;
+        $calle = $request->calle;
+
         $datos = date('d/m/Y');
         $cant = sizeof($proyectos);
         $config = PDFconfig::first();
-        $pdf = PDF::loadView('pdf.proyectos', ['proyectos' => $proyectos, 'datos' => $datos, 'cant' => $cant, 'config' => $config]);
+        $filtro = "Codigo: ' ".$codigo."', Tipo: ' ".$tipo."', Comitente: ' ".$comitente."', Provincia: ' ".$provincia."', Localidad: ' ".$localidad."', Calle: ' ".$calle."'";
+        $pdf = PDF::loadView('pdf.proyectos', ['proyectos' => $proyectos, 'datos' => $datos, 'cant' => $cant,'filtro' => $filtro, 'config' => $config]);
         $y = $pdf->getDomPDF()->get_canvas()->get_height() - 35;
         $pdf->getDomPDF()->get_canvas()->page_text(500, $y, "Pagina {PAGE_NUM} de {PAGE_COUNT}", null, 10, array(0, 0, 0));
         return $pdf->stream('proyectos.pdf');
@@ -65,10 +74,18 @@ class PDFcontroller extends Controller
                 ->Rol($request->rol)
                 ->paginate('100');
 
+
+        $Nombre = $request->Nombre;
+        $Apellido = $request->Apellido;
+        $MayorQ = $request->mayorQ;
+        $MenorQ = $request->menorQ;
+        $Rol = $request->rol;
+
         $datos = date('d/m/Y');
         $cant = sizeof($personals);
         $config = PDFconfig::first();
-        $pdf = PDF::loadView('pdf.personals', ['personals' => $personals, 'datos' => $datos, 'cant' => $cant, 'config' => $config]);
+        $filtro = "Nombre: ' ".$Nombre."', Apellido: ' ".$Apellido."', Mayor que: ' ".$MayorQ."', Menor que: ' ".$MenorQ."', Rol: ' ".$Rol."'";
+        $pdf = PDF::loadView('pdf.personals', ['personals' => $personals, 'datos' => $datos, 'cant' => $cant,'filtro' => $filtro, 'config' => $config]);
         $y = $pdf->getDomPDF()->get_canvas()->get_height() - 35;
         $pdf->getDomPDF()->get_canvas()->page_text(500, $y, "Pagina {PAGE_NUM} de {PAGE_COUNT}", null, 10, array(0, 0, 0));
         return $pdf->stream('personals.pdf');
@@ -76,7 +93,10 @@ class PDFcontroller extends Controller
 
     public function auditoriaPDF(Request $request)
     {
-
+        $user_id = $request->user_id;
+        $tabla = $request->tabla;
+        $desde = $request->desde;
+        $hasta = $request->hasta;
 
         if ($request->user_id) {
             if (($request->desde) and ($request->hasta)) {
@@ -139,7 +159,7 @@ class PDFcontroller extends Controller
                 }
             }
         }
-        $filtro = "nada";
+        $filtro = "Usuario: ' ".$user_id."', Tabla: ' ".$tabla."', Desde: ' ".$desde."', Hasta: ' ".$hasta."'.";
         $config = PDFconfig::first();
         $cant = sizeof($auditorias);
         $datos = date('d/m/Y');

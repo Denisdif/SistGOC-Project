@@ -163,12 +163,12 @@
         <div id="fecha">
             <br>
             <br>
-            Fecha: {{ \Carbon\Carbon::now()->format('d/m/Y')}} <br>
+            Fecha: {{ \Carbon\Carbon::now()->format('d/m/Y')}} <br><br><br><br><br><br><br>
         </div>
 
         <div id="user">
-            Autor: {{ Auth::user()->personal->ApellidoPersonal . ' ' . Auth::user()->personal->NombrePersonal }}<br>
-            <b> Listado de Proyectos </b>
+            <b>Autor:</b> {{ Auth::user()->personal->ApellidoPersonal . ' ' . Auth::user()->personal->NombrePersonal }}<br><br>
+            <b> Listado de Proyectos
         </div>
 
     </header>

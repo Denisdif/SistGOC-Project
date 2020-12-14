@@ -20,6 +20,9 @@
         @include('layouts.datatables_css')
     @endsection
     <div>
+        <b> Filtros: </b> {{ $filtro }} <br><br>
+    </div>
+    <div>
         <table id="lista" >
             <thead>
                 <tr id="fa">

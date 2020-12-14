@@ -17,10 +17,10 @@
 
     {!! Form::label('Fecha_fin', 'Fecha de finalización:') !!}
     {{ $tarea->getFechaFin() }} <br>
-
+    {{--
     {!! Form::label('Estimacion', 'Tiempo de desarrollo estimado:') !!}
     {{ $tarea->duracionEstimadaReal($tarea->Tipo_tarea_id)}} <br>
-
+         --}}
     {!! Form::label('Descripcion', 'Descripción:') !!}
     {{ $tarea->Descripcion_tarea }} <br>
 
