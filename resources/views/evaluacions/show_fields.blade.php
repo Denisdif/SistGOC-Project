@@ -38,29 +38,31 @@
                     <th class="text-center" >Fecha de finalización</th>--}}
                 </tr>
                 @foreach ($tipos_de_tareas as $item)
-                <tr class="active">
-                    <th colspan="5" >  {{ $item->Nombre_tipo_tarea }} </th>
-                </tr>
-                @if (($evaluacion->personal->get_tareas_desarrolladas_por_fecha($item->Nombre_tipo_tarea, $evaluacion->Fecha_inicio, $evaluacion->Fecha_fin)) == null)
-                    <tr>
-                        <td colspan="5" class="text-center" style="padding-right: 5%">  No ha desarrollado tareas de este tipo </td>
-                    </tr>
-                @endif
-            </thead>
-            <tbody>
-                @foreach ($evaluacion->personal->get_tareas_desarrolladas_por_fecha($item->Nombre_tipo_tarea, $evaluacion->Fecha_inicio, $evaluacion->Fecha_fin) as $tarea)
-                <tr>
-                    <td style="padding-left: 25px">{{ $tarea->Nombre_tarea }}</td>
-                    <td class="text-center">{{ $tarea->Proyecto_id }}</td>
-                    @if ($tarea->Correcciones=="true")
-                        <td class="text-center">Si</td>
-                    @else
-                        <td class="text-center">No</td>
+                    @if (($evaluacion->personal->get_tareas_desarrolladas_por_fecha($item->Nombre_tipo_tarea, $evaluacion->Fecha_inicio, $evaluacion->Fecha_fin)))
+                        <tr class="active">
+                            <th colspan="5" >  {{ $item->Nombre_tipo_tarea }} </th>
+                        </tr>
+                        @if (($evaluacion->personal->get_tareas_desarrolladas_por_fecha($item->Nombre_tipo_tarea, $evaluacion->Fecha_inicio, $evaluacion->Fecha_fin)) == null)
+                            <tr>
+                                <td colspan="5" class="text-center" style="padding-right: 5%">  No ha desarrollado tareas de este tipo </td>
+                            </tr>
+                        @endif
+                    </thead>
+                    <tbody>
+                        @foreach ($evaluacion->personal->get_tareas_desarrolladas_por_fecha($item->Nombre_tipo_tarea, $evaluacion->Fecha_inicio, $evaluacion->Fecha_fin) as $tarea)
+                        <tr>
+                            <td style="padding-left: 25px">{{ $tarea->Nombre_tarea }}</td>
+                            <td class="text-center">{{ $tarea->Proyecto_id }}</td>
+                            @if ($tarea->Correcciones=="true")
+                                <td class="text-center">Si</td>
+                            @else
+                                <td class="text-center">No</td>
+                            @endif
+                            <td class="text-center">{{ $tarea->getFechaInicio() }}</td>
+                            <td class="text-center">{{ $tarea->getFechaFin() }}</td>
+                        </tr>
+                        @endforeach
                     @endif
-                    <td class="text-center">{{ $tarea->getFechaInicio() }}</td>
-                    <td class="text-center">{{ $tarea->getFechaFin() }}</td>
-                </tr>
-                @endforeach
                 @endforeach
             </tbody>
         </table>

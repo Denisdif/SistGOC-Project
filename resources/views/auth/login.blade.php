@@ -34,14 +34,17 @@
 </head>
 <body class="hold-transition login-page" style="background-image: url('/images/Captura.jpg'); background-size: 100%; background-opacity: 0.5">>
 <div class="login-box">
-    <div class="login-logo">
-        <a style="color: aliceblue" href="{{ url('/home') }}"><b>SistGOC </b>Inicio</a>
-    </div>
+
 
     <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">Ingrese sus datos para acceder al sistema</p>
+    <div class="">
+        <div class="login-logo" style="font-size: 500%">
+            <a style="color: aliceblue" href="{{ url('/home') }}"><b>SistGOC</b></a>
 
+        </div>
+
+         <!--<p class="login-box-msg">Ingrese sus datos para acceder al sistema</p>-->
+        <br>
         <form method="post" action="{{ url('/login') }}">
             {!! csrf_field() !!}
 
@@ -54,7 +57,7 @@
                 </span>
                 @endif
             </div>
-
+            <br>
             <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
                 <input type="password" class="form-control" placeholder="Password" name="password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -65,10 +68,11 @@
                 @endif
 
             </div>
+            <br>
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
-                        <label>
+                        <label style="color: aliceblue">
                             <input type="checkbox" name="remember"> Recordar contraseña
                         </label>
                     </div>

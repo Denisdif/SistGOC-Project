@@ -81,13 +81,18 @@
                                             <h1>Rendimiento general</h1>
                                             <br>
                                         </section>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" style="padding-left: 4%">
                                             @foreach ($tipos_tareas as $item)
-                                                <b>{{ $item->Nombre_tipo_tarea }}:</b>
-                                                <div style="padding-left: 2%">
-                                                    Cantidad de tareas realizadas: {{ sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
-                                                    Calificación general: {{ $personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
-                                                </div>
+
+                                                @if (sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)))
+                                                    <br>
+                                                    <b>{{ $item->Nombre_tipo_tarea }}:</b>
+                                                    <br><br>
+                                                    <div style="padding-left: 2%">
+                                                        Cantidad de tareas realizadas: {{ sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
+                                                        Calificación general: {{ $personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
+                                                    </div>
+                                                @endif
                                             @endforeach
                                         </div>
 
