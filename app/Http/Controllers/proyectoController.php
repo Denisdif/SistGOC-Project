@@ -157,6 +157,8 @@ class ProyectoController extends AppBaseController
         $direccion->save();
         $proyecto->direccion_id = $direccion->id ;
         $proyecto->save();
+        $proyecto->Nombre_proyecto = "Proyecto ".$proyecto->id;
+        $proyecto->save();
 
         $ambientesDelProyecto = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
         $tareasDelProyecto = Tarea::all()->where('Proyecto_id','=', $proyecto->id);
@@ -351,6 +353,7 @@ class ProyectoController extends AppBaseController
         $proyecto = Proyecto::all()->find($id);
         if ($proyecto->Estado_proyecto == "En desarrollo") {
             $proyecto->Estado_proyecto = "Finalizado";
+            $proyecto->Fecha_fin_Proy = Carbon::now();
             $proyecto->save();
             Flash::success('Se finalizó con el proyecto');
             return redirect()->back();

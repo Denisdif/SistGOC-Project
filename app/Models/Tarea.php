@@ -13,6 +13,9 @@ use App\Models\AsignacionPersonalTarea;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Mail\AsignacionTarea;
+use Illuminate\Support\Facades\Mail;
+
 Carbon::setUTF8(true);
 setlocale(LC_TIME, 'es_ES');
 Carbon::setLocale('es');
@@ -336,6 +339,8 @@ class Tarea extends Model implements Auditable
             $asignacionPersonalTarea->Responsabilidad = "Responsable";
             $asignacionPersonalTarea->Tarea_id = $this->id;
             $asignacionPersonalTarea->save();
+
+            Mail::to("sistgoc@gmail.com")->send(new AsignacionTarea($asignacionPersonalTarea));
 
             /*Codigo para mas responsabilidades {
                 {$responsables[] = $mejorPersonal;

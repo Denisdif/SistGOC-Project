@@ -1,0 +1,13 @@
+*Configuracion de pdf
+*Filtros pdf
+*
+*
+///////////Separar proyectos y tareas finalizados/as de en curso
+
+
+****************	    Vista finalizar proyectos		**********************
+****************	       Vista de show tarea		**********************
+****************          Visualizar tareas por corregir	**********************
+****************       Visualizar datos proy y predecesoras     **********************
+****************                    Mensajes			**********************
+****************       		   Asistencia     		**********************

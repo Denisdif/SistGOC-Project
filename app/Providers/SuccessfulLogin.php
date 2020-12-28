@@ -35,7 +35,7 @@ class SuccessfulLogin
         $asistencia = new Asistencia;
         $asistencia->User_id = $event->user->id;
         $asistencia->Entrada = Carbon::now();
-        $asistencia->Salida = Carbon::now()->addMinute(20);
+        $asistencia->Salida = Carbon::now();
         $asistencia->save();
     }
 }

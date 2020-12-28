@@ -20,6 +20,7 @@ use Exception;
 use Redirect;
 use Response;
 use Flash;
+use Illuminate\Support\Facades\Redirect as FacadesRedirect;
 
 class AsignacionPersonalTareaController extends AppBaseController
 {
@@ -71,7 +72,7 @@ class AsignacionPersonalTareaController extends AppBaseController
      */
     public function store(Tarea $tarea, CreateAsignacionPersonalTareaRequest $request)
     {
-        //try {
+        try {
 
             if ($request->Responsable) {
                 $asignacionPersonalTarea = new AsignacionPersonalTarea;
@@ -80,7 +81,7 @@ class AsignacionPersonalTareaController extends AppBaseController
                 $asignacionPersonalTarea->Tarea_id = $tarea->id;
                 $asignacionPersonalTarea->save();
                 //Mail::to($asignacionPersonalTarea->Personal->User->email)->send(new AsignacionTarea($asignacionPersonalTarea));
-                Mail::to("stalkerdif@gmail.com")->send(new AsignacionTarea($asignacionPersonalTarea));
+                Mail::to("sistgoc@gmail.com")->send(new AsignacionTarea($asignacionPersonalTarea));
             }
 
             if (sizeof($request->Colaboradores)>0) {
@@ -90,6 +91,7 @@ class AsignacionPersonalTareaController extends AppBaseController
                     $asignacionPersonalTarea->Responsabilidad = "Colaborador";
                     $asignacionPersonalTarea->Tarea_id = $tarea->id;
                     $asignacionPersonalTarea->save();
+                    Mail::to("sistgoc@gmail.com")->send(new AsignacionTarea($asignacionPersonalTarea));
                 }
             }
 
@@ -100,12 +102,12 @@ class AsignacionPersonalTareaController extends AppBaseController
 
             return Redirect::back();
 
-        //} catch (Exception $e) {
+        } catch (Exception $e) {
 
             Flash::error('El usuario responsable no puede ser colaborador de la misma tarea');
 
             return Redirect::back();
-        //}
+        }
 
 
     }

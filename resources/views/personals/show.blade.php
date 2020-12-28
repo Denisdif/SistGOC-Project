@@ -160,18 +160,12 @@
                                     <tbody>
                                         @foreach ($personal->User->asistencia as $item)
                                         <tr>
-                                            <td>{{ $item->Entrada }}</td>
-                                            <td>{{ $item->Salida }}</td>
+                                            <td>{{ $item->Entrada->format('d/m/Y ( H:m:s )') }}</td>
+                                            <td>{{ $item->Salida->format('d/m/Y ( H:m:s )') }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-
-                                @if (Auth :: user()->Rol_id == 1)
-                                    <div class="text-center">
-                                        <a class="btn btn-danger" href="/personals/{{$personal->id}}/evaluacions/create">Nueva evaluación</a>
-                                    </div>
-                                @endif
                             </div>
                             @endif
                         </div>

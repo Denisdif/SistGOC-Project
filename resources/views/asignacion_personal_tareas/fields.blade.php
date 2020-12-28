@@ -15,7 +15,7 @@
 <!-- Colaboradores Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('Colaboradores', 'Colaboradores:') !!} <br>
-    <select id="SelectColaboradores" style="width: 100%" class="form-control" name="Colaboradores[]"  multiple="multiple" required>
+    <select id="SelectColaboradores" style="width: 100%" class="form-control" name="Colaboradores[]"  multiple="multiple">
         @foreach ($personal as $item)
             <option value = {{ $item->id }}> {{ $item->NombrePersonal }} </option>
         @endforeach
@@ -24,5 +24,5 @@
 
 <div class="form-group col-sm-12">
     {!! Form::submit('Asignar', ['class' => 'btn btn-danger']) !!}
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 </div>
