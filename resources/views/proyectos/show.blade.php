@@ -27,10 +27,6 @@
                         <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/autoAsignar">Asignación inteligente</a>
                     </div>
 
-                    @section('scripts')
-                        @include('layouts.datatables_js')
-                    @endsection
-
                 </div>
 
         {{-- Fin de DataTable de Personal del proyecto --}}
@@ -221,10 +217,6 @@
                                                 <div class="form-group col-sm-12">
                                                 </div>
 
-                                            @section('scripts')
-                                                @include('layouts.datatables_js')
-                                            @endsection
-
                                         <div class="modal-footer">
 
                                           {!! Form::submit('Listo', ['class' => 'btn btn-danger']) !!}
@@ -307,66 +299,112 @@
 
         {{-- Modals de tareas de cada empleado --}}
 
-@foreach ($Lista_personal as $Personal)
-<div id="PruebaModal{{$Personal->id}}" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body" style="background-color: rgb(250, 250, 250)">
-            <section class="content-header">
-                <h3 style= "color: rgb(0, 0, 0)">Lista de tareas
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button></h3>
-            </section>
-            <div class="content" style="background-color: rgb(245, 245, 245)">
-                <div class="clearfix"></div>
+    @foreach ($Lista_personal as $Personal)
+    <div id="PruebaModal{{$Personal->id}}" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="background-color: rgb(250, 250, 250)">
+                <section class="content-header">
+                    <h3 style= "color: rgb(0, 0, 0)">Lista de tareas
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button></h3>
+                </section>
+                <div class="content" style="background-color: rgb(245, 245, 245)">
+                    <div class="clearfix"></div>
 
-                @include('flash::message')
+                    @include('flash::message')
 
-                <div class="clearfix"></div>
-                <div class="box box-danger">
-                    <div class="box-body">
-                        @section('css')
-                        @include('layouts.datatables_css')
-                    @endsection
-                        <table  id="Personal" class="datatables table  table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Responsabilidad</th>
-                                    <th>Proyecto</th>
-                                    {{--  <th>Acciones</th>  --}}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (($Personal->tareasDesarrolladasProyecto($proyecto->id)) as $asignacion)
-                                        <tr>
-                                        <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
-                                        <td>{{ $asignacion->Responsabilidad }}</td>
-                                        <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
-                                        {{-- <td>
-                                            <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
-                                                <i class="glyphicon glyphicon-eye-open"></i>
-                                            </a>
-                                        </td> --}}
-                                        </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        @section('scripts')
-                            @include('layouts.datatables_js')
-                        @endsection
+                    <div class="clearfix"></div>
+                    <div class="box box-danger">
+                        <div class="box-body">
+                            <table  id="Personal" class="datatables table  table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Responsabilidad</th>
+                                        <th>Proyecto</th>
+                                        {{--  <th>Acciones</th>  --}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (($Personal->tareasDesarrolladasProyecto($proyecto->id)) as $asignacion)
+                                            <tr>
+                                            <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
+                                            <td>{{ $asignacion->Responsabilidad }}</td>
+                                            <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                            {{-- <td>
+                                                <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
+                                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                                </a>
+                                            </td> --}}
+                                            </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
 
-
         </div>
-
-      </div>
+        </div>
     </div>
-</div>
 
-@endforeach
+    @endforeach
+
+
+    @section('scripts')
+
+        @include('layouts.datatables_js')
+
+        <script>
+                var etiquetas=[];
+                var valor=[];
+                $(document).ready(function() {
+
+                var etiquetas = <?php echo json_encode($etiquetasGraf) ?> ;
+                var valor = <?php echo json_encode($cantidadesGraf) ?> ;
+
+                generarGrafica();
+                function generarGrafica(){
+                    var ctx = document.getElementById('estado_proyecto').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: etiquetas,
+                        datasets: [{
+                            label: 'Tipos de tareas',
+                            data: valor,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+
+                });
+                }
+            });
+
+        </script>
+    @endsection
 
 @endsection
+
+

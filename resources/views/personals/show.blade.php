@@ -190,7 +190,7 @@
             generarGrafica();
             function generarGrafica(){
                 var ctx = document.getElementById('rendimiento').getContext('2d');
-            var myChart = new Chart(ctx, {
+                var myChart = new Chart(ctx, {
                 type: 'radar',
                 data: {
                     labels: tipos_tareas,

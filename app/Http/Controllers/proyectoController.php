@@ -67,7 +67,22 @@ class ProyectoController extends AppBaseController
         $localidad = $request->localidad;
         $calle = $request->calle;
 
-        return View('proyectos.index', compact('proyectos','codigo','tipo','comitente','provincia','localidad','calle'));
+        $proy_atrasados = [];
+        $proy_en_desarrollo = [];
+        $proy_finalizados = [];
+
+        foreach ($proyectos as $item) {
+            if (($item->Estado_proyecto == "Finalizado")) {
+                $proy_finalizados[] = $item;
+            }else{
+                $proy_en_desarrollo[] = $item;
+                if ($item->Fecha_fin_Proy > Carbon::now()) {
+                    $proy_atrasados[] = $item;
+                }
+            }
+        }
+
+        return View('proyectos.index', compact('proyectos','proy_atrasados','proy_en_desarrollo','proy_finalizados','codigo','tipo','comitente','provincia','localidad','calle'));
     }
 
     /**
@@ -246,7 +261,23 @@ class ProyectoController extends AppBaseController
 
         // Fin de filtro de personal con tareas del proyecto asignadas
 
-        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal'))->with('proyecto', $proyecto);
+        $tareas_finalizadas = 0;
+        $tareas_no_finalizadas = 0;
+
+        foreach ($tareasDelProyecto as $item) {
+            if ($item->Estado_tarea_id == 6) {
+                $tareas_finalizadas += 1;
+            }else {
+                $tareas_no_finalizadas += 1;
+            }
+        }
+
+        $etiquetasGraf[] = "Tareas finalizadas";
+        $etiquetasGraf[] = "Tareas por finalizar";
+        $cantidadesGraf[] = $tareas_finalizadas;
+        $cantidadesGraf[] = $tareas_no_finalizadas;
+
+        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal','etiquetasGraf','cantidadesGraf'))->with('proyecto', $proyecto);
     }
 
     /**
