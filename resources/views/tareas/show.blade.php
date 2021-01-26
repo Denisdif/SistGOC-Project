@@ -9,7 +9,7 @@
             <div class="box-body">
 
                 <section class="content-header">
-                    <h1 class="pull-left">Datos de la tarea</h1>
+                    <h1 class="pull-left">Tarea</h1>
                 </section>
                 <br><hr>
                 <div class="row" style="padding-left: 20px">
@@ -17,11 +17,15 @@
                         @include('layouts.datatables_css')
                     @endsection
 
-                    @include('tareas.show_fields')
+                    <div class="col-md-12 mb-12">
 
-                    @section('scripts')
-                        @include('layouts.datatables_js')
-                    @endsection
+                        {{ $tarea->Nombre_tarea }}
+
+                        <br><br>
+                        <td><button class="btn" data-toggle="modal" data-target="#Datos" type="button">Datos</button></td>
+
+                    </div>
+
                 </div>
                 <br>
             </div>
@@ -29,18 +33,18 @@
                 <div class="box-body">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item active">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#entregas" role="tab" aria-controls="entregas" aria-selected="false">Entregas</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#recursos" role="tab" aria-controls="recursos" aria-selected="true">Recursos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="personal" aria-selected="false">Personal</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#entregas" role="tab" aria-controls="entregas" aria-selected="false">Entregas</a>
-                        </li>
                     </ul>
 
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane active" id="recursos" role="tabpanel" aria-labelledby="recursos-tab">
+                        <div class="tab-pane fade" id="recursos" role="tabpanel" aria-labelledby="recursos-tab">
                             <section class="content-header">
                                 <br>
                                 <h1 class="pull-left">Recursos</h1>
@@ -95,7 +99,7 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="tab-pane fade" id="entregas" role="tabpanel" aria-labelledby="entregas-tab">
+                        <div class="tab-pane active" id="entregas" role="tabpanel" aria-labelledby="entregas-tab">
                             <section class="content-header">
                                 <br><h1>
                                     Datos de entrega
@@ -161,8 +165,29 @@
     </div>
 
 
+    {{-- Inicio de modal de "Mostrar datos tarea" --}}
+    <div id="Datos" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: rgb(223, 43, 61)">
+              <h5 class="modal-title"> <b style="color: white"> Datos de tarea </b>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button></h5>
+            </div>
+            <div class="modal-body">
+                <div style="padding-left: 2%; padding-top: 2%">
+                    @include('tareas.show_fields')
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-
+    {{-- Inicio de modal de "Mostrar datos tarea" --}}
     <div id="CrearComentario" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -189,4 +214,9 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('scripts')
+    @include('layouts.datatables_js')
 @endsection

@@ -17,7 +17,7 @@
                     @endsection
 
                     <section class="content-header">
-                        <h1>Proyecto nro {{ $proyecto->id }}: {{ $proyecto->Tipo_proyecto->Nombre }} para {{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }}</h1>
+                        <h1>Proyecto {{ $proyecto->id }}: {{ $proyecto->Tipo_proyecto->Nombre }} para {{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }}</h1>
                     </section>
                     <hr>
 

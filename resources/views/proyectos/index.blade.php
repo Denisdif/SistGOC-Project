@@ -47,10 +47,11 @@
                                <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
                            </div>
                        </div>
-
+                       <button class="btn btn-secundary" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
+                        <button class="btn btn-secundary" type="submit" >PDF</button>
                         <a class="btn btn-danger" href="{{ route('proyectos.create') }}">Nuevo</a>
-                        <button class="btn btn-danger" type="submit" >PDF</button>
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
+
+
 
                     {!! Form::close() !!}
 
