@@ -153,14 +153,15 @@ class Tarea extends Model implements Auditable
         $suma = 0;
         $div = 0;
         foreach ($tareas as $tarea) {
-            if ($tarea->Nombre_tarea==$this->Nombre_tarea) {
-                if ($tarea->Fecha_fin != null) {
-                    $inicio = new Carbon($tarea->Fecha_inicio);
-                    $fin = new Carbon($tarea->Fecha_fin);
-                    $suma += ($inicio->diffInMinutes($fin));
-
-                    $div += 1;
-                  }
+            if (strtolower($tarea->estado_tarea->Nombre_estado_tarea) == strtolower('Aprobada')) {
+                if ($tarea->Nombre_tarea==$this->Nombre_tarea) {
+                    if ($tarea->Fecha_fin != null) {
+                        $inicio = new Carbon($tarea->Fecha_inicio);
+                        $fin = new Carbon($tarea->Fecha_fin);
+                        $suma += ($inicio->diffInMinutes($fin));
+                        $div += 1;
+                    }
+                }
             }
         }
         if ($div != 0) {
@@ -180,14 +181,16 @@ class Tarea extends Model implements Auditable
         $suma = 0;
         $div = 0;
         foreach ($tareas as $tarea) {
-            if ($tarea->Tipo_tarea_id==$this->Tipo_tarea_id) {
-                if ($tarea->Fecha_fin != null) {
-                    $inicio = new Carbon($tarea->Fecha_inicio);
-                    $fin = new Carbon($tarea->Fecha_fin);
-                    $suma += ($inicio->diffInMinutes($fin));
+            if (strtolower($tarea->estado_tarea->Nombre_estado_tarea) == strtolower('Aprobada')) {
+                if ($tarea->Tipo_tarea_id==$this->Tipo_tarea_id) {
+                    if ($tarea->Fecha_fin != null) {
+                        $inicio = new Carbon($tarea->Fecha_inicio);
+                        $fin = new Carbon($tarea->Fecha_fin);
+                        $suma += ($inicio->diffInMinutes($fin));
 
-                    $div += 1;
-                  }
+                        $div += 1;
+                    }
+                }
             }
         }
         if ($div != 0) {

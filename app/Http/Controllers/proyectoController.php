@@ -76,7 +76,7 @@ class ProyectoController extends AppBaseController
                 $proy_finalizados[] = $item;
             }else{
                 $proy_en_desarrollo[] = $item;
-                if ($item->Fecha_fin_Proy > Carbon::now()) {
+                if ($item->Fecha_fin_Proy < Carbon::now()) {
                     $proy_atrasados[] = $item;
                 }
             }

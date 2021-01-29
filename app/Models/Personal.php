@@ -189,7 +189,7 @@ class Personal extends Model implements Auditable
         $listaAsignaciones = $this->asignacion;
         $Tareas = [];
         foreach ($listaAsignaciones as $asignacion) {
-            if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('Asignada') or strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == strtolower('En desarrollo')) {
+            if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) != strtolower('Aprobada')) {
                 if (strtolower($asignacion->Responsabilidad) == strtolower('Responsable')) {
                     $Tareas[] = $asignacion;
                 }
@@ -336,15 +336,11 @@ class Personal extends Model implements Auditable
     public function carga_de_trabajo_horas(){
 
         $listaAsignaciones = $this->asignacion;
-        $tareas = [];
         $horas = 0;
         foreach ($listaAsignaciones as $asignacion) {
             if (strtolower($asignacion->tarea->estado_tarea->Nombre_estado_tarea) != strtolower('Aprobada')) {
-
                 if ($asignacion->Responsabilidad == "Responsable") {
                     $horas += $asignacion->tarea->duracionEstimadaReal();
-                }else{
-                    $horas += 1;
                 }
             }
         }

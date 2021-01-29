@@ -151,13 +151,6 @@ class TareaController extends AppBaseController
         return view('tareas.show', compact('asignaciones','listaPersonal','entregas', 'comentarios'))->with('tarea', $tarea);
     }
 
-    /**
-     * Show the form for editing the specified Tarea.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function edit($id)
     {
         $tarea = $this->tareaRepository->find($id);
@@ -173,14 +166,6 @@ class TareaController extends AppBaseController
         return view('tareas.edit', compact('proyecto'))->with('tarea', $tarea);
     }
 
-    /**
-     * Update the specified Tarea in storage.
-     *
-     * @param  int              $id
-     * @param UpdateTareaRequest $request
-     *
-     * @return Response
-     */
     public function update($id, UpdateTareaRequest $request)
     {
         $tarea = $this->tareaRepository->find($id);
@@ -198,13 +183,6 @@ class TareaController extends AppBaseController
         return redirect(route('proyectos.show', $tarea->Proyecto_id));
     }
 
-    /**
-     * Remove the specified Tarea from storage.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function destroy($id)
     {
 
@@ -277,7 +255,8 @@ class TareaController extends AppBaseController
         return "Se asignaron responables";
     }
 
-    public function obtenerTareas( $tipo){
+    public function obtenerTareas( $tipo)
+    {
 
         $tipo = Tipo_tarea::all()->find($tipo );
 
