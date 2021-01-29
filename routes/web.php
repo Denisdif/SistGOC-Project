@@ -47,8 +47,9 @@ Route::get('proyectos/{proyecto}',              'ProyectoController@show')      
 Route::get('proyectos/{proyecto}/edit',         'ProyectoController@edit')              ->name('proyectos.edit');
 Route::put('proyectos/{id}',                    'ProyectoController@update')            ->name('proyectos.update');
 Route::delete('proyectos/{id}',                 'ProyectoController@destroy')           ->name('proyectos.destroy');
-Route::get('proyectos/{proyecto}/informe',      'ProyectoController@descargarInforme')  ->name('proyectos.descargarInforme');
 
+Route::get('estadisticasProyectos',             'ProyectoController@estadisticas')      ->name('proyectos.estadisticas');
+Route::get('proyectos/{proyecto}/informe',      'ProyectoController@descargarInforme')  ->name('proyectos.descargarInforme');
 Route::get('proyectos/{proyecto}/autoAsignar',  'ProyectoController@autoAsignar')       ->name('proyectos.autoAsignar');
 Route::get('proyectos/{proyecto}/finalizar',    'ProyectoController@finalizar')         ->name('proyectos.finalizar');
 

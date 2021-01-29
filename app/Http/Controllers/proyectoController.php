@@ -391,4 +391,62 @@ class ProyectoController extends AppBaseController
         }
         return "No se pudo finalizar el proyecto";
     }
+
+    public function estadisticas(Request $request)
+    {
+        $cant_meses = 6;
+        $actual = Carbon::now();
+        $fecha_act = Carbon::now();
+
+        if ($request->Meses) {
+            $cant_meses = $request->Meses;
+        }
+
+        if ($request->Fecha) {
+            $fecha_act = new Carbon($request->Fecha);
+            $actual = new Carbon($request->Fecha);
+        }
+
+
+        //obtener array con los meses a mostrar en la grafica
+            for ($i=0; $i < $cant_meses; $i++) {
+                $mes[] = $fecha_act->formatLocalized('%B');
+                $fechas[] = new Carbon($fecha_act); //un array con fechas para realizar la consulta en la base de datos
+                $fecha_act = $fecha_act->subMonth(1);
+            }
+        //
+
+        //invertir orden de meses y fechas
+            $mes = array_reverse($mes);
+            $fechas = array_reverse($fechas);
+        //
+
+        //obtener array con cantidad de proyectos por mes
+            foreach ($fechas as $item) {
+                $desde = new Carbon($item->startOfMonth());
+                $hasta = new Carbon($item->endOfMonth());
+                $proyectos_x_mes[] = sizeof(Proyecto::all()->whereBetween('Fecha_fin_Proy', [$desde,$hasta]));
+            }
+        //
+
+        $hasta = new Carbon($actual);
+        $desde = new Carbon($actual);
+        $desde->subMonth($cant_meses);
+        $proyectos = Proyecto::all()->whereBetween('Fecha_fin_Proy', [$desde,$hasta]);
+
+        foreach ($proyectos as $item) {
+            $tipos_proyectos[] = $item->tipo_proyecto->Nombre;
+        }
+
+        $datos_tipos = (array_count_values($tipos_proyectos));
+
+        foreach ($datos_tipos as $item) {
+            $etiquetas_tipos[] = key($datos_tipos);             //Obtener la posicion del puntero del array
+            $cantidad_tipos[] = $item;                          //Obtener datos del array
+            next($datos_tipos);                                 //Avanzar el puntero en el array
+        }
+
+        return view('proyectos.estadistica', compact(   'proyectos_x_mes','mes','cant_meses', 'fecha_act','actual',
+                                                        'etiquetas_tipos','cantidad_tipos'));
+    }
 }

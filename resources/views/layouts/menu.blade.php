@@ -21,6 +21,10 @@
     @if ((Auth :: user()->Rol_id == 1))
 
         <li >
+            <a href="{{ route('proyectos.estadisticas')}}"><i class="icon-bar-chart"></i><span> Estadisticas</span></a>
+        </li>
+
+        <li >
             <a href="{{ route('auditoria.index') }}"><i class="icon-eye-open"></i><span> Auditoria</span></a>
         </li>
 
@@ -55,6 +59,7 @@
           </div>
         </div>
     </li>
+
 @endif
 
 @if ((Auth :: user()->Rol_id == 4))
