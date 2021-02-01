@@ -19,11 +19,6 @@ class AsignacionTarea extends Mailable
         $this->asignacion = $asignacion::find($asignacion->id);
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
         return $this->view('mails.asignacionTarea');

@@ -1,0 +1,34 @@
+----------------------------------------------------------------------------
+**Estadisticas
+
+////////////////	Cantidad de proyectos realizados	//////////////////////
+////////////////	Cantidad de tareas desarrolladas	//////////////////////
+
+----------------------------------------------------------------------------
+**Imagenes de proyectos, usuarios, tareas
+
+Agregar targetas con imagenes para crear una interface amigable
+
+----------------------------------------------------------------------------
+**Correos
+
+////////	Dar formato a los correos de avisos de asignacion de tareas	////////
+Dar formato a los correos de avisos sobre finalizacion de proyecto
+Calcular la fecha estimada de finalizacion de proyectos
+
+----------------------------------------------------------------------------
+**Detalles
+
+Filtros de PDFs
+Mensajes de asignación de tareas
+Modals
+Visualizar tareas realizadas (vista de desarrollador)
+Botones
+
+----------------------------------------------------------------------------
+**Vistas editar
+
+Usuario
+Personal
+Proyecto
+Comitente

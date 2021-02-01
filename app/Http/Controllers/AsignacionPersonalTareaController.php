@@ -112,13 +112,6 @@ class AsignacionPersonalTareaController extends AppBaseController
 
     }
 
-    /**
-     * Display the specified AsignacionPersonalTarea.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function show($id)
     {
         $asignacionPersonalTarea = $this->asignacionPersonalTareaRepository->find($id);
@@ -132,13 +125,6 @@ class AsignacionPersonalTareaController extends AppBaseController
         return view('asignacion_personal_tareas.show')->with('asignacionPersonalTarea', $asignacionPersonalTarea);
     }
 
-    /**
-     * Show the form for editing the specified AsignacionPersonalTarea.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function edit($id)
     {
         $asignacionPersonalTarea = $this->asignacionPersonalTareaRepository->find($id);
@@ -152,14 +138,6 @@ class AsignacionPersonalTareaController extends AppBaseController
         return view('asignacion_personal_tareas.edit')->with('asignacionPersonalTarea', $asignacionPersonalTarea);
     }
 
-    /**
-     * Update the specified AsignacionPersonalTarea in storage.
-     *
-     * @param  int              $id
-     * @param UpdateAsignacionPersonalTareaRequest $request
-     *
-     * @return Response
-     */
     public function update($id, UpdateAsignacionPersonalTareaRequest $request)
     {
         $asignacionPersonalTarea = $this->asignacionPersonalTareaRepository->find($id);
@@ -177,13 +155,6 @@ class AsignacionPersonalTareaController extends AppBaseController
         return redirect(route('asignacionPersonalTareas.index'));
     }
 
-    /**
-     * Remove the specified AsignacionPersonalTarea from storage.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function destroy($id)
     {
 

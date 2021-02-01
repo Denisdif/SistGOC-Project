@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Auth;
 use Response;
 use Exception;
 use App\Http\Requests;
-use App\Mail\EmergencyCallReceived;
+use App\Mail\Aviso;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
@@ -280,13 +280,6 @@ class ProyectoController extends AppBaseController
         return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal','etiquetasGraf','cantidadesGraf'))->with('proyecto', $proyecto);
     }
 
-    /**
-     * Show the form for editing the specified Proyecto.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function edit($id)
     {
         $proyecto = $this->proyectoRepository->find($id);
@@ -300,14 +293,6 @@ class ProyectoController extends AppBaseController
         return view('proyectos.edit')->with('proyecto', $proyecto);
     }
 
-    /**
-     * Update the specified Proyecto in storage.
-     *
-     * @param  int              $id
-     * @param UpdateProyectoRequest $request
-     *
-     * @return Response
-     */
     public function update($id, UpdateProyectoRequest $request)
     {
         $proyecto = $this->proyectoRepository->find($id);
@@ -325,18 +310,9 @@ class ProyectoController extends AppBaseController
         return redirect(route('proyectos.index'));
     }
 
-    /**
-     * Remove the specified Proyecto from storage.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function destroy($id)
     {
         $proyecto = $this->proyectoRepository->find($id);
-
-        Mail::to("stalkerdif@gmail.com")->send(new EmergencyCallReceived($proyecto));
 
         if (empty($proyecto)) {
             Flash::error('Proyecto not found');
@@ -383,10 +359,11 @@ class ProyectoController extends AppBaseController
     {
         $proyecto = Proyecto::all()->find($id);
         if ($proyecto->Estado_proyecto == "En desarrollo") {
-            $proyecto->Estado_proyecto = "Finalizado";
-            $proyecto->Fecha_fin_Proy = Carbon::now();
-            $proyecto->save();
+            //$proyecto->Estado_proyecto = "Finalizado";
+            //$proyecto->Fecha_fin_Proy = Carbon::now();
+            //$proyecto->save();
             Flash::success('Se finalizó con el proyecto');
+            Mail::to("sistgoc@gmail.com")->send(new Aviso($proyecto));
             return redirect()->back();
         }
         return "No se pudo finalizar el proyecto";
