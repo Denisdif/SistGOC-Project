@@ -18,28 +18,38 @@
                 </section>
                 <br><hr>
 
-                <section class="content-header" >
+                <section class="content-header">
                     Proyectos en los últimos {{ $cant_meses }} meses desde el {{ $actual->formatLocalized(' %d de %B de %Y') }}
+                    <br><br><br>
                 </section>
 
-                <div class=" content col-sm-12">
-                    <div class="box box-danger" >
-                        <div class="box-body">
-                            <canvas id="proyectos_mes" width="40" height="15"></canvas>
+                <div class="row">
+                    <div class=" col-sm-10 col-sm-offset-1" >
+                        <div class="box box-danger" >
+                            <div class="box-body">
+                                <canvas id="proyectos_mes" width="40" height="15"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <hr>
 
                 <section class="content-header" >
                     Tipos de proyectos de los últimos {{ $cant_meses }} meses desde el {{ $actual->formatLocalized(' %d de %B de %Y') }}
+                    <br><br><br>
                 </section>
 
-                <div class=" content col-sm-12">
-                    <div class="box box-danger" >
-                        <div class="box-body">
-                    <canvas id="tipos_proyectos" width="40" height="15"></canvas>
+                <div class="row">
+                    <div class=" col-sm-10 col-sm-offset-1" >
+                        <div class="box box-danger" >
+                            <div class="box-body">
+                                <canvas id="tipos_proyectos" width="40" height="15"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

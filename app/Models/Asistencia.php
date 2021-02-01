@@ -58,4 +58,5 @@ class Asistencia extends Model
         return $this->belongsTo(User::class, 'User_id');
     }
 
+
 }

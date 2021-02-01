@@ -152,13 +152,15 @@ class Proyecto extends Model implements Auditable
 
     //-------------------------- Métodos --------------------------
 
-    public function duracionEstimadaReal()
-    {
-        $inicio = new Carbon($this->Fecha_inicio_Proy);
-        $fin = new Carbon($this->Fecha_fin_Proy);
-        $suma = ($inicio->diffInMinutes($fin));
-        $suma = $suma/60;
-        return $suma." horas";
+    public function duracionEstimadaRealProyecto(){
+        $tareas = $this->tarea;
+        $horas = 0;
+        foreach ($tareas as $item) {
+            if ($item->estado_tarea->Nombre_estado_tarea != "Aprobada") {
+                $horas = $horas + $item->duracionEstimadaReal();
+            }
+        }
+        return $horas;
     }
 
     public function get_fecha_fin(){

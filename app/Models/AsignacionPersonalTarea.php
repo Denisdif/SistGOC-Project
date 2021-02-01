@@ -8,6 +8,11 @@ use App\Models\Personal;
 use App\Models\Tarea;
 use App\Models\Proyecto;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Support\Carbon;
+
+Carbon::setUTF8(true);
+setlocale(LC_TIME, 'es_ES');
+Carbon::setLocale('es');
 
 
 /**
@@ -62,5 +67,11 @@ class AsignacionPersonalTarea extends Model implements Auditable
     public function Personal()
     {
         return $this->belongsTo( Personal::class ,'Personal_id');
+    }
+
+    public function get_Fecha_Creacion(){
+        $date = new Carbon($this->created_at);
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
     }
 }

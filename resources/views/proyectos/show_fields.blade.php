@@ -22,8 +22,8 @@
     {!! Form::label('Comitente_id', 'Comitente:') !!}
     {{ $proyecto->comitente->ApellidoComitente }} {{ $proyecto->comitente->NombreComitente }} <br>
 
-    {{-- {!! Form::label('Estimacion', 'Cantidad de horas de desarrollo estimadas:') !!}
-    {{ $proyecto->duracionEstimadaReal()}} <br>  --}}
+    {!! Form::label('Estimacion', 'Cantidad de horas de desarrollo estimadas:') !!}
+    {{ $proyecto->duracionEstimadaRealProyecto() }} horas <br>
 
     {!! Form::label('Dirección', 'Dirección:') !!}
     {{ $proyecto->direccion->Calle}} {{ $proyecto->direccion->Altura}}, {{ $proyecto->direccion->localidad->localidad}}, {{ $proyecto->direccion->provincia->provincia}}, {{ $proyecto->direccion->pais->pais}} <br>
