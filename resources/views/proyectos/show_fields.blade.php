@@ -35,5 +35,5 @@
 
 <div class="col-sm-6 text-center">
     <canvas id="estado_proyecto" width="40" height="15"></canvas><br>
-    <b>Completado: {{ $porcentaje_finalizacion }}%</b>
+    <b>Completado: {{ round ( $porcentaje_finalizacion,2) }}%</b>
 </div>
