@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateTipo_proyectoRequest;
 use App\Repositories\Tipo_proyectoRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Tipo_proyecto;
 use Response;
 
 class Tipo_proyectoController extends AppBaseController
@@ -21,22 +22,13 @@ class Tipo_proyectoController extends AppBaseController
         $this->tipoProyectoRepository = $tipoProyectoRepo;
     }
 
-    /**
-     * Display a listing of the Tipo_proyecto.
-     *
-     * @param Tipo_proyectoDataTable $tipoProyectoDataTable
-     * @return Response
-     */
+
     public function index(Tipo_proyectoDataTable $tipoProyectoDataTable)
     {
-        return $tipoProyectoDataTable->render('tipo_proyectos.index');
+        $tipos_proyectos = Tipo_proyecto::all();
+        return View('tipo_proyectos.index', compact('tipos_proyectos'));
     }
 
-    /**
-     * Show the form for creating a new Tipo_proyecto.
-     *
-     * @return Response
-     */
     public function create()
     {
         return view('tipo_proyectos.create');

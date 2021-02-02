@@ -22,15 +22,10 @@ class Tipo_tareaController extends AppBaseController
         $this->tipoTareaRepository = $tipoTareaRepo;
     }
 
-    /**
-     * Display a listing of the Tipo_tarea.
-     *
-     * @param Tipo_tareaDataTable $tipoTareaDataTable
-     * @return Response
-     */
     public function index(Tipo_tareaDataTable $tipoTareaDataTable)
     {
-        return $tipoTareaDataTable->render('tipo_tareas.index');
+        $tipos_tareas = Tipo_tarea::all();
+        return view('tipo_tareas.index', compact('tipos_tareas'));
     }
 
     /**

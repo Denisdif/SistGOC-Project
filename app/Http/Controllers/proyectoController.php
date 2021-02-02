@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\ProyectoDataTable;
 use App\Models\Tarea;
 use App\Models\Proyecto;
 use App\Models\Direccion;
 use App\Models\Personal;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Comitente;
-use App\Models\ambiente;
-use App\Models\Estado_tarea;
-use App\Models\Tipo_tarea;
-use App\Models\Tipo_proyecto;
 use App\Http\Requests\CreateProyectoRequest;
 use App\Http\Requests\UpdateProyectoRequest;
 use Illuminate\Http\Request;
@@ -40,15 +35,8 @@ class ProyectoController extends AppBaseController
         $this->proyectoRepository = $proyectoRepo;
     }
 
-    /**
-     * Display a listing of the Proyecto.
-     *
-     * @param ProyectoDataTable $proyectoDataTable
-     * @return Response
-     */
     public function index(Request $request)
     {
-
         if (Auth::user()->Rol_id == 2) {
             $proyectos = Proyecto::all()->where('Director_id', '=', Auth::user()->Personal_id);
         }
@@ -85,24 +73,12 @@ class ProyectoController extends AppBaseController
         return View('proyectos.index', compact('proyectos','proy_atrasados','proy_en_desarrollo','proy_finalizados','codigo','tipo','comitente','provincia','localidad','calle'));
     }
 
-    /**
-     * Show the form for creating a new Proyecto.
-     *
-     * @return Response
-     */
     public function create()
     {
         $paises = Pais::all();
         return view('proyectos.create', compact('paises'));
     }
 
-    /**
-     * Store a newly created Proyecto in storage.
-     *
-     * @param CreateProyectoRequest $request
-     *
-     * @return Response
-     */
     public function store(CreateProyectoRequest $request)
     {
 
@@ -208,13 +184,6 @@ class ProyectoController extends AppBaseController
 
     }
 
-    /**
-     * Display the specified Proyecto.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function show($id)
     {
         $proyecto = Proyecto::all()->find($id);
@@ -291,7 +260,9 @@ class ProyectoController extends AppBaseController
             return redirect(route('proyectos.index'));
         }
 
-        return view('proyectos.edit')->with('proyecto', $proyecto);
+        $paises = Pais::all();
+
+        return view('proyectos.edit', compact('paises'))->with('proyecto', $proyecto);
     }
 
     public function update($id, UpdateProyectoRequest $request)

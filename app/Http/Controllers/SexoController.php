@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateSexoRequest;
 use App\Repositories\SexoRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Sexo;
 use Response;
 
 class SexoController extends AppBaseController
@@ -29,7 +30,8 @@ class SexoController extends AppBaseController
      */
     public function index(SexoDataTable $sexoDataTable)
     {
-        return $sexoDataTable->render('sexos.index');
+        $sexos = Sexo::all();
+        return View('sexos.index', compact('sexos'));
     }
 
     /**

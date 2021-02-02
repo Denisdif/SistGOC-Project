@@ -23,34 +23,17 @@ class ComitenteController extends AppBaseController
         $this->comitenteRepository = $comitenteRepo;
     }
 
-    /**
-     * Display a listing of the Comitente.
-     *
-     * @param ComitenteDataTable $comitenteDataTable
-     * @return Response
-     */
     public function index(ComitenteDataTable $comitenteDataTable)
     {
-        return $comitenteDataTable->render('comitentes.index');
+        $comitentes = Comitente::all();
+        return View('comitentes.index', compact('comitentes'));
     }
 
-    /**
-     * Show the form for creating a new Comitente.
-     *
-     * @return Response
-     */
     public function create()
     {
         return view('comitentes.create');
     }
 
-    /**
-     * Store a newly created Comitente in storage.
-     *
-     * @param CreateComitenteRequest $request
-     *
-     * @return Response
-     */
     public function store(CreateComitenteRequest $request)
     {
         $comitente = new Comitente;
@@ -67,13 +50,6 @@ class ComitenteController extends AppBaseController
         return redirect(route('comitentes.index'));
     }
 
-    /**
-     * Display the specified Comitente.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function show($id)
     {
         $comitente = $this->comitenteRepository->find($id);
@@ -87,13 +63,6 @@ class ComitenteController extends AppBaseController
         return view('comitentes.show')->with('comitente', $comitente);
     }
 
-    /**
-     * Show the form for editing the specified Comitente.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function edit($id)
     {
         $comitente = $this->comitenteRepository->find($id);
@@ -107,14 +76,6 @@ class ComitenteController extends AppBaseController
         return view('comitentes.edit')->with('comitente', $comitente);
     }
 
-    /**
-     * Update the specified Comitente in storage.
-     *
-     * @param  int              $id
-     * @param UpdateComitenteRequest $request
-     *
-     * @return Response
-     */
     public function update($id, UpdateComitenteRequest $request)
     {
         $comitente = $this->comitenteRepository->find($id);
@@ -132,13 +93,6 @@ class ComitenteController extends AppBaseController
         return redirect(route('comitentes.index'));
     }
 
-    /**
-     * Remove the specified Comitente from storage.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function destroy($id)
     {
         $comitente = $this->comitenteRepository->find($id);

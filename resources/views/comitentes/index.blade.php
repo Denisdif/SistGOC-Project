@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
+
 @section('content')
-    <section class="content-header">
-        <h1 class="pull-left" style="color: aliceblue">Comitentes</h1>
-        <h1 class="pull-right">
-           <a class="btn btn-danger pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('comitentes.create') }}">Add New</a>
-        </h1>
-    </section>
+
     <div class="content">
         <div class="clearfix"></div>
 
@@ -15,7 +14,44 @@
         <div class="clearfix"></div>
         <div class="box box-danger">
             <div class="box-body">
-                    @include('comitentes.table')
+                <section class="content-header">
+                    <h1>Comitentes</h1>
+                </section>
+                <hr>
+                <div class="content">
+                    <table class="table datatables table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre completo</th>
+                                <th>Cuit</th>
+                                <th>Teléfono</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($comitentes as $item)
+                            <tr>
+                                <td>{{ $item->NombreComitente }} {{ $item->ApellidoComitente }}</td>
+                                <td>{{ $item->Cuit }}</td>
+                                <td>{{ $item->Telefono }}</td>
+                                <td>{!! Form::open(['route' => ['comitentes.destroy', $item->id], 'method' => 'delete']) !!}
+                                    <div class='btn-group'>
+                                        <a href="{{ route('comitentes.show', $item->id) }}" class='btn btn-default btn-xs'>
+                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                        </a>
+                                        @if (Auth :: user()->Rol_id == 1)
+                                            <a href="{{ route('comitentes.edit', $item->id) }}" class='btn btn-default btn-xs'>
+                                                <i class="glyphicon glyphicon-edit"></i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                    {!! Form::close() !!}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="text-center">
@@ -24,3 +60,6 @@
     </div>
 @endsection
 
+@section('scripts')
+    @include('layouts.datatables_js')
+@endsection

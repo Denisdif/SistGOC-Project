@@ -2,12 +2,6 @@
 
 @section('content')
 
-
-    <section class="content-header">
-        <h1 style="color: aliceblue">
-            Proyecto
-        </h1>
-    </section>
     <div class="content">
         @include('flash::message')
         @include('adminlte-templates::common.errors')
