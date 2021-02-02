@@ -49,7 +49,7 @@
     </script>
 @endpush
 
-<!-- Prioridad Field -->
+<!-- Prioridad Field
 <div class="form-group col-sm-6">
     {!! Form::label('Prioridad', 'Prioridad:') !!}
     <select name="prioridad" class="form-control" required>
@@ -57,9 +57,9 @@
         <option value="Media">Media</option>
         <option value="Alta">Alta</option>
       </select>
-</div>
+</div> -->
 
-<!-- Prioridad Field -->
+<!-- Predecesora Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('Predecesora', 'Predecesoras:') !!}
     <select id="SelectPredecesoras" class="form-control" name="Predecesoras[]"  multiple="multiple">

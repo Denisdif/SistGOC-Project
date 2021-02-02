@@ -78,7 +78,7 @@ class TareaController extends AppBaseController
 
         $tarea->Tipo_tarea_id = $request->Tipo_tarea_id;
         $tarea->Fecha_limite = $request->Fecha_limite;
-        $tarea->Prioridad = $request->prioridad;
+        $tarea->Prioridad = "Normal";
         $tarea->Correcciones = 'false';
         $tarea->Proyecto_id = $proyecto->id;
         $tarea->Estado_tarea_id = 1; // 1 id estado tarea = creada

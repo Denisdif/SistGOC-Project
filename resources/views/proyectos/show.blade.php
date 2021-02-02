@@ -70,7 +70,7 @@
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
-                                            <th>Prioridad</th>
+                                            {{--<th>Prioridad</th>--}}
                                             <th>Estado</th>
                                             <th>Fecha límite de finalización</th>
                                             <th>Acciones</th>
@@ -80,7 +80,7 @@
                                         @foreach ($tareasDelProyecto as $tarea)
                                         <tr>
                                             <td>{{ $tarea->Nombre_tarea }}</td>
-                                            <td>{{ $tarea->prioridad }}</td>
+                                             {{--<td>{{ $tarea->prioridad }}</td>--}}
                                             <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
                                             <td>{{ $tarea->getFechaLimite() }}</td>
                                             <td>{!! Form::open(['route' => ['tareas.destroy', $tarea->id], 'method' => 'delete']) !!}
