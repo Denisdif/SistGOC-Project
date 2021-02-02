@@ -351,8 +351,14 @@ class ProyectoController extends AppBaseController
     public function autoAsignar($id)
     {
         $proyecto = Proyecto::all()->find($id);
-        $proyecto->asignacion_inteligente();
-        Flash::success('Se asignaron los responsables mejor capacitados a las tareas del proyecto');
+        $mensajes = $proyecto->asignacion_inteligente();
+        $aviso = "";
+        foreach ($mensajes as $item) {
+            if ($item) {
+                $aviso = $aviso." *".$item."<br>";
+            }
+        }
+        Flash::success('Se asignaron los responsables mejor capacitados a las tareas del proyecto:'.'<br><br>'.$aviso);
         return Redirect::back();
     }
 

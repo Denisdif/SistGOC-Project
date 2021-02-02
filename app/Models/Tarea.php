@@ -332,11 +332,11 @@ class Tarea extends Model implements Auditable
     public function asignacion_inteligente(){
 
         $responsables = [];
+        $mensaje = "";
 
         if (sizeof($this->asignacion) == 0) {
 
             $mejorPersonal = $this->menor_carga_de_trabajo_horas($responsables);
-
             $asignacionPersonalTarea = new AsignacionPersonalTarea;
             $asignacionPersonalTarea->Personal_id = $mejorPersonal;
             $asignacionPersonalTarea->Responsabilidad = "Responsable";
@@ -367,8 +367,12 @@ class Tarea extends Model implements Auditable
 
             $this->Estado_tarea_id = 2;
             $this->save();
+
+            $mensaje = "Se asignó a ".$asignacionPersonalTarea->Personal->NombrePersonal." ".
+                        $asignacionPersonalTarea->Personal->ApellidoPersonal." como ".$asignacionPersonalTarea->Responsabilidad.
+                        " de la tarea ".$asignacionPersonalTarea->tarea->Nombre_tarea;
         }
-        return true;
+        return $mensaje;
     }
 
     //Retorna true si la tarea ya tiene un responsable asignado

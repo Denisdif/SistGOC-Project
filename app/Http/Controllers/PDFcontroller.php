@@ -14,11 +14,7 @@ use PDF;
 
 class PDFcontroller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function proyectosPDF(Request $request)
     {
         $proyectos = Proyecto::orderBy('id', 'DESC')

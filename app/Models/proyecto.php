@@ -184,11 +184,12 @@ class Proyecto extends Model implements Auditable
     public function asignacion_inteligente(){
 
         $tareas = Tarea::all()->where('Proyecto_id','=', $this->id);
+        $mensajes = [];
         foreach ($tareas as $item) {
-            $item->asignacion_inteligente();
+            $mensajes[] = $item->asignacion_inteligente();
         }
 
-        return "Funciono";
+        return $mensajes;
     }
 
     public function tareas_finalizadas(){
