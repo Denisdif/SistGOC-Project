@@ -33,6 +33,7 @@
 
 </div>
 
-<div class="col-sm-6">
-    <canvas id="estado_proyecto" width="40" height="15"></canvas>
+<div class="col-sm-6 text-center">
+    <canvas id="estado_proyecto" width="40" height="15"></canvas><br>
+    <b>Completado: {{ $porcentaje_finalizacion }}%</b>
 </div>

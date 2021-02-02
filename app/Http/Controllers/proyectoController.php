@@ -272,12 +272,13 @@ class ProyectoController extends AppBaseController
             }
         }
 
+        $porcentaje_finalizacion = 100*(($tareas_finalizadas)/sizeof($tareasDelProyecto));
         $etiquetasGraf[] = "Tareas finalizadas";
         $etiquetasGraf[] = "Tareas por finalizar";
         $cantidadesGraf[] = $tareas_finalizadas;
         $cantidadesGraf[] = $tareas_no_finalizadas;
 
-        return view('proyectos.show', compact('ambientesDelProyecto','tareasDelProyecto','Lista_personal','etiquetasGraf','cantidadesGraf'))->with('proyecto', $proyecto);
+        return view('proyectos.show', compact('porcentaje_finalizacion','ambientesDelProyecto','tareasDelProyecto','Lista_personal','etiquetasGraf','cantidadesGraf'))->with('proyecto', $proyecto);
     }
 
     public function edit($id)
@@ -359,9 +360,9 @@ class ProyectoController extends AppBaseController
     {
         $proyecto = Proyecto::all()->find($id);
         if ($proyecto->Estado_proyecto == "En desarrollo") {
-            //$proyecto->Estado_proyecto = "Finalizado";
-            //$proyecto->Fecha_fin_Proy = Carbon::now();
-            //$proyecto->save();
+            $proyecto->Estado_proyecto = "Finalizado";
+            $proyecto->Fecha_fin_Proy = Carbon::now();
+            $proyecto->save();
             Flash::success('Se finalizó con el proyecto');
             Mail::to("sistgoc@gmail.com")->send(new Aviso($proyecto));
             return redirect()->back();
