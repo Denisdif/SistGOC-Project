@@ -12,8 +12,6 @@
         @include('flash::message')
         <div class="box box-danger">
              <div class="box-body">
-
-
                 <section class="content-header">
                     <h1>Datos personales</h1>
                 </section>
@@ -160,7 +158,7 @@
                             </div>
                             <div class="tab-pane fade content" id="Asistencias" role="tabpanel" aria-labelledby="Asistencias-tab">
                                 <br>
-                                {{-- Inicio de DataTable de ambientes del proyecto --}}
+
                                 <table class="table datatables table-striped table-bordered">
                                     <thead>
                                         <tr>
@@ -187,26 +185,27 @@
     </div>
 
     {{-- Inicio de modal de "Mostrar datos personales" --}}
-    <div id="Datos" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(223, 43, 61)">
-              <h5 class="modal-title"> <b style="color: white"> Datos personales </b>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button></h5>
-            </div>
-            <div class="modal-body">
-                <div style="padding-left: 2%; padding-top: 2%">
-                    @include('personals.show_fields')
+        <div id="Datos" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: rgb(223, 43, 61)">
+                    <h5 class="modal-title"> <b style="color: white"> Datos personales </b>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button></h5>
+                </div>
+                <div class="modal-body">
+                    <div style="padding-left: 2%; padding-top: 2%">
+                        @include('personals.show_fields')
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
             </div>
-          </div>
         </div>
-      </div>
+    {{-- Fin de modal de "Mostrar datos personales" --}}
 
     @section('scripts')
         @include('layouts.datatables_js')

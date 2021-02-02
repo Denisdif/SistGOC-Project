@@ -58,34 +58,34 @@
 
     <div id="Filtrar" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Filtrar
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button></h5>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'proyectos.estadisticas', 'method' => 'GET', 'form-inline pull-right']) !!}
-                        <div class="form-group col-md-6">
-                            <input type="date" name="Fecha" value="{{ $fecha_act }}" class="form-control" placeholder="Fecha">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <input type="number" name="Meses" value="{{ $cant_meses }}" class="form-control" placeholder="Meses">
-                        </div>
-
-                        <div class="form-group col-md-12 ">
-                            <button type="submit" class="btn btn-danger pull-right"> Filtrar</button>
-                        </div>
-                    {!! Form::close() !!}
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: rgb(223, 43, 61)">
+                    <h5 class="modal-title"> <b style="color: white"> Modificar filtros </b>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        {!! Form::open(['route' => 'proyectos.estadisticas', 'method' => 'GET', 'form-inline pull-right']) !!}
+                            <div class="form-group col-md-6">
+                                <input type="date" name="Fecha" value="{{ $fecha_act }}" class="form-control" placeholder="Fecha">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="number" name="Meses" value="{{ $cant_meses }}" class="form-control" placeholder="Meses">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">
+                            Filtrar
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
-
-          </div>
         </div>
-      </div>
+    </div>
 
 
 @endsection
@@ -131,85 +131,85 @@
         }
     });
 
-</script>
+    </script>
 
-<script>
-        var etiquetas=[];
-        var valor=[];
-        $(document).ready(function() {
+    <script>
+            var etiquetas=[];
+            var valor=[];
+            $(document).ready(function() {
 
-        var etiquetas = <?php echo json_encode($etiquetas_tipos) ?> ;
-        var valor = <?php echo json_encode($cantidad_tipos) ?> ;
+            var etiquetas = <?php echo json_encode($etiquetas_tipos) ?> ;
+            var valor = <?php echo json_encode($cantidad_tipos) ?> ;
 
-        generarGrafica();
-        function generarGrafica(){
-            var ctx = document.getElementById('tipos_proyectos').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: etiquetas,
-                datasets: [{
-                    label: 'Cantidad de proyectos del tipo',
-                    data: valor,
-                    backgroundColor: [
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                        'rgba(223, 43, 61, 0.25)',
-                    ],
-                    borderColor: [
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                        'rgba(223, 43, 61, 1)',
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            suggestedMin: 0
-                        }
+            generarGrafica();
+            function generarGrafica(){
+                var ctx = document.getElementById('tipos_proyectos').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: etiquetas,
+                    datasets: [{
+                        label: 'Cantidad de proyectos del tipo',
+                        data: valor,
+                        backgroundColor: [
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                            'rgba(223, 43, 61, 0.25)',
+                        ],
+                        borderColor: [
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                            'rgba(223, 43, 61, 1)',
+                        ],
+                        borderWidth: 2
                     }]
-                }
-            },
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                suggestedMin: 0
+                            }
+                        }]
+                    }
+                },
+            });
+            }
         });
-        }
-    });
 
-</script>
+    </script>
 @endsection
 
 

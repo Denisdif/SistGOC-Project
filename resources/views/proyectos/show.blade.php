@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    {{--  <section class="content-header">
-        <h1 style="color: aliceblue">
-            Proyecto
-        </h1>
-    </section> --}}
 
     <div class="content">
         @include('flash::message')
@@ -26,19 +21,13 @@
                         <a class="btn btn-danger"  href="/proyectos/{{$proyecto->id}}/informe">Informe Completo</a>
                         <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/autoAsignar">Asignación inteligente</a>
                     </div>
-
                 </div>
-
-        {{-- Fin de DataTable de Personal del proyecto --}}
             </div>
             <br>
             <div>
                 <div class="content box box-danger">
                     <div class="box-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            {{--  <li class="nav-item active">
-                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="true">Datos</a>
-                            </li> --}}
                             <li class="nav-item active">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tareas" role="tab" aria-controls="tareas" aria-selected="false">Tareas</a>
                             </li>
@@ -53,19 +42,7 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            {{--   <div class="tab-pane active" id="datos" role="tabpanel" aria-labelledby="datos-tab">
-                                <br>
-                                @include('proyectos.show_fields')
-                                <div class="col-md-12 mb-12">
-                                    <a class="btn btn-danger"  href="/proyectos/{{$proyecto->id}}/informe">Informe Completo</a>
-                                    <a class="btn btn-danger" href="/proyectos/{{$proyecto->id}}/autoAsignar">Asignación inteligente</a>
-                                </div>
-                            </div> --}}
                             <div class="tab-pane fade" id="personal" role="tabpanel" aria-labelledby="personal-tab">
-
-                                {{-- Fin de DataTable de tareas del proyecto --}}
-
-                                {{-- Inicio de DataTable de Personal del proyecto --}}
                                 <br>
                                 <table id="" class="table datatables table-striped table-bordered">
                                     <thead>
@@ -297,63 +274,53 @@
     </div>
 </div>
 
-        {{-- Modals de tareas de cada empleado --}}
+{{-- Modals de tareas de cada empleado --}}
 
     @foreach ($Lista_personal as $Personal)
     <div id="PruebaModal{{$Personal->id}}" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body" style="background-color: rgb(250, 250, 250)">
-                <section class="content-header">
-                    <h3 style= "color: rgb(0, 0, 0)">Lista de tareas
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button></h3>
-                </section>
-                <div class="content" style="background-color: rgb(245, 245, 245)">
-                    <div class="clearfix"></div>
-
-                    @include('flash::message')
-
-                    <div class="clearfix"></div>
-                    <div class="box box-danger">
-                        <div class="box-body">
-                            <table  id="Personal" class="datatables table  table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Responsabilidad</th>
-                                        <th>Proyecto</th>
-                                        {{--  <th>Acciones</th>  --}}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (($Personal->tareasDesarrolladasProyecto($proyecto->id)) as $asignacion)
-                                            <tr>
-                                            <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
-                                            <td>{{ $asignacion->Responsabilidad }}</td>
-                                            <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
-                                            {{-- <td>
-                                                <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-eye-open"></i>
-                                                </a>
-                                            </td> --}}
-                                            </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: rgb(223, 43, 61)">
+                    <h5 class="modal-title"> <b style="color: white"> Datos personales </b>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button></h5>
                 </div>
-
-
+                <div class="modal-body">
+                    <table  id="Personal" class="datatables table  table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Rol</th>
+                                <th>Proyecto</th>
+                                {{--  <th>Acciones</th>  --}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (($Personal->tareasDesarrolladasProyecto($proyecto->id)) as $asignacion)
+                                    <tr>
+                                    <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
+                                    <td>{{ $asignacion->Responsabilidad }}</td>
+                                    <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                    {{-- <td>
+                                        <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
+                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                        </a>
+                                    </td> --}}
+                                    </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
             </div>
-
-        </div>
         </div>
     </div>
-
     @endforeach
+
+{{-- Fin Modals de tareas de cada empleado --}}
 
 
     @section('scripts')

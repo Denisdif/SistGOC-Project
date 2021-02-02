@@ -21,8 +21,3 @@
         @endforeach
     </select>
 </div>
-
-<div class="form-group col-sm-12">
-    {!! Form::submit('Asignar', ['class' => 'btn btn-danger']) !!}
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-</div>

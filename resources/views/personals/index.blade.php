@@ -1,65 +1,54 @@
 @extends('layouts.app')
 
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
+
 @section('content')
     <div class="content">
         <div class="clearfix"></div>
 
         @include('flash::message')
 
-        @section('css')
-            @include('layouts.datatables_css')
-        @endsection
-
-        <div class="clearfix"></div>
-
         <div class="box box-danger">
             <div class="box-body">
+                {{-- Titulo y campos ocultos de filtros --}}
+                    <section class="content-header">
+                        <h1 class="pull-left">Personal</h1>
+                        <h1 class="pull-right">
+                            {!! Form::open(['route' => 'PDF.personalsPDF', 'form-inline pull-right']) !!}
+                        <div style="display: none">
+                                <div class="form-group col-md-3">
+                                    <input type="text" name="Nombre" value="{{ $Nombre }}" class="form-control" placeholder="Nombre">
+                                </div>
 
-                <section class="content-header">
-                    <h1 class="pull-left">Personal</h1>
-                    <h1 class="pull-right">
+                                <div class="form-group col-md-3">
+                                    <input type="text" name="Apellido" value="{{ $Apellido }}" class="form-control" placeholder="Apellido">
+                                </div>
 
-                        {!! Form::open(['route' => 'PDF.personalsPDF', 'form-inline pull-right']) !!}
+                                <div class="form-group col-md-3">
+                                    <input type="text" name="rol" value="{{ $Rol }}" class="form-control" placeholder="Rol">
+                                </div>
 
-                       <div style="display: none">
-                            <div class="form-group col-md-3">
-                                <input type="text" name="Nombre" value="{{ $Nombre }}" class="form-control" placeholder="Nombre">
-                            </div>
+                                <div class="form-group col-md-3">
+                                    <input type="number" name="mayorQ" value="{{ $MayorQ }}" class="form-control" placeholder="Mayor que">
+                                </div>
 
-                            <div class="form-group col-md-3">
-                                <input type="text" name="Apellido" value="{{ $Apellido }}" class="form-control" placeholder="Apellido">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="rol" value="{{ $Rol }}" class="form-control" placeholder="Rol">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="number" name="mayorQ" value="{{ $MayorQ }}" class="form-control" placeholder="Mayor que">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="number" name="menorQ" value="{{ $MenorQ }}" class="form-control" placeholder="Menor que">
-                            </div>
-                       </div>
-
-                        <button class="btn btn-secundary" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
-                        <button class="btn btn-secundary" type="submit" >PDF</button>
-                         @if (Auth::user()->Rol_id == 1)
-                        <a class="btn btn-danger" href="{{ route('personals.create') }}">Nuevo</a>
-                        @endif
-
-
-                   {!! Form::close() !!}
-
-
-                    </h1>
-                </section>
-
+                                <div class="form-group col-md-3">
+                                    <input type="number" name="menorQ" value="{{ $MenorQ }}" class="form-control" placeholder="Menor que">
+                                </div>
+                        </div>
+                            <button class="btn btn-secundary" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
+                            <button class="btn btn-secundary" type="submit" >PDF</button>
+                            @if (Auth::user()->Rol_id == 1)
+                            <a class="btn btn-danger" href="{{ route('personals.create') }}">Nuevo</a>
+                            @endif
+                    {!! Form::close() !!}
+                        </h1>
+                    </section>
+                {{-- Fin de Titulo y campos ocultos de filtros --}}
                 <br><hr>
-
                 <div class="content">
-
                     <table class="table datatables table-striped table-bordered">
                         <thead>
                             <tr>
@@ -103,73 +92,65 @@
                     </table>
 
                 </div>
-                @section('scripts')
-                    @include('layouts.datatables_js')
-                @endsection
-
             </div>
-        </div>
-        <div class="text-center">
         </div>
     </div>
 
+    {{-- Inicio de modal de filtros de Personal --}}
+        <div id="Filtrar" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: rgb(223, 43, 61)">
+                    <h5 class="modal-title"> <b style="color: white"> Filtrar personal </b>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        {!! Form::open(['route' => 'personals.index', 'method' => 'GET', 'form-inline pull-right']) !!}
+                            <div class="form-group col-md-6">
+                                <input type="text" name="Nombre" value="{{ $Nombre }}" class="form-control" placeholder="Nombre">
+                            </div>
 
+                            <div class="form-group col-md-6">
+                                <input type="text" name="Apellido" value="{{ $Apellido }}" class="form-control" placeholder="Apellido">
+                            </div>
 
-    <div id="Filtrar" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Filtrar personal
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button></h5>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'personals.index', 'method' => 'GET', 'form-inline pull-right']) !!}
-                        <div class="form-group col-md-3">
-                            <input type="text" name="Nombre" value="{{ $Nombre }}" class="form-control" placeholder="Nombre">
-                        </div>
+                            <div class="form-group col-md-6">
+                                <input type="number" name="mayorQ" value="{{ $MayorQ }}" class="form-control" placeholder="Mayor que">
+                            </div>
 
-                        <div class="form-group col-md-3">
-                            <input type="text" name="Apellido" value="{{ $Apellido }}" class="form-control" placeholder="Apellido">
-                        </div>
+                            <div class="form-group col-md-6">
+                                <input type="number" name="menorQ" value="{{ $MenorQ }}" class="form-control" placeholder="Menor que">
+                            </div>
 
-                        <div class="form-group col-md-3">
-                            <input type="text" name="rol" value="{{ $Rol }}" class="form-control" placeholder="Rol">
-                        </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" name="rol" value="{{ $Rol }}" class="form-control" placeholder="Rol">
+                            </div>
 
-                        <div class="form-group col-md-3">
-                            <input type="number" name="mayorQ" value="{{ $MayorQ }}" class="form-control" placeholder="Mayor que">
-                        </div>
+                            {{-- <div class="form-group col-md-3">
+                                <input type="date" name="desde" class="form-control" placeholder="Desde">
+                            </div>
 
-                        <div class="form-group col-md-3">
-                            <input type="number" name="menorQ" value="{{ $MenorQ }}" class="form-control" placeholder="Menor que">
-                        </div>
-
-                        {{-- <div class="form-group col-md-3">
-                            <input type="date" name="desde" class="form-control" placeholder="Desde">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <input type="date" name="hasta" class="form-control" placeholder="Hasta">
-                        </div>  --}}
-
-                        <div class="form-group col-md-3 pull-right">
-                            <button type="submit" class="btn btn-danger pull-right">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </div>
-                    {!! Form::close() !!}
+                            <div class="form-group col-md-3">
+                                <input type="date" name="hasta" class="form-control" placeholder="Hasta">
+                            </div>  --}}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Filtrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                {!! Form::close() !!}
                 </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
-          </div>
         </div>
-      </div>
+    {{-- Fin de modal de filtros de Personal --}}
 @endsection
 
+@section('scripts')
+    @include('layouts.datatables_js')
+@endsection
 
 

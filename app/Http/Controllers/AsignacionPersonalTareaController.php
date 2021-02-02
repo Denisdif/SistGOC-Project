@@ -32,12 +32,6 @@ class AsignacionPersonalTareaController extends AppBaseController
         $this->asignacionPersonalTareaRepository = $asignacionPersonalTareaRepo;
     }
 
-    /**
-     * Display a listing of the AsignacionPersonalTarea.
-     *
-     * @param AsignacionPersonalTareaDataTable $asignacionPersonalTareaDataTable
-     * @return Response
-     */
     public function index(AsignacionPersonalTareaDataTable $asignacionPersonalTareaDataTable)
     {
         return $asignacionPersonalTareaDataTable->render('asignacion_personal_tareas.index');
@@ -51,11 +45,6 @@ class AsignacionPersonalTareaController extends AppBaseController
         return View('asignacion_personal_tareas.index', compact('tareas','personal'));
     }
 
-    /**
-     * Show the form for creating a new AsignacionPersonalTarea.
-     *
-     * @return Response
-     */
     public function create(Tarea $tarea)
     {
         $personal = Personal::all();
@@ -63,13 +52,6 @@ class AsignacionPersonalTareaController extends AppBaseController
         return view('asignacion_personal_tareas.create', compact('tarea','personal','asignaciones'));
     }
 
-    /**
-     * Store a newly created AsignacionPersonalTarea in storage.
-     *
-     * @param CreateAsignacionPersonalTareaRequest $request
-     *
-     * @return Response
-     */
     public function store(Tarea $tarea, CreateAsignacionPersonalTareaRequest $request)
     {
         try {
@@ -168,7 +150,7 @@ class AsignacionPersonalTareaController extends AppBaseController
 
         $this->asignacionPersonalTareaRepository->delete($id);
 
-        Flash::success('Asignacion Personal Tarea deleted successfully.');
+        Flash::success('Se ha eliminado la asignación con éxito.');
 
         return redirect()->back();
     }

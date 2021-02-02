@@ -1,65 +1,55 @@
 @extends('layouts.app')
 
-@section('content')
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
 
+@section('content')
     <div class="content">
         <div class="clearfix"></div>
 
         @include('flash::message')
 
-        @section('css')
-            @include('layouts.datatables_css')
-        @endsection
-
-        <div class="clearfix"></div>
-
         <div class="box box-danger">
             <div class="box-body">
+                {{-- Titulo y campos ocultos de filtros --}}
+                    <section class="content-header">
+                        <h1 class="pull-left">Proyectos</h1>
+                        <h1 class="pull-right">
+                        {!! Form::open(['route' => 'PDF.proyectosPDF', 'form-inline pull-right']) !!}
+                        <div style="display: none">
+                            <div class="form-group col-md-3">
+                                <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" placeholder="Código">
+                            </div>
 
-                <section class="content-header">
-                    <h1 class="pull-left">Proyectos</h1>
-                    <h1 class="pull-right">
+                            <div class="form-group col-md-3">
+                                <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" placeholder="Tipo">
+                            </div>
 
-                    {!! Form::open(['route' => 'PDF.proyectosPDF', 'form-inline pull-right']) !!}
+                            <div class="form-group col-md-3">
+                                <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" placeholder="Comitente">
+                            </div>
 
-                       <div style="display: none">
-                           <div class="form-group col-md-3">
-                               <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" placeholder="Código">
-                           </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" placeholder="Provincia">
+                            </div>
 
-                           <div class="form-group col-md-3">
-                               <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" placeholder="Tipo">
-                           </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" placeholder="Localidad">
+                            </div>
 
-                           <div class="form-group col-md-3">
-                               <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" placeholder="Comitente">
-                           </div>
-
-                           <div class="form-group col-md-3">
-                               <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" placeholder="Provincia">
-                           </div>
-
-                           <div class="form-group col-md-3">
-                               <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" placeholder="Localidad">
-                           </div>
-
-                           <div class="form-group col-md-3">
-                               <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
-                           </div>
-                       </div>
-                       <button class="btn btn-secundary" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
-                        <button class="btn btn-secundary" type="submit" >PDF</button>
-                        <a class="btn btn-danger" href="{{ route('proyectos.create') }}">Nuevo</a>
-
-
-
-                    {!! Form::close() !!}
-
-                    </h1>
-                </section>
-
+                            <div class="form-group col-md-3">
+                                <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
+                            </div>
+                        </div>
+                        <button class="btn btn-secundary" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
+                            <button class="btn btn-secundary" type="submit" >PDF</button>
+                            <a class="btn btn-danger" href="{{ route('proyectos.create') }}">Nuevo</a>
+                        {!! Form::close() !!}
+                        </h1>
+                    </section>
+                {{-- Fin de Titulo y campos ocultos de filtros --}}
                 <br><hr>
-
                 <div class="box-body">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item active">
@@ -341,58 +331,57 @@
         </div>
     </div>
 
-
-
-    <div id="Filtrar" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title">Filtrar personal
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button></h5>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        {!! Form::open(['route' => 'proyectos.index', 'method' => 'GET', 'form-inline pull-right']) !!}
-                            <div class="form-group col-md-3">
-                                <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" placeholder="Código">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" placeholder="Tipo">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" placeholder="Comitente">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" placeholder="Provincia">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" placeholder="Localidad">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
-                            </div>
-
-                            <div class="form-group col-md-3 pull-right">
-                                <button type="submit" class="btn btn-danger pull-right">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </div>
-                        {!! Form::close() !!}
+    {{-- Inicio de modal de filtros de proyectos --}}
+        <div id="Filtrar" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: rgb(223, 43, 61)">
+                        <h5 class="modal-title"> <b style="color: white"> Filtrar proyectos </b>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button></h5>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <div class="modal-body">
+                        <div class="row">
+                            {!! Form::open(['route' => 'proyectos.index', 'method' => 'GET', 'form-inline pull-right']) !!}
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" placeholder="Código">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" placeholder="Tipo">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" placeholder="Comitente">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" placeholder="Provincia">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" placeholder="Localidad">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
+                                </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger">
+                                Filtrar
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
-    </div>
+    {{-- Fin de modal de filtros de proyectos --}}
+
 @endsection
 
 @section('scripts')
