@@ -589,6 +589,7 @@
         $('#SelectResponsable').select2();
         $('#SelectPredecesoras').select2();
         $('#Nombre_tarea').select2();
+        $('#Ambiente_id').select2();
     });
 </script>
 

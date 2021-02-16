@@ -46,8 +46,9 @@ class Proyecto_ambienteController extends AppBaseController
      */
     public function create(Proyecto $proyecto)
     {
+        $ambientes = ambiente::All();
         $ambientesDelProyecto = Proyecto_ambiente::all()->where('Proyecto_id','=', $proyecto->id);
-        return view('proyecto_ambientes.create',compact('proyecto','ambientesDelProyecto'));
+        return view('proyecto_ambientes.create',compact('proyecto','ambientesDelProyecto','ambientes'));
     }
 
     /**

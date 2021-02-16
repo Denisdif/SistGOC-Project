@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tarea;
 use App\Models\Proyecto;
 use App\Models\Direccion;
+use App\Models\ambiente;
 use App\Models\Personal;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Comitente;
@@ -76,7 +77,8 @@ class ProyectoController extends AppBaseController
     public function create()
     {
         $paises = Pais::all();
-        return view('proyectos.create', compact('paises'));
+        $ambientes = ambiente::All();
+        return view('proyectos.create', compact('paises','ambientes'));
     }
 
     public function store(CreateProyectoRequest $request)

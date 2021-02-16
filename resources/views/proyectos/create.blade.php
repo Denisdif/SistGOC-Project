@@ -21,8 +21,15 @@
                             <!-- Ambiente Id Field -->
                             <div class="form-group col-sm-6">
                                 {!! Form::label('Ambiente_id', 'Ambiente:') !!}
-                                {!! Form::select('Ambiente_id', $ambienteItems, null, ['class' => 'form-control']) !!}
+                                {!! Form::select('Ambiente_id', $ambienteItems, null, ['class' => 'form-control','id' => 'Ambiente_id']) !!}
+
                             </div>
+                             <!--<select id="Ambiente_id" name="Ambiente_id" class="form-control">
+                                <option value=""></option>
+                                @foreach ($ambientes as $ambiente)
+                                    <option value={{ $ambiente->id }}>{{ $ambiente->Nombre_ambiente }} </option>
+                                @endforeach
+                            </select> -->
 
                             <!-- Cantidad Field -->
                             <div class="form-group col-sm-6">
