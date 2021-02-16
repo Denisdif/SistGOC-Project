@@ -1,6 +1,6 @@
 <!-- Name Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}<span class="required">*</span>
+    {!! Form::label('name', 'Nombre:') !!}<span class="required">*</span>
     {!! Form::text('name', null, ['id'=>'name', 'class' => 'form-control', 'required']) !!}
 </div>
 <!-- Email Field -->
@@ -23,6 +23,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
     <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
 </div>

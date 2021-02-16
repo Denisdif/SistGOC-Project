@@ -4,9 +4,11 @@
     <div class="form-group col-sm-12">
         {!! Form::label('Responsable', 'Responsable:') !!} <br>
         <select id="SelectResponsable" style="width: 100%; height: 100%" class="form-control" name="Responsable"  required>
-            @if ($item->User->rol->NombreRol == "Desarrollador")
-                <option value = {{ $item->id }}>{{ $item->ApellidoPersonal }} {{ $item->NombrePersonal }} </option>
-            @endif
+            @foreach ($personal as $item)
+                @if ($item->User->rol->NombreRol == "Desarrollador")
+                    <option value = {{ $item->id }}>{{ $item->ApellidoPersonal }} {{ $item->NombrePersonal }} </option>
+                @endif
+            @endforeach
         </select>
     </div>
     <br>
