@@ -1,0 +1,48 @@
+----------------------------------------------------------------------------
+**Estadisticas
+
+////////////////	Cantidad de proyectos realizados	//////////////////////
+////////////////	Cantidad de tareas desarrolladas	//////////////////////
+
+----------------------------------------------------------------------------
+**Correos
+
+////////	Dar formato a los correos de avisos de asignacion de tareas	////////
+////////	Calcular la fecha estimada de finalizacion de proyectos		////////
+////////	Dar formato a los correos de finalizacion de proyecto		////////
+
+----------------------------------------------------------------------------
+**Detalles
+
+////////////////		   Botones (Volver)			////////////////
+////////////////			Modals				////////////////
+////////////////			Titulos				////////////////
+////////////////		Colores de grafico de proyectos		////////////////
+////////////////		    Quitar prioridad			////////////////
+////////////////		    Filtros de PDFs			////////////////
+////////////////	   Mensajes de asignación de tareas  		////////////////
+////////////////  Visualizar tareas realizadas (vista de desarrollador) ////////////////
+
+----------------------------------------------------------------------------
+**Vistas editar
+
+////////////////			Personal			////////////////
+////////////////			Proyecto			////////////////
+////////////////			Comitente			////////////////
+
+----------------------------------------------------------------------------
+**Correcciones
+
+Campos de direccion para chacras y zonas rurales
+Nuevos ambientes
+Carga manual de responsables de tarea
+Mensaje de que no tiene predecesoras
+Formato de fechas de entrega de tareas
+Botón volver en tareas
+Estado de tareas en vista de  desarrollador
+
+----------------------------------------------------------------------------
+**Imagenes de proyectos, usuarios, tareas
+
+Agregar targetas con imagenes para crear una interface amigable
+

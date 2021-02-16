@@ -15,7 +15,7 @@
                         <div>
                             <div class="form-group col-sm-12">
                                 <hr>
-                                <h3>Carga de ambietes</h3>
+                                <h3>Carga de ambientes</h3>
                             </div>
 
                             <!-- Ambiente Id Field -->
@@ -44,7 +44,7 @@
                                     <thead>
                                         <th>Ambiente</th>
                                         <th>Cantidad</th>
-                                        <th width="125px">Accion</th>
+                                        <th width="125px">Acción</th>
                                     </thead>
 
                                     <tbody class="ColaCarga">

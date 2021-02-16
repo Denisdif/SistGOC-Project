@@ -235,8 +235,11 @@ class Tarea extends Model implements Auditable
     //Formatea fecha fin
 
     public function getFechaFin(){
-        $date = new Carbon($this->Fecha_fin);
-        $date = $date->formatLocalized('%A %d %B %Y');
+        $date = "";
+        if ($this->Fecha_fin) {
+            $date = new Carbon($this->Fecha_fin);
+            $date = $date->formatLocalized('%A %d %B %Y');
+        }
         return $date;
     }
 

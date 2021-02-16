@@ -1,12 +1,11 @@
 <!-- Archivo Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-8">
     {!! Form::label('Archivo', 'Archivo:') !!}
     <input class="form-control" type="file" name="archivos[]" multiple>
 </div>
-<div class="clearfix"></div>
 
 <!-- Descripcion Entrega Field -->
-<div class="form-group col-sm-12 col-lg-12">
+<div class="form-group col-sm-8">
     {!! Form::label('Descripcion_entrega', 'Descripción:') !!}
     {!! Form::textarea('Descripcion_entrega', null, ['class' => 'form-control']) !!}
 </div>

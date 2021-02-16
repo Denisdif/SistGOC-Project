@@ -241,7 +241,10 @@ class ProyectoController extends AppBaseController
             }
         }
 
-        $porcentaje_finalizacion = 100*(($tareas_finalizadas)/sizeof($tareasDelProyecto));
+        $porcentaje_finalizacion = 0;
+        if (sizeof($tareasDelProyecto) > 0) {
+            $porcentaje_finalizacion = 100*(($tareas_finalizadas)/sizeof($tareasDelProyecto));
+        }
         $etiquetasGraf[] = "Tareas finalizadas";
         $etiquetasGraf[] = "Tareas por finalizar";
         $cantidadesGraf[] = $tareas_finalizadas;

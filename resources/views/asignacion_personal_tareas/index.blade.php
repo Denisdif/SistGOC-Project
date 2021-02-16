@@ -37,8 +37,9 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Responsabilidad</th>
+                                        <th>Estado</th>
                                         <th>Proyecto</th>
+                                        <th>Fecha límite</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -46,21 +47,21 @@
                                     @foreach (($personal->tareasAsignadas()) as $asignacion)
                                         @if ($asignacion->Responsabilidad == "Responsable")
                                             <tr>
-                                            <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
-                                            <td>{{ $asignacion->Responsabilidad }}</td>
-                                            <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
-                                            <td>
-                                                @if ($asignacion->tarea->Estado_tarea_id == 2)
-                                                    <a onclick="return confirm('Iniciar desarrollo de la tarea?')" href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
-                                                        Desarrollar
-                                                    </a>
-                                                @else
-                                                    <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
-                                                        <i class="glyphicon glyphicon-eye-open"></i>
-                                                    </a>
-                                                @endif
-
-                                            </td>
+                                                <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
+                                                <td>{{ $asignacion->tarea->estado_tarea->Nombre_estado_tarea }}</td>
+                                                <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                                <td>{{ $asignacion->tarea->getFechaLimite() }}</td>
+                                                <td>
+                                                    @if ($asignacion->tarea->Estado_tarea_id == 2)
+                                                        <a onclick="return confirm('Iniciar desarrollo de la tarea?')" href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
+                                                            Desarrollar
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
+                                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                                        </a>
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -74,8 +75,9 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Responsabilidad</th>
+                                        <th>Estado</th>
                                         <th>Proyecto</th>
+                                        <th>Fecha límite</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -83,9 +85,10 @@
                                     @foreach (($personal->tareasAsignadas()) as $asignacion)
                                         @if ($asignacion->Responsabilidad == "Colaborador")
                                             <tr>
-                                            <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
-                                            <td>{{ $asignacion->Responsabilidad }}</td>
-                                            <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                                <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
+                                                <td>{{ $asignacion->tarea->estado_tarea->Nombre_estado_tarea }}</td>
+                                                <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                                <td>{{ $asignacion->tarea->getFechaLimite() }}</td>
                                             <td>
                                                 <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
                                                     <i class="glyphicon glyphicon-eye-open"></i>
@@ -129,8 +132,8 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Responsabilidad</th>
                                         <th>Proyecto</th>
+                                        <th>Fecha de finalización</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -139,8 +142,8 @@
                                         @if (($asignacion->Responsabilidad == "Responsable") and ($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == ('Aprobada'))
                                             <tr>
                                             <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
-                                            <td>{{ $asignacion->Responsabilidad }}</td>
                                             <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                            <td>{{ $asignacion->tarea->getFechaFin() }}</td>
                                             <td>
                                                 @if ($asignacion->tarea->Estado_tarea_id == 2)
                                                     <a onclick="return confirm('Iniciar desarrollo de la tarea?')" href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
@@ -166,8 +169,8 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Responsabilidad</th>
                                         <th>Proyecto</th>
+                                        <th>Fecha de finalización</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -175,14 +178,14 @@
                                     @foreach ($personal->asignacion as $asignacion)
                                         @if (($asignacion->Responsabilidad == "Colaborador") and ($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == ('Aprobada'))
                                             <tr>
-                                            <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
-                                            <td>{{ $asignacion->Responsabilidad }}</td>
-                                            <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
-                                            <td>
-                                                <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-eye-open"></i>
-                                                </a>
-                                            </td>
+                                                <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
+                                                <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                                <td>{{ $asignacion->tarea->getFechaFin() }}</td>
+                                                <td>
+                                                    <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
+                                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @endif
                                     @endforeach

@@ -30,12 +30,6 @@ class PersonalController extends AppBaseController
         $this->personalRepository = $personalRepo;
     }
 
-    /**
-     * Display a listing of the Personal.
-     *
-     * @param PersonalDataTable $personalDataTable
-     * @return Response
-     */
     public function index(Request $request)
     {
 
@@ -93,11 +87,6 @@ class PersonalController extends AppBaseController
         return View('personals.index', compact('ListaPersonal','Nombre','Apellido','MayorQ','MenorQ','Rol'));
     }
 
-    /**
-     * Show the form for creating a new Personal.
-     *
-     * @return Response
-     */
     public function create()
     {
         $paises = Pais::all();
@@ -106,13 +95,6 @@ class PersonalController extends AppBaseController
         return view('personals.create', compact('paises'));
     }
 
-    /**
-     * Store a newly created Personal in storage.
-     *
-     * @param CreatePersonalRequest $request
-     *
-     * @return Response
-     */
     public function store(CreatePersonalRequest $request)
     {
         //$input = $request->all();
@@ -149,13 +131,6 @@ class PersonalController extends AppBaseController
         return redirect(route('personals.show', $personal->id));
     }
 
-    /**
-     * Display the specified Personal.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function show($id)
     {
         $personal = $this->personalRepository->find($id);

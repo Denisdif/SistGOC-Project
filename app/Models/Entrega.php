@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Tarea;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Support\Carbon;
+
+Carbon::setUTF8(true);
+setlocale(LC_TIME, 'es_ES');
+Carbon::setLocale('es');
 
 /**
  * Class Entrega
@@ -59,5 +64,19 @@ class Entrega extends Model implements Auditable
     public function tarea()
     {
         return $this->belongsTo( Tarea::class ,'Tarea_id');
+    }
+
+    //Formatea fecha inicio
+
+    public function getFechaLimite(){
+        $date = new Carbon($this->Fecha_limite);
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
+    }
+
+    public function getFechaFin(){
+        $date = new Carbon($this->Fecha_fin);
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
     }
 }

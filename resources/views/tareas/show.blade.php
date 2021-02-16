@@ -55,9 +55,13 @@
                             <div class="col-md-12 mb-12">
 
                                 {!! Form::label('Predecesoras', 'Archivos de tareas predecesoras:') !!} <br>
-                                @foreach (($tarea->entregas_predecesoras()) as $entrega)
-                                    <a href="{{ route('entregas.show', $entrega->id) }}">{{ $entrega->Archivo }}</a> <br>
-                                @endforeach
+                                @if ($tarea->entregas_predecesoras())
+                                    @foreach (($tarea->entregas_predecesoras()) as $entrega)
+                                        <a href="{{ route('entregas.show', $entrega->id) }}">{{ $entrega->Archivo }}</a> <br>
+                                    @endforeach
+                                @else
+                                    <p style="padding-left: 1%; padding-top: 1%">* No hay archivos</p>
+                                @endif
                                 <br>
                                 <a class="btn btn-danger"  href="/proyectos/{{$tarea->proyecto->id}}/informe">Informe de proyecto</a> <br>
 
@@ -110,11 +114,11 @@
                                     <tbody>
                                         <tr>
                                             <td>Fecha limite de entrega</td>
-                                            <td>{{ $tarea->Fecha_limite }}</td>
+                                            <td>A las {{ $tarea->Fecha_limite->format(' H:m ') }} hs del dia {{ $tarea->getFechaLimite() }}</td>
                                         </tr>
                                         <tr>
                                             <td>Fecha de entrega</td>
-                                            <td>{{ $tarea->Fecha_fin }}</td>
+                                            <td>{{ $tarea->getFechaFin() }}</td>
                                         </tr>
                                         <tr>
                                             <td>Archivos</td>
@@ -157,63 +161,67 @@
                         </div>
                     </div>
                     <div>
-                        <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger pull-right" >Volver</a>
+                        @if (Auth::user()->Rol_id < 3)
+                            <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger pull-right" >Volver</a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
     {{-- Inicio de modal de "Mostrar datos tarea" --}}
-    <div id="Datos" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header" style="background-color: rgb(223, 43, 61)">
-              <h5 class="modal-title"> <b style="color: white"> Datos de tarea </b>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button></h5>
-            </div>
-            <div class="modal-body">
-                <div style="padding-left: 2%; padding-top: 2%">
-                    @include('tareas.show_fields')
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    {{-- Inicio de modal de "Mostrar datos tarea" --}}
-    <div id="CrearComentario" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div id="Datos" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title">Modal title
+                <div class="modal-header" style="background-color: rgb(223, 43, 61)">
+                <h5 class="modal-title"> <b style="color: white"> Datos de tarea </b>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button></h5>
                 </div>
                 <div class="modal-body">
-                    {!! Form::open(['url' => "tareas/$tarea->id/comentarios"]) !!}
-
-                    <!-- Contenido Field -->
-                        {!! Form::label('Contenido', 'Comentario:') !!}
-                        {!! Form::textarea('Contenido', null, ['class' => 'form-control']) !!} <br>
-
-                    <!-- Submit Field -->
-                        {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
-                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cerrar</button>
-                    {!! Form::close() !!}
+                    <div style="padding-left: 2%; padding-top: 2%">
+                        @include('tareas.show_fields')
+                    </div>
                 </div>
                 <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    {{-- Fin de modal de "Mostrar datos tarea" --}}
+
+    {{-- Inicio de modal de "Comentar" --}}
+        <div id="CrearComentario" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: rgb(223, 43, 61)">
+                        <h5 class="modal-title"> <b style="color: white">Nuevo comentario </b>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button></h5>
+                    </div>
+                    <div class="modal-body">
+                        {!! Form::open(['url' => "tareas/$tarea->id/comentarios"]) !!}
+
+                        <!-- Contenido Field -->
+                            {!! Form::label('Contenido', 'Comentario:') !!}
+                            {!! Form::textarea('Contenido', null, ['class' => 'form-control']) !!} <br>
+
+                        <!-- Submit Field -->
+                            {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
+                            <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                        {!! Form::close() !!}
+                    </div>
+                    <div class="modal-footer">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    {{-- Fin de modal de "Comentar" --}}
+
 @endsection
 
 
