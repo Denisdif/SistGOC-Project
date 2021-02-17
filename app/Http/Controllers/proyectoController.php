@@ -326,7 +326,13 @@ class ProyectoController extends AppBaseController
 
     public function autoAsignar($id)
     {
+        $vacio = true;
         $proyecto = Proyecto::all()->find($id);
+        foreach ($proyecto->tarea as $item) {
+            if ($item->Estado_tarea_id == 1) {
+                $vacio = false;
+            }
+        }
         $mensajes = $proyecto->asignacion_inteligente();
         $aviso = "";
         foreach ($mensajes as $item) {
@@ -334,7 +340,11 @@ class ProyectoController extends AppBaseController
                 $aviso = $aviso." *".$item."<br>";
             }
         }
-        Flash::success('Se asignaron los responsables mejor capacitados a las tareas del proyecto:'.'<br><br>'.$aviso);
+        if ($vacio) {
+            Flash::success('No hay tareas para asignar');
+        }else{
+            Flash::success('Se asignaron los responsables mejor capacitados a las tareas del proyecto:'.'<br><br>'.$aviso);
+        }
         return Redirect::back();
     }
 

@@ -391,4 +391,17 @@ class Tarea extends Model implements Auditable
         }
         return $existe;
     }
+
+    //Retorna true si la tarea ya tiene un responsable asignado
+
+    public function atrasada(){
+
+        $atrasada = false;
+        if ($this->Estado_tarea_id != 6) {
+            if ($this->Fecha_limite < Carbon::now()) {
+                $atrasada = true;
+            }
+        }
+        return $atrasada;
+    }
 }

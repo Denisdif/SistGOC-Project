@@ -32,12 +32,12 @@
                                     <td>{{$asignacion->Responsabilidad}}</td>
                                     <td>{!! Form::open(['route' => ['asignacionPersonalTareas.destroy', $asignacion->id], 'method' => 'delete']) !!}
                                         <div class='btn-group'>
-                                            <a href="{{ route('asignacionPersonalTareas.show', $asignacion->id) }}" class='btn btn-default btn-xs'>
+                                            {{--<a href="{{ route('asignacionPersonalTareas.show', $asignacion->id) }}" class='btn btn-default btn-xs'>
                                                 <i class="glyphicon glyphicon-eye-open"></i>
                                             </a>
-                                            <a href="{{ route('asignacionPersonalTareas.edit', $asignacion->id) }}" class='btn btn-default btn-xs'>
+                                                  <a href="{{ route('asignacionPersonalTareas.edit', $asignacion->id) }}" class='btn btn-default btn-xs'>
                                                 <i class="glyphicon glyphicon-edit"></i>
-                                            </a>
+                                            </a>    --}}
                                             {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
                                                 'type' => 'submit',
                                                 'class' => 'btn btn-danger btn-xs',

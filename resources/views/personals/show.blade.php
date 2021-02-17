@@ -99,7 +99,7 @@
                                                     <br><br>
                                                     <div style="padding-left: 2%">
                                                         Cantidad de tareas realizadas: {{ sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
-                                                        Calificación general: {{ $personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
+                                                        Calificación general: {{ round(($personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea))),2) }} <br>
                                                     </div>
                                                 @endif
                                             @endforeach

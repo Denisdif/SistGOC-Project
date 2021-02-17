@@ -81,16 +81,22 @@
                                         <tr>
                                             <td>{{ $tarea->Nombre_tarea }}</td>
                                              {{--<td>{{ $tarea->prioridad }}</td>--}}
-                                            <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
-                                            <td>{{ $tarea->getFechaLimite() }}</td>
+                                             <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
+                                             @if ($tarea->atrasada())
+                                                <td class="danger">{{ $tarea->getFechaLimite() }}</td>
+                                             @else
+                                                <td class="">{{ $tarea->getFechaLimite() }}</td>
+                                             @endif
+
+
                                             <td>{!! Form::open(['route' => ['tareas.destroy', $tarea->id], 'method' => 'delete']) !!}
                                                 <div class='btn-group'>
                                                     <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
                                                         <i class="glyphicon glyphicon-eye-open"></i>
                                                     </a>
-                                                    <a href="{{ route('tareas.edit', $tarea->id) }}" class='btn btn-default btn-xs'>
+                                                    {{--<a href="{{ route('tareas.edit', $tarea->id) }}" class='btn btn-default btn-xs'>
                                                         <i class="glyphicon glyphicon-edit"></i>
-                                                    </a>
+                                                    </a>--}}
                                                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
