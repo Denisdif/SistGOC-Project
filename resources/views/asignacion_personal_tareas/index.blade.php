@@ -38,7 +38,7 @@
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Estado</th>
-                                        <th>Proyecto</th>
+                                       {{--   <th>Proyecto</th> --}}
                                         <th>Fecha límite</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -49,7 +49,7 @@
                                             <tr>
                                                 <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
                                                 <td>{{ $asignacion->tarea->estado_tarea->Nombre_estado_tarea }}</td>
-                                                <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                               {{--   <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>  --}}
                                                 <td>{{ $asignacion->tarea->getFechaLimite() }}</td>
                                                 <td>
                                                     @if ($asignacion->tarea->Estado_tarea_id == 2)
@@ -76,7 +76,7 @@
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Estado</th>
-                                        <th>Proyecto</th>
+                                       {{--   <th>Proyecto</th> --}}
                                         <th>Fecha límite</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -87,7 +87,7 @@
                                             <tr>
                                                 <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
                                                 <td>{{ $asignacion->tarea->estado_tarea->Nombre_estado_tarea }}</td>
-                                                <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                               {{--  <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td> --}}
                                                 <td>{{ $asignacion->tarea->getFechaLimite() }}</td>
                                             <td>
                                                 <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
@@ -132,7 +132,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Proyecto</th>
+                                        {{--   <th>Proyecto</th> --}}
                                         <th>Fecha de finalización</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -142,7 +142,7 @@
                                         @if (($asignacion->Responsabilidad == "Responsable") and ($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == ('Aprobada'))
                                             <tr>
                                             <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
-                                            <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                            {{-- <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td> --}}
                                             <td>{{ $asignacion->tarea->getFechaFin() }}</td>
                                             <td>
                                                 @if ($asignacion->tarea->Estado_tarea_id == 2)
@@ -169,7 +169,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Proyecto</th>
+                                       {{--   <th>Proyecto</th> --}}
                                         <th>Fecha de finalización</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -179,7 +179,7 @@
                                         @if (($asignacion->Responsabilidad == "Colaborador") and ($asignacion->tarea->estado_tarea->Nombre_estado_tarea) == ('Aprobada'))
                                             <tr>
                                                 <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
-                                                <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                            {{--      <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>  --}}
                                                 <td>{{ $asignacion->tarea->getFechaFin() }}</td>
                                                 <td>
                                                     <a href="{{ route('tareas.show', $asignacion->Tarea_id) }}" class='btn btn-default btn-xs'>
@@ -216,7 +216,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Proyecto</th>
+                    {{--    <th>Proyecto</th> --}}
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -224,7 +224,7 @@
                     @foreach (($personal->tareas_corregir()) as $tarea)
                             <tr>
                             <td>{{ $tarea->Nombre_tarea }}</td>
-                            <td>{{ $tarea->proyecto->Nombre_proyecto }}</td>
+                             {{--   <td>{{ $tarea->proyecto->Nombre_proyecto }}</td> --}}
                             <td>
                                 <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>
                                     <i class="glyphicon glyphicon-eye-open"></i>

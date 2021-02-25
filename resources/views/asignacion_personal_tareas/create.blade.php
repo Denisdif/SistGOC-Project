@@ -137,7 +137,7 @@
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Rol</th>
-                                        <th>Proyecto</th>
+                                    {{--     <th>Proyecto</th>  --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -145,7 +145,7 @@
                                             <tr>
                                             <td>{{ $asignacion->tarea->Nombre_tarea }}</td>
                                             <td>{{ $asignacion->Responsabilidad }}</td>
-                                            <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>
+                                             {{--   <td>{{ $asignacion->tarea->proyecto->Nombre_proyecto }}</td>--}}
                                             </tr>
                                     @endforeach
                                 </tbody>

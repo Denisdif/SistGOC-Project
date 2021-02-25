@@ -10,13 +10,13 @@
         {{ $evaluacion->personal->NombrePersonal }} {{ $evaluacion->personal->ApellidoPersonal }} <br>
 
         {!! Form::label('Fecha_inicio', 'Fecha de inicio:') !!}
-        {{ $evaluacion->Fecha_inicio }}<br>
+        {{ $evaluacion->getFechaInicio() }}<br>
 
         {!! Form::label('Fecha_fin', 'Fecha de fin:') !!}
-        {{ $evaluacion->Fecha_fin }}<br>
+        {{ $evaluacion->getFechaFin() }}<br>
 
         {!! Form::label('created_at', 'Fecha de creación:') !!}
-        {{ $evaluacion->created_at }}
+        {{ $evaluacion->getFechaCreacion() }}
         <hr>
     </div>
 

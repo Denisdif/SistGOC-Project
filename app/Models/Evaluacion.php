@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Personal;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Support\Carbon;
+
+Carbon::setUTF8(true);
+setlocale(LC_TIME, 'es_ES');
+Carbon::setLocale('es');
 
 /**
  * Class Evaluacion
@@ -67,6 +72,32 @@ class Evaluacion extends Model implements Auditable
     public function evaluador()
     {
         return $this->belongsTo( Personal::class ,'Evaluador_id');
+    }
+
+
+    public function getFechaInicio(){
+        $date = new Carbon($this->Fecha_inicio);
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
+    }
+
+    //Formatea fecha fin
+
+    public function getFechaFin(){
+        $date = "";
+        if ($this->Fecha_fin) {
+            $date = new Carbon($this->Fecha_fin);
+            $date = $date->formatLocalized('%A %d %B %Y');
+        }
+        return $date;
+    }
+
+    //Formatea fecha creacion
+
+    public function getFechaCreacion(){
+        $date = new Carbon($this->created_at);
+        $date = $date->formatLocalized('%A %d %B %Y');
+        return $date;
     }
 
 }
