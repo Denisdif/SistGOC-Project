@@ -54,7 +54,7 @@ class AsignacionPersonalTareaController extends AppBaseController
 
     public function store(Tarea $tarea, CreateAsignacionPersonalTareaRequest $request)
     {
-        try {
+        $aviso = "";
 
             if ($request->Responsable) {
                 $asignacionPersonalTarea = new AsignacionPersonalTarea;
@@ -64,9 +64,13 @@ class AsignacionPersonalTareaController extends AppBaseController
                 $asignacionPersonalTarea->save();
                 //Mail::to($asignacionPersonalTarea->Personal->User->email)->send(new AsignacionTarea($asignacionPersonalTarea));
                 Mail::to("sistgoc@gmail.com")->send(new AsignacionTarea($asignacionPersonalTarea));
-            }
 
-            if (sizeof($request->Colaboradores)>0) {
+                $aviso =    $aviso."Se asignó a ".$asignacionPersonalTarea->Personal->NombrePersonal." ".
+                            $asignacionPersonalTarea->Personal->ApellidoPersonal." como ".$asignacionPersonalTarea->Responsabilidad.
+                            " de la tarea ".$asignacionPersonalTarea->tarea->Nombre_tarea."<br>";
+            }
+        try {
+            if ($request->Colaboradores) {
                 for ($i=0; $i < sizeof($request->Colaboradores); $i++) {
                     $asignacionPersonalTarea = new AsignacionPersonalTarea;
                     $asignacionPersonalTarea->Personal_id = $request->Colaboradores[$i];
@@ -74,14 +78,18 @@ class AsignacionPersonalTareaController extends AppBaseController
                     $asignacionPersonalTarea->Tarea_id = $tarea->id;
                     $asignacionPersonalTarea->save();
                     Mail::to("sistgoc@gmail.com")->send(new AsignacionTarea($asignacionPersonalTarea));
+
+                    $aviso =    $aviso."Se asignó a ".$asignacionPersonalTarea->Personal->NombrePersonal." ".
+                                $asignacionPersonalTarea->Personal->ApellidoPersonal." como ".$asignacionPersonalTarea->Responsabilidad.
+                                " de la tarea ".$asignacionPersonalTarea->tarea->Nombre_tarea."<br>";
                 }
             }
-
-            if ($tarea->Estado_tarea_id == 1) { //Cambia el estado de la tarea de creada a asignada
+            if ($tarea->Estado_tarea_id == 1){ //Cambia el estado de la tarea de creada a asignada
                 $tarea->Estado_tarea_id = 2; //Id "2" de estado tarea = Asignada
                 $tarea->save();
             }
 
+            Flash::success('Se realizaron con éxito las siguientes asignaciones:'.'<br><br>'.$aviso);
             return Redirect::back();
 
         } catch (Exception $e) {

@@ -260,8 +260,8 @@
                 }
             });
             }
-        });
+            });
 
-            </script>
+        </script>
     @endsection
 @endsection

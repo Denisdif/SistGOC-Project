@@ -37,23 +37,11 @@ class EvaluacionController extends AppBaseController
         return $evaluacionDataTable->render('evaluacions.index');
     }
 
-    /**
-     * Show the form for creating a new Evaluacion.
-     *
-     * @return Response
-     */
     public function create(Personal $personal)
     {
         return view('evaluacions.create', compact('personal'));
     }
 
-    /**
-     * Store a newly created Evaluacion in storage.
-     *
-     * @param CreateEvaluacionRequest $request
-     *
-     * @return Response
-     */
     public function store(Personal $personal, CreateEvaluacionRequest $request)
     {
         $user = Auth::user();
@@ -69,16 +57,29 @@ class EvaluacionController extends AppBaseController
         return redirect(route('personals.show', $personal->id));
     }
 
-    /**
-     * Display the specified Evaluacion.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function show($id)
     {
         $evaluacion = $this->evaluacionRepository->find($id);
+
+        $personal = Personal::all()->find($evaluacion->Personal_id);
+
+        $tipos_tareas = Tipo_tarea::all();
+
+        //Datos para grafica
+
+            $tipos_tareas_graf = [];
+            $calificacion_graf = [];
+
+            foreach ($tipos_tareas as $item) {
+                if (($personal->get_rendimiento($personal->get_tareas_desarrolladas_por_fecha($item->Nombre_tipo_tarea,$evaluacion->Fecha_inicio, $evaluacion->Fecha_fin)))>1) {
+
+                    $tipos_tareas_graf[]=$item->Nombre_tipo_tarea;
+                    $calificacion_graf[]=$personal->get_rendimiento($personal->get_tareas_desarrolladas_por_fecha($item->Nombre_tipo_tarea,$evaluacion->Fecha_inicio, $evaluacion->Fecha_fin));
+
+                }
+            }
+
+        //Fin datos para grafica
 
         if (empty($evaluacion)) {
             Flash::error('Evaluacion not found');
@@ -86,16 +87,9 @@ class EvaluacionController extends AppBaseController
             return redirect(route('evaluacions.index'));
         }
         $tipos_de_tareas = Tipo_tarea::all();
-        return view('evaluacions.show', compact('tipos_de_tareas'))->with('evaluacion', $evaluacion);
+        return view('evaluacions.show', compact('personal','tipos_de_tareas','tipos_tareas_graf','calificacion_graf'))->with('evaluacion', $evaluacion);
     }
 
-    /**
-     * Show the form for editing the specified Evaluacion.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function edit($id)
     {
         $evaluacion = $this->evaluacionRepository->find($id);
@@ -109,14 +103,6 @@ class EvaluacionController extends AppBaseController
         return view('evaluacions.edit')->with('evaluacion', $evaluacion);
     }
 
-    /**
-     * Update the specified Evaluacion in storage.
-     *
-     * @param  int              $id
-     * @param UpdateEvaluacionRequest $request
-     *
-     * @return Response
-     */
     public function update($id, UpdateEvaluacionRequest $request)
     {
         $evaluacion = $this->evaluacionRepository->find($id);
@@ -134,13 +120,6 @@ class EvaluacionController extends AppBaseController
         return redirect(route('evaluacions.index'));
     }
 
-    /**
-     * Remove the specified Evaluacion from storage.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
     public function destroy($id)
     {
         $evaluacion = $this->evaluacionRepository->find($id);

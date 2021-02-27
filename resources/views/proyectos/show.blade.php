@@ -66,29 +66,47 @@
                             <div class="tab-pane active" id="tareas" role="tabpanel" aria-labelledby="tareas-tab">
                                 {{-- Inicio de DataTable de tareas del proyecto --}}
                                 <br>
-                                <table id="TareasDelProyecto" class="table table-striped table-bordered">
+                                <table id="TareasDelProyecto" class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
                                             {{--<th>Prioridad</th>--}}
                                             <th>Estado</th>
                                             <th>Fecha límite de finalización</th>
+                                            <th style="width: 15%">Tiempo de desarrollo</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($tareasDelProyecto as $tarea)
-                                        <tr>
+
+                                        @switch($tarea->estado_tarea->Nombre_estado_tarea)
+                                            @case("Aprobada")
+                                                <tr class="success">
+                                                @break
+
+                                            @case("Esperando revisión")
+                                                {{-- <tr style="background-color: rgb(228, 228, 228)"> --}}
+                                                    <tr class="warning">
+                                                @break
+
+                                            @case("En desarrollo")
+                                                <tr class="info">
+                                                @break
+
+                                            @default
+                                                @if ($tarea->atrasada())
+                                                        <tr class="danger">
+                                                @else
+                                                        <tr class="">
+                                                @endif
+                                        @endswitch
+
                                             <td>{{ $tarea->Nombre_tarea }}</td>
                                              {{--<td>{{ $tarea->prioridad }}</td>--}}
-                                             <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
-                                             @if ($tarea->atrasada())
-                                                <td class="danger">{{ $tarea->getFechaLimite() }}</td>
-                                             @else
-                                                <td class="">{{ $tarea->getFechaLimite() }}</td>
-                                             @endif
-
-
+                                            <td>{{ $tarea->estado_tarea->Nombre_estado_tarea }}</td>
+                                            <td class="">{{ $tarea->getFechaLimite() }}</td>
+                                            <td style="width: 15%; text-align: center">{{ $tarea->duracionEstimadaReal($tarea->Tipo_tarea_id)}} hs</td>
                                             <td>{!! Form::open(['route' => ['tareas.destroy', $tarea->id], 'method' => 'delete']) !!}
                                                 <div class='btn-group'>
                                                     <a href="{{ route('tareas.show', $tarea->id) }}" class='btn btn-default btn-xs'>

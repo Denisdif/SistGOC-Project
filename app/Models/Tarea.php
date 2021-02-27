@@ -197,6 +197,9 @@ class Tarea extends Model implements Auditable
             $resul = $suma / $div;
             $resul = $resul / 60;
             $resul = round ( $resul, 0 );
+            if ($resul<1) {
+                $resul = 1;
+            }
             return $resul;
         } else {
             return 5;
