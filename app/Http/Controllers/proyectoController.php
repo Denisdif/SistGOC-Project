@@ -42,11 +42,23 @@ class ProyectoController extends AppBaseController
             $proyectos = Proyecto::all()->where('Director_id', '=', Auth::user()->Personal_id);
         }
 
+        $hasta = Carbon::now();
+        $desde = new Carbon('1900-03-02 10:32:45.654321');
+
+        if ($request->desde) {
+            $desde = $request->desde;
+        }
+        if ($request->hasta) {
+            $hasta = $request->hasta;
+        }
+
         $proyectos = Proyecto::orderBy('id', 'DESC')
                 ->Id($request->codigo)
                 ->Comitente($request->comitente)
                 ->Tipo($request->tipo)
                 ->Provincia($request->provincia, $request->localidad,$request->calle)
+                ->whereDate('proyectos.created_at', '>=', $desde)
+                ->whereDate('proyectos.created_at', '<=', $hasta)
                 ->paginate('100');
 
         $codigo = $request->codigo;
@@ -71,7 +83,7 @@ class ProyectoController extends AppBaseController
             }
         }
 
-        return View('proyectos.index', compact('proyectos','proy_atrasados','proy_en_desarrollo','proy_finalizados','codigo','tipo','comitente','provincia','localidad','calle'));
+        return View('proyectos.index', compact('proyectos','proy_atrasados','proy_en_desarrollo','proy_finalizados','codigo','tipo','comitente','provincia','localidad','calle','desde','hasta'));
     }
 
     public function create()
@@ -364,19 +376,28 @@ class ProyectoController extends AppBaseController
 
     public function estadisticas(Request $request)
     {
+
+        if ($request->Fecha<$request->Meses) {
+            Flash::error('La fecha ingresada en el campo "desde" no puede ser posterior a la del campo "hasta"');
+            return Redirect::back()->withInput();
+        }
+
         $cant_meses = 6;
         $actual = Carbon::now();
         $fecha_act = Carbon::now();
-
-        if ($request->Meses) {
-            $cant_meses = $request->Meses;
-        }
 
         if ($request->Fecha) {
             $fecha_act = new Carbon($request->Fecha);
             $actual = new Carbon($request->Fecha);
         }
 
+        if ($request->Meses) {
+            $Auxiliar = new Carbon($request->Meses);
+            $cant_meses = $Auxiliar->diffInMonths($actual);
+        }
+
+        $mes = [];
+        $fechas = [];
 
         //obtener array con los meses a mostrar en la grafica
             for ($i=0; $i < $cant_meses; $i++) {
@@ -391,6 +412,7 @@ class ProyectoController extends AppBaseController
             $fechas = array_reverse($fechas);
         //
 
+        $proyectos_x_mes = [];
         //obtener array con cantidad de proyectos por mes
             foreach ($fechas as $item) {
                 $desde = new Carbon($item->startOfMonth());
@@ -403,12 +425,16 @@ class ProyectoController extends AppBaseController
         $desde = new Carbon($actual);
         $desde->subMonth($cant_meses);
         $proyectos = Proyecto::all()->whereBetween('Fecha_fin_Proy', [$desde,$hasta]);
+        $tipos_proyectos = [];
 
         foreach ($proyectos as $item) {
             $tipos_proyectos[] = $item->tipo_proyecto->Nombre;
         }
 
         $datos_tipos = (array_count_values($tipos_proyectos));
+
+        $etiquetas_tipos = [];
+        $cantidad_tipos = [];
 
         foreach ($datos_tipos as $item) {
             $etiquetas_tipos[] = key($datos_tipos);             //Obtener la posicion del puntero del array

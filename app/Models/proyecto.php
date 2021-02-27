@@ -97,7 +97,7 @@ class Proyecto extends Model implements Auditable
     public function scopeId($query, $id){
 
         if($id)
-            return $query->where('id', 'LIKE', "%$id%");
+            return $query->where('proyectos.id', 'LIKE', "%$id%");
     }
 
     public function scopeComitente($query, $comitente){

@@ -110,23 +110,34 @@
                     <div class="row">
                         {!! Form::open(['route' => 'personals.index', 'method' => 'GET', 'form-inline pull-right']) !!}
                             <div class="form-group col-md-6">
-                                <input type="text" name="Nombre" value="{{ $Nombre }}" class="form-control" placeholder="Nombre">
+                                <label>Nombre</label>
+                                <input type="text" name="Nombre" value="{{ $Nombre }}" class="form-control" {{-- placeholder="Nombre" --}}>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <input type="text" name="Apellido" value="{{ $Apellido }}" class="form-control" placeholder="Apellido">
+                                <label>Apellido</label>
+                                <input type="text" name="Apellido" value="{{ $Apellido }}" class="form-control"{{-- placeholder="Apellido" --}}>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <input type="number" name="mayorQ" value="{{ $MayorQ }}" class="form-control" placeholder="Mayor que">
+                                <label>Mayor que</label>
+                                <input type="number" name="mayorQ" value="{{ $MayorQ }}" class="form-control"{{-- placeholder="Mayor que" --}}>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <input type="number" name="menorQ" value="{{ $MenorQ }}" class="form-control" placeholder="Menor que">
+                                <label>Menor que</label>
+                                <input type="number" name="menorQ" value="{{ $MenorQ }}" class="form-control"{{-- placeholder="Menor que" --}}>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <input type="text" name="rol" value="{{ $Rol }}" class="form-control" placeholder="Rol">
+                                <label>Rol</label>
+                                <select class="form-control" name="rol" id="" value="{{ $Rol }}">
+                                    <option value="">Ninguno</option>
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Director de proyectos">Director de proyectos</option>
+                                    <option value="Desarrollador">Desarrollador</option>
+                                    <option value="Auditor">Auditor</option>
+                                </select>
                             </div>
 
                             {{-- <div class="form-group col-md-3">

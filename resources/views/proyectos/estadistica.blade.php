@@ -6,9 +6,8 @@
 
 @section('content')
 
-    @include('flash::message')
-
     <div class="content">
+        @include('flash::message')
         <div class="box box-danger">
             <div class="box-body">
 
@@ -69,10 +68,12 @@
                     <div class="row">
                         {!! Form::open(['route' => 'proyectos.estadisticas', 'method' => 'GET', 'form-inline pull-right']) !!}
                             <div class="form-group col-md-6">
-                                <input type="date" name="Fecha" value="{{ $fecha_act }}" class="form-control" placeholder="Fecha">
+                                <label>Desde</label>
+                                <input type="date" name="Meses" value="{{ $cant_meses }}" class="form-control" placeholder="Meses">
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="number" name="Meses" value="{{ $cant_meses }}" class="form-control" placeholder="Meses">
+                                <label>Hasta</label>
+                                <input type="date" name="Fecha" value="{{ $fecha_act }}" class="form-control" placeholder="Fecha">
                             </div>
                     </div>
                     <div class="modal-footer">

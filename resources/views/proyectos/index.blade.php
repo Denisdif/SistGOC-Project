@@ -41,6 +41,18 @@
                             <div class="form-group col-md-3">
                                 <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Desde</label>
+                                    <input type="date" id="min" name="desde" value="{{ $desde }}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Hasta</label>
+                                    <input type="date" id="max" name="hasta" value="{{ $hasta }}" class="form-control">
+                                </div>
+                            </div>
                         </div>
                         <button class="btn btn-secundary" data-toggle="modal" data-target="#Filtrar" type="button">Filtrar</button>
                             <button class="btn btn-secundary" type="submit" >PDF</button>
@@ -345,27 +357,46 @@
                         <div class="row">
                             {!! Form::open(['route' => 'proyectos.index', 'method' => 'GET', 'form-inline pull-right']) !!}
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" placeholder="Código">
+                                    <label>Código</label>
+                                    <input type="text" name="codigo" value="{{ $codigo }}" class="form-control" {{-- placeholder="Código" --}}>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" placeholder="Tipo">
+                                    <label>Tipo</label>
+                                    <input type="text" name="tipo" value="{{ $tipo }}" class="form-control" {{-- placeholder="Tipo" --}}>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" placeholder="Comitente">
+                                    <label>Comitente</label>
+                                    <input type="text" name="comitente" value="{{ $comitente }}" class="form-control" {{-- placeholder="Comitente" --}}>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" placeholder="Provincia">
+                                    <label>Provincia</label>
+                                    <input type="text" name="provincia" value="{{ $provincia }}" class="form-control" {{-- placeholder="Provincia" --}}>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" placeholder="Localidad">
+                                    <label>Localidad</label>
+                                    <input type="text" name="localidad" value="{{ $localidad }}" class="form-control" {{-- placeholder="Localidad" --}}>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="calle" value="{{ $calle }}" class="form-control" placeholder="Calle">
+                                    <label>Calle</label>
+                                    <input type="text" name="calle" value="{{ $calle }}" class="form-control" {{-- placeholder="Calle" --}}>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Desde</label>
+                                        <input type="date" id="min" name="desde" value="" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Hasta</label>
+                                        <input type="date" id="max" name="hasta" value="" class="form-control">
+                                    </div>
                                 </div>
 
                         </div>

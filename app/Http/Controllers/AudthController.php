@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proyecto;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use OwenIt\Auditing\Auditable;
@@ -29,70 +30,30 @@ class AudthController extends Controller
 
         $user_id = $request->user_id;
         $tabla = $request->tabla;
-        $desde = $request->desde;
-        $hasta = $request->hasta;
+        $hasta = Carbon::now();
+        $desde = new Carbon('1900-03-02 10:32:45.654321');
+
+        if ($request->desde) {
+            $desde = $request->desde;
+        }
+        if ($request->hasta) {
+            $hasta = $request->hasta;
+        }
 
         if ($request->user_id) {
-            if (($request->desde) and ($request->hasta)) {
-                $auditorias = Audit::orderBy('id', 'DESC')
-                ->where('user_id', '=', $request->user_id)
-                ->where('auditable_type', 'LIKE', "%$request->tabla%")
-                ->whereDate('created_at', '>=', $request->desde)
-                ->whereDate('created_at', '<=', $request->hasta)
-                ->paginate('100');
-            }else{
-                if (($request->hasta)and($request->desde == null)) {
-                    $auditorias = Audit::orderBy('id', 'DESC')
-                        ->where('user_id', '=', $request->user_id)
-                        ->where('auditable_type', 'LIKE', "%$request->tabla%")
-                        ->whereDate('created_at', '<=', $request->hasta)
-                        ->paginate('100');
-                }else {
-                    if (($request->desde)and($request->hasta == null)) {
-                        $auditorias = Audit::orderBy('id', 'DESC')
-                            ->where('user_id', '=', $request->user_id)
-                            ->where('auditable_type', 'LIKE', "%$request->tabla%")
-                            ->whereDate('created_at', '>=', $request->desde)
-                            ->paginate('100');
-                    }else{
-                        if (($request->desde == null) and ($request->hasta == null)) {
-                            $auditorias = Audit::orderBy('id', 'DESC')
-                                ->where('user_id', '=', $request->user_id)
-                                ->where('auditable_type', 'LIKE', "%$request->tabla%")
-                                ->paginate('100');
-                        }
-                    }
-                }
-            }
+            $auditorias = Audit::orderBy('id', 'DESC')
+            ->where('user_id', '=', $request->user_id)
+            ->where('auditable_type', 'LIKE', "%$request->tabla%")
+            ->whereDate('created_at', '>=', $desde)
+            ->whereDate('created_at', '<=', $hasta)
+            ->paginate('100');
         }else {
-            if (($request->desde) and ($request->hasta)) {
                 $auditorias = Audit::orderBy('id', 'DESC')
                 ->where('auditable_type', 'LIKE', "%$request->tabla%")
-                ->whereDate('created_at', '>=', $request->desde)
-                ->whereDate('created_at', '<=', $request->hasta)
+                ->whereDate('created_at', '>=', $desde)
+                ->whereDate('created_at', '<=', $hasta)
                 ->paginate('100');
-            }else{
-                if (($request->hasta)and($request->desde == null)) {
-                    $auditorias = Audit::orderBy('id', 'DESC')
-                        ->where('auditable_type', 'LIKE', "%$request->tabla%")
-                        ->whereDate('created_at', '<=', $request->hasta)
-                        ->paginate('100');
-                }else {
-                    if (($request->desde)and($request->hasta == null)) {
-                        $auditorias = Audit::orderBy('id', 'DESC')
-                            ->where('auditable_type', 'LIKE', "%$request->tabla%")
-                            ->whereDate('created_at', '>=', $request->desde)
-                            ->paginate('100');
-                    }else{
-                        if (($request->desde == null) and ($request->hasta == null)) {
-                            $auditorias = Audit::orderBy('id', 'DESC')
-                                ->where('auditable_type', 'LIKE', "%$request->tabla%")
-                                ->paginate('100');
-                        }
-                    }
                 }
-            }
-        }
 
         return view('auditoria.index', compact('auditorias', 'modelosAuditoria', 'usuarios','desde','hasta','user_id','tabla'));
     }
