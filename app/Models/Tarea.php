@@ -215,6 +215,18 @@ class Tarea extends Model implements Auditable
             $result = $this->estimar_con_tipo();
         }
 
+        $Ambientes_del_proyecto = ($this->proyecto->Proyecto_ambiente);
+        $Cant_ambientes_del_proyecto = 0;
+
+        foreach ($Ambientes_del_proyecto as $item) {
+            $Cant_ambientes_del_proyecto += $item->Cantidad;
+        }
+
+        $result = (1/15)*($Cant_ambientes_del_proyecto) * $result;
+        $result = round ( $result, 0 );
+        if ($result == 0) {
+            $result = 1;
+        }
         return $result;
     }
 
