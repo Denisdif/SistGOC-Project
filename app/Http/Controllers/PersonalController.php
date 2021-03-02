@@ -262,4 +262,23 @@ class PersonalController extends AppBaseController
 
         return redirect()->back();
     }
+
+    public function baja($id)
+    {
+        $personal = Personal::all()->find($id);
+
+        if ($personal->Activo) {
+            $personal->Activo = NULL;
+            $personal->save();
+            Flash::success('El alta del personal se ejecutó con éxito');
+            return redirect()->back();
+        }else{
+            $personal->Activo = "No";
+            $personal->save();
+            Flash::success('La baja del personal se ejecutó con éxito');
+            return redirect()->back();
+        }
+
+
+    }
 }

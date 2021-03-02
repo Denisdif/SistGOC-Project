@@ -27,7 +27,15 @@
 
                         <br><br>
 
-                        <td><button class="btn" data-toggle="modal" data-target="#Datos" type="button">Datos</button></td>
+                        <button class="btn" data-toggle="modal" data-target="#Datos" type="button">Datos</button>
+
+                        @if ($personal->Activo == "No")
+                            <a onclick="return confirm('Está seguro que desea dar de alta a este desarrollador?')" href="/personals/{{$personal->id}}/baja" class="btn btn-success" type="button">Dar de alta</a>
+                        @else
+                            <a onclick="return confirm('Está seguro que desea dar de baja a este desarrollador?')" href="/personals/{{$personal->id}}/baja" class="btn btn-danger" type="button">Dar de baja</a>
+                        @endif
+
+
                     </div>
                 </div>
 

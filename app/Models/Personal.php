@@ -354,14 +354,14 @@ class Personal extends Model implements Auditable
         $desarrolladores = [];
         $empleado = Personal::all();
         foreach ($empleado as $item) {
-            if ($item->get_rol()->NombreRol == "Desarrollador") {
+            if (($item->get_rol()->NombreRol == "Desarrollador") and ($item->Activo == NULL)){
                 $desarrolladores[] = $item;
             }
         }
         $empleado = $desarrolladores[0];
-        $lista_personal = Personal::all();
+        $lista_personal = $desarrolladores;
         foreach ($lista_personal as $item) {
-            if ($item->carga_de_trabajo_horas()< $empleado->carga_de_trabajo_horas()) {
+            if ($item->carga_de_trabajo_horas() < $empleado->carga_de_trabajo_horas()) {
                 $empleado = $item;
             }
         }

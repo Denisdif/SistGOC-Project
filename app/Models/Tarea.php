@@ -329,7 +329,7 @@ class Tarea extends Model implements Auditable
         $lista_personal = Personal::all()->except($personal_exceptuado);
 
         foreach ($lista_personal as $item) {
-            if ($item->get_rol()->NombreRol == "Desarrollador") {
+            if (($item->get_rol()->NombreRol == "Desarrollador") and ($item->Activo == NULL)) {
                 $desarrolladores[] = $item;
             }
         }

@@ -36,6 +36,8 @@ Route::get('users/{user}/edit',                     'UserController@edit')      
 Route::put('users/{id}',                            'UserController@update')         ->name('users.update');
 Route::delete('users/{id}',                         'UserController@destroy')        ->name('users.destroy');
 
+Route::get('personals/{personal}/baja',             'PersonalController@baja')           ->name('personals.baja');
+
 //Rutas proyectos
 
 //Route::resource('proyectos', 'ProyectoController');

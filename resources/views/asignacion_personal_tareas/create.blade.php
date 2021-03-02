@@ -77,7 +77,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($personal as $Personal)
-                                @if ($Personal->get_rol()->id == 3)
+                                @if (($Personal->get_rol()->id == 3) and ($Personal->Activo == NULL))
                                 <tr>
                                     <td>{{ $Personal->NombrePersonal }} {{ $Personal->ApellidoPersonal }}</td>
                                     <td>{{ sizeof($Personal->tareasEnDesarrollo()) }}</td>
