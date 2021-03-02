@@ -3,14 +3,14 @@
 </div>
 
 <!-- Ambiente Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Ambiente_id', 'Ambiente:') !!}
-    {!! Form::select('Ambiente_id', $ambienteItems, null, ['class' => 'form-control']) !!}
+<div class="form-group col-sm-12">
+    {!! Form::label('Ambiente_id', 'Ambiente:') !!} <br>
+    {!! Form::select('Ambiente_id', $ambienteItems, null, ['class' => 'form-control', 'style' => 'width: 100%']) !!}
 </div>
 
 <!-- Cantidad Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('Cantidad', 'Cantidad:') !!}
+<div class="form-group col-sm-12">
+    {!! Form::label('Cantidad', 'Cantidad:') !!} <br>
     {!! Form::number('Cantidad', '1', ['class' => 'form-control','id' => 'Cantidades']) !!}
 </div>
 

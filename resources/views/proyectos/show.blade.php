@@ -177,11 +177,11 @@
                                 <div id="ModalCargarAmbiente" class="modal" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">
                                       <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title">Modal title
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <div class="modal-header" style="background-color: rgb(223, 43, 61)">
+                                            <h5 class="modal-title"> <b style="color: white"> Cargar Ambientes </b>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
-                                          </button></h5>
+                                            </button></h5>
                                         </div>
 
                                             @section('css')
@@ -192,13 +192,14 @@
 
                                                 @include('proyecto_ambientes.fields')
 
-                                                <div class="form-group col-sm-12">
-                                                    <a href="#" class="addRow btn btn-danger ">Agregar a lista</a>
+                                                <div class="form-group col-sm-12 ">
+                                                    <a href="#" class="addRow btn btn-danger pull-right">Agregar a lista</a>
                                                 </div>
 
                                                 <div class="form-group col-sm-12">
                                                     <h2>Cola de carga</h2>
                                                 </div>
+
 
                                                 <div class="col-md-12">
                                                     <table class="table table-striped table-bordered">

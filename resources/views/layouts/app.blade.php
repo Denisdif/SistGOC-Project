@@ -607,7 +607,7 @@
                 // if(precio > 0){
                     var fila = '<tr> <td><input type="hidden" name="Ambiente_id[]" value="'+Ambiente_id+'">'+Ambiente+'</td>'+
                                 '<td style="text-align:right;"><input type="hidden" name="Cantidad[]" value="'+Cantidad+'">'+Cantidad+' </td>'+
-                                '<td style="text-align:center;"><a href="#" class="btn btn-danger btn-xs remove"><i class="fas fa-minus"></i></a></td>' +
+                                '<td style="text-align:center;"><a href="" class="btn btn-danger btn-xs remove"><i class="glyphicon glyphicon-trash"></i></a></td>' +
                                 '</tr>' ;
                     $('.ColaCarga').append(fila) ;
                     limpiar();
