@@ -29,12 +29,15 @@
 
                         <button class="btn" data-toggle="modal" data-target="#Datos" type="button">Datos</button>
 
-                        @if ($personal->Activo == "No")
-                            <a onclick="return confirm('Está seguro que desea dar de alta a este desarrollador?')" href="/personals/{{$personal->id}}/baja" class="btn btn-success" type="button">Dar de alta</a>
-                        @else
-                            <a onclick="return confirm('Está seguro que desea dar de baja a este desarrollador?')" href="/personals/{{$personal->id}}/baja" class="btn btn-danger" type="button">Dar de baja</a>
-                        @endif
+                        @if (Auth :: user()->Rol_id == 1)
 
+                            @if ($personal->Activo == "No")
+                                <a onclick="return confirm('Está seguro que desea dar de alta a este desarrollador?')" href="/personals/{{$personal->id}}/baja" class="btn btn-success" type="button">Dar de alta</a>
+                            @else
+                                <a onclick="return confirm('Está seguro que desea dar de baja a este desarrollador?')" href="/personals/{{$personal->id}}/baja" class="btn btn-danger" type="button">Dar de baja</a>
+                            @endif
+
+                        @endif
 
                     </div>
                 </div>
@@ -90,100 +93,101 @@
 
                             @if ($personal->get_rol()->id == 3)
 
-                            <div class="tab-pane fade" id="Rendimiento" role="tabpanel" aria-labelledby="Rendimiento-tab">
-                                <div>
+                                <div class="tab-pane fade" id="Rendimiento" role="tabpanel" aria-labelledby="Rendimiento-tab">
                                     <div>
-                                        <br>
-                                        <section class="content-header">
-                                            <h1>Rendimiento general</h1>
+                                        <div>
                                             <br>
-                                        </section>
-                                        <div class="col-sm-6" style="padding-left: 4%">
-                                            @foreach ($tipos_tareas as $item)
+                                            <section class="content-header">
+                                                <h1>Rendimiento general</h1>
+                                                <br>
+                                            </section>
+                                            <div class="col-sm-6" style="padding-left: 4%">
+                                                @foreach ($tipos_tareas as $item)
 
-                                                @if (sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)))
-                                                    <br>
-                                                    <b>{{ $item->Nombre_tipo_tarea }}:</b>
-                                                    <br><br>
-                                                    <div style="padding-left: 2%">
-                                                        Cantidad de tareas realizadas: {{ sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
-                                                        Calificación general: {{ round(($personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea))),2) }} <br>
-                                                    </div>
-                                                @endif
-                                            @endforeach
+                                                    @if (sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)))
+                                                        <br>
+                                                        <b>{{ $item->Nombre_tipo_tarea }}:</b>
+                                                        <br><br>
+                                                        <div style="padding-left: 2%">
+                                                            Cantidad de tareas realizadas: {{ sizeof($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea)) }} <br>
+                                                            Calificación general: {{ round(($personal->get_rendimiento($personal->get_tareas_desarrolladas($item->Nombre_tipo_tarea))),2) }} <br>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+
+                                            <div class="col-sm-6" style="width: 40%; height: 40%">
+                                                <canvas id="rendimiento" width="40" height="40"></canvas>
+                                            </div>
                                         </div>
 
-                                        <div class="col-sm-6" style="width: 40%; height: 40%">
-                                            <canvas id="rendimiento" width="40" height="40"></canvas>
-                                        </div>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="tab-pane fade content" id="Evaluaciones" role="tabpanel" aria-labelledby="Evaluaciones-tab">
-                                <br>
-                                {{-- Inicio de DataTable de ambientes del proyecto --}}
-                                <table class="table datatables table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Desde</th>
-                                            <th>Hasta</th>
-                                            <th>Evaluador</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($evaluaciones as $evaluacion)
-                                        <tr>
-                                            <td>{{ $evaluacion->Fecha_inicio->formatLocalized(' %d de %B de %Y') }}</td>
-                                            <td>{{ $evaluacion->Fecha_fin->formatLocalized(' %d de %B de %Y') }}</td>
-                                            <td>{{ $evaluacion->evaluador->NombrePersonal }} {{ $evaluacion->evaluador->ApellidoPersonal }}</td>
-                                            <td>{!! Form::open(['route' => ['evaluacions.destroy', $evaluacion->id], 'method' => 'delete']) !!}
-                                                <div class='btn-group'>
-                                                    <a href="{{ route('evaluacions.show', $evaluacion->id) }}" class='btn btn-default btn-xs'>
-                                                        <i class="glyphicon glyphicon-eye-open"></i>
-                                                    </a>
-                                                    <a href="{{ route('evaluacions.edit', $evaluacion->id) }}" class='btn btn-default btn-xs'>
-                                                        <i class="glyphicon glyphicon-edit"></i>
-                                                    </a>
-                                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
-                                                        'type' => 'submit',
-                                                        'class' => 'btn btn-danger btn-xs',
-                                                        'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
-                                                    ]) !!}
-                                                </div>
-                                                {!! Form::close() !!}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                <div class="tab-pane fade content" id="Evaluaciones" role="tabpanel" aria-labelledby="Evaluaciones-tab">
+                                    <br>
+                                    {{-- Inicio de DataTable de ambientes del proyecto --}}
+                                    <table class="table datatables table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Desde</th>
+                                                <th>Hasta</th>
+                                                <th>Evaluador</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($evaluaciones as $evaluacion)
+                                            <tr>
+                                                <td>{{ $evaluacion->Fecha_inicio->formatLocalized(' %d de %B de %Y') }}</td>
+                                                <td>{{ $evaluacion->Fecha_fin->formatLocalized(' %d de %B de %Y') }}</td>
+                                                <td>{{ $evaluacion->evaluador->NombrePersonal }} {{ $evaluacion->evaluador->ApellidoPersonal }}</td>
+                                                <td>{!! Form::open(['route' => ['evaluacions.destroy', $evaluacion->id], 'method' => 'delete']) !!}
+                                                    <div class='btn-group'>
+                                                        <a href="{{ route('evaluacions.show', $evaluacion->id) }}" class='btn btn-default btn-xs'>
+                                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                                        </a>
+                                                        <a href="{{ route('evaluacions.edit', $evaluacion->id) }}" class='btn btn-default btn-xs'>
+                                                            <i class="glyphicon glyphicon-edit"></i>
+                                                        </a>
+                                                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
+                                                            'type' => 'submit',
+                                                            'class' => 'btn btn-danger btn-xs',
+                                                            'onclick' => "return confirm('Esta seguro que desea eliminar esta tarea?')"
+                                                        ]) !!}
+                                                    </div>
+                                                    {!! Form::close() !!}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
 
-                                @if (Auth :: user()->Rol_id == 1)
-                                    <div class="text-center">
-                                        <a class="btn btn-danger" href="/personals/{{$personal->id}}/evaluacions/create">Nueva evaluación</a>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="tab-pane fade content" id="Asistencias" role="tabpanel" aria-labelledby="Asistencias-tab">
-                                <br>
+                                    @if (Auth :: user()->Rol_id < 3)
+                                        <div class="text-center">
+                                            <a class="btn btn-danger" href="/personals/{{$personal->id}}/evaluacions/create">Nueva evaluación</a>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="tab-pane fade content" id="Asistencias" role="tabpanel" aria-labelledby="Asistencias-tab">
+                                    <br>
 
-                                <table class="table datatables table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Entrada</th>
-                                            <th>Salida</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($personal->User->asistencia as $item)
-                                        <tr>
-                                            <td>{{ $item->Entrada->format('d/m/Y ( H:m:s )') }}</td>
-                                            <td>{{ $item->Salida->format('d/m/Y ( H:m:s )') }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <table class="table datatables table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Entrada</th>
+                                                <th>Salida</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($personal->User->asistencia as $item)
+                                            <tr>
+                                                <td>{{ $item->Entrada->format('d/m/Y ( H:m:s )') }}</td>
+                                                <td>{{ $item->Salida->format('d/m/Y ( H:m:s )') }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             @endif
                         </div>
                     </div>

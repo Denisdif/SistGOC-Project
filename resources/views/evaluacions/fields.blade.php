@@ -1,3 +1,5 @@
+<div class="content">
+
 <!-- Evaluador Id Field
 <div class="form-group col-sm-6">
     {!! Form::label('Evaluador_id', 'Evaluador Id:') !!}
@@ -40,8 +42,15 @@
     </script>
 @endpush
 
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
-    <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
+    <br><br>
+
+    <div class="pull-right">
+        {!! Form::submit('Guardar', ['class' => 'btn btn-danger ']) !!}
+        <a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
+    </div>
+</div>
+
 </div>
