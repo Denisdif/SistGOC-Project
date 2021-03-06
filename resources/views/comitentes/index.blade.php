@@ -39,11 +39,7 @@
                                         <a href="{{ route('comitentes.show', $item->id) }}" class='btn btn-default btn-xs'>
                                             <i class="glyphicon glyphicon-eye-open"></i>
                                         </a>
-                                        @if (Auth :: user()->Rol_id == 1)
-                                            <a href="{{ route('comitentes.edit', $item->id) }}" class='btn btn-default btn-xs'>
-                                                <i class="glyphicon glyphicon-edit"></i>
-                                            </a>
-                                        @endif
+
                                     </div>
                                     {!! Form::close() !!}
                                 </td>

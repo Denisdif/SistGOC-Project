@@ -93,11 +93,7 @@
         </div>
     </div>
 
-    <!-- Codigo postal Field -->
-    <div class="form-group col-sm-6">
-        {!! Form::label('Codigo postal', 'Código postal:') !!}
-        <input value="{{ old('Codigo_postal') }}" class="form-control" type="number" name="Codigo_postal" min="1000" max="9407" required>
-    </div>
+
 
     <!-- Calle Field -->
     <div class="form-group col-sm-6">

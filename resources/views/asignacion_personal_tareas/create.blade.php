@@ -90,6 +90,9 @@
                         </table>
                     {{-- Fin de DataTable de Personal del proyecto --}}
                 </div>
+                <br>
+                <hr>
+                <a href="{{ route('proyectos.show', $tarea->Proyecto_id) }}" class="btn btn-danger pull-right" >Volver</a>
             </div>
         </div>
     </div>

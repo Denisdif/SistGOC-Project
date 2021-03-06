@@ -110,7 +110,7 @@ class ProyectoController extends AppBaseController
         $direccion = new Direccion();
         $direccion->Calle = $request->Calle ;
         $direccion->Altura = $request->Altura ;
-        $direccion->Codigo_postal = $request->Codigo_postal ;
+        $direccion->Codigo_postal = 3357 ;
         $direccion->Pais_id = $request->pais_id ;
         $direccion->Provincia_id = $request->provincia_id ;
         $direccion->Localidad_id = $request->localidad_id ;

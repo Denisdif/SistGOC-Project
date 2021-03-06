@@ -12,6 +12,7 @@ use App\Models\ambiente;
 use App\Models\Comitente;
 use App\Models\Direccion;
 use App\Models\Tarea;
+use App\Models\Proyecto_ambiente;
 use App\PDFconfig;
 use App\Models\AsignacionPersonalTarea;
 use App\Models\Sexo;
@@ -571,7 +572,7 @@ class TablasIniciales extends Seeder
             $proyecto->Nombre_proyecto = "Proyecto 4";
             $proyecto->Estado_proyecto = "Finalizado";
             $proyecto->Codigo_catastral = "01232102156321032010";
-            $proyecto->Tipo_proyecto_id = "1";
+            $proyecto->Tipo_proyecto_id = "2";
             $proyecto->Fecha_inicio_Proy = new Carbon('2020-10-05 15:32:45.654321');
             $proyecto->Fecha_fin_Proy = new Carbon('2020-10-15 15:32:45.654321');
             $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
@@ -584,7 +585,7 @@ class TablasIniciales extends Seeder
             $proyecto->Nombre_proyecto = "Proyecto 5";
             $proyecto->Estado_proyecto = "Finalizado";
             $proyecto->Codigo_catastral = "01232102156321032010";
-            $proyecto->Tipo_proyecto_id = "1";
+            $proyecto->Tipo_proyecto_id = "3";
             $proyecto->Fecha_inicio_Proy = new Carbon('2020-10-15 15:32:45.654321');
             $proyecto->Fecha_fin_Proy = new Carbon('2020-11-05 15:32:45.654321');
             $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
@@ -598,8 +599,8 @@ class TablasIniciales extends Seeder
             $proyecto->Estado_proyecto = "En desarrollo";
             $proyecto->Codigo_catastral = "01232102156321032564";
             $proyecto->Tipo_proyecto_id = "1";
-            $proyecto->Fecha_inicio_Proy = new Carbon('2021-02-15 15:32:45.654321');
-            $proyecto->Fecha_fin_Proy = new Carbon('2021-03-05 15:32:45.654321');
+            $proyecto->Fecha_inicio_Proy = new Carbon('2021-02-27 15:32:45.654321');
+            $proyecto->Fecha_fin_Proy = new Carbon('2021-03-20 15:32:45.654321');
             $proyecto->Descripcion = "Proyecto en desarrollo";
             $proyecto->Comitente_id = 1;
             $proyecto->Director_id = 2;
@@ -611,12 +612,103 @@ class TablasIniciales extends Seeder
             $proyecto->Estado_proyecto = "En desarrollo";
             $proyecto->Codigo_catastral = "54232102156321032564";
             $proyecto->Tipo_proyecto_id = "1";
-            $proyecto->Fecha_inicio_Proy = new Carbon('2021-02-15 15:32:45.654321');
-            $proyecto->Fecha_fin_Proy = new Carbon('2021-03-05 15:32:45.654321');
+            $proyecto->Fecha_inicio_Proy = new Carbon('2021-02-27 15:32:45.654321');
+            $proyecto->Fecha_fin_Proy = new Carbon('2021-03-20 15:32:45.654321');
             $proyecto->Descripcion = "Proyecto en desarrollo";
             $proyecto->Comitente_id = 5;
             $proyecto->Director_id = 2;
             $proyecto->direccion_id = 7;
+            $proyecto->save();
+
+            $proyecto = new Proyecto;
+            $proyecto->Nombre_proyecto = "Proyecto 1";
+            $proyecto->Estado_proyecto = "Finalizado";
+            $proyecto->Codigo_catastral = "01232102156321032010";
+            $proyecto->Tipo_proyecto_id = "1";
+            $proyecto->Fecha_inicio_Proy = new Carbon('2020-12-31 15:32:45.654321');
+            $proyecto->Fecha_fin_Proy = new Carbon('2021-01-14 15:32:45.654321');
+            $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
+            $proyecto->Comitente_id = 1;
+            $proyecto->Director_id = 2;
+            $proyecto->direccion_id = 1;
+            $proyecto->save();
+
+            $proyecto = new Proyecto;
+            $proyecto->Nombre_proyecto = "Proyecto 1";
+            $proyecto->Estado_proyecto = "Finalizado";
+            $proyecto->Codigo_catastral = "01232102156321032010";
+            $proyecto->Tipo_proyecto_id = "2";
+            $proyecto->Fecha_inicio_Proy = new Carbon('2020-12-31 15:32:45.654321');
+            $proyecto->Fecha_fin_Proy = new Carbon('2021-01-14 15:32:45.654321');
+            $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
+            $proyecto->Comitente_id = 1;
+            $proyecto->Director_id = 2;
+            $proyecto->direccion_id = 1;
+            $proyecto->save();
+
+            $proyecto = new Proyecto;
+            $proyecto->Nombre_proyecto = "Proyecto 1";
+            $proyecto->Estado_proyecto = "Finalizado";
+            $proyecto->Codigo_catastral = "01232102156321032010";
+            $proyecto->Tipo_proyecto_id = "1";
+            $proyecto->Fecha_inicio_Proy = new Carbon('2020-12-31 15:32:45.654321');
+            $proyecto->Fecha_fin_Proy = new Carbon('2021-01-14 15:32:45.654321');
+            $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
+            $proyecto->Comitente_id = 1;
+            $proyecto->Director_id = 2;
+            $proyecto->direccion_id = 1;
+            $proyecto->save();
+
+            $proyecto = new Proyecto;
+            $proyecto->Nombre_proyecto = "Proyecto 1";
+            $proyecto->Estado_proyecto = "Finalizado";
+            $proyecto->Codigo_catastral = "01232102156321032010";
+            $proyecto->Tipo_proyecto_id = "2";
+            $proyecto->Fecha_inicio_Proy = new Carbon('2021-01-31 15:32:45.654321');
+            $proyecto->Fecha_fin_Proy = new Carbon('2021-02-14 15:32:45.654321');
+            $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
+            $proyecto->Comitente_id = 1;
+            $proyecto->Director_id = 2;
+            $proyecto->direccion_id = 1;
+            $proyecto->save();
+
+            $proyecto = new Proyecto;
+            $proyecto->Nombre_proyecto = "Proyecto 1";
+            $proyecto->Estado_proyecto = "Finalizado";
+            $proyecto->Codigo_catastral = "01232102156321032010";
+            $proyecto->Tipo_proyecto_id = "4";
+            $proyecto->Fecha_inicio_Proy = new Carbon('2020-12-01 15:32:45.654321');
+            $proyecto->Fecha_fin_Proy = new Carbon('2020-12-14 15:32:45.654321');
+            $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
+            $proyecto->Comitente_id = 1;
+            $proyecto->Director_id = 2;
+            $proyecto->direccion_id = 1;
+            $proyecto->save();
+
+            $proyecto = new Proyecto;
+            $proyecto->Nombre_proyecto = "Proyecto 1";
+            $proyecto->Estado_proyecto = "Finalizado";
+            $proyecto->Codigo_catastral = "01232102156321032010";
+            $proyecto->Tipo_proyecto_id = "4";
+            $proyecto->Fecha_inicio_Proy = new Carbon('2020-12-01 15:32:45.654321');
+            $proyecto->Fecha_fin_Proy = new Carbon('2020-12-14 15:32:45.654321');
+            $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
+            $proyecto->Comitente_id = 1;
+            $proyecto->Director_id = 2;
+            $proyecto->direccion_id = 1;
+            $proyecto->save();
+
+            $proyecto = new Proyecto;
+            $proyecto->Nombre_proyecto = "Proyecto 1";
+            $proyecto->Estado_proyecto = "En desarrollo";
+            $proyecto->Codigo_catastral = "01232102156321032010";
+            $proyecto->Tipo_proyecto_id = "4";
+            $proyecto->Fecha_inicio_Proy = new Carbon('2020-12-01 15:32:45.654321');
+            $proyecto->Fecha_fin_Proy = new Carbon('2020-12-14 15:32:45.654321');
+            $proyecto->Descripcion = "Proyecto desarrollado antes de la implementación del sistema";
+            $proyecto->Comitente_id = 1;
+            $proyecto->Director_id = 2;
+            $proyecto->direccion_id = 1;
             $proyecto->save();
 
         //fin proyectos
@@ -1546,7 +1638,7 @@ class TablasIniciales extends Seeder
 
         //Tareas del proyecto 6
 
-             $tarea = new Tarea;
+            $tarea = new Tarea;
             $tarea->Nombre_tarea = "Diseñar planta general";
             $tarea->Tipo_tarea_id = 1;
             $tarea->Fecha_inicio = new Carbon('2021-03-01 15:32:45.654321');
@@ -1555,7 +1647,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 6;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1567,7 +1659,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 6;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1579,31 +1671,31 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 6;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
             $tarea->Nombre_tarea = "Diseñar planta de techos";
             $tarea->Tipo_tarea_id = 1;
             $tarea->Fecha_inicio = new Carbon('2021-03-01 15:32:45.654321');
-            $tarea->Fecha_limite = new Carbon('2021-03-02 10:32:45.654321');
-            $tarea->Fecha_fin = new Carbon('2021-03-02 10:32:45.654321');
+            $tarea->Fecha_limite = new Carbon('2021-03-05 10:32:45.654321');
+            $tarea->Fecha_fin = new Carbon('2021-03-05 10:32:45.654321');
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 6;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 3;
             $tarea->save();
 
             $tarea = new Tarea;
             $tarea->Nombre_tarea = "Silueta y balance de superficies";
             $tarea->Tipo_tarea_id = 5;
             $tarea->Fecha_inicio = new Carbon('2021-03-01 15:32:45.654321');
-            $tarea->Fecha_limite = new Carbon('2021-03-02 10:32:45.654321');
-            $tarea->Fecha_fin = new Carbon('2021-03-02 10:32:45.654321');
+            $tarea->Fecha_limite = new Carbon('2021-03-05 10:32:45.654321');
+            $tarea->Fecha_fin = new Carbon('2021-03-05 10:32:45.654321');
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 6;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 3;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1622,8 +1714,8 @@ class TablasIniciales extends Seeder
             $tarea->Nombre_tarea = "Diseñar instalación eléctrica";
             $tarea->Tipo_tarea_id = 3;
             $tarea->Fecha_inicio = new Carbon('2021-03-01 15:32:45.654321');
-            $tarea->Fecha_limite = new Carbon('2021-03-02 10:32:45.654321');
-            $tarea->Fecha_fin = new Carbon('2021-03-02 10:32:45.654321');
+            $tarea->Fecha_limite = new Carbon('2021-03-10 10:32:45.654321');
+            $tarea->Fecha_fin = new Carbon('2021-03-10 10:32:45.654321');
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 6;
@@ -1634,8 +1726,8 @@ class TablasIniciales extends Seeder
             $tarea->Nombre_tarea = "Diseñar instalación de agua";
             $tarea->Tipo_tarea_id = 3;
             $tarea->Fecha_inicio = new Carbon('2021-03-01 15:32:45.654321');
-            $tarea->Fecha_limite = new Carbon('2021-03-02 10:32:45.654321');
-            $tarea->Fecha_fin = new Carbon('2021-03-02 10:32:45.654321');
+            $tarea->Fecha_limite = new Carbon('2021-03-10 10:32:45.654321');
+            $tarea->Fecha_fin = new Carbon('2021-03-10 10:32:45.654321');
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 6;
@@ -1646,8 +1738,8 @@ class TablasIniciales extends Seeder
             $tarea->Nombre_tarea = "Diseñar instalación sanitaria";
             $tarea->Tipo_tarea_id = 3;
             $tarea->Fecha_inicio = new Carbon('2021-03-01 15:32:45.654321');
-            $tarea->Fecha_limite = new Carbon('2021-03-02 10:32:45.654321');
-            $tarea->Fecha_fin = new Carbon('2021-03-02 10:32:45.654321');
+            $tarea->Fecha_limite = new Carbon('2021-03-10 10:32:45.654321');
+            $tarea->Fecha_fin = new Carbon('2021-03-10 10:32:45.654321');
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 6;
@@ -1658,8 +1750,8 @@ class TablasIniciales extends Seeder
             $tarea->Nombre_tarea = "Realizar cómputo y presupuesto";
             $tarea->Tipo_tarea_id = 2;
             $tarea->Fecha_inicio = new Carbon('2021-03-01 15:32:45.654321');
-            $tarea->Fecha_limite = new Carbon('2021-03-02 10:32:45.654321');
-            $tarea->Fecha_fin = new Carbon('2021-03-02 10:32:45.654321');
+            $tarea->Fecha_limite = new Carbon('2021-03-12 10:32:45.654321');
+            $tarea->Fecha_fin = new Carbon('2021-03-12 10:32:45.654321');
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 6;
@@ -1679,7 +1771,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1691,7 +1783,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1703,7 +1795,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1715,15 +1807,15 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
             $tarea->Nombre_tarea = "Silueta y balance de superficies";
             $tarea->Tipo_tarea_id = 5;
             $tarea->Fecha_inicio = new Carbon('2021-03-01 15:32:45.654321');
-            $tarea->Fecha_limite = new Carbon('2021-03-02 10:32:45.654321');
-            $tarea->Fecha_fin = new Carbon('2021-03-02 10:32:45.654321');
+            $tarea->Fecha_limite = new Carbon('2021-03-05 10:32:45.654321');
+            $tarea->Fecha_fin = new Carbon('2021-03-05 10:32:45.654321');
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
@@ -1739,7 +1831,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1751,7 +1843,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1763,7 +1855,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1775,7 +1867,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
             $tarea = new Tarea;
@@ -1787,7 +1879,7 @@ class TablasIniciales extends Seeder
             $tarea->Prioridad = "Media";
             $tarea->Correcciones = 'false';
             $tarea->Proyecto_id = 7;
-            $tarea->Estado_tarea_id = 1;
+            $tarea->Estado_tarea_id = 6;
             $tarea->save();
 
         //Fin de tareas del proyecto 7
@@ -2262,6 +2354,40 @@ class TablasIniciales extends Seeder
 
         //Fin asignaciones de tareas del proyecto 5
 
+        //Asignaciones de tareas del proyecto 6
+
+            $asignacionPersonalTarea = new AsignacionPersonalTarea;
+            $asignacionPersonalTarea->Personal_id = 4;
+            $asignacionPersonalTarea->Responsabilidad = "Responsable";
+            $asignacionPersonalTarea->Tarea_id = 76;
+            $asignacionPersonalTarea->save();
+
+            $asignacionPersonalTarea = new AsignacionPersonalTarea;
+            $asignacionPersonalTarea->Personal_id = 3;
+            $asignacionPersonalTarea->Responsabilidad = "Responsable";
+            $asignacionPersonalTarea->Tarea_id = 77;
+            $asignacionPersonalTarea->save();
+
+            $asignacionPersonalTarea = new AsignacionPersonalTarea;
+            $asignacionPersonalTarea->Personal_id = 5;
+            $asignacionPersonalTarea->Responsabilidad = "Responsable";
+            $asignacionPersonalTarea->Tarea_id = 78;
+            $asignacionPersonalTarea->save();
+
+            $asignacionPersonalTarea = new AsignacionPersonalTarea;
+            $asignacionPersonalTarea->Personal_id = 5;
+            $asignacionPersonalTarea->Responsabilidad = "Responsable";
+            $asignacionPersonalTarea->Tarea_id = 79;
+            $asignacionPersonalTarea->save();
+
+            $asignacionPersonalTarea = new AsignacionPersonalTarea;
+            $asignacionPersonalTarea->Personal_id = 4;
+            $asignacionPersonalTarea->Responsabilidad = "Responsable";
+            $asignacionPersonalTarea->Tarea_id = 80;
+            $asignacionPersonalTarea->save();
+
+        //Fin asignaciones de tareas del proyecto 6
+
         //Cargar configuraciones
 
             $Config = new PDFconfig;
@@ -2274,7 +2400,7 @@ class TablasIniciales extends Seeder
 
         //Fin de carga de configuraciones
 
-        //Cargar configuraciones
+        //Cargar evaluaciones
 
             $evaluacion = new Evaluacion();
             $evaluacion->Fecha_inicio = new Carbon('2020-12-01 00:00:00');
@@ -2339,7 +2465,98 @@ class TablasIniciales extends Seeder
             $evaluacion->Evaluador_id = 1;
             $evaluacion->save();
 
-        //Fin de carga de configuraciones
+        //Fin de carga de evaluaciones
 
+        //Ambientes del proyecto 6
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 1;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 6;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 2;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 6;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 3;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 6;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 4;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 6;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 5;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 6;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 6;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 6;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 8;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 6;
+            $proyectoAmbiente->save();
+
+        //Fin de ambientes del proyecto 6
+
+        //Ambientes del proyecto 7
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 1;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 7;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 2;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 7;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 3;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 7;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 4;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 7;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 5;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 7;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 6;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 7;
+            $proyectoAmbiente->save();
+
+            $proyectoAmbiente = new Proyecto_ambiente;
+            $proyectoAmbiente->Ambiente_id = 8;
+            $proyectoAmbiente->Cantidad = 1;
+            $proyectoAmbiente->Proyecto_id = 7;
+            $proyectoAmbiente->save();
+
+        //Fin de ambientes del proyecto 7
     }
 }
